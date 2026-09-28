@@ -1,0 +1,18 @@
+name: MerelySmith
+version: 1.0.0
+main: me.merelyme.smith.MerelySmith
+api-version: '1.21'
+authors: [MerelyMe]
+description: Opens a smithing table for Prime, Macer, and staff.
+commands:
+  smith:
+    description: Open a smithing table
+    usage: /smith [player]
+    aliases: [smithing]
+permissions:
+  merelysmith.use:
+    default: false
+  merelysmith.others:
+    default: op
+    children:
+      merelysmith.use: true

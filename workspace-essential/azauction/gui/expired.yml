@@ -1,0 +1,161 @@
+title: "&0Expired Items (%current_page%/%max_page%)"
+# a gui can have 1-6 rows
+rows: 6
+# how many items should be shown on a single page?
+page-size: 45
+# should the gui auto update?
+# in ticks, 20 ticks = 1 second
+# set to -1 to disable auto updater
+auto-update-ticks: -1
+
+# ----- ITEMS -----
+
+my-items:
+  slot: 47
+  material: "ENDER_CHEST"
+  name: "&#00DDFF&lᴍʏ ɪᴛᴇᴍs"
+  lore:
+    - " "
+    - " &fClick here to go"
+    - " &fto the my items page!"
+    - " "
+    - "&#00DDFF&lClick &#DDDDDD» &#AAFFFFMy Items Page"
+  actions:
+    - "[MENU] my-items"
+    - "[SOUND] ui.button.click|1|1"
+
+main:
+  slot: 45
+  material: "CHEST"
+  name: "&#00DDFF&lᴀᴜᴄᴛɪᴏɴ ʜᴏᴜsᴇ"
+  lore:
+    - " "
+    - " &fClick here to go"
+    - " &fto the main page!"
+    - " "
+    - "&#00DDFF&lClick &#DDDDDD» &#AAFFFFMain Page"
+  actions:
+    - "[MENU] main"
+    - "[SOUND] ui.button.click|1|1"
+
+sorting:
+  slot: 46
+  newest:
+    material: "GLOWSTONE_DUST"
+    name: "&#00DDFF&lsᴏʀᴛɪɴɢ"
+    lore:
+      - " "
+      - " &#00DDFFCurrently selected:"
+      - "  &#444444❙ &#AAFFAANewest to oldest"
+      - "  &#444444❙ &#BBBBBBOldest to newest"
+      - "  &#444444❙ &#BBBBBBCheapest to priciest"
+      - "  &#444444❙ &#BBBBBBPriciest to cheapest"
+      - " "
+      - "&#00DDFF&lClick &#DDDDDD» &#AAFFFFChange Sorting"
+  oldest:
+    material: "REDSTONE"
+    name: "&#00DDFF&lsᴏʀᴛɪɴɢ"
+    lore:
+      - " "
+      - " &#00DDFFCurrently selected:"
+      - "  &#444444❙ &#BBBBBBNewest to oldest"
+      - "  &#444444❙ &#AAFFAAOldest to newest"
+      - "  &#444444❙ &#BBBBBBCheapest to priciest"
+      - "  &#444444❙ &#BBBBBBPriciest to cheapest"
+      - " "
+      - "&#00DDFF&lClick &#DDDDDD» &#AAFFFFChange Sorting"
+  cheapest:
+    material: "GLOWSTONE_DUST"
+    name: "&#00DDFF&lsᴏʀᴛɪɴɢ"
+    lore:
+      - " "
+      - " &#00DDFFCurrently selected:"
+      - "  &#444444❙ &#BBBBBBNewest to oldest"
+      - "  &#444444❙ &#BBBBBBOldest to newest"
+      - "  &#444444❙ &#AAFFAACheapest to priciest"
+      - "  &#444444❙ &#BBBBBBPriciest to cheapest"
+      - " "
+      - "&#00DDFF&lClick &#DDDDDD» &#AAFFFFChange Sorting"
+  priciest:
+    material: "REDSTONE"
+    name: "&#00DDFF&lsᴏʀᴛɪɴɢ"
+    lore:
+      - " "
+      - " &#00DDFFCurrently selected:"
+      - "  &#444444❙ &#BBBBBBNewest to oldest"
+      - "  &#444444❙ &#BBBBBBOldest to newest"
+      - "  &#444444❙ &#BBBBBBCheapest to priciest"
+      - "  &#444444❙ &#AAFFAAPriciest to cheapest"
+      - " "
+      - "&#00DDFF&lClick &#DDDDDD» &#AAFFFFChange Sorting"
+  actions:
+    - "[SOUND] ui.button.click|1|1"
+
+previous-page:
+  slot: 48
+  material: "ARROW"
+  name: "&#00DDFF&lᴘʀᴇᴠɪᴏᴜs ᴘᴀɢᴇ"
+  lore:
+    - " "
+    - " &fClick here to go back"
+    - " &fto the previous page!"
+    - " "
+    - "&#00DDFF&lClick &#DDDDDD» &#AAFFFFPrevious Page"
+  actions:
+    - "[PAGE] previous"
+    - "[SOUND] ui.button.click|1|1"
+
+refresh:
+  slot: 49
+  material: "SUNFLOWER"
+  name: "&#00DDFF&lʀᴇғʀᴇsʜ"
+  lore:
+    - " "
+    - " &fClick here to go back"
+    - " &fto refresh the page!"
+    - " "
+    - "&#00DDFF&lClick &#DDDDDD» &#AAFFFFRefresh Page"
+  actions:
+    - "[REFRESH]"
+    - "[SOUND] ui.button.click|1|1"
+
+next-page:
+  slot: 50
+  material: "ARROW"
+  name: "&#00DDFF&lɴᴇxᴛ ᴘᴀɢᴇ"
+  lore:
+    - " "
+    - " &fClick here to go"
+    - " &fto the next page!"
+    - " "
+    - "&#00DDFF&lClick &#DDDDDD» &#AAFFFFNext Page"
+  actions:
+    - "[PAGE] next"
+    - "[SOUND] ui.button.click|1|1"
+
+currency:
+  slot: 52
+  material: "HOPPER"
+  name: "&#00DDFF&lᴄᴜʀʀᴇɴᴄʏ"
+  lore:
+    - " "
+    - " &#00DDFFCurrently selected:"
+    - "  &#444444❙ &#AAFFAA%selected_currency%"
+    - " "
+    - "&#00DDFF&lClick &#DDDDDD» &#AAFFFFChange Currency"
+  no-currency: "All"
+  actions:
+    - "[SOUND] ui.button.click|1|1"
+
+information:
+  slot: 53
+  material: "BOOK"
+  name: "&#00DDFF&lɪɴғᴏʀᴍᴀᴛɪᴏɴ"
+  lore:
+    - " "
+    - " &fIn this menu, you can take back"
+    - " &fyour expired items or sold item's price!"
+    - " "
+    - "&#AADDFFYou are selling &f%sell_count%/%sell_limit% &#AADDFFitems!"
+    - " "
+    - "&#00DDFF&lSell Items &#DDDDDD» &#AAFFFF/ah sell"

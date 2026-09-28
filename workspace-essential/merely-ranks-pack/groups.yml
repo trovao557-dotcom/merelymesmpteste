@@ -1,0 +1,60 @@
+_DEFAULT_:
+  tabprefix: "&#AEADAD&lPLAYER &7"
+  tagprefix: "&#AEADAD&lPLAYER &7"
+  tabsuffix: ""
+  tagsuffix: "%sksmp_tag%"
+member:
+  tabprefix: "&f"
+  tagprefix: "&f"
+  tabsuffix: ""
+  tagsuffix: "%sksmp_tag%"
+knight:
+  tabprefix: "&f"
+  tagprefix: "&f"
+  tabsuffix: ""
+  tagsuffix: "%sksmp_tag%"
+warrior:
+  tabprefix: "&f"
+  tagprefix: "&f"
+  tabsuffix: ""
+  tagsuffix: "%sksmp_tag%"
+macer:
+  tabprefix: "&f"
+  tagprefix: "&f"
+  tabsuffix: ""
+  tagsuffix: "%sksmp_tag%"
+prime:
+  tabprefix: "&f"
+  tagprefix: "&f"
+  tabsuffix: ""
+  tagsuffix: "%sksmp_tag%"
+media:
+  tabprefix: "&f"
+  tagprefix: "&f"
+  tabsuffix: ""
+  tagsuffix: "%sksmp_tag%"
+partner:
+  tabprefix: "&f"
+  tagprefix: "&f"
+  tabsuffix: ""
+  tagsuffix: "%sksmp_tag%"
+helper:
+  tabprefix: "&f"
+  tagprefix: "&f"
+  tabsuffix: ""
+  tagsuffix: "%sksmp_tag%"
+mod:
+  tabprefix: "&f"
+  tagprefix: "&f"
+  tabsuffix: ""
+  tagsuffix: "%sksmp_tag%"
+owner:
+  tabprefix: "&f"
+  tagprefix: "&f"
+  tabsuffix: ""
+  tagsuffix: "%sksmp_tag%"
+admin:
+  tabprefix: "&f"
+  tagprefix: "&f"
+  tabsuffix: ""
+  tagsuffix: "%sksmp_tag%"

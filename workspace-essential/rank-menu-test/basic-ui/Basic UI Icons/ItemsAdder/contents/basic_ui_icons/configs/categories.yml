@@ -1,0 +1,33 @@
+info:
+  namespace: basic_ui_icons
+
+categories:
+  basic_ui_icons:
+    enabled: true
+    skip_if_already: false
+    icon: basic_ui_icons:settings
+    name: Basic UI Icons
+    permission: ia.menu.seecategory.basic_ui_icons
+    items:
+    - basic_ui_icons:arrow_down
+    - basic_ui_icons:arrow_left
+    - basic_ui_icons:arrow_right
+    - basic_ui_icons:arrow_up
+    - basic_ui_icons:check
+    - basic_ui_icons:check_color
+    - basic_ui_icons:close
+    - basic_ui_icons:close_color
+    - basic_ui_icons:coins
+    - basic_ui_icons:exclamation
+    - basic_ui_icons:exclamation_color
+    - basic_ui_icons:lock_closed
+    - basic_ui_icons:lock_open
+    - basic_ui_icons:minus
+    - basic_ui_icons:minus_color
+    - basic_ui_icons:plus
+    - basic_ui_icons:plus_color
+    - basic_ui_icons:question
+    - basic_ui_icons:question_color
+    - basic_ui_icons:refresh
+    - basic_ui_icons:search
+    - basic_ui_icons:settings

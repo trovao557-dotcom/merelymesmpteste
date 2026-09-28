@@ -1,0 +1,180 @@
+info:
+  namespace: basic_ui_icons
+
+items:
+  arrow_down:
+    enabled: true
+    display_name: Arrow Down
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/arrow_down
+  arrow_left:
+    enabled: true
+    display_name: Arrow Left
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/arrow_left
+  arrow_right:
+    enabled: true
+    display_name: Arrow Right
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/arrow_right
+  arrow_up:
+    enabled: true
+    display_name: Arrow Up
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/arrow_up
+  check:
+    enabled: true
+    display_name: Check
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/check
+  check_color:
+    enabled: true
+    display_name: Check Color
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/check_color
+  close:
+    enabled: true
+    display_name: Close
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/close
+  close_color:
+    enabled: true
+    display_name: Close Color
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/close_color
+  coins:
+    enabled: true
+    display_name: Coins
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/coins
+  exclamation:
+    enabled: true
+    display_name: Exclamation
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/exclamation
+  exclamation_color:
+    enabled: true
+    display_name: Exclamation Color
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/exclamation_color
+  lock_closed:
+    enabled: true
+    display_name: Lock Closed
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/lock_closed
+  lock_open:
+    enabled: true
+    display_name: Lock Open
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/lock_open
+  minus:
+    enabled: true
+    display_name: Minus
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/minus
+  minus_color:
+    enabled: true
+    display_name: Minus Color
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/minus_color
+  plus:
+    enabled: true
+    display_name: Plus
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/plus
+  plus_color:
+    enabled: true
+    display_name: Plus Color
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/plus_color
+  question:
+    enabled: true
+    display_name: Question
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/question
+  question_color:
+    enabled: true
+    display_name: Question Color
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/question_color
+  refresh:
+    enabled: true
+    display_name: Refresh
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/refresh
+  search:
+    enabled: true
+    display_name: Search
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/search
+  settings:
+    enabled: true
+    display_name: Settings
+    resource:
+      material: PAPER
+      generate: true
+      textures:
+      - item/settings

@@ -1,0 +1,26 @@
+options:
+    prefix: &8[&bHead Test&8] &7
+
+command /headtest <player>:
+    permission: merelyme.headtest
+    permission message: &cYou do not have permission to use this command.
+    trigger:
+        set {mm.headtest.target} to uuid of arg-1
+        set {mm.headtest.name} to name of arg-1
+        send "{@prefix}&f%arg-1% &7now has a &a100%% &7head drop chance."
+
+command /headtestoff:
+    permission: merelyme.headtest
+    permission message: &cYou do not have permission to use this command.
+    trigger:
+        delete {mm.headtest.target}
+        delete {mm.headtest.name}
+        send "{@prefix}&7The 100%% head drop test is now &cdisabled&7."
+
+on death of player:
+    if {mm.headtest.target} is set:
+        if uuid of victim is {mm.headtest.target}:
+            if attacker is a player:
+                drop victim's skull at location of victim
+                send "{@prefix}&a100%% test successful: &f%victim%'s head &awas dropped." to attacker
+

@@ -1,0 +1,190 @@
+# =====================================================================
+#  SKCombat - no running away, no logging out
+# =====================================================================
+#  Hit another player and you are both "tagged" for a few seconds. While
+#  tagged the escape commands are refused and quitting kills you.
+#
+#  Mob damage never tags. That is deliberate: a combat plugin that lets a
+#  zombie stop somebody from going home is a bug report waiting to
+#  happen, and what this protects is a fight between people.
+#
+#  Reload with: /skcombat reload
+#  See who is fighting: /skcombat list
+# =====================================================================
+
+prefix: '&#FF2121&lCOMBAT &#9B9B9B» '
+
+# How long a hit keeps you in combat. Every new hit starts it over.
+#  10-15  brisk, favours the attacker
+#  20-30  a real commitment, favours whoever plans the fight
+duration-seconds: 15
+
+# Leaving while tagged kills the player and drops their gear.
+#
+# The server shutting down is NOT a logout - everybody quits then, and
+# killing them all would be the worst thing this plugin could do. That
+# case is excluded in code, not here, so it cannot be switched off by
+# accident.
+kill-on-logout: true
+
+# A tamed wolf is its owner's weapon, so a fight fought through one is
+# still a fight. Set false to let pets attack without tagging anybody.
+tag-through-pets: true
+
+# Worlds where nothing is ever tagged, whatever happens in them.
+#
+# The spawn island is deliberately NOT listed, even though most of it is a
+# safe zone. It does not need to be: the damage handler runs at MONITOR and
+# ignores cancelled events, so a swing that spawn protection refuses never
+# reaches this plugin at all. What survives is exactly the PvP ring between
+# the two red concrete borders - a real fight, tagged like any other.
+#
+# Listing the world here would switch that off, and the ring would become
+# the one place on the server where you can hit someone and they can simply
+# walk away mid-fight.
+safe-worlds: []
+
+# Commands refused while tagged, without the slash. The namespaced form
+# is covered automatically - blocking `tpa` also blocks `sktpa:tpa`.
+#
+# Only TYPED commands are seen, which is the point: the escape a player
+# reaches for is one they type. A command another plugin runs on their
+# behalf is the server acting, not somebody running away.
+blocked-commands:
+- spawn
+- home
+- homes
+- sethome
+- warp
+- tpa
+- tpahere
+- tpaccept
+- tpauto
+- rtp
+- randomteleport
+- rtpqueue
+- duelqueue
+- shop
+- ah
+- auction
+- auctionhouse
+- orders
+- order
+- sell
+- sellmulti
+- pointshop
+- ps
+- crates
+- keys
+- kit
+- kits
+- trade
+- troca
+- trader
+- tradeaccept
+- tradedeny
+
+# Teleports refused while tagged, by CAUSE rather than by command - a
+# plugin can teleport somebody without any command at all.
+#
+# ENDER_PEARL and CHORUS_FRUIT are deliberately absent: on most servers
+# those are how a fight MOVES, not how it ends. Add them if yours
+# disagrees. Full list of names: PLUGIN, COMMAND, ENDER_PEARL,
+# CHORUS_FRUIT, END_PORTAL, NETHER_PORTAL, END_GATEWAY, SPECTATE, UNKNOWN.
+blocked-teleport-causes:
+- PLUGIN
+- COMMAND
+
+# The countdown above the hotbar, and the ONLY thing that announces the
+# combat state - entering combat sends no chat line at all. Empty switches
+# the bar off, which would leave the state invisible.
+#   %seconds%  time left
+#   %player%   who you are fighting
+action-bar: ''
+
+sounds:
+  entered:
+    sound: entity.wither.spawn
+    volume: 0.3
+    pitch: 1.8
+  # Played when a death ends the fight - the action bar just stops, so
+  # without this there is nothing at all to mark the moment.
+  left:
+    sound: entity.experience_orb.pickup
+    volume: 0.5
+    pitch: 1.4
+  denied:
+    sound: entity.villager.no
+    volume: 1.0
+    pitch: 1.0
+
+messages:
+  no-permission: '&#FF2121You are not allowed to do that.'
+  
+  # Deliberately empty: the action bar already says you are in combat, and
+  # a chat line on every first hit is noise in the middle of a fight.
+  # %player% is the opponent, %seconds% the tag length.
+  entered: ''
+  
+  # %command% %seconds%
+  command-blocked: '&#FF2121You cannot use &f/%command% &#FF2121in combat! &7(%seconds%s
+    left)'
+  
+  # %seconds%
+  teleport-blocked: '&#FF2121You cannot teleport in combat! &7(%seconds%s left)'
+  
+  # %player% - shown to everyone, so the other side knows what happened.
+  logout-announce: '&#FF2121%player% &#FF2121logged out in combat!'
+  
+  # %seconds%
+  reloaded: '&#71F521Reloaded - combat lasts &f%seconds%s&#71F521.'
+  
+  # %count% %players%
+  list: '&f%count% &#FF2121in combat: &f%players%'
+  list-empty: '&7Nobody is in combat right now.'
+  
+  # Shown when a tagged player walks into a safe zone.
+  safe-zone-blocked: '&#FF2121You cannot enter a safe zone while in combat.'
+# Language of everything this plugin says: EN or DE.
+#
+# EN is the default and reads this file. DE lays the translation in
+# lang/de/ over it - the file you are reading stays English and stays the
+# reference. A line the translation does not have falls back to English,
+# so nothing breaks if you add a setting we have not translated yet.
+#
+# The translated files are yours to edit as well, same as this one.
+language: EN
+safe-zones:
+  
+  # Die Schutzzone des Spawns aus SKSpawn mitbenutzen. Ohne SKSpawn faellt
+  # das still weg, es ist keine Pflicht-Abhaengigkeit.
+  use-spawn-area: true
+  
+  # WorldGuard-Regionen, mit Namen. Nur wirksam, wenn WorldGuard laeuft;
+  # sonst steht einmal eine Zeile im Log und die Liste wird uebergangen.
+  worldguard-regions: []
+  # marktplatz:
+  #   world: world
+  #   x1: -40
+  #   y1: 60
+  #   z1: -40
+  #   x2: 40
+  #   y2: 120
+  #   z2: 40
+
+    # Wie hart es zurueckstoesst. 0 bricht den Schritt nur ab - dann klebt
+  # der Spieler an der Grenze, was aussieht, als haenge der Server.
+  knockback: 0.6
+  
+  # Die rote Glaswand, die dem Getaggten zeigt, wo Schluss ist. Sie wird
+  # NUR an seinen Client geschickt: kein Block wird gesetzt, niemand sonst
+  # sieht sie, und beim Verschwinden kommt der echte Block zurueck.
+  barrier: true
+  
+  # Wie weit um den Spieler herum die Wand gezeichnet wird. Der Wuerfel
+  # waechst mit der dritten Potenz - 6 sind 2197 Pruefungen, 10 schon
+  # 9261. Hoeher als 10 laesst das Plugin nicht zu.
+  barrier-radius: 6
+  
+  # Wer trotz Kampf-Tag hinein darf. Standardmaessig niemand ausser OP.
+  bypass-permission: skcombat.zones.bypass

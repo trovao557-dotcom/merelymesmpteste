@@ -1,0 +1,707 @@
+# Rank kits. `slot` on an item equips it (armour / offhand / hotbar-1..9).
+# Instant reward is Points (not Vault money). Regear shulker is always hotbar-8.
+
+member:
+  display-name: '&f &fKIT'
+  category: '&7Rank'
+  description:
+    - '&fIron kit. Armour and shield'
+    - '&fcome already equipped.'
+  colour: '&#C3C3C3'
+  rank-label: '&f'
+  slot: 10
+  icon: IRON_INGOT
+  cooldown-seconds: 1800
+  cooldown-text: '30 Min'
+  free: true
+  commands:
+    - 'points give %player% 25'
+  items:
+    helmet:
+      material: IRON_HELMET
+      slot: helmet
+      name: '&#EDEDED&lM&#D8D8D8&lE&#C3C3C3&lM&#ACACAC&lB&#939393&lE&#7A7A7A&lR &fHelmet'
+      enchantments: ['protection:1']
+    chestplate:
+      material: IRON_CHESTPLATE
+      slot: chestplate
+      name: '&#EDEDED&lM&#D8D8D8&lE&#C3C3C3&lM&#ACACAC&lB&#939393&lE&#7A7A7A&lR &fChestplate'
+      enchantments: ['protection:1']
+    leggings:
+      material: IRON_LEGGINGS
+      slot: leggings
+      name: '&#EDEDED&lM&#D8D8D8&lE&#C3C3C3&lM&#ACACAC&lB&#939393&lE&#7A7A7A&lR &fLeggings'
+      enchantments: ['protection:1']
+    boots:
+      material: IRON_BOOTS
+      slot: boots
+      name: '&#EDEDED&lM&#D8D8D8&lE&#C3C3C3&lM&#ACACAC&lB&#939393&lE&#7A7A7A&lR &fBoots'
+      enchantments: ['protection:1', 'feather_falling:2']
+    shield:
+      material: SHIELD
+      slot: offhand
+      name: '&#EDEDED&lM&#D8D8D8&lE&#C3C3C3&lM&#ACACAC&lB&#939393&lE&#7A7A7A&lR &fShield'
+    mace:
+      material: MACE
+      slot: hotbar-1
+      name: '&#EDEDED&lM&#D8D8D8&lE&#C3C3C3&lM&#ACACAC&lB&#939393&lE&#7A7A7A&lR &fMace'
+      enchantments: ['density:1', 'wind_burst:1']
+    pickaxe:
+      material: IRON_PICKAXE
+      slot: hotbar-2
+      name: '&#EDEDED&lM&#D8D8D8&lE&#C3C3C3&lM&#ACACAC&lB&#939393&lE&#7A7A7A&lR &fPickaxe'
+    axe:
+      material: IRON_AXE
+      slot: hotbar-3
+      name: '&#EDEDED&lM&#D8D8D8&lE&#C3C3C3&lM&#ACACAC&lB&#939393&lE&#7A7A7A&lR &fAxe'
+    sword:
+      material: IRON_SWORD
+      slot: hotbar-4
+      name: '&#EDEDED&lM&#D8D8D8&lE&#C3C3C3&lM&#ACACAC&lB&#939393&lE&#7A7A7A&lR &fSword'
+      enchantments: ['knockback:1']
+    pearls:
+      material: ENDER_PEARL
+      slot: hotbar-5
+      amount: 6
+    wind-charges:
+      material: WIND_CHARGE
+      slot: hotbar-8
+      amount: 32
+    display-points:
+      menu-only: true
+      material: LIGHT_BLUE_DYE
+      name: '&b&l25 POINTS'
+      lore:
+        - '&8Menu only'
+
+knight:
+  display-name: '&f &fKIT'
+  category: '&7Rank'
+  description:
+    - '&fDiamond kit with low enchants.'
+    - '&fInstant &#4CAF5050 Points&f.'
+  colour: '&#4CFF3A'
+  rank-label: '&f'
+  slot: 11
+  icon: EMERALD
+  cooldown-seconds: 86400
+  cooldown-text: '24h'
+  free: false
+  permission: 'sksmp.kit.knight'
+  commands:
+    - 'points give %player% 50'
+  locked-message: '&#FF2121This kit requires the &#B6FF9A&lK&#8CFF74&lN&#61FF4D&lI&#41E432&lG&#2AAF22&lH&#147A12&lT&#FF2121 rank!'
+  locked-command: 'ranks'
+  items:
+    helmet:
+      material: DIAMOND_HELMET
+      slot: helmet
+      name: '&#B6FF9A&lK&#8CFF74&lN&#61FF4D&lI&#41E432&lG&#2AAF22&lH&#147A12&lT &fHelmet'
+      enchantments: ['protection:1']
+    chestplate:
+      material: DIAMOND_CHESTPLATE
+      slot: chestplate
+      name: '&#B6FF9A&lK&#8CFF74&lN&#61FF4D&lI&#41E432&lG&#2AAF22&lH&#147A12&lT &fChestplate'
+      enchantments: ['protection:1']
+    leggings:
+      material: DIAMOND_LEGGINGS
+      slot: leggings
+      name: '&#B6FF9A&lK&#8CFF74&lN&#61FF4D&lI&#41E432&lG&#2AAF22&lH&#147A12&lT &fLeggings'
+      enchantments: ['protection:1']
+    boots:
+      material: DIAMOND_BOOTS
+      slot: boots
+      name: '&#B6FF9A&lK&#8CFF74&lN&#61FF4D&lI&#41E432&lG&#2AAF22&lH&#147A12&lT &fBoots'
+      enchantments: ['protection:1', 'feather_falling:2']
+    shield:
+      material: SHIELD
+      slot: offhand
+      name: '&#B6FF9A&lK&#8CFF74&lN&#61FF4D&lI&#41E432&lG&#2AAF22&lH&#147A12&lT &fShield'
+    mace:
+      material: MACE
+      slot: hotbar-1
+      name: '&#B6FF9A&lK&#8CFF74&lN&#61FF4D&lI&#41E432&lG&#2AAF22&lH&#147A12&lT &fMace'
+      enchantments: ['density:2', 'wind_burst:1', 'unbreaking:3', 'mending:1']
+    pickaxe:
+      material: DIAMOND_PICKAXE
+      slot: hotbar-2
+      name: '&#B6FF9A&lK&#8CFF74&lN&#61FF4D&lI&#41E432&lG&#2AAF22&lH&#147A12&lT &fPickaxe'
+      enchantments: ['efficiency:1']
+    axe:
+      material: DIAMOND_AXE
+      slot: hotbar-3
+      name: '&#B6FF9A&lK&#8CFF74&lN&#61FF4D&lI&#41E432&lG&#2AAF22&lH&#147A12&lT &fAxe'
+      enchantments: ['efficiency:1', 'sharpness:1']
+    sword:
+      material: DIAMOND_SWORD
+      slot: hotbar-4
+      name: '&#B6FF9A&lK&#8CFF74&lN&#61FF4D&lI&#41E432&lG&#2AAF22&lH&#147A12&lT &fSword'
+      enchantments: ['sharpness:1', 'knockback:1']
+    pearls:
+      material: ENDER_PEARL
+      slot: hotbar-5
+      amount: 6
+    wind-charges:
+      material: WIND_CHARGE
+      slot: hotbar-8
+      amount: 32
+    display-points:
+      menu-only: true
+      material: LIGHT_BLUE_DYE
+      name: '&b&l50 POINTS'
+      lore:
+        - '&8Menu only'
+
+warrior:
+  display-name: '&f &fKIT'
+  category: '&7Rank'
+  description:
+    - '&fDiamond kit with better enchants.'
+    - '&fInstant &#A0282875 Points&f.'
+  colour: '&#FF3B3B'
+  rank-label: '&f'
+  slot: 12
+  icon: REDSTONE
+  cooldown-seconds: 86400
+  cooldown-text: '24h'
+  free: false
+  permission: 'sksmp.kit.warrior'
+  commands:
+    - 'points give %player% 75'
+  locked-message: '&#FF2121This kit requires the &#FF9A9A&lW&#FF7A7A&lA&#FF5B5B&lR&#FF3B3B&lR&#D82D2D&lI&#B21E1E&lO&#8B1010&lR&#FF2121 rank!'
+  locked-command: 'ranks'
+  items:
+    helmet:
+      material: DIAMOND_HELMET
+      slot: helmet
+      name: '&#FF9A9A&lW&#FF7A7A&lA&#FF5B5B&lR&#FF3B3B&lR&#D82D2D&lI&#B21E1E&lO&#8B1010&lR &fHelmet'
+      enchantments: ['protection:3', 'unbreaking:2']
+    chestplate:
+      material: DIAMOND_CHESTPLATE
+      slot: chestplate
+      name: '&#FF9A9A&lW&#FF7A7A&lA&#FF5B5B&lR&#FF3B3B&lR&#D82D2D&lI&#B21E1E&lO&#8B1010&lR &fChestplate'
+      enchantments: ['protection:3', 'unbreaking:2']
+    leggings:
+      material: DIAMOND_LEGGINGS
+      slot: leggings
+      name: '&#FF9A9A&lW&#FF7A7A&lA&#FF5B5B&lR&#FF3B3B&lR&#D82D2D&lI&#B21E1E&lO&#8B1010&lR &fLeggings'
+      enchantments: ['protection:3', 'unbreaking:2']
+    boots:
+      material: DIAMOND_BOOTS
+      slot: boots
+      name: '&#FF9A9A&lW&#FF7A7A&lA&#FF5B5B&lR&#FF3B3B&lR&#D82D2D&lI&#B21E1E&lO&#8B1010&lR &fBoots'
+      enchantments: ['protection:3', 'unbreaking:2', 'feather_falling:3']
+    shield:
+      material: SHIELD
+      slot: offhand
+      name: '&#FF9A9A&lW&#FF7A7A&lA&#FF5B5B&lR&#FF3B3B&lR&#D82D2D&lI&#B21E1E&lO&#8B1010&lR &fShield'
+      enchantments: ['unbreaking:2']
+    mace:
+      material: MACE
+      slot: hotbar-1
+      name: '&#FF9A9A&lW&#FF7A7A&lA&#FF5B5B&lR&#FF3B3B&lR&#D82D2D&lI&#B21E1E&lO&#8B1010&lR &fMace'
+      enchantments: ['density:3', 'wind_burst:1', 'unbreaking:3', 'mending:1']
+    pickaxe:
+      material: DIAMOND_PICKAXE
+      slot: hotbar-2
+      name: '&#FF9A9A&lW&#FF7A7A&lA&#FF5B5B&lR&#FF3B3B&lR&#D82D2D&lI&#B21E1E&lO&#8B1010&lR &fPickaxe'
+      enchantments: ['efficiency:3', 'unbreaking:2']
+    axe:
+      material: DIAMOND_AXE
+      slot: hotbar-3
+      name: '&#FF9A9A&lW&#FF7A7A&lA&#FF5B5B&lR&#FF3B3B&lR&#D82D2D&lI&#B21E1E&lO&#8B1010&lR &fAxe'
+      enchantments: ['efficiency:3', 'sharpness:3', 'unbreaking:2']
+    sword:
+      material: DIAMOND_SWORD
+      slot: hotbar-4
+      name: '&#FF9A9A&lW&#FF7A7A&lA&#FF5B5B&lR&#FF3B3B&lR&#D82D2D&lI&#B21E1E&lO&#8B1010&lR &fSword'
+      enchantments: ['sharpness:3', 'unbreaking:2', 'knockback:1']
+    pearls:
+      material: ENDER_PEARL
+      slot: hotbar-5
+      amount: 16
+    wind-charges:
+      material: WIND_CHARGE
+      slot: hotbar-8
+      amount: 32
+    display-points:
+      menu-only: true
+      material: LIGHT_BLUE_DYE
+      name: '&b&l75 POINTS'
+      lore:
+        - '&8Menu only'
+
+macer:
+  display-name: '&f &fKIT'
+  category: '&7Rank'
+  description:
+    - '&fBest diamond kit. Max enchants.'
+    - '&fInstant &#2196F3100 Points&f.'
+  colour: '&#2ECBFF'
+  rank-label: '&f'
+  slot: 13
+  icon: DIAMOND
+  cooldown-seconds: 86400
+  cooldown-text: '24h'
+  free: false
+  permission: 'sksmp.kit.macer'
+  commands:
+    - 'points give %player% 100'
+  locked-message: '&#FF2121This kit requires the &#9AE8FF&lM&#64DAFF&lA&#2ECBFF&lC&#1C92C4&lE&#0A5A88&lR&#FF2121 rank!'
+  locked-command: 'ranks'
+  items:
+    helmet:
+      material: DIAMOND_HELMET
+      slot: helmet
+      name: '&#9AE8FF&lM&#64DAFF&lA&#2ECBFF&lC&#1C92C4&lE&#0A5A88&lR &fHelmet'
+      enchantments: ['protection:4', 'unbreaking:3', 'mending:1', 'respiration:3', 'aqua_affinity:1']
+    chestplate:
+      material: DIAMOND_CHESTPLATE
+      slot: chestplate
+      name: '&#9AE8FF&lM&#64DAFF&lA&#2ECBFF&lC&#1C92C4&lE&#0A5A88&lR &fChestplate'
+      enchantments: ['protection:4', 'unbreaking:3', 'mending:1']
+    leggings:
+      material: DIAMOND_LEGGINGS
+      slot: leggings
+      name: '&#9AE8FF&lM&#64DAFF&lA&#2ECBFF&lC&#1C92C4&lE&#0A5A88&lR &fLeggings'
+      enchantments: ['protection:4', 'unbreaking:3', 'mending:1', 'swift_sneak:3']
+    boots:
+      material: DIAMOND_BOOTS
+      slot: boots
+      name: '&#9AE8FF&lM&#64DAFF&lA&#2ECBFF&lC&#1C92C4&lE&#0A5A88&lR &fBoots'
+      enchantments: ['protection:4', 'unbreaking:3', 'mending:1', 'feather_falling:4', 'depth_strider:3', 'soul_speed:3']
+    shield:
+      material: SHIELD
+      slot: offhand
+      name: '&#9AE8FF&lM&#64DAFF&lA&#2ECBFF&lC&#1C92C4&lE&#0A5A88&lR &fShield'
+      enchantments: ['unbreaking:3', 'mending:1']
+    mace:
+      material: MACE
+      slot: hotbar-1
+      name: '&#9AE8FF&lM&#64DAFF&lA&#2ECBFF&lC&#1C92C4&lE&#0A5A88&lR &fMace'
+      enchantments: ['density:4', 'wind_burst:1', 'unbreaking:3', 'mending:1']
+    pickaxe:
+      material: DIAMOND_PICKAXE
+      slot: hotbar-2
+      name: '&#9AE8FF&lM&#64DAFF&lA&#2ECBFF&lC&#1C92C4&lE&#0A5A88&lR &fPickaxe'
+      enchantments: ['efficiency:5', 'fortune:3', 'unbreaking:3', 'mending:1']
+    axe:
+      material: DIAMOND_AXE
+      slot: hotbar-3
+      name: '&#9AE8FF&lM&#64DAFF&lA&#2ECBFF&lC&#1C92C4&lE&#0A5A88&lR &fAxe'
+      enchantments: ['efficiency:5', 'sharpness:5', 'unbreaking:3', 'mending:1', 'fortune:3']
+    sword:
+      material: DIAMOND_SWORD
+      slot: hotbar-4
+      name: '&#9AE8FF&lM&#64DAFF&lA&#2ECBFF&lC&#1C92C4&lE&#0A5A88&lR &fSword'
+      enchantments: ['sharpness:5', 'looting:3', 'sweeping_edge:3', 'fire_aspect:2', 'knockback:1', 'unbreaking:3', 'mending:1']
+    hoe:
+      material: DIAMOND_HOE
+      slot: hotbar-5
+      name: '&#9AE8FF&lM&#64DAFF&lA&#2ECBFF&lC&#1C92C4&lE&#0A5A88&lR &fHoe'
+      enchantments: ['efficiency:5', 'unbreaking:3', 'mending:1', 'fortune:3']
+    shovel:
+      material: DIAMOND_SHOVEL
+      slot: hotbar-6
+      name: '&#9AE8FF&lM&#64DAFF&lA&#2ECBFF&lC&#1C92C4&lE&#0A5A88&lR &fShovel'
+      enchantments: ['efficiency:5', 'unbreaking:3', 'mending:1', 'fortune:3']
+    totem:
+      material: TOTEM_OF_UNDYING
+      slot: hotbar-7
+    combat-shulker:
+      material: LIGHT_BLUE_SHULKER_BOX
+      slot: hotbar-8
+      name: '&#9AE8FF&lM&#64DAFF&lA&#2ECBFF&lC&#1C92C4&lE&#0A5A88&lR &fRegear'
+      contents:
+        wind-1: {material: WIND_CHARGE, amount: 64, container-slot: 0}
+        wind-2: {material: WIND_CHARGE, amount: 64, container-slot: 1}
+        wind-3: {material: WIND_CHARGE, amount: 64, container-slot: 2}
+        wind-4: {material: WIND_CHARGE, amount: 64, container-slot: 3}
+        wind-5: {material: WIND_CHARGE, amount: 64, container-slot: 4}
+        wind-6: {material: WIND_CHARGE, amount: 64, container-slot: 5}
+        pearls-1: {material: ENDER_PEARL, amount: 16, container-slot: 6}
+        pearls-2: {material: ENDER_PEARL, amount: 16, container-slot: 7}
+        pearls-3: {material: ENDER_PEARL, amount: 16, container-slot: 8}
+        pearls-4: {material: ENDER_PEARL, amount: 16, container-slot: 9}
+        pearls-5: {material: ENDER_PEARL, amount: 16, container-slot: 10}
+        pearls-6: {material: ENDER_PEARL, amount: 16, container-slot: 11}
+        pearls-7: {material: ENDER_PEARL, amount: 16, container-slot: 12}
+        pearls-8: {material: ENDER_PEARL, amount: 16, container-slot: 13}
+        pearls-9: {material: ENDER_PEARL, amount: 16, container-slot: 14}
+        pearls-10: {material: ENDER_PEARL, amount: 16, container-slot: 15}
+        strength-1: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 16}
+        strength-2: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 17}
+        strength-3: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 18}
+        strength-4: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 19}
+        strength-5: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 20}
+    display-points:
+      menu-only: true
+      material: LIGHT_BLUE_DYE
+      name: '&b&l100 POINTS'
+      lore:
+        - '&8Menu only'
+
+prime:
+  display-name: '&f &fKIT'
+  category: '&7Rank'
+  description:
+    - '&fNetherite kit, max enchants, netherite hoe.'
+    - '&fInstant &#FF9800150 Points&f.'
+  colour: '&#FF9800'
+  rank-label: '&f'
+  slot: 14
+  icon: NETHER_STAR
+  cooldown-seconds: 86400
+  cooldown-text: '24h'
+  free: false
+  permission: 'sksmp.kit.prime'
+  commands:
+    - 'points give %player% 150'
+  locked-message: '&#FF2121This kit requires the &#FFE066&lP&#FFBC33&lR&#FF9800&lI&#D97000&lM&#B34800&lE&#FF2121 rank!'
+  locked-command: 'ranks'
+  items:
+    helmet:
+      material: NETHERITE_HELMET
+      slot: helmet
+      name: '&#FFE066&lP&#FFBC33&lR&#FF9800&lI&#D97000&lM&#B34800&lE &fHelmet'
+      enchantments: ['protection:4', 'unbreaking:3', 'mending:1', 'respiration:3', 'aqua_affinity:1']
+    chestplate:
+      material: NETHERITE_CHESTPLATE
+      slot: chestplate
+      name: '&#FFE066&lP&#FFBC33&lR&#FF9800&lI&#D97000&lM&#B34800&lE &fChestplate'
+      enchantments: ['protection:4', 'unbreaking:3', 'mending:1']
+    leggings:
+      material: NETHERITE_LEGGINGS
+      slot: leggings
+      name: '&#FFE066&lP&#FFBC33&lR&#FF9800&lI&#D97000&lM&#B34800&lE &fLeggings'
+      enchantments: ['protection:4', 'unbreaking:3', 'mending:1', 'swift_sneak:3']
+    boots:
+      material: NETHERITE_BOOTS
+      slot: boots
+      name: '&#FFE066&lP&#FFBC33&lR&#FF9800&lI&#D97000&lM&#B34800&lE &fBoots'
+      enchantments: ['protection:4', 'unbreaking:3', 'mending:1', 'feather_falling:4', 'depth_strider:3', 'soul_speed:3']
+    shield:
+      material: SHIELD
+      slot: offhand
+      name: '&#FFE066&lP&#FFBC33&lR&#FF9800&lI&#D97000&lM&#B34800&lE &fShield'
+      enchantments: ['unbreaking:3', 'mending:1']
+    mace:
+      material: MACE
+      slot: hotbar-1
+      name: '&#FFE066&lP&#FFBC33&lR&#FF9800&lI&#D97000&lM&#B34800&lE &fMace'
+      enchantments: ['density:5', 'wind_burst:1', 'unbreaking:3', 'mending:1']
+    pickaxe:
+      material: NETHERITE_PICKAXE
+      slot: hotbar-2
+      name: '&#FFE066&lP&#FFBC33&lR&#FF9800&lI&#D97000&lM&#B34800&lE &fPickaxe'
+      enchantments: ['efficiency:5', 'fortune:3', 'unbreaking:3', 'mending:1']
+    axe:
+      material: NETHERITE_AXE
+      slot: hotbar-3
+      name: '&#FFE066&lP&#FFBC33&lR&#FF9800&lI&#D97000&lM&#B34800&lE &fAxe'
+      enchantments: ['efficiency:5', 'sharpness:5', 'unbreaking:3', 'mending:1', 'fortune:3']
+    sword:
+      material: NETHERITE_SWORD
+      slot: hotbar-4
+      name: '&#FFE066&lP&#FFBC33&lR&#FF9800&lI&#D97000&lM&#B34800&lE &fSword'
+      enchantments: ['sharpness:5', 'looting:3', 'sweeping_edge:3', 'fire_aspect:2', 'knockback:1', 'unbreaking:3', 'mending:1']
+    hoe:
+      material: NETHERITE_HOE
+      slot: hotbar-5
+      name: '&#FFE066&lP&#FFBC33&lR&#FF9800&lI&#D97000&lM&#B34800&lE &fHoe'
+      enchantments: ['efficiency:5', 'fortune:3', 'unbreaking:3', 'mending:1']
+    shovel:
+      material: NETHERITE_SHOVEL
+      slot: hotbar-6
+      name: '&#FFE066&lP&#FFBC33&lR&#FF9800&lI&#D97000&lM&#B34800&lE &fShovel'
+      enchantments: ['efficiency:5', 'unbreaking:3', 'mending:1', 'fortune:3']
+    totem:
+      material: TOTEM_OF_UNDYING
+      slot: hotbar-7
+    combat-shulker:
+      material: ORANGE_SHULKER_BOX
+      slot: hotbar-8
+      name: '&#FFE066&lP&#FFBC33&lR&#FF9800&lI&#D97000&lM&#B34800&lE &fRegear'
+      contents:
+        wind-1: {material: WIND_CHARGE, amount: 64, container-slot: 0}
+        wind-2: {material: WIND_CHARGE, amount: 64, container-slot: 1}
+        wind-3: {material: WIND_CHARGE, amount: 64, container-slot: 2}
+        wind-4: {material: WIND_CHARGE, amount: 64, container-slot: 3}
+        wind-5: {material: WIND_CHARGE, amount: 64, container-slot: 4}
+        wind-6: {material: WIND_CHARGE, amount: 64, container-slot: 5}
+        pearls-1: {material: ENDER_PEARL, amount: 16, container-slot: 6}
+        pearls-2: {material: ENDER_PEARL, amount: 16, container-slot: 7}
+        pearls-3: {material: ENDER_PEARL, amount: 16, container-slot: 8}
+        pearls-4: {material: ENDER_PEARL, amount: 16, container-slot: 9}
+        pearls-5: {material: ENDER_PEARL, amount: 16, container-slot: 10}
+        pearls-6: {material: ENDER_PEARL, amount: 16, container-slot: 11}
+        pearls-7: {material: ENDER_PEARL, amount: 16, container-slot: 12}
+        pearls-8: {material: ENDER_PEARL, amount: 16, container-slot: 13}
+        pearls-9: {material: ENDER_PEARL, amount: 16, container-slot: 14}
+        pearls-10: {material: ENDER_PEARL, amount: 16, container-slot: 15}
+        strength-1: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 16}
+        strength-2: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 17}
+        strength-3: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 18}
+        strength-4: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 19}
+        strength-5: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 20}
+        strength-6: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 21}
+        speed-1: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 22}
+        speed-2: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 23}
+        speed-3: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 24}
+        speed-4: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 25}
+        speed-5: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 26}
+    display-points:
+      menu-only: true
+      material: LIGHT_BLUE_DYE
+      name: '&#FFD400&l150 POINTS'
+      lore:
+        - '&8Menu only'
+        - '&#FFD400Instant 150 Points'
+
+clipper:
+  display-name: '&f &fKIT'
+  category: '&7Creator'
+  description:
+    - '&fResources only. No armour.'
+    - '&fIron key, wheel and 100 Points (menu only).'
+    - '&f2 pink regear, 9 totems. 12h cooldown.'
+  colour: '&#FF7EB3'
+  rank-label: '&f'
+  slot: 15
+  icon: PINK_DYE
+  cooldown-seconds: 43200
+  cooldown-text: '12h'
+  free: false
+  permission: 'sksmp.kit.clipper'
+  keys:
+    iron: 1
+  commands:
+    - 'points give %player% 100'
+    - 'dailytoken give %player% 1'
+    - 'afkzone givecrate %player% 1'
+  locked-message: '&#FF2121This kit requires the &#FFC4DC&lC&#FFADCE&lL&#FF95C1&lI&#FF7EB3&lP&#DF5C95&lP&#C03A76&lE&#A01858&lR&#FF2121 rank!'
+  locked-command: 'ranks'
+  items:
+    combat-shulker:
+      material: PINK_SHULKER_BOX
+      slot: hotbar-1
+      name: '&#FFC4DC&lC&#FFADCE&lL&#FF95C1&lI&#FF7EB3&lP&#DF5C95&lP&#C03A76&lE&#A01858&lR &fRegear I'
+      contents:
+        wind-1: {material: WIND_CHARGE, amount: 64, container-slot: 0}
+        wind-2: {material: WIND_CHARGE, amount: 64, container-slot: 1}
+        wind-3: {material: WIND_CHARGE, amount: 64, container-slot: 2}
+        pearls-1: {material: ENDER_PEARL, amount: 16, container-slot: 3}
+        pearls-2: {material: ENDER_PEARL, amount: 16, container-slot: 4}
+        pearls-3: {material: ENDER_PEARL, amount: 16, container-slot: 5}
+        pearls-4: {material: ENDER_PEARL, amount: 16, container-slot: 6}
+        strength-1: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 7}
+        strength-2: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 8}
+        strength-3: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 9}
+        speed-1: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 10}
+        speed-2: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 11}
+    combat-shulker-2:
+      material: PINK_SHULKER_BOX
+      slot: hotbar-2
+      name: '&#FFC4DC&lC&#FFADCE&lL&#FF95C1&lI&#FF7EB3&lP&#DF5C95&lP&#C03A76&lE&#A01858&lR &fRegear II'
+      contents:
+        wind-1: {material: WIND_CHARGE, amount: 64, container-slot: 0}
+        wind-2: {material: WIND_CHARGE, amount: 64, container-slot: 1}
+        wind-3: {material: WIND_CHARGE, amount: 64, container-slot: 2}
+        pearls-1: {material: ENDER_PEARL, amount: 16, container-slot: 3}
+        pearls-2: {material: ENDER_PEARL, amount: 16, container-slot: 4}
+        pearls-3: {material: ENDER_PEARL, amount: 16, container-slot: 5}
+        pearls-4: {material: ENDER_PEARL, amount: 16, container-slot: 6}
+        strength-1: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 7}
+        strength-2: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 8}
+        strength-3: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 9}
+        speed-1: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 10}
+        speed-2: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 11}
+    totem-1:
+      material: TOTEM_OF_UNDYING
+      slot: hotbar-3
+    totem-2:
+      material: TOTEM_OF_UNDYING
+      slot: hotbar-4
+    totem-3:
+      material: TOTEM_OF_UNDYING
+      slot: hotbar-5
+    totem-4:
+      material: TOTEM_OF_UNDYING
+      slot: hotbar-6
+    totem-5:
+      material: TOTEM_OF_UNDYING
+      slot: hotbar-7
+    totem-6:
+      material: TOTEM_OF_UNDYING
+      slot: hotbar-8
+    totem-7:
+      material: TOTEM_OF_UNDYING
+      slot: hotbar-9
+    totem-8:
+      material: TOTEM_OF_UNDYING
+    totem-9:
+      material: TOTEM_OF_UNDYING
+    display-daily:
+      menu-only: true
+      material: CLOCK
+      name: '&e&lDAILY WHEEL'
+      lore:
+        - '&8Menu only'
+    display-points:
+      menu-only: true
+      material: LIGHT_BLUE_DYE
+      name: '&b&l100 POINTS'
+      lore:
+        - '&8Menu only'
+
+media:
+  display-name: '&f &fKIT'
+  category: '&7Creator'
+  description:
+    - '&fResources only. No armour.'
+    - '&f2 gold keys, wheel and 200 Points (menu only).'
+    - '&f3 purple regear, 8 totems.'
+  colour: '&#E14AFF'
+  rank-label: '&f'
+  slot: 16
+  icon: AMETHYST_SHARD
+  cooldown-seconds: 43200
+  cooldown-text: '12h'
+  free: false
+  permission: 'sksmp.kit.media'
+  keys:
+    gold: 2
+  commands:
+    - 'points give %player% 200'
+    - 'dailytoken give %player% 1'
+    - 'afkzone givecrate %player% 3'
+  locked-message: '&#FF2121This kit requires the &#F0B0FF&lM&#E87DFF&lE&#E14AFF&lD&#A62CCC&lI&#6A0E98&lA&#FF2121 rank!'
+  locked-command: 'ranks'
+  items:
+    combat-shulker-1:
+      material: PURPLE_SHULKER_BOX
+      slot: hotbar-1
+      name: '&#F0B0FF&lM&#E87DFF&lE&#E14AFF&lD&#A62CCC&lI&#6A0E98&lA &fRegear I'
+      contents:
+        wind-1: {material: WIND_CHARGE, amount: 64, container-slot: 0}
+        wind-2: {material: WIND_CHARGE, amount: 64, container-slot: 1}
+        wind-3: {material: WIND_CHARGE, amount: 64, container-slot: 2}
+        wind-4: {material: WIND_CHARGE, amount: 64, container-slot: 3}
+        wind-5: {material: WIND_CHARGE, amount: 64, container-slot: 4}
+        wind-6: {material: WIND_CHARGE, amount: 64, container-slot: 5}
+        pearls-1: {material: ENDER_PEARL, amount: 16, container-slot: 6}
+        pearls-2: {material: ENDER_PEARL, amount: 16, container-slot: 7}
+        pearls-3: {material: ENDER_PEARL, amount: 16, container-slot: 8}
+        pearls-4: {material: ENDER_PEARL, amount: 16, container-slot: 9}
+        pearls-5: {material: ENDER_PEARL, amount: 16, container-slot: 10}
+        pearls-6: {material: ENDER_PEARL, amount: 16, container-slot: 11}
+        pearls-7: {material: ENDER_PEARL, amount: 16, container-slot: 12}
+        pearls-8: {material: ENDER_PEARL, amount: 16, container-slot: 13}
+        pearls-9: {material: ENDER_PEARL, amount: 16, container-slot: 14}
+        pearls-10: {material: ENDER_PEARL, amount: 16, container-slot: 15}
+        strength-1: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 16}
+        strength-2: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 17}
+        strength-3: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 18}
+        strength-4: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 19}
+        strength-5: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 20}
+        strength-6: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 21}
+        speed-1: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 22}
+        speed-2: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 23}
+        speed-3: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 24}
+        speed-4: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 25}
+        speed-5: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 26}
+    combat-shulker-2:
+      material: PURPLE_SHULKER_BOX
+      slot: hotbar-2
+      name: '&#F0B0FF&lM&#E87DFF&lE&#E14AFF&lD&#A62CCC&lI&#6A0E98&lA &fRegear II'
+      contents:
+        wind-1: {material: WIND_CHARGE, amount: 64, container-slot: 0}
+        wind-2: {material: WIND_CHARGE, amount: 64, container-slot: 1}
+        wind-3: {material: WIND_CHARGE, amount: 64, container-slot: 2}
+        wind-4: {material: WIND_CHARGE, amount: 64, container-slot: 3}
+        wind-5: {material: WIND_CHARGE, amount: 64, container-slot: 4}
+        wind-6: {material: WIND_CHARGE, amount: 64, container-slot: 5}
+        pearls-1: {material: ENDER_PEARL, amount: 16, container-slot: 6}
+        pearls-2: {material: ENDER_PEARL, amount: 16, container-slot: 7}
+        pearls-3: {material: ENDER_PEARL, amount: 16, container-slot: 8}
+        pearls-4: {material: ENDER_PEARL, amount: 16, container-slot: 9}
+        pearls-5: {material: ENDER_PEARL, amount: 16, container-slot: 10}
+        pearls-6: {material: ENDER_PEARL, amount: 16, container-slot: 11}
+        pearls-7: {material: ENDER_PEARL, amount: 16, container-slot: 12}
+        pearls-8: {material: ENDER_PEARL, amount: 16, container-slot: 13}
+        pearls-9: {material: ENDER_PEARL, amount: 16, container-slot: 14}
+        pearls-10: {material: ENDER_PEARL, amount: 16, container-slot: 15}
+        strength-1: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 16}
+        strength-2: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 17}
+        strength-3: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 18}
+        strength-4: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 19}
+        strength-5: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 20}
+        strength-6: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 21}
+        speed-1: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 22}
+        speed-2: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 23}
+        speed-3: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 24}
+        speed-4: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 25}
+        speed-5: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 26}
+    combat-shulker-3:
+      material: PURPLE_SHULKER_BOX
+      slot: hotbar-3
+      name: '&#F0B0FF&lM&#E87DFF&lE&#E14AFF&lD&#A62CCC&lI&#6A0E98&lA &fRegear III'
+      contents:
+        wind-1: {material: WIND_CHARGE, amount: 64, container-slot: 0}
+        wind-2: {material: WIND_CHARGE, amount: 64, container-slot: 1}
+        wind-3: {material: WIND_CHARGE, amount: 64, container-slot: 2}
+        wind-4: {material: WIND_CHARGE, amount: 64, container-slot: 3}
+        wind-5: {material: WIND_CHARGE, amount: 64, container-slot: 4}
+        wind-6: {material: WIND_CHARGE, amount: 64, container-slot: 5}
+        pearls-1: {material: ENDER_PEARL, amount: 16, container-slot: 6}
+        pearls-2: {material: ENDER_PEARL, amount: 16, container-slot: 7}
+        pearls-3: {material: ENDER_PEARL, amount: 16, container-slot: 8}
+        pearls-4: {material: ENDER_PEARL, amount: 16, container-slot: 9}
+        pearls-5: {material: ENDER_PEARL, amount: 16, container-slot: 10}
+        pearls-6: {material: ENDER_PEARL, amount: 16, container-slot: 11}
+        pearls-7: {material: ENDER_PEARL, amount: 16, container-slot: 12}
+        pearls-8: {material: ENDER_PEARL, amount: 16, container-slot: 13}
+        pearls-9: {material: ENDER_PEARL, amount: 16, container-slot: 14}
+        pearls-10: {material: ENDER_PEARL, amount: 16, container-slot: 15}
+        strength-1: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 16}
+        strength-2: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 17}
+        strength-3: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 18}
+        strength-4: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 19}
+        strength-5: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 20}
+        strength-6: {material: SPLASH_POTION, potion: STRONG_STRENGTH, container-slot: 21}
+        speed-1: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 22}
+        speed-2: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 23}
+        speed-3: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 24}
+        speed-4: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 25}
+        speed-5: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, container-slot: 26}
+    totem-1:
+      material: TOTEM_OF_UNDYING
+      slot: hotbar-7
+    totem-2:
+      material: TOTEM_OF_UNDYING
+      slot: hotbar-8
+    totem-3:
+      material: TOTEM_OF_UNDYING
+      slot: hotbar-9
+    totem-4:
+      material: TOTEM_OF_UNDYING
+    totem-5:
+      material: TOTEM_OF_UNDYING
+    totem-6:
+      material: TOTEM_OF_UNDYING
+    totem-7:
+      material: TOTEM_OF_UNDYING
+    totem-8:
+      material: TOTEM_OF_UNDYING
+    display-daily:
+      menu-only: true
+      material: CLOCK
+      name: '&e&lDAILY WHEEL'
+      lore:
+        - '&8Menu only'
+    display-points:
+      menu-only: true
+      material: LIGHT_BLUE_DYE
+      name: '&b&l200 POINTS'
+      lore:
+        - '&8Menu only'

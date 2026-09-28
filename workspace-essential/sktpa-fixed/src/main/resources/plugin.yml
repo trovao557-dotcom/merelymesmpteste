@@ -1,0 +1,61 @@
+name: SKTpa
+version: 0.2.1
+main: net.skstudios.tpa.TpaPlugin
+api-version: '1.21'
+authors: [EconomySMP]
+description: Teleport requests with a confirmation menu and a countdown that breaks when you move.
+
+# SKCore carries the menu framework, the config loader and the colour
+# handling. Without it this plugin has nothing to stand on.
+depend: [SKCore]
+
+commands:
+  tpa:
+    description: Ask a player if you may teleport to them
+    usage: /tpa <player>
+  tpahere:
+    description: Ask a player to teleport to you
+    usage: /tpahere <player>
+  tpaccept:
+    aliases: [tpaaccept]
+    description: Accept a teleport request
+    usage: /tpaccept [player]
+  tpadeny:
+    description: Deny a teleport request
+    usage: /tpadeny [player]
+  tpacancel:
+    description: Withdraw a teleport request you sent
+    usage: /tpacancel [player]
+  tpauto:
+    description: Toggle auto-accept for teleport requests
+    usage: /tpauto
+  sktpa:
+    description: Reload the SKTpa configuration
+    permission: sktpa.admin
+    usage: /sktpa reload
+
+# The player commands above deliberately carry no `permission:` line.
+# Their permission nodes are configured in settings.yml under `permissions`,
+# so a server owner can rename them, or blank them out to drop the check
+# entirely, without editing this file.
+permissions:
+  sktpa.use:
+    description: Send /tpa requests
+    default: true
+  sktpa.here:
+    description: Send /tpahere requests
+    default: true
+  sktpa.auto:
+    description: Use /tpauto to auto-accept incoming requests
+    default: true
+  sktpa.instant:
+    description: Teleport without the countdown
+    default: false
+  sktpa.bypasscooldown:
+    description: Send requests without waiting out the cooldown
+    default: op
+  sktpa.admin:
+    description: Reload SKTpa
+    default: op
+
+sk-framework: 2

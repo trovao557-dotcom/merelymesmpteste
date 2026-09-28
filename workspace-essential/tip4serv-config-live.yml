@@ -1,0 +1,4 @@
+request_interval_in_minutes: 1
+store_link: https://merelymesmp.com
+store_message: '§a[Store] §f{store_link} §8| §bDiscord: §fdiscord.gg/NEybDXCkhA'
+messageSuccess: §a[Tip4Serv] §7You have just received your purchase, thank you!

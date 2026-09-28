@@ -1,0 +1,493 @@
+# =====================================================================
+# Tags System - Menu para Equipar - Completo e Definitivo
+# =====================================================================
+button:
+  slot: 13
+  material: NAME_TAG
+  name: '&#71F521&lTAGS'
+  description:
+    - '&fCollect unique &#71F521Tags'
+    - '&fshown next to &#71F521your name&f!'
+
+menu:
+  title: '▶ Tags | Menu'
+  rows: 6
+  back-slot: 49
+
+glow: true
+
+status:
+  owned: '&#71F521&lUNLOCKED'
+  affordable: '&#FF2121&lLOCKED'
+  too-expensive: '&#FF2121&lLOCKED'
+
+entry-lore:
+  affordable:
+    - '&7Description'
+    - '&f'
+    - '&#00B5FFInformation'
+    - '%description%'
+    - '&f'
+    - '&#00B5FFOther Info'
+    - '&#FFD900⚓ &fStatus: %status%'
+    - '&#71F521♫ &fPreview: &f%player% %color%'
+    - '&#00E0FF★ &fPrice: &#00E0FF%price% Points'
+    - '&f'
+    - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to Buy in Shop'
+  too-expensive:
+    - '&7Description'
+    - '&f'
+    - '&#00B5FFInformation'
+    - '%description%'
+    - '&f'
+    - '&#00B5FFOther Info'
+    - '&#FFD900⚓ &fStatus: %status%'
+    - '&#71F521♫ &fPreview: &f%player% %color%'
+    - '&#00E0FF★ &fPrice: &#00E0FF%price% Points'
+    - '&f'
+    - '&#FF2121&l▶ &#FF2121&l&nNOT ENOUGH&#FF2121 Points'
+  owned:
+    - '&7Description'
+    - '&f'
+    - '&#00B5FFInformation'
+    - '%description%'
+    - '&f'
+    - '&#00B5FFOther Info'
+    - '&#FFD900⚓ &fStatus: %status%'
+    - '&#71F521♫ &fPreview: &f%player% %color%'
+    - '&f'
+    - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to Use'
+  action:
+    - '&7Description'
+    - '&f'
+    - '&#71F521Information'
+    - '%description%'
+    - '&f'
+    - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to Remove'
+
+entries:
+  mace_lord:
+    slot: 10
+    material: NAME_TAG
+    name: '&8[&#00FFD6&lMACE LORD&8]'
+    color: '&8[&#00FFD6&lMACE LORD&8]'
+    price: 1200
+    permission: 'sksmp.tag.mace_lord'
+    commands:
+      - 'tags mace_lord'
+    description:
+      - '&fShow your ultimate power'
+      - '&fwith the Mace Lord tag.'
+
+  rizzler:
+    slot: 11
+    material: NAME_TAG
+    name: '&8[&#FF69B4&lRIZZLER&8]'
+    color: '&8[&#FF69B4&lRIZZLER&8]'
+    price: 600
+    permission: 'sksmp.tag.rizzler'
+    commands:
+      - 'tags rizzler'
+    description:
+      - '&fFlex your unmatched charm'
+      - '&fin the arena.'
+
+  sigma_mace:
+    slot: 12
+    material: NAME_TAG
+    name: '&8[&#FFD700&lSIGMA MACE&8]'
+    color: '&8[&#FFD700&lSIGMA MACE&8]'
+    price: 1500
+    permission: 'sksmp.tag.sigma_mace'
+    commands:
+      - 'tags sigma_mace'
+    description:
+      - '&fOnly true sigma warriors'
+      - '&fdeserve this tag.'
+
+  one_shot:
+    slot: 13
+    material: NAME_TAG
+    name: '&8[&#FF2121&lONE SHOT&8]'
+    color: '&8[&#FF2121&lONE SHOT&8]'
+    price: 1800
+    permission: 'sksmp.tag.one_shot'
+    commands:
+      - 'tags one_shot'
+    description:
+      - '&fEliminate enemies with'
+      - '&fa single clean hit.'
+
+  god_mode:
+    slot: 14
+    material: NAME_TAG
+    name: '&8[&#71F521&lGOD MODE&8]'
+    color: '&8[&#71F521&lGOD MODE&8]'
+    price: 2000
+    permission: 'sksmp.tag.god_mode'
+    commands:
+      - 'tags god_mode'
+    description:
+      - '&fThe ultimate status symbol'
+      - '&ffor server legends.'
+
+  ez:
+    slot: 15
+    material: NAME_TAG
+    name: '&8[&#71F521&lEZ&8]'
+    color: '&8[&#71F521&lEZ&8]'
+    price: 400
+    permission: 'sksmp.tag.ez'
+    commands:
+      - 'tags ez'
+    description:
+      - '&fToo easy for you.'
+
+  bozo:
+    slot: 16
+    material: NAME_TAG
+    name: '&8[&#FF79F5&lBOZO&8]'
+    color: '&8[&#FF79F5&lBOZO&8]'
+    price: 750
+    permission: 'sksmp.tag.bozo'
+    commands:
+      - 'tags bozo'
+    description:
+      - '&fFor classic clown moments.'
+
+  npc:
+    slot: 19
+    material: NAME_TAG
+    name: '&8[&#AEADAD&lNPC&8]'
+    color: '&8[&#AEADAD&lNPC&8]'
+    price: 300
+    permission: 'sksmp.tag.npc'
+    commands:
+      - 'tags npc'
+    description:
+      - '&fActing like an NPC'
+      - '&fin broad daylight.'
+
+  rizz:
+    slot: 20
+    material: NAME_TAG
+    name: '&8[&#FF69B4&lRIZZ&8]'
+    color: '&8[&#FF69B4&lRIZZ&8]'
+    price: 600
+    permission: 'sksmp.tag.rizz'
+    commands:
+      - 'tags rizz'
+    description:
+      - '&fAbsolute unscripted charm.'
+
+  deadly:
+    slot: 21
+    material: NAME_TAG
+    name: '&8[&#FF0000&lDEADLY&8]'
+    color: '&8[&#FF0000&lDEADLY&8]'
+    price: 1100
+    permission: 'sksmp.tag.deadly'
+    commands:
+      - 'tags deadly'
+    description:
+      - '&fLethal in every combat'
+      - '&fencounter.'
+
+  tag_67:
+    slot: 22
+    material: NAME_TAG
+    name: '&8[&#00E0FF&l67&8]'
+    color: '&8[&#00E0FF&l67&8]'
+    price: 670
+    permission: 'sksmp.tag.tag_67'
+    commands:
+      - 'tags tag_67'
+    description:
+      - '&fThe legendary number'
+      - '&ffor special players.'
+
+  macer:
+    slot: 23
+    material: NAME_TAG
+    name: '&8[&#FF8C00&lMACER&8]'
+    color: '&8[&#FF8C00&lMACER&8]'
+    price: 1000
+    permission: 'sksmp.tag.macer'
+    commands:
+      - 'tags macer'
+    description:
+      - '&fMaster of the Mace'
+      - '&fheavy attacks.'
+
+  lucky:
+    slot: 24
+    material: NAME_TAG
+    name: '&8[&#00FF7F&lLUCKY&8]'
+    color: '&8[&#00FF7F&lLUCKY&8]'
+    price: 900
+    permission: 'sksmp.tag.lucky'
+    commands:
+      - 'tags lucky'
+    description:
+      - '&fFortune always favors'
+      - '&fyour steps.'
+
+  bot:
+    slot: 25
+    material: NAME_TAG
+    name: '&8[&#708090&lBOT&8]'
+    color: '&8[&#708090&lBOT&8]'
+    price: 350
+    permission: 'sksmp.tag.bot'
+    commands:
+      - 'tags bot'
+    description:
+      - '&fPure mechanical precision'
+      - '&for total missplays.'
+
+  chillguy:
+    slot: 28
+    material: NAME_TAG
+    name: '&8[&#87CEEB&lCHILLGUY&8]'
+    color: '&8[&#87CEEB&lCHILLGUY&8]'
+    price: 800
+    permission: 'sksmp.tag.chillguy'
+    commands:
+      - 'tags chillguy'
+    description:
+      - '&fJust chilling no matter'
+      - '&fhow wild it gets.'
+
+  rich:
+    slot: 29
+    material: NAME_TAG
+    name: '&8[&#FFD700&lRICH&8]'
+    color: '&8[&#FFD700&lRICH&8]'
+    price: 2500
+    permission: 'sksmp.tag.rich'
+    commands:
+      - 'tags rich'
+    description:
+      - '&fSwimming in points'
+      - '&fand flex.'
+
+  cursed:
+    slot: 30
+    material: NAME_TAG
+    name: '&8[&#9400D3&lCURS&#4B0082&lED&8]'
+    color: '&8[&#9400D3&lCURS&#4B0082&lED&8]'
+    price: 850
+    permission: 'sksmp.tag.cursed'
+    commands:
+      - 'tags cursed'
+    description:
+      - '&fSurrounded by dark'
+      - '&fshadow energy.'
+
+  goat:
+    slot: 31
+    material: NAME_TAG
+    name: '&8[&#FFD700&lG.O.A.T.&8]'
+    color: '&8[&#FFD700&lG.O.A.T.&8]'
+    price: 3000
+    permission: 'sksmp.tag.goat'
+    commands:
+      - 'tags goat'
+    description:
+      - '&fGreatest Of All Time.'
+
+  sybau:
+    slot: 32
+    material: NAME_TAG
+    glow: true
+    name: '&8[&#00B5FF&lSY&#00E0FF&lBAU&8]'
+    color: '&8[&#00B5FF&lSY&#00E0FF&lBAU&8]'
+    price: 500
+    permission: 'sksmp.tag.sybau'
+    commands:
+      - 'tags sybau'
+    description:
+      - '&e&lLIMITED TAG!'
+      - '&fKeep your messages short'
+      - '&fand direct.'
+
+  aura:
+    slot: 33
+    material: NAME_TAG
+    glow: true
+    name: '&8[&#00FFFF&lAURA&8]'
+    color: '&8[&#00FFFF&lAURA&8]'
+    price: 1400
+    permission: 'sksmp.tag.aura'
+    commands:
+      - 'tags aura'
+    description:
+      - '&e&lLIMITED TAG!'
+      - '&fRadiate pure power'
+      - '&fwherever you go.'
+
+  og:
+    slot: 34
+    material: NAME_TAG
+    glow: true
+    name: '&8[&#00B5FF&lO&#FFD700&lG&8]'
+    color: '&8[&#00B5FF&lO&#FFD700&lG&8]'
+    price: 0
+    permission: 'sksmp.tag.og'
+    commands:
+      - 'tags og'
+    description:
+      - '&e&lLIMITED TIME FREE!'
+      - '&fClaim your exclusive OG tag'
+      - '&ffor free right now.'
+
+  remove:
+    slot: 49
+    material: BUNDLE
+    type: action
+    name: '&#71F521&lREMOVE TAG'
+    commands:
+      - 'tags off'
+    description:
+      - '&fRemove your current tag!'
+
+# =====================================================================
+# Configurações do Sistema
+# =====================================================================
+language: EN
+prefix: '&#00B5FF&lTAGS &#9B9B9B» '
+menu-command: 'pointshop tags'
+permission-prefix: 'sksmp.tag.'
+remove-words: [off, remove, none]
+
+placeholder:
+  prefix: 'sksmp'
+  identifier: 'tag'
+  format: '&8[&#%hex%&l%name%&8]'
+
+tags:
+  wheel_jackpot:
+    name: 'JACK&#FFD700&lPOT'
+    hex: 'FF8C00'
+  wheel_fortune:
+    name: 'FOR&#7CFF6B&lTUNE'
+    hex: '00C853'
+  wheel_highroller:
+    name: 'HIGH &#FF4FD8&lROLLER'
+    hex: '9C27B0'
+  mace_lord:
+    name: 'MACE LORD'
+    hex: '00FFD6'
+  rizzler:
+    name: 'RIZZLER'
+    hex: 'FF69B4'
+  sigma_mace:
+    name: 'SIGMA MACE'
+    hex: 'FFD700'
+  one_shot:
+    name: 'ONE SHOT'
+    hex: 'FF2121'
+  god_mode:
+    name: 'GOD MODE'
+    hex: '71F521'
+  ez:
+    name: 'EZ'
+    hex: '71F521'
+  bozo:
+    name: 'BOZO'
+    hex: 'FF79F5'
+  npc:
+    name: 'NPC'
+    hex: 'AEADAD'
+  rizz:
+    name: 'RIZZ'
+    hex: 'FF69B4'
+  deadly:
+    name: 'DEADLY'
+    hex: 'FF0000'
+  tag_67:
+    name: '67'
+    hex: '00E0FF'
+  macer:
+    name: 'MACER'
+    hex: 'FF8C00'
+  lucky:
+    name: 'LUCKY'
+    hex: '00FF7F'
+  bot:
+    name: 'BOT'
+    hex: '708090'
+  chillguy:
+    name: 'CHILLGUY'
+    hex: '87CEEB'
+  rich:
+    name: 'RICH'
+    hex: 'FFD700'
+  cursed:
+    name: 'CURS&#4B0082&lED'
+    hex: '9400D3'
+  goat:
+    name: 'G.O.A.T.'
+    hex: 'FFD700'
+  sybau:
+    name: 'SY&#00E0FF&lBAU'
+    hex: '00B5FF'
+  aura:
+    name: 'AURA'
+    hex: '00FFFF'
+  og:
+    name: 'O&#FFD700&lG'
+    hex: '00B5FF'
+  tourney_gladiator:
+    name: 'GLA&#FFB000&lDIA&#FF6A00&lTOR'
+    hex: 'FFE066'
+  tourney_vanguard:
+    name: 'VAN&#00C8FF&lGU&#406BFF&lARD'
+    hex: '66F2FF'
+  tourney_warlord:
+    name: 'WAR&#FF2121&lLO&#8B0000&lRD'
+    hex: 'FF6B6B'
+  tourney_godmode:
+    name: 'GOD&#B84DFF&lMO&#7A1FFF&lDE'
+    hex: 'D98CFF'
+  tourney_champion:
+    name: 'CHAM&#FFD700&lPI&#FF8C00&lON'
+    hex: 'FFF176'
+  pass_veteran:
+    name: 'PASS &#66FF99&lVETERAN'
+    hex: '2ECC71'
+  season_scout:
+    name: 'SEASON &#55D5FF&lSCOUT'
+    hex: '308DFF'
+  season_challenger:
+    name: 'SEASON &#FFB347&lCHALLENGER'
+    hex: 'FF6B35'
+  season_elite:
+    name: 'SEASON &#E36BFF&lELITE'
+    hex: '8A2BE2'
+  season1:
+    name: 'SEA&#FFD700&lSON &#FF7A00&l1'
+    hex: 'FFF176'
+
+sounds:
+  equipped:
+    sound: 'entity.player.levelup'
+    volume: 1.0
+    pitch: 1.6
+  removed:
+    sound: 'entity.villager.no'
+    volume: 1.0
+    pitch: 1.2
+  deny:
+    sound: 'entity.villager.no'
+    volume: 1.0
+    pitch: 1.0
+
+messages:
+  equipped: '&#71F521Tag &8[%coloured%&8] &#71F521equipped!'
+  removed: '&#FF2121Tag removed.'
+  unknown-tag: '&#FF2121There is no tag called &#FFD900%tag%&#FF2121.'
+  not-owned: '&#FF2121You do not own that tag. Buy it in &#FFD900/pointshop&#FF2121.'
+  no-permission: '&#FF2121You are not allowed to do that.'
+  players-only: '&#FF2121Only players can use this.'
+  reloaded: '&#71F521Reloaded - &f%count% &#71F521tags.'

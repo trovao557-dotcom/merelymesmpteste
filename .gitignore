@@ -1,0 +1,17 @@
+# Generated and local test data intentionally excluded from essential backup
+workspace-essential/merely-tournament/local-test/
+workspace-essential/merely-tournament/build-*/
+workspace-essential/merely-tournament/remote-*inspect*/
+workspace-essential/live-tournament-state/latest.log
+workspace-essential/.codex-current-update/
+
+# Never upload common caches or credentials
+**/node_modules/
+**/.next/
+**/dist/
+**/build/
+**/target/
+**/.gradle/
+**/.env
+**/.env.*
+!**/.env.example

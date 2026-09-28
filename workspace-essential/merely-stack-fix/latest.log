@@ -1,0 +1,557 @@
+[22:40:17] [ServerMain/INFO]: [bootstrap] Running Java 25 (OpenJDK 64-Bit Server VM 25.0.1+8-LTS; Eclipse Adoptium Temurin-25.0.1+8) on Linux 6.8.0-136-generic (amd64)
+[22:40:17] [ServerMain/INFO]: [bootstrap] Loading Paper 26.2-84-main@26e81c4 (2026-07-26T18:11:33Z) for Minecraft 26.2
+[22:40:17] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
+[22:40:18] [ServerMain/INFO]: [PluginInitializerManager] Initialized 71 plugins
+[22:40:18] [ServerMain/INFO]: [PluginInitializerManager] Paper plugins (3):
+ - BlueSlimeCore (2.9.7.482), FancyNpcs (2.11.0+370), RHSignItem (1.21_R10)
+[22:40:18] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (68):
+ - AhPriceHover (1.4.0), AngleGuard (1.4.2), ChatFilter (2.0.14), ChestRestock (2.3.2-b106), CollisionDisabler (1.1), DeluxeMenus (1.14.1-Release), DonutAntiFreecam (1.0.5), FastAsyncWorldEdit (2.15.3+1704422), GrimAC (2.3.74-61caa53), ItemCooldowns (1.01), KillRewards (1.1), LuckPerms (5.5.53), MerelyEvents (1.0.0), MerelyNoPush (1.0.0), MerelyOrderEnchants (1.0.0), MerelyPack (1.0.0), MerelySmith (1.0.0), MerelyStackFix (1.0.0), MerelyTrade (1.1.0), MinerTrack (2.1.1.1), Multiverse-Core (5.7.3), OreoScannerPro (1.0.0), PVPClumps (1.0.3), PlaceholderAPI (2.12.3), PlayerVaultsX (1.0.1), SKAnnounce (0.1.0), SKAuction (0.2.0), SKBounty (0.2.0), SKClearLag (0.2.0), SKCommands (0.1.0), SKCore (0.2.0), SKCrates (0.3.0), SKEffects (0.1.0), SKHolograms (0.1.0), SKHomes (0.1.0), SKInfo (0.1.0), SKItems (0.1.0), SKKeyAll (0.2.0), SKKits (0.1.0), SKMod (0.1.0), SKMoney (0.2.0), SKMsg (0.2.0), SKOrders (0.2.1), SKPointShop (0.1.0), SKRtp (0.2.0), SKRules (0.2.0), SKSell (0.2.1), SKSettings (0.2.0), SKShop (0.2.0), SKSpawners (0.2.0), SKStats (0.2.0), SKTags (0.1.0), SKTeam (0.2.0), SKTpa (0.2.0), SKWipe (0.1.0), SimplePlayerUtils (1.0), Skript (2.16.1), SpearConfig (1.0.0), TAB (6.1.0), Tip4serv (1.3.0), Vault (2.20.2), ViaBackwards (5.11.0), ViaRewind (4.1.3), ViaVersion (5.11.0), VoidGen (2.3.8), WorldGuard (7.0.18+2392-fa605e6), WorldGuardExtraFlags (4.2.4-SNAPSHOT), voicechat (2.6.21)
+[22:40:23] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[22:40:23] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[22:40:23] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 514.7ms
+[22:40:25] [ServerMain/INFO]: Loaded 1585 recipes
+[22:40:25] [ServerMain/INFO]: Loaded 1688 advancements
+[22:40:26] [Server thread/INFO]: Starting minecraft server version 26.2
+[22:40:26] [Server thread/INFO]: Loading properties
+[22:40:26] [Server thread/INFO]: This server is running Paper version 26.2-84-main@26e81c4 (2026-07-26T18:11:33Z) (Implementing API version 26.2.build.84-stable)
+[22:40:26] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[22:40:26] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[22:40:26] [Server thread/INFO]: Using 4 threads for Netty based IO
+[22:40:26] [Server thread/INFO]: [MoonriseCommon] Paper is using 10 worker threads, 1 I/O threads
+[22:40:26] [Server thread/INFO]: Default game type: SURVIVAL
+[22:40:26] [Server thread/INFO]: Generating keypair
+[22:40:26] [Server thread/INFO]: Starting Minecraft server on 144.91.119.134:27585
+[22:40:27] [Server thread/INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[22:40:27] [Server thread/INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
+[22:40:27] [Server thread/ERROR]: [ModernPluginLoadingStrategy] Ambiguous plugin name 'PlayerVaultsX' for files 'plugins/PlayerVaultsX-1.0.1 (1).jar' and 'plugins/PlayerVaultsX-1.0.1.jar' in 'plugins'
+[22:40:27] [Server thread/ERROR]: [ModernPluginLoadingStrategy] Could not load 'plugins/OreoScannerPro-1.0.0.jar' in 'plugins'
+org.bukkit.plugin.UnknownDependencyException: Unknown/missing dependency plugins: [packetevents]. Please download and install these plugins to run 'OreoScannerPro'.
+	at io.papermc.paper.plugin.entrypoint.strategy.modern.ModernPluginLoadingStrategy.loadProviders(ModernPluginLoadingStrategy.java:82) ~[paper-26.2.jar:26.2-84-26e81c4]
+	at io.papermc.paper.plugin.storage.SimpleProviderStorage.enter(SimpleProviderStorage.java:38) ~[paper-26.2.jar:26.2-84-26e81c4]
+	at io.papermc.paper.plugin.entrypoint.LaunchEntryPointHandler.enter(LaunchEntryPointHandler.java:39) ~[paper-26.2.jar:26.2-84-26e81c4]
+	at org.bukkit.craftbukkit.CraftServer.loadPlugins(CraftServer.java:549) ~[paper-26.2.jar:26.2-84-26e81c4]
+	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:297) ~[paper-26.2.jar:26.2-84-26e81c4]
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1267) ~[paper-26.2.jar:26.2-84-26e81c4]
+	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:303) ~[paper-26.2.jar:26.2-84-26e81c4]
+	at java.base/java.lang.Thread.run(Thread.java:1474) ~[?:?]
+[22:40:27] [Server thread/ERROR]: [ModernPluginLoadingStrategy] Could not load 'plugins/AngleGuard-1.4.2-free-out.jar' in 'plugins'
+org.bukkit.plugin.UnknownDependencyException: Unknown/missing dependency plugins: [packetevents]. Please download and install these plugins to run 'AngleGuard'.
+	at io.papermc.paper.plugin.entrypoint.strategy.modern.ModernPluginLoadingStrategy.loadProviders(ModernPluginLoadingStrategy.java:82) ~[paper-26.2.jar:26.2-84-26e81c4]
+	at io.papermc.paper.plugin.storage.SimpleProviderStorage.enter(SimpleProviderStorage.java:38) ~[paper-26.2.jar:26.2-84-26e81c4]
+	at io.papermc.paper.plugin.entrypoint.LaunchEntryPointHandler.enter(LaunchEntryPointHandler.java:39) ~[paper-26.2.jar:26.2-84-26e81c4]
+	at org.bukkit.craftbukkit.CraftServer.loadPlugins(CraftServer.java:549) ~[paper-26.2.jar:26.2-84-26e81c4]
+	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:297) ~[paper-26.2.jar:26.2-84-26e81c4]
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1267) ~[paper-26.2.jar:26.2-84-26e81c4]
+	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:303) ~[paper-26.2.jar:26.2-84-26e81c4]
+	at java.base/java.lang.Thread.run(Thread.java:1474) ~[?:?]
+[22:40:28] [Server thread/WARN]: [org.bukkit.craftbukkit.legacy.CraftLegacy] Initializing Legacy Material Support. Unless you have legacy plugins and/or data this is a bug!
+[22:40:45] [Server thread/WARN]: Legacy plugin ChestRestock v2.3.2-b106 does not specify an api-version.
+[22:40:45] [Server thread/INFO]: [Blue Slime Core] Loading server plugin BlueSlimeCore v2.9.7.482
+[22:40:45] [Server thread/INFO]: [ViaVersion] Loading server plugin ViaVersion v5.11.0
+[22:40:45] [Server thread/INFO]: [ViaVersion] ViaVersion 5.11.0 is now loaded. Registering protocol transformers and injecting...
+[22:40:46] [Server thread/INFO]: [ViaBackwards] Loading translations...
+[22:40:46] [Server thread/INFO]: [ViaBackwards] Registering protocols...
+[22:40:46] [Server thread/INFO]: [ViaRewind] Registering protocols...
+[22:40:46] [Server thread/INFO]: [PlaceholderAPI] Loading server plugin PlaceholderAPI v2.12.3
+[22:40:46] [Server thread/INFO]: [LuckPerms] Loading server plugin LuckPerms v5.5.53
+[22:40:47] [Server thread/INFO]: [LuckPerms] Loading configuration...
+[22:40:47] [Server thread/INFO]: [Vault] Loading server plugin Vault v2.20.2
+[22:40:47] [Server thread/INFO]: [FastAsyncWorldEdit] Loading server plugin FastAsyncWorldEdit v2.15.3+1704422
+[22:40:49] [Server thread/INFO]: Got request to register class com.sk89q.worldedit.bukkit.BukkitServerInterface with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@6f786c15]
+[22:40:49] [Server thread/INFO]: [VoidGen] Loading server plugin VoidGen v2.3.8
+[22:40:49] [Server thread/INFO]: [SKCore] Loading server plugin SKCore v0.2.0
+[22:40:49] [Server thread/INFO]: [ViaBackwards] Loading server plugin ViaBackwards v5.11.0
+[22:40:49] [Server thread/INFO]: [CoreLogging] Loading server plugin Multiverse-Core v5.7.3
+[22:40:49] [Server thread/INFO]: [SKStats] Loading server plugin SKStats v0.2.0
+[22:40:49] [Server thread/INFO]: [SKCrates] Loading server plugin SKCrates v0.3.0
+[22:40:49] [Server thread/INFO]: [WorldGuard] Loading server plugin WorldGuard v7.0.18+2392-fa605e6
+[22:40:49] [Server thread/INFO]: [SKTeam] Loading server plugin SKTeam v0.2.0
+[22:40:49] [Server thread/INFO]: [ViaRewind] Loading server plugin ViaRewind v4.1.3
+[22:40:49] [Server thread/INFO]: [SKOrders] Loading server plugin SKOrders v0.2.1
+[22:40:49] [Server thread/INFO]: [SKMoney] Loading server plugin SKMoney v0.2.0
+[22:40:49] [Server thread/INFO]: [SKAuction] Loading server plugin SKAuction v0.2.0
+[22:40:49] [Server thread/INFO]: [PVPClumps] Loading server plugin PVPClumps v1.0.3
+[22:40:49] [Server thread/INFO]: [SKHolograms] Loading server plugin SKHolograms v0.1.0
+[22:40:49] [Server thread/INFO]: [MerelyNoPush] Loading server plugin MerelyNoPush v1.0.0
+[22:40:49] [Server thread/INFO]: [MerelySmith] Loading server plugin MerelySmith v1.0.0
+[22:40:49] [Server thread/INFO]: [SKRules] Loading server plugin SKRules v0.2.0
+[22:40:49] [Server thread/INFO]: [SKClearLag] Loading server plugin SKClearLag v0.2.0
+[22:40:49] [Server thread/INFO]: [SKKits] Loading server plugin SKKits v0.1.0
+[22:40:49] [Server thread/INFO]: [Skript] Loading server plugin Skript v2.16.1
+[22:40:49] [Server thread/INFO]: [WorldGuardExtraFlags] Loading server plugin WorldGuardExtraFlags v4.2.4-SNAPSHOT
+[22:40:49] [Server thread/INFO]: [MerelyTrade] Loading server plugin MerelyTrade v1.1.0
+[22:40:49] [Server thread/INFO]: [SKInfo] Loading server plugin SKInfo v0.1.0
+[22:40:49] [Server thread/INFO]: [ItemCooldowns] Loading server plugin ItemCooldowns v1.01
+[22:40:49] [Server thread/INFO]: [SKHomes] Loading server plugin SKHomes v0.1.0
+[22:40:49] [Server thread/INFO]: [SKSettings] Loading server plugin SKSettings v0.2.0
+[22:40:49] [Server thread/INFO]: [SKTpa] Loading server plugin SKTpa v0.2.0
+[22:40:49] [Server thread/INFO]: [SKPointShop] Loading server plugin SKPointShop v0.1.0
+[22:40:49] [Server thread/INFO]: [SKKeyAll] Loading server plugin SKKeyAll v0.2.0
+[22:40:49] [Server thread/INFO]: [DonutAntiFreecam] Loading server plugin DonutAntiFreecam v1.0.5
+[22:40:49] [Server thread/INFO]: [ChestRestock] Loading server plugin ChestRestock v2.3.2-b106
+[22:40:49] [Server thread/INFO]: [SKBounty] Loading server plugin SKBounty v0.2.0
+[22:40:49] [Server thread/INFO]: [GrimAC] Loading server plugin GrimAC v2.3.74-61caa53
+[22:40:49] [Server thread/INFO]: [GrimAC] Loading PacketEvents...
+[22:40:50] [Server thread/INFO]: [packetevents] Loading packetevents...
+[22:40:52] [Server thread/INFO]: [packetevents] Loaded packetevents v2.13.1+4d40422-SNAPSHOT for GrimAC
+[22:40:52] [pool-18-thread-1/INFO]: [packetevents] Loading block mappings for V_26_2/22...
+[22:40:52] [Server thread/INFO]: [ChatFilter] Loading server plugin ChatFilter v2.0.14
+[22:40:52] [Server thread/INFO]: [FancyNpcs] Loading server plugin FancyNpcs v2.11.0+370
+[22:40:52] [Server thread/INFO]: [TAB] Loading server plugin TAB v6.1.0
+[22:40:52] [Server thread/INFO]: [MerelyOrderEnchants] Loading server plugin MerelyOrderEnchants v1.0.0
+[22:40:52] [Server thread/INFO]: [SpearConfig] Loading server plugin SpearConfig v1.0.0
+[22:40:52] [Server thread/INFO]: [MinerTrack] Loading server plugin MinerTrack v2.1.1.1
+[22:40:52] [Server thread/INFO]: [SKSpawners] Loading server plugin SKSpawners v0.2.0
+[22:40:52] [Server thread/INFO]: [CollisionDisabler] Loading server plugin CollisionDisabler v1.1
+[22:40:52] [Server thread/INFO]: [RHSignItem] Loading server plugin RHSignItem v1.21_R10
+[22:40:52] [Server thread/INFO]: [SKMod] Loading server plugin SKMod v0.1.0
+[22:40:52] [Server thread/INFO]: [Tip4serv] Loading server plugin Tip4serv v1.3.0
+[22:40:52] [Server thread/INFO]: [MerelyStackFix] Loading server plugin MerelyStackFix v1.0.0
+[22:40:52] [Server thread/INFO]: [SKWipe] Loading server plugin SKWipe v0.1.0
+[22:40:52] [Server thread/INFO]: [MerelyEvents] Loading server plugin MerelyEvents v1.0.0
+[22:40:52] [Server thread/INFO]: [SKTags] Loading server plugin SKTags v0.1.0
+[22:40:52] [Server thread/INFO]: [SKShop] Loading server plugin SKShop v0.2.0
+[22:40:52] [Server thread/INFO]: [SKItems] Loading server plugin SKItems v0.1.0
+[22:40:52] [Server thread/INFO]: [PlayerVaultsX] Loading server plugin PlayerVaultsX v1.0.1
+[22:40:52] [Server thread/INFO]: [SKMsg] Loading server plugin SKMsg v0.2.0
+[22:40:52] [Server thread/INFO]: [voicechat] Loading server plugin voicechat v2.6.21
+[22:40:52] [Server thread/INFO]: [MerelyPack] Loading server plugin MerelyPack v1.0.0
+[22:40:52] [Server thread/INFO]: [SKRtp] Loading server plugin SKRtp v0.2.0
+[22:40:52] [Server thread/INFO]: [DeluxeMenus] Loading server plugin DeluxeMenus v1.14.1-Release
+[22:40:52] [Server thread/WARN]: [DeluxeMenus] Could not setup a NMS hook for your server version! The following Item options will not work: nbt_int, nbt_ints, nbt_string and nbt_strings.
+[22:40:52] [Server thread/INFO]: [SimplePlayerUtils] Loading server plugin SimplePlayerUtils v1.0
+[22:40:52] [Server thread/INFO]: [AhPriceHover] Loading server plugin AhPriceHover v1.4.0
+[22:40:52] [Server thread/INFO]: [SKEffects] Loading server plugin SKEffects v0.1.0
+[22:40:52] [Server thread/INFO]: [SKSell] Loading server plugin SKSell v0.2.1
+[22:40:52] [Server thread/INFO]: [SKAnnounce] Loading server plugin SKAnnounce v0.1.0
+[22:40:52] [Server thread/INFO]: [SKCommands] Loading server plugin SKCommands v0.1.0
+[22:40:52] [Server thread/INFO]: [KillRewards] Loading server plugin KillRewards v1.1
+[22:40:52] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[22:40:52] [Server thread/INFO]: [Blue Slime Core] Enabling BlueSlimeCore v2.9.7.482
+[22:40:52] [Server thread/INFO]: [Blue Slime Core] Successfully loaded 3 language(s).
+[22:40:52] [Server thread/INFO]: [Blue Slime Core] Detected server as regular SpigotMC/PaperMC (not Folia)
+[22:40:52] [Server thread/INFO]: [LuckPerms] Enabling LuckPerms v5.5.53
+[22:40:52] [pool-18-thread-1/INFO]: [packetevents] Finished loading block mappings for V_26_2/22 in 518.431229ms
+[22:40:53] [Server thread/INFO]:         __    
+[22:40:53] [Server thread/INFO]:   |    |__)   LuckPerms v5.5.53
+[22:40:53] [Server thread/INFO]:   |___ |      Running on Bukkit - Paper
+[22:40:53] [Server thread/INFO]: 
+[22:40:54] [Server thread/INFO]: [LuckPerms] Loading storage provider... [H2]
+[22:40:55] [Server thread/INFO]: [LuckPerms] Loading internal permission managers...
+[22:40:55] [Server thread/INFO]: [LuckPerms] Performing initial data load...
+[22:40:56] [Server thread/INFO]: [LuckPerms] Successfully enabled. (took 3679ms)
+[22:40:56] [Server thread/INFO]: [Vault] Enabling Vault v2.20.2
+[22:40:56] [Server thread/INFO]: [Vault] Enabled Version 2.20.2
+[22:40:56] [Server thread/INFO]: [LuckPerms] Registered Vault permission & chat hook.
+[22:40:56] [Server thread/INFO]: [FastAsyncWorldEdit] Enabling FastAsyncWorldEdit v2.15.3+1704422
+[22:40:56] [Server thread/INFO]: [com.fastasyncworldedit.core.Fawe] LZ4 Compression Binding loaded successfully
+[22:40:56] [Server thread/INFO]: [com.fastasyncworldedit.core.Fawe] ZSTD Compression Binding loaded successfully
+[22:40:56] [Server thread/INFO]: Registering commands with com.sk89q.worldedit.bukkit.BukkitServerInterface
+[22:40:56] [Server thread/INFO]: WEPIF: Vault detected! Using Vault for permissions
+[22:40:56] [Server thread/INFO]: Using com.sk89q.worldedit.bukkit.adapter.impl.fawe.v26_2.PaperweightFaweAdapter as the Bukkit adapter
+[22:40:57] [Server thread/INFO]: [VoidGen] Enabling VoidGen v2.3.8
+[22:40:57] [Server thread/INFO]: [VoidGen] Using an unknown version of VoidGen! It will switch to latest version build for.
+[22:40:57] [Server thread/INFO]: [ViaRewind] Enabling ViaRewind v4.1.3
+[22:40:57] [Server thread/INFO]: Preparing level "world"
+[22:40:57] [ForkJoinPool.commonPool-worker-8/WARN]: [com.fastasyncworldedit.core.util.UpdateNotification] A new release for FastAsyncWorldEdit is available: 2.15.4. You are currently on 2.15.3.
+Download from https://modrinth.com/plugin/fastasyncworldedit or https://hangar.papermc.io/IntellectualSites/FastAsyncWorldEdit
+[22:40:57] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:overworld'...
+[22:40:57] [Server thread/INFO]: Preparing spawn area: 100%
+[22:40:57] [Server thread/INFO]: Prepared spawn area in 2 ms
+[22:40:57] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_nether'...
+[22:40:57] [Server thread/INFO]: Prepared spawn area in 0 ms
+[22:40:57] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_end'...
+[22:40:57] [Server thread/INFO]: Prepared spawn area in 0 ms
+[22:40:57] [Server thread/INFO]: Done preparing level "world" (0.556s)
+[22:40:57] [Server thread/INFO]: [ViaVersion] Enabling ViaVersion v5.11.0
+[22:40:57] [Server thread/INFO]: [ViaVersion] ViaVersion detected server version: 26.2 (776)
+[22:40:57] [Server thread/INFO]: [PlaceholderAPI] Enabling PlaceholderAPI v2.12.3
+[22:40:58] [Server thread/INFO]: [PlaceholderAPI] Fetching available expansion information...
+[22:40:58] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: vaultunlocked [2.13.1]
+[22:40:58] [Server thread/INFO]: [SKCore] Enabling SKCore v0.2.0
+[22:40:58] [Server thread/INFO]: [SKCore] Loaded 60 player records.
+[22:40:58] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: skcore [0.2.0]
+[22:40:58] [Server thread/INFO]: [SKCore] Registered %skcore_*% with PlaceholderAPI.
+[22:40:58] [Server thread/INFO]: [SKCore] SKCore ready - 60 player records.
+[22:40:58] [Server thread/INFO]: [ViaBackwards] Enabling ViaBackwards v5.11.0
+[22:40:58] [Server thread/INFO]: [Multiverse-Core] Enabling Multiverse-Core v5.7.3
+[22:40:58] [Server thread/INFO]: [VoidGen] 
+[22:40:58] [Server thread/INFO]: [VoidGen] > ——————————————————————[ world ]——————————————————————
+[22:40:58] [Server thread/INFO]: [VoidGen] > 
+[22:40:58] [Server thread/INFO]: [VoidGen] > Generator settings have not been set, we will use the default settings:
+[22:40:58] [Server thread/INFO]: [VoidGen] > {"biome":"the_void"}
+[22:40:58] [Server thread/INFO]: [VoidGen] > 
+[22:40:58] [Server thread/INFO]: [VoidGen] > ——————————————————————[ world ]——————————————————————
+[22:40:58] [Server thread/INFO]: [VoidGen] 
+[22:40:59] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: multiverse-core [5.7.3]
+[22:40:59] [Server thread/INFO]: [Multiverse-Core] API service loaded!
+[22:40:59] [Server thread/INFO]: [Multiverse-Core] Version 5.7.3 (API v5.7) Enabled - By dumptruckman, Rigby, fernferret, lithium3141, main--, benwoo1110 and Zax71
+[22:40:59] [Server thread/INFO]: [Multiverse-Core] Loving Multiverse-Core? Please consider supporting the project with a small donation: https://github.com/sponsors/Multiverse
+[22:40:59] [Server thread/INFO]: [VoidGen] VoidGen hooked into Multiverse!
+[22:40:59] [Server thread/INFO]: [SKStats] Enabling SKStats v0.2.0
+[22:40:59] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: skstats [0.2.0]
+[22:40:59] [Server thread/INFO]: [SKStats] Registered %skstats_top_*% with PlaceholderAPI.
+[22:40:59] [Server thread/INFO]: [SKCrates] Enabling SKCrates v0.3.0
+[22:41:00] [Server thread/INFO]: [SKCrates] Crates: 7 loaded, 7 blocks bound.
+[22:41:00] [Server thread/INFO]: [WorldGuard] Enabling WorldGuard v7.0.18+2392-fa605e6
+[22:41:00] [Server thread/INFO]: [WorldGuard] (world) TNT ignition is PERMITTED.
+[22:41:00] [Server thread/INFO]: [WorldGuard] (world) Lighters are PERMITTED.
+[22:41:00] [Server thread/INFO]: [WorldGuard] (world) Lava fire is PERMITTED.
+[22:41:00] [Server thread/INFO]: [WorldGuard] (world) Fire spread is UNRESTRICTED.
+[22:41:00] [Server thread/INFO]: [WorldGuard] Loaded configuration for world 'world'
+[22:41:00] [Server thread/INFO]: [WorldGuard] (world_nether) TNT ignition is PERMITTED.
+[22:41:00] [Server thread/INFO]: [WorldGuard] (world_nether) Lighters are PERMITTED.
+[22:41:00] [Server thread/INFO]: [WorldGuard] (world_nether) Lava fire is PERMITTED.
+[22:41:00] [Server thread/INFO]: [WorldGuard] (world_nether) Fire spread is UNRESTRICTED.
+[22:41:00] [Server thread/INFO]: [WorldGuard] Loaded configuration for world 'world_nether'
+[22:41:00] [Server thread/INFO]: [WorldGuard] (world_the_end) TNT ignition is PERMITTED.
+[22:41:00] [Server thread/INFO]: [WorldGuard] (world_the_end) Lighters are PERMITTED.
+[22:41:00] [Server thread/INFO]: [WorldGuard] (world_the_end) Lava fire is PERMITTED.
+[22:41:00] [Server thread/INFO]: [WorldGuard] (world_the_end) Fire spread is UNRESTRICTED.
+[22:41:00] [Server thread/INFO]: [WorldGuard] Loaded configuration for world 'world_the_end'
+[22:41:00] [Server thread/INFO]: [WorldGuard] Loading region data...
+[22:41:00] [Server thread/INFO]: [SKTeam] Enabling SKTeam v0.2.0
+[22:41:00] [Server thread/INFO]: [SKTeam] Loaded 5 teams.
+[22:41:00] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: skteam [0.2.0]
+[22:41:00] [Server thread/INFO]: [SKTeam] Registered %skteam_name% / %skteam_tag% with PlaceholderAPI.
+[22:41:00] [Server thread/INFO]: [SKTeam] Teams ready - 5 teams, up to 30 members each.
+[22:41:00] [Server thread/INFO]: [SKOrders] Enabling SKOrders v0.2.1
+[22:41:00] [Server thread/INFO]: [SKOrders] Loaded 5 orders.
+[22:41:00] [Server thread/INFO]: [SKOrders] Orders ready: 5 open, 1430 orderable items, 9 categories.
+[22:41:00] [Server thread/INFO]: [SKMoney] Enabling SKMoney v0.2.0
+[22:41:00] [Server thread/INFO]: [SKMoney] Registered as the Vault economy.
+[22:41:00] [Server thread/INFO]: [SKMoney] Economy: 60 player records.
+[22:41:00] [Server thread/INFO]: [SKAuction] Enabling SKAuction v0.2.0
+[22:41:00] [Server thread/INFO]: [SKAuction] Loaded 30 auctions.
+[22:41:00] [Server thread/INFO]: [SKAuction] Auction house: 30 active listings.
+[22:41:00] [Server thread/INFO]: [PVPClumps] Enabling PVPClumps v1.0.3
+[22:41:00] [Server thread/INFO]: [PVPClumps] Starting bStats instance using id: 30378
+[22:41:00] [Server thread/INFO]: [SKHolograms] Enabling SKHolograms v0.1.0
+[22:41:00] [Server thread/INFO]: [SKHolograms] SKHolograms ready - 25 holograms.
+[22:41:00] [Server thread/INFO]: [MerelyNoPush] Enabling MerelyNoPush v1.0.0
+[22:41:00] [Server thread/INFO]: [MerelyNoPush] MerelyNoPush ready - players cannot push each other.
+[22:41:00] [Server thread/INFO]: [MerelySmith] Enabling MerelySmith v1.0.0
+[22:41:00] [Server thread/INFO]: [MerelySmith] MerelySmith ready - /smith [player]
+[22:41:00] [Server thread/INFO]: [SKRules] Enabling SKRules v0.2.0
+[22:41:00] [Server thread/INFO]: [SKRules] Rules: 2 book(s), 27 rules.
+[22:41:00] [Server thread/INFO]: [SKClearLag] Enabling SKClearLag v0.2.0
+[22:41:00] [Server thread/INFO]: [SKClearLag] Clearing every 300s in all worlds, creatures included.
+[22:41:00] [Server thread/INFO]: [SKKits] Enabling SKKits v0.1.0
+[22:41:00] [Server thread/INFO]: [SKKits] SKKits ready - 5 kits.
+[22:41:00] [Server thread/INFO]: [Skript] Enabling Skript v2.16.1
+[22:41:01] [ForkJoinPool.commonPool-worker-8/INFO]: [Skript] A new version of Skript is available: 2.16.2 (you're currently running 2.16.1)
+[22:41:01] [ForkJoinPool.commonPool-worker-8/INFO]: Download it at: https://github.com/SkriptLang/Skript/releases/download/2.16.2/Skript-2.16.2.jar
+[22:41:02] [Server thread/INFO]: [Skript]  ~ created by & © Peter Güttinger aka Njol ~
+[22:41:02] [Server thread/INFO]: [WorldGuardExtraFlags] Enabling WorldGuardExtraFlags v4.2.4-SNAPSHOT
+[22:41:02] [Server thread/INFO]: [WorldGuard] Registering session handler net.goldtreeservers.worldguardextraflags.wg.handlers.TeleportOnEntryFlagHandler
+[22:41:02] [Server thread/INFO]: [WorldGuard] Registering session handler net.goldtreeservers.worldguardextraflags.wg.handlers.TeleportOnExitFlagHandler
+[22:41:02] [Server thread/INFO]: [WorldGuard] Registering session handler net.goldtreeservers.worldguardextraflags.wg.handlers.WalkSpeedFlagHandler
+[22:41:02] [Server thread/INFO]: [WorldGuard] Registering session handler net.goldtreeservers.worldguardextraflags.wg.handlers.FlySpeedFlagHandler
+[22:41:02] [Server thread/INFO]: [WorldGuard] Registering session handler net.goldtreeservers.worldguardextraflags.wg.handlers.FlyFlagHandler
+[22:41:02] [Server thread/INFO]: [WorldGuard] Registering session handler net.goldtreeservers.worldguardextraflags.wg.handlers.GlideFlagHandler
+[22:41:02] [Server thread/INFO]: [WorldGuard] Registering session handler net.goldtreeservers.worldguardextraflags.wg.handlers.GodmodeFlagHandler
+[22:41:02] [Server thread/INFO]: [WorldGuard] Registering session handler net.goldtreeservers.worldguardextraflags.wg.handlers.PlaySoundsFlagHandler
+[22:41:02] [Server thread/INFO]: [WorldGuard] Registering session handler net.goldtreeservers.worldguardextraflags.wg.handlers.BlockedEffectsFlagHandler
+[22:41:02] [Server thread/INFO]: [WorldGuard] Registering session handler net.goldtreeservers.worldguardextraflags.wg.handlers.GiveEffectsFlagHandler
+[22:41:02] [Server thread/INFO]: [WorldGuard] Registering session handler net.goldtreeservers.worldguardextraflags.wg.handlers.CommandOnEntryFlagHandler
+[22:41:02] [Server thread/INFO]: [WorldGuard] Registering session handler net.goldtreeservers.worldguardextraflags.wg.handlers.CommandOnExitFlagHandler
+[22:41:02] [Server thread/INFO]: [WorldGuard] Registering session handler net.goldtreeservers.worldguardextraflags.wg.handlers.ConsoleCommandOnEntryFlagHandler
+[22:41:02] [Server thread/INFO]: [WorldGuard] Registering session handler net.goldtreeservers.worldguardextraflags.wg.handlers.ConsoleCommandOnExitFlagHandler
+[22:41:02] [Server thread/WARN]: [WorldGuardExtraFlags] "WorldGuardExtraFlags v4.2.4-SNAPSHOT" has registered a listener for org.spigotmc.event.player.PlayerSpawnLocationEvent on method "public void net.goldtreeservers.worldguardextraflags.listeners.PlayerListener.onPlayerSpawnLocationEvent(org.spigotmc.event.player.PlayerSpawnLocationEvent)", but the event is Deprecated. "Listening to this event causes the player to be created early. Using the player from this event will result in undefined behavior. Prefer AsyncPlayerSpawnLocationEvent."; please notify the authors [isokissa3].
+[22:41:02] [Server thread/INFO]: [MerelyTrade] Enabling MerelyTrade v1.1.0
+[22:41:02] [Server thread/INFO]: [MerelyTrade] MerelyTrade ready - item trades only.
+[22:41:02] [Server thread/INFO]: [SKInfo] Enabling SKInfo v0.1.0
+[22:41:02] [Server thread/INFO]: [SKInfo] SKInfo ready - 3 menus, 2 links.
+[22:41:02] [Server thread/INFO]: [ItemCooldowns] Enabling ItemCooldowns v1.01
+[22:41:02] [Server thread/INFO]: [SKHomes] Enabling SKHomes v0.1.0
+[22:41:02] [Server thread/INFO]: [SKHomes] SKHomes ready - 7 slots per player.
+[22:41:02] [Server thread/INFO]: [SKSettings] Enabling SKSettings v0.2.0
+[22:41:02] [Server thread/INFO]: [SKSettings] Settings menu: 16 toggles.
+[22:41:02] [Server thread/INFO]: [SKTpa] Enabling SKTpa v0.2.0
+[22:41:02] [Server thread/INFO]: [SKTpa] TPA ready - requests expire after 60s, countdown 5s.
+[22:41:02] [Server thread/INFO]: [SKPointShop] Enabling SKPointShop v0.1.0
+[22:41:02] [Server thread/WARN]: [org.bukkit.configuration.file.YamlConstructor] duplicate keys found : glow
+[22:41:02] [Server thread/WARN]: [org.bukkit.configuration.file.YamlConstructor] duplicate keys found : entry-lore
+[22:41:02] [Server thread/WARN]: [org.bukkit.configuration.file.YamlConstructor] duplicate keys found : entries
+[22:41:02] [Server thread/INFO]: [SKPointShop] SKPointShop ready - 5 categories, 47 entries.
+[22:41:02] [Server thread/INFO]: [SKKeyAll] Enabling SKKeyAll v0.2.0
+[22:41:02] [Server thread/WARN]: [SKKeyAll] rewards.bonus.permissions.skkeyall is 1.0 - a multiplier of 1 or less would never win, so it is ignored.
+[22:41:02] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: skkeyall [0.2.0]
+[22:41:02] [Server thread/INFO]: [SKKeyAll] Registered %skkeyall_next% with PlaceholderAPI.
+[22:41:02] [Server thread/INFO]: [SKKeyAll] Key giveaway armed - 24 time(s) per day in Europe/Paris, next at 23:00.
+[22:41:02] [Server thread/INFO]: [DonutAntiFreecam] Enabling DonutAntiFreecam v1.0.5
+[22:41:02] [Server thread/INFO]: [DonutAntiFreecam] §6╔══════════════════════════════════════╗
+[22:41:02] [Server thread/INFO]: [DonutAntiFreecam] §6║  §bDONUT ANTI FREECAM v1.0§6  ║
+[22:41:02] [Server thread/INFO]: [DonutAntiFreecam] §6║  §fMade by §dCold Studios§6  ║
+[22:41:02] [Server thread/INFO]: [DonutAntiFreecam] §6║§8                                    §6║
+[22:41:02] [Server thread/INFO]: [DonutAntiFreecam] §6║  §cMade with love §4❤§6  ║
+[22:41:02] [Server thread/INFO]: [DonutAntiFreecam] §6╚══════════════════════════════════════╝
+[22:41:02] [Server thread/INFO]: [DonutAntiFreecam] §7Blocking below: §eY=16
+[22:41:02] [Server thread/INFO]: [DonutAntiFreecam] §7Hide Radius: §e32 blocks
+[22:41:02] [Server thread/INFO]: [DonutAntiFreecam] §7Load Proximity: §e10 blocks
+[22:41:02] [Server thread/INFO]: [DonutAntiFreecam] §7OP Bypass: §aENABLED
+[22:41:02] [Server thread/INFO]: [DonutAntiFreecam] §7Check Interval: §e5 ticks
+[22:41:02] [Server thread/INFO]: [ChestRestock] Enabling ChestRestock v2.3.2-b106*
+[22:41:02] [Server thread/INFO]: [ChestRestock 2.3.2-b106] enabled.
+[22:41:02] [Server thread/INFO]: [SKBounty] Enabling SKBounty v0.2.0
+[22:41:02] [Server thread/INFO]: [SKBounty] Loaded 1 bounties.
+[22:41:02] [Server thread/INFO]: [SKBounty] Bounties: 1 active.
+[22:41:02] [Server thread/INFO]: [GrimAC] Enabling GrimAC v2.3.74-61caa53
+[22:41:02] [Server thread/INFO]: [GrimAC] Registering packets...
+[22:41:02] [Server thread/INFO]: [GrimAC] Registering tick schedulers...
+[22:41:03] [Server thread/INFO]: Grim Version: 2.3.74-61caa53
+[22:41:03] [Server thread/INFO]: [grim-datastore] [grim-datastore] SQLite engine 3.49.1 — using modern dialect
+[22:41:03] [Server thread/INFO]: [grim-datastore] [v2-bootstrap] grim:grim_settings (settings): 0 migration(s)
+[22:41:03] [Server thread/INFO]: [grim-datastore] [v2-bootstrap] grim:grim_violations (violations): 0 migration(s)
+[22:41:03] [Server thread/INFO]: [grim-datastore] [v2-bootstrap] grim:grim_checks (checks): 0 migration(s)
+[22:41:03] [Server thread/INFO]: [grim-datastore] [v2-bootstrap] grim:grim_sessions (sessions): 0 migration(s)
+[22:41:03] [Server thread/INFO]: [grim-datastore] [v2-bootstrap] grim:grim_players (players): 0 migration(s)
+[22:41:03] [Server thread/INFO]: [grim-datastore] [v2-bootstrap] grim:server_startups (server_startups): 0 migration(s)
+[22:41:03] [Server thread/INFO]: [grim-datastore] [grim-datastore] v2 cutover complete: 1 v2 backend(s), ac.grim.grimac.internal.storage.core.V2Routes@6b92a19e routes installed, 0 legacy backends
+[22:41:03] [Server thread/INFO]: [grim-datastore] [grim-datastore] storage startup claimed: serverName='ChangeMe' instanceId=399a88f6-3336-4d3e-a97c-6e574f990212 startupId=f980fc09-1e03-4b57-a04a-c27cbeacf159 fence=77295da5-d8d2-4a9b-9e1e-5187db2438b9.
+[22:41:03] [ForkJoinPool.commonPool-worker-8/INFO]: [Skript] Loaded 5750 aliases in 1334ms
+[22:41:03] [Server thread/WARN]: [GrimAC] GrimAC has detected that you have installed ViaBackwards on a 1.21.2+ server.
+[22:41:03] [Server thread/WARN]: [GrimAC] This setup is currently unsupported and you will experience issues with older clients using vehicles.
+[22:41:03] [Server thread/INFO]: [GrimAC] Registering singular bukkit event... (PistonEvent)
+[22:41:03] [Server thread/INFO]: [GrimAC] LuckPerms detected
+[22:41:04] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: grim [2.3.74-61caa53]
+[22:41:04] [Server thread/INFO]: [ChatFilter] Enabling ChatFilter v2.0.14
+[22:41:04] [Server thread/INFO]: [ChatFilter] Loaded using locale: en
+[22:41:04] [Server thread/INFO]: [ChatFilter] 54 Enabled word filters.
+[22:41:04] [Server thread/INFO]: [ChatFilter] 2 Enabled advertising filters.
+[22:41:04] [Server thread/INFO]: [ChatFilter] 348 whitelisted items.
+[22:41:04] [Server thread/INFO]: [FancyNpcs] Enabling FancyNpcs v2.11.0+370
+[22:41:04] [Server thread/WARN]: [org.mineskin.MineSkinClient] Creating MineSkinClient without API key
+[22:41:04] [FancyLogger/INFO]: [FancyNpcs] (Server thread) INFO: FancyNpcs (2.11.0+370) has been enabled.
+[22:41:04] [Server thread/INFO]: [TAB] Enabling TAB v6.1.0
+[22:41:04] [Server thread/INFO]: [TAB] Found NMS implementation: me.neznamy.tab.platforms.bukkit.paper_26_2.NMSImplementationProvider
+[22:41:04] [Server thread/INFO]: [TAB] Enabled in 237ms
+[22:41:04] [Server thread/INFO]: [MerelyOrderEnchants] Enabling MerelyOrderEnchants v1.0.0
+[22:41:04] [Server thread/INFO]: [MerelyOrderEnchants] Order enchant picker enabled.
+[22:41:04] [Server thread/INFO]: [SpearConfig] Enabling SpearConfig v1.0.0
+[22:41:04] [Server thread/INFO]: [SpearConfig] Detected 10 spear-compatible enchantments from Paper: minecraft:bane_of_arthropods, minecraft:fire_aspect, minecraft:knockback, minecraft:looting, minecraft:lunge, minecraft:mending, minecraft:sharpness, minecraft:smite, minecraft:unbreaking, minecraft:vanishing_curse
+[22:41:04] [Server thread/INFO]: [SpearConfig] Spear Config is enabled for Paper 26.1-26.2.
+[22:41:04] [Server thread/INFO]: [MinerTrack] Enabling MinerTrack v2.1.1.1
+[22:41:04] [Server thread/INFO]: [MinerTrack] Loaded group configuration: end (end.yml)
+[22:41:04] [Server thread/INFO]: [MinerTrack] Loaded group configuration: overworld (overworld.yml)
+[22:41:04] [Server thread/INFO]: [MinerTrack] Loaded group configuration: nether (nether.yml)
+[22:41:04] [Server thread/INFO]: [MinerTrack] Built world-to-group mapping from xray.worlds: {minecraft:overworld=overworld, minecraft:the_nether=nether, minecraft:the_end=end} (default unnamed -> overworld)
+[22:41:04] [Server thread/INFO]: [MinerTrack] Loaded group configurations (3 active):
+[22:41:04] [Server thread/INFO]: [MinerTrack]  - nether: worlds=[minecraft:the_nether], patterns=[]
+[22:41:04] [Server thread/INFO]: [MinerTrack]  - end: worlds=[minecraft:the_end], patterns=[]
+[22:41:04] [Server thread/INFO]: [MinerTrack]  - overworld: worlds=[minecraft:overworld], patterns=[]
+[22:41:04] [Server thread/INFO]: [MinerTrack] Default unnamed group (all_unnamed_world): overworld
+[22:41:04] [Server thread/WARN]: [MinerTrack] Could not save de.yml to plugins/MinerTrack/Translations/de.yml because de.yml already exists.
+[22:41:04] [Server thread/WARN]: [MinerTrack] Could not save fr.yml to plugins/MinerTrack/Translations/fr.yml because fr.yml already exists.
+[22:41:04] [Server thread/WARN]: [MinerTrack] Could not save ru.yml to plugins/MinerTrack/Translations/ru.yml because ru.yml already exists.
+[22:41:04] [Server thread/WARN]: [MinerTrack] Could not save zh_cn.yml to plugins/MinerTrack/Translations/zh_cn.yml because zh_cn.yml already exists.
+[22:41:04] [Server thread/INFO]: [MinerTrack] Core initialized for version 2.1.1.1
+[22:41:04] [Server thread/INFO]: ----[MinerTrack v2.1.1.1 ]-----------
+[22:41:04] [Server thread/INFO]: MinerTrack Anti-XRay Enabled!
+[22:41:04] [Server thread/INFO]: 
+[22:41:04] [Server thread/INFO]: Authors: Author87668
+[22:41:04] [Server thread/INFO]: Original Author: Author87668
+[22:41:04] [Server thread/INFO]: Contributors: Author87668, Zhang12334, Thomas, xiaoyueyoqwq
+[22:41:04] [Server thread/INFO]: 
+[22:41:04] [Server thread/INFO]: Thanks for your use!
+[22:41:04] [Server thread/INFO]: -----------------------------------------
+[22:41:04] [Server thread/INFO]: [MinerTrack] MinerTrack (BukkitPlatform) enabled.
+[22:41:04] [Server thread/INFO]: [SKSpawners] Enabling SKSpawners v0.2.0
+[22:41:04] [Server thread/INFO]: [SKSpawners] Loaded 1 spawners.
+[22:41:04] [Server thread/INFO]: [SKSpawners] Spawners: 7 types, 1 placed.
+[22:41:04] [Server thread/INFO]: [CollisionDisabler] Enabling CollisionDisabler v1.1
+[22:41:04] [Server thread/INFO]: [RHSignItem] Enabling RHSignItem v1.21_R10
+[22:41:04] [Server thread/INFO]:  
+[22:41:04] [Server thread/INFO]:    __          __ _              _____ _                 
+[22:41:04] [Server thread/INFO]:   /__\  /\  /\/ _(_) __ _ _ __   \_   \ |_ ___ _ __ ___  
+[22:41:04] [Server thread/INFO]:  / \// / /_/ /\ \| |/ _` | '_ \   / /\/ __/ _ \ '_ ` _ \ 
+[22:41:04] [Server thread/INFO]: / _  \/ __  / _\ \ | (_| | | | /\/ /_ | | | __/ | | | | |
+[22:41:04] [Server thread/INFO]: \/ \_/\/ /_/  \__/_|\__, |_| |_\____/  \__\___|_| |_| |_|
+[22:41:04] [Server thread/INFO]:                     |___/                                
+[22:41:04] [Server thread/INFO]:                                                 (1.21_R10)
+[22:41:04] [Server thread/INFO]: «*» Adds a personal item signature ☄️ Customizable!
+[22:41:04] [Server thread/INFO]: «*» Made with 💕 by X0R3
+[22:41:04] [Server thread/INFO]:  
+[22:41:04] [Server thread/INFO]: [SKMod] Enabling SKMod v0.1.0
+[22:41:04] [Server thread/INFO]: [SKMod] Loaded 92 punishments, 0 active mutes.
+[22:41:04] [Server thread/INFO]: [SKMod] SKMod ready - 92 punishments on record.
+[22:41:04] [Server thread/INFO]: [Tip4serv] Enabling Tip4serv v1.3.0
+[22:41:04] [Server thread/INFO]: [Tip4serv] [Tip4Serv] Using standard Bukkit scheduler
+[22:41:04] [Server thread/INFO]: [MerelyStackFix] Enabling MerelyStackFix v1.0.0
+[22:41:04] [Server thread/INFO]: [MerelyStackFix] Ordinary resource stacks are being merged automatically.
+[22:41:04] [Server thread/INFO]: [SKWipe] Enabling SKWipe v0.1.0
+[22:41:04] [Server thread/INFO]: [SKWipe] SKWipe ready.
+[22:41:04] [Server thread/INFO]: [MerelyEvents] Enabling MerelyEvents v1.0.0
+[22:41:04] [Server thread/INFO]: [MerelyEvents] MerelyEvents enabled. Use /event <points|money|trash> <duration>.
+[22:41:04] [Server thread/INFO]: [SKTags] Enabling SKTags v0.1.0
+[22:41:04] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: sksmp [0.1.0]
+[22:41:04] [Server thread/INFO]: [SKTags] SKTags ready - 21 tags.
+[22:41:04] [Server thread/INFO]: [SKShop] Enabling SKShop v0.2.0
+[22:41:04] [Server thread/INFO]: [SKShop] Shop ready: 5 categories, 64 goods.
+[22:41:04] [Server thread/INFO]: [SKItems] Enabling SKItems v0.1.0
+[22:41:04] [Server thread/INFO]: [SKItems] SKItems ready.
+[22:41:04] [Server thread/INFO]: [PlayerVaultsX] Enabling PlayerVaultsX v1.0.1
+[22:41:05] [Server thread/INFO]: [PlayerVaultsX] PlayerVaultsX enabled!
+[22:41:05] [Server thread/INFO]: [SKMsg] Enabling SKMsg v0.2.0
+[22:41:05] [Server thread/INFO]: [voicechat] Enabling voicechat v2.6.21
+[22:41:05] [Server thread/INFO]: [voicechat] Initializing compatibility for version 26.2.build.84-stable
+[22:41:05] [Server thread/INFO]: [voicechat] Compatibility version 20
+[22:41:05] [Server thread/INFO]: [voicechat] Successfully initialized commodore command completion
+[22:41:05] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: voicechat [2.6.21]
+[22:41:05] [Server thread/INFO]: [voicechat] Successfully registered PlaceholderAPI expansion
+[22:41:05] [Server thread/INFO]: [voicechat] Successfully added ViaVersion mappings
+[22:41:05] [Server thread/INFO]: [MerelyPack] Enabling MerelyPack v1.0.0
+[22:41:05] [Server thread/INFO]: [LP] Another command is being executed, waiting for it to finish...
+[22:41:05] [Server thread/INFO]: [LP] Another command is being executed, waiting for it to finish...
+[22:41:05] [Server thread/INFO]: [LP] Another command is being executed, waiting for it to finish...
+[22:41:05] [Server thread/INFO]: [LP] Another command is being executed, waiting for it to finish...
+[22:41:05] [Server thread/INFO]: [LP] Another command is being executed, waiting for it to finish...
+[22:41:05] [Server thread/INFO]: [LP] Another command is being executed, waiting for it to finish...
+[22:41:05] [Server thread/INFO]: [LP] Another command is being executed, waiting for it to finish...
+[22:41:05] [Server thread/INFO]: [LP] Another command is being executed, waiting for it to finish...
+[22:41:05] [Server thread/INFO]: [LP] Another command is being executed, waiting for it to finish...
+[22:41:05] [Server thread/INFO]: [LP] Another command is being executed, waiting for it to finish...
+[22:41:05] [Server thread/INFO]: [LP] Another command is being executed, waiting for it to finish...
+[22:41:05] [Server thread/INFO]: [MerelyPack] MerelyPack ready - forcing rank icons pack on join.
+[22:41:05] [Server thread/INFO]: [SKRtp] Enabling SKRtp v0.2.0
+[22:41:05] [Server thread/INFO]: [SKRtp] Random teleport ready - 3 destination world(s), pool size 20, duel queue on.
+[22:41:05] [Server thread/INFO]: [DeluxeMenus] Enabling DeluxeMenus v1.14.1-Release
+[22:41:05] [Server thread/INFO]: [DeluxeMenus] Successfully hooked into PlaceholderAPI!
+[22:41:05] [luckperms-command-executor/INFO]: [LP] member had prefix '' set at a priority of 10 in context global.
+[22:41:05] [luckperms-command-executor/INFO]: [LP] knight had prefix '' set at a priority of 20 in context global.
+[22:41:05] [luckperms-command-executor/INFO]: [LP] warrior had prefix '' set at a priority of 30 in context global.
+[22:41:05] [luckperms-command-executor/INFO]: [LP] macer had prefix '' set at a priority of 40 in context global.
+[22:41:05] [luckperms-command-executor/INFO]: [LP] prime had prefix '' set at a priority of 50 in context global.
+[22:41:05] [luckperms-command-executor/INFO]: [LP] media had prefix '' set at a priority of 60 in context global.
+[22:41:05] [luckperms-command-executor/INFO]: [LP] partner had prefix '' set at a priority of 70 in context global.
+[22:41:05] [luckperms-command-executor/INFO]: [LP] helper had prefix '' set at a priority of 80 in context global.
+[22:41:05] [luckperms-command-executor/INFO]: [LP] mod had prefix '' set at a priority of 90 in context global.
+[22:41:05] [luckperms-command-executor/INFO]: [LP] owner had prefix '' set at a priority of 100 in context global.
+[22:41:05] [luckperms-command-executor/INFO]: [LP] admin had prefix '' set at a priority of 95 in context global.
+[22:41:05] [luckperms-command-executor/INFO]: [LP] clipper (CLIPPER) had prefix '' set at a priority of 55 in context global.
+[22:41:05] [Server thread/INFO]: [DeluxeMenus] Successfully hooked into Vault!
+[22:41:05] [Server thread/INFO]: [DeluxeMenus] 4 GUI menus loaded!
+[22:41:05] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: deluxemenus [1.14.1-Release]
+[22:41:05] [Server thread/INFO]: [DeluxeMenus] You are running the latest version of DeluxeMenus!
+[22:41:05] [Server thread/INFO]: [SimplePlayerUtils] Enabling SimplePlayerUtils v1.0
+[22:41:05] [Server thread/ERROR]: [SimplePlayerUtils] Purpur classes required for purpur-specific functions were not found on your server. The plugin may not perform as intended. Please use updated purpur for intended results.
+[22:41:05] [Server thread/ERROR]: [SimplePlayerUtils] Both purpur and placeholder API are needed for Simple Player Utils placeholders, placeholders will be unusable until both of these are present
+[22:41:05] [Server thread/INFO]: [AhPriceHover] Enabling AhPriceHover v1.4.0
+[22:41:05] [Server thread/INFO]: [AhPriceHover] AH lore sync enabled.
+[22:41:05] [Server thread/INFO]: [SKEffects] Enabling SKEffects v0.1.0
+[22:41:05] [Server thread/INFO]: [SKEffects] SKEffects ready.
+[22:41:05] [Server thread/INFO]: [SKSell] Enabling SKSell v0.2.1
+[22:41:05] [Server thread/INFO]: [SKSell] Auto-pricing added 1178 items.
+[22:41:05] [Server thread/WARN]: [SKSell] prices.yml: 1 unknown item name(s) skipped, first few: KELP_PLANT
+[22:41:05] [Server thread/INFO]: [SKSell] Prices loaded: 1374 items in 9 categories.
+[22:41:05] [Server thread/INFO]: [SKSell] Loaded sell data for 37 players.
+[22:41:05] [Server thread/INFO]: [SKSell] SKSell ready - 1374 priced items in 9 categories.
+[22:41:05] [Server thread/INFO]: [SKAnnounce] Enabling SKAnnounce v0.1.0
+[22:41:05] [Server thread/INFO]: [SKAnnounce] SKAnnounce ready - 6 timed announcements.
+[22:41:05] [Server thread/INFO]: [SKCommands] Enabling SKCommands v0.1.0
+[22:41:05] [Server thread/INFO]: [SKCommands] SKCommands ready - 95 commands visible to players.
+[22:41:05] [Server thread/INFO]: [KillRewards] Enabling KillRewards v1.1
+[22:41:05] [Server thread/INFO]: [spark] Starting background profiler...
+[22:41:06] [Server thread/INFO]: [PlaceholderAPI] Placeholder expansion registration initializing...
+[22:41:06] [Server thread/INFO]: 0 placeholder hook(s) registered!
+[22:41:06] [Server thread/INFO]: Starting remote control listener
+[22:41:06] [Server thread/INFO]: Thread RCON Listener started
+[22:41:06] [Server thread/INFO]: RCON running on 144.91.119.134:27575
+[22:41:06] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[22:41:06] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[22:41:06] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[22:41:06] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[22:41:06] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[22:41:06] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[22:41:06] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[22:41:06] [Server thread/INFO]: Running delayed init tasks
+[22:41:06] [Craft Scheduler Thread - 8 - ViaVersion/INFO]: [ViaVersion] Finished mapping loading, shutting down loader executor.
+[22:41:06] [Server thread/INFO]: [com.fastasyncworldedit.bukkit.regions.WorldGuardFeature] Plugin 'WorldGuard' found. Using it now.
+[22:41:06] [Server thread/INFO]: [com.fastasyncworldedit.bukkit.FaweBukkit] Attempting to use plugin 'WorldGuard'
+[22:41:06] [Server thread/INFO]: [Skript]     Loaded regions hook for WorldGuard. Please note that Skript's region hooks are deprecated and will be removed in a future release. For WorldGuard support, we recommend using skript-worldguard: https://github.com/SkriptLang/skript-worldguard
+[22:41:06] [Server thread/INFO]: [Skript] Loading variables...
+[22:41:06] [Craft Scheduler Thread - 10 - GrimAC/INFO]: New GrimAC version found! Version 2.3.74-8b9adcd is available to be downloaded here: https://modrinth.com/plugin/grimac
+[22:41:06] [Server thread/INFO]: [Skript] Loaded 388 variables in 0.0 seconds
+[22:41:06] [Craft Scheduler Thread - 5 - BlueSlimeCore/INFO]: [Blue Slime Core]  
+[22:41:06] [Craft Scheduler Thread - 5 - BlueSlimeCore/INFO]: [Blue Slime Core] [Update Checker] Found a possible update for plugin 'BlueSlimeCore'.
+[22:41:06] [Craft Scheduler Thread - 5 - BlueSlimeCore/INFO]: [Blue Slime Core] [Update Checker] Local Version: 2.9.7.482
+[22:41:06] [Craft Scheduler Thread - 5 - BlueSlimeCore/INFO]: [Blue Slime Core] [Update Checker] Remote Version: 2.9.9.529
+[22:41:06] [Craft Scheduler Thread - 5 - BlueSlimeCore/INFO]: [Blue Slime Core] [Update Checker] Download Link: https://hangar.papermc.io/SirBlobman/BlueSlimeCore
+[22:41:08] [Server thread/INFO]: [Skript] Line 6: (ah-perms.sk)
+[22:41:08] [Server thread/INFO]:     A command with the name /ahhelp is already defined in ah-help.sk
+[22:41:08] [Server thread/INFO]:     Line: command /ahhelp:
+[22:41:08] [Server thread/INFO]:  
+[22:41:08] [Server thread/INFO]: [Skript] Line 3: (creator-perms.sk)
+[22:41:08] [Server thread/INFO]:     A command with the name /fixcreatorperms is already defined in creator-perms-a.sk
+[22:41:08] [Server thread/INFO]:     Line: command /fixcreatorperms:
+[22:41:08] [Server thread/INFO]:  
+[22:41:08] [Server thread/INFO]: [Skript] Line 556: (combat-safezone.sk)
+[22:41:08] [Server thread/INFO]:     an entity cannot be saved. That is, the contents of the variable {mmcombat::lasthit::%UUID of the attacked entity%} will be lost when the server stops.
+[22:41:08] [Server thread/INFO]:     Line: set {mmcombat::lasthit::%uuid of victim%} to attacker
+[22:41:08] [Server thread/INFO]:  
+[22:41:08] [Server thread/INFO]: [media.sk] [MerelyMe] media.sk disabled — use SKInfo /media menu.
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: Unknown dimension 'minecraft:world'
+[22:41:08] [Server thread/INFO]: POI » POI v5 loaded. Containers: 26
+[22:41:08] [Server thread/INFO]: [Skript] Loaded 34 scripts with a total of 113 structures in 2.23 seconds
+[22:41:08] [Server thread/INFO]: [Skript] Finished loading.
+[22:41:08] [Server thread/INFO]: Done (52.458s)! For help, type "help"
+[22:41:08] [Server thread/INFO]: [voicechat] Loading plugins
+[22:41:08] [Server thread/INFO]: [voicechat] Loaded 0 plugin(s)
+[22:41:08] [Server thread/INFO]: [voicechat] Initializing plugins
+[22:41:08] [Server thread/INFO]: [voicechat] Initialized 0 plugin(s)
+[22:41:08] [VoiceChatServerThread/INFO]: [voicechat] Using server-ip as bind address: 144.91.119.134
+[22:41:08] [VoiceChatServerThread/INFO]: [voicechat] Voice host is '144.91.119.134'
+[22:41:08] [VoiceChatServerThread/INFO]: [voicechat] Voice chat server started at 144.91.119.134:27585
+[22:41:08] [Server thread/INFO]: PowerGang687 (/91.137.112.160:61643) lost connection: Disconnected
+[22:41:08] [Server thread/INFO]: ImSoSalsaSauce (/91.145.60.11:52986) lost connection: Disconnected
+[22:41:08] [Server thread/INFO]: Ced09 (/81.167.233.25:55175) lost connection: Disconnected
+[22:41:08] [Paper Async Task Handler Thread - 1/INFO]: *** Currently you are 37 builds behind ***
+[22:41:08] [Paper Async Task Handler Thread - 1/INFO]: *** It is highly recommended to download the latest build from https://papermc.io/downloads/paper ***
+[22:41:10] [User Authenticator #0/INFO]: UUID of player MerelyMe is 036bd293-8996-431d-b18f-ca8d391986e8
+[22:41:10] [Server thread/INFO]: [HorriblePlayerLoginEventHack] You have plugins listening to the PlayerLoginEvent, this will cause re-configuration APIs to be unavailable: [LuckPerms, DeluxeMenus, WorldGuard]
+[22:41:11] [User Authenticator #1/INFO]: UUID of player ImSoSalsaSauce is a10b4ae6-c03a-4ef0-bdde-eaccdc256911
+[22:41:12] [Server thread/INFO]: Nothing changed. The world border is already centered there
+[22:41:12] [Server thread/INFO]: Nothing changed. The world border is already that size
+[22:41:12] [Server thread/INFO]: Nothing changed. The world border is already centered there
+[22:41:12] [Server thread/INFO]: Nothing changed. The world border is already that size
+[22:41:12] [Server thread/INFO]: Nothing changed. The world border is already centered there
+[22:41:12] [Server thread/INFO]: Nothing changed. The world border is already that size
+[22:41:12] [Server thread/INFO]: [Border] Set to 15000x15000 on all worlds.
+[22:41:13] [TAB Belowname Objective Thread/INFO]: [SKCore] Economy hooked: SKEconomy
+[22:41:13] [Server thread/INFO]: MerelyMe[/148.71.48.144:35371] logged in with entity id 1 at ([minecraft:overworld]-168.4575357951472, 61.99183158111983, 265.1234861454227)
+[22:41:13] [Server thread/INFO]: [voicechat] Received secret request of MerelyMe (20)
+[22:41:13] [Server thread/INFO]: [voicechat] Sent secret to MerelyMe
+[22:41:13] [VoiceChatPacketProcessingThread/INFO]: [voicechat] Successfully authenticated player 036bd293-8996-431d-b18f-ca8d391986e8
+[22:41:13] [Server thread/INFO]: ImSoSalsaSauce[/91.145.60.11:63526] logged in with entity id 3 at ([minecraft:overworld]202.69999998807907, 72.41999998688698, 168.69999998807907)
+[22:41:13] [Server thread/INFO]: [voicechat] Received secret request of ImSoSalsaSauce (20)
+[22:41:13] [Server thread/INFO]: [voicechat] Sent secret to ImSoSalsaSauce
+[22:41:13] [VoiceChatPacketProcessingThread/INFO]: [voicechat] Successfully authenticated player a10b4ae6-c03a-4ef0-bdde-eaccdc256911
+[22:41:13] [luckperms-command-executor/INFO]: [LP] merelyme already inherits from member in context global.
+[22:41:14] [luckperms-command-executor/INFO]: [LP] imsosalsasauce already inherits from member in context global.
+[22:41:14] [VoiceChatPacketProcessingThread/INFO]: [voicechat] Successfully validated connection of player 036bd293-8996-431d-b18f-ca8d391986e8
+[22:41:14] [VoiceChatPacketProcessingThread/INFO]: [voicechat] Player MerelyMe (036bd293-8996-431d-b18f-ca8d391986e8) successfully connected to voice chat

@@ -1,0 +1,84 @@
+# LuckPerms rank perks — só LP, sem lógica extra. OP: /fixrankperms
+
+command /fixrankperms:
+	permission: op
+	trigger:
+		send "&b&lRANKS &8» &7A aplicar perks LuckPerms..." to player
+
+		# Cadeia de ranks
+		execute console command "lp group knight parent add member"
+		execute console command "lp group warrior parent add knight"
+		execute console command "lp group macer parent add warrior"
+		execute console command "lp group prime parent add macer"
+
+		# Todos — /enderchest + /sign
+		execute console command "lp group default permission set sksmp.echest true"
+		execute console command "lp group member permission set sksmp.echest true"
+		execute console command "lp group default permission set rhsignitem.command.sign true"
+		execute console command "lp group default permission set rhsignitem.command.sign.sign true"
+		execute console command "lp group default permission set rhsignitem.command.sign.delete true"
+		execute console command "lp group member permission set rhsignitem.command.sign true"
+		execute console command "lp group member permission set rhsignitem.command.sign.sign true"
+		execute console command "lp group member permission set rhsignitem.command.sign.delete true"
+
+		# Member
+		execute console command "lp group member permission set sksmp.homes.2 true"
+		execute console command "lp group member permission set sksmp.kit.member true"
+
+		# Knight+ — /craft
+		execute console command "lp group knight permission set sksmp.craft true"
+		execute console command "lp group warrior permission set sksmp.craft true"
+		execute console command "lp group macer permission set sksmp.craft true"
+		execute console command "lp group prime permission set sksmp.craft true"
+		execute console command "lp group media permission set sksmp.craft true"
+
+		# Knight extras
+		execute console command "lp group knight permission set sksmp.kit.knight true"
+		execute console command "lp group knight permission set sksmp.homes.3 true"
+		execute console command "lp group knight permission set skauction.listings.14 true"
+		execute console command "lp group knight permission set sksell.multiplier.10 true"
+		execute console command "lp group knight permission set playervaults.amount.2 true"
+
+		# Warrior+ — /grindstone
+		execute console command "lp group warrior permission set sksmp.grindstone true"
+		execute console command "lp group macer permission set sksmp.grindstone true"
+		execute console command "lp group prime permission set sksmp.grindstone true"
+		execute console command "lp group media permission set sksmp.grindstone true"
+
+		# Warrior extras
+		execute console command "lp group warrior permission set sksmp.kit.warrior true"
+		execute console command "lp group warrior permission set sksmp.homes.4 true"
+		execute console command "lp group warrior permission set skauction.listings.18 true"
+		execute console command "lp group warrior permission set sksell.multiplier.10 true"
+		execute console command "lp group warrior permission set playervaults.amount.3 true"
+
+		# Macer+ — /anvil + /smith
+		execute console command "lp group macer permission set sksmp.anvil true"
+		execute console command "lp group macer permission set merelysmith.use true"
+		execute console command "lp group prime permission set sksmp.anvil true"
+		execute console command "lp group prime permission set merelysmith.use true"
+		execute console command "lp group media permission set sksmp.anvil true"
+		execute console command "lp group media permission set merelysmith.use true"
+
+		# Macer extras
+		execute console command "lp group macer permission set sksmp.kit.macer true"
+		execute console command "lp group macer permission set sksmp.homes.5 true"
+		execute console command "lp group macer permission set skauction.listings.22 true"
+		execute console command "lp group macer permission set sksell.multiplier.40 true"
+		execute console command "lp group macer permission set skkeyall.multiplier.2 true"
+		execute console command "lp group macer permission set playervaults.amount.4 true"
+
+		# Prime extras
+		execute console command "lp group prime permission set sksmp.kit.prime true"
+		execute console command "lp group prime permission set sksmp.homes.7 true"
+		execute console command "lp group prime permission set skauction.listings.30 true"
+		execute console command "lp group prime permission set sksell.multiplier.50 true"
+		execute console command "lp group prime permission set skkeyall.multiplier.2 true"
+		execute console command "lp group prime permission set skrtp.bypass-cooldown true"
+		execute console command "lp group prime permission set skrtp.bypass-warmup true"
+		execute console command "lp group prime permission set sktpa.instant true"
+		execute console command "lp group prime permission set skmsg.colors true"
+		execute console command "lp group prime permission set playervaults.amount.5 true"
+
+		execute console command "lp sync"
+		send "&b&lRANKS &8» &aPerks LP OK. /enderchest+/sign todos | /craft knight+ | /grindstone warrior+ | /anvil+/smith macer+." to player

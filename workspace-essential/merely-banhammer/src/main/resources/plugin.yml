@@ -1,0 +1,18 @@
+name: MerelyBanHammer
+version: 1.0.0
+main: com.merelyme.banhammer.MerelyBanHammer
+api-version: '1.21'
+author: MerelyMeSMP
+description: A one-hit staff Ban Hammer backed by SKMod tempbans.
+depend: [SKMod]
+
+commands:
+  banhammer:
+    description: Arm a one-hit seven-day Ban Hammer
+    usage: /banhammer <reason>
+    permission: merelybanhammer.use
+
+permissions:
+  merelybanhammer.use:
+    description: Create and use the seven-day Ban Hammer
+    default: op

@@ -1,0 +1,29 @@
+name: SKSpawners
+version: 0.2.0
+main: net.skstudios.spawners.SpawnersPlugin
+api-version: '1.21'
+authors: [EconomySMP]
+description: Virtual spawners that generate loot into their own storage.
+
+# SKCore carries the player database, the menu framework and the config
+# loader. Without it this plugin has nothing to stand on.
+depend: [SKCore]
+
+commands:
+  spawners:
+    description: Give and manage virtual spawners
+    permission: skspawners.admin
+    usage: /spawners <give|reload> ...
+
+permissions:
+  skspawners.admin:
+    description: Give spawners, reload spawner types
+    default: op
+  skspawners.place:
+    description: Place virtual spawners
+    default: true
+  skspawners.sell:
+    description: Use the sell buttons (only checked when required in settings)
+    default: true
+
+sk-framework: 2

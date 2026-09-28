@@ -1,0 +1,143 @@
+# =====================================================================
+#  SPECIAL CRATE
+# =====================================================================
+#  The rare crate - fewer, bigger rewards. Same format as normal.yml;
+#  every option is documented there.
+#  Edit in-game with /crates edit special
+# =====================================================================
+
+# --- identity --------------------------------------------------------
+
+display-name: '&#00B5FF&lSPECIAL CRATE'
+
+description:
+  - '&7The rare crate.'
+  - '&7Big rewards, big decisions.'
+
+# The old Skript setup stored these keys under the type "wind" - the
+# importer kept that name, so this crate keeps spending them. Change
+# it only if you never imported old data.
+key-id: wind
+
+key-name: 'Special'
+
+keys-per-open: 1
+
+permission: ''
+
+colour: '&#00B5FF'
+
+enabled: true
+
+cooldown-seconds: default
+
+lid-animation: true
+
+menu-title: '&f'
+
+
+# --- where it stands -------------------------------------------------
+# EXAMPLE coordinates - replace with your spawn's. Look at the block
+# and run /crates setloc special to add it without typing.
+# EXAMPLE coordinates - point these at YOUR crate blocks, or stand in
+# front of one and run /crates setloc special instead of editing here.
+locations:
+  - 'Spawn;0;1;-16'
+
+
+# --- what it offers --------------------------------------------------
+rewards:
+
+  # Taken from the retired -crates.sk, which did not define these in code at
+  # all - it read them out of a barrel at Spawn 0/-30/-28 and handed over
+  # whatever was in the slot. They are reproduced here so the crate no longer
+  # depends on a block in the world surviving.
+  #
+  # THE NAMES ARE LOAD-BEARING
+  # scripts/specialitems.sk gives these items their behaviour and finds them
+  # by matching the display name - "SPECIAL DRILL", "SPECIAL SELL AXE" and so
+  # on. Rename one here and it becomes an ordinary tool with a lore line that
+  # lies. The "N uses" lines are flavour: durability is the real limit.
+
+  drill:
+    slot: 10
+    display:
+      material: NETHERITE_PICKAXE
+      hide-attributes: false
+      unbreakable: true
+      name: '&#00B5FF&lSPECIAL DRILL'
+      lore:
+        - '&7Breaks 9 blocks at once'
+        - '&73000 uses'
+      enchantments: ['EFFICIENCY:5']
+
+  shovel:
+    slot: 11
+    display:
+      material: NETHERITE_SHOVEL
+      hide-attributes: false
+      unbreakable: true
+      name: '&#00B5FF&lSPECIAL SHOVEL'
+      lore:
+        - '&7Breaks 9 blocks at once'
+        - '&73000 uses'
+      enchantments: ['EFFICIENCY:5']
+
+  axe:
+    slot: 12
+    display:
+      material: NETHERITE_AXE
+      hide-attributes: false
+      unbreakable: true
+      name: '&#00B5FF&lSPECIAL AXE'
+      lore:
+        - '&7Chops down whole trees in one blow'
+        - '&71000 uses'
+      enchantments: ['EFFICIENCY:5']
+
+  sponge:
+    slot: 13
+    display:
+      material: SPONGE
+      hide-attributes: false
+      unbreakable: true
+      name: '&#00B5FF&lSPECIAL SPONGE'
+      lore:
+        - '&7Absorbs lava and water'
+        - '&7500 uses'
+      enchantments: ['UNBREAKING:3']
+
+  sell_axe:
+    slot: 14
+    display:
+      material: DIAMOND_AXE
+      hide-attributes: false
+      unbreakable: true
+      name: '&#00B5FF&lSPECIAL SELL AXE'
+      lore:
+        - '&7Instantly Sells All Items in A Chest'
+        - '&7500 uses'
+      enchantments: ['EFFICIENCY:5', 'UNBREAKING:3', 'MENDING:1']
+
+  rocket:
+    slot: 15
+    display:
+      material: FIREWORK_ROCKET
+      hide-attributes: false
+      unbreakable: true
+      name: '&#00B5FF&lSPECIAL ROCKET'
+      lore:
+        - '&7Reusable rocket'
+        - '&75000 uses'
+
+  bucket:
+    slot: 16
+    display:
+      material: WATER_BUCKET
+      hide-attributes: false
+      unbreakable: true
+      name: '&#00B5FF&lSPECIAL BUCKET'
+      lore:
+        - '&7Never runs out of water'
+        - '&7750 uses'
+      enchantments: ['UNBREAKING:3']

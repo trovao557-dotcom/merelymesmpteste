@@ -1,0 +1,467 @@
+# =====================================================================
+#  Shop - the catalogue
+# =====================================================================
+#  Everything the shop SELLS lives in this file: the categories, their
+#  menus, the products, the prices and where each one sits.
+#  How the shop BEHAVES is in settings.yml, and the confirmation screen
+#  is in menu-buy.yml.
+# =====================================================================
+
+
+# ---------------------------------------------------------------------
+#  The shared look of every product button
+# ---------------------------------------------------------------------
+defaults:
+
+  name: '&f%item%'
+
+  money-lore:
+    - '&fPrice: &#71F521%price_full%'
+    - '&e'
+    - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to buy'
+
+  points-lore:
+    - '&fPrice: &#00E0FF%price_full%'
+    - '&e'
+    - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to buy'
+
+  money-label: '$'
+  points-label: 'Points'
+
+  money-format: '$%price%'
+  points-format: '%price% Points'
+
+
+# ---------------------------------------------------------------------
+#  The front page
+# ---------------------------------------------------------------------
+main-menu:
+
+  menu:
+    title: '&f'
+    filler-symbol: '-'
+    layout:
+      - '---------'
+      - '--GNFSR--'
+      - '---------'
+
+  items:
+
+    close:
+      material: BARRIER
+      name: '&#FF2121&lCLOSE'
+      lore:
+        - '&#FF2121▶ &fClick to close the shop'
+      symbol: 'q'
+      action: close
+
+
+# ---------------------------------------------------------------------
+#  The categories
+# ---------------------------------------------------------------------
+categories:
+
+  # ===================================================================
+  # 1. GEAR
+  # ===================================================================
+  gear:
+    label: 'Gear'
+    symbol: 'G'
+    currency: money
+    permission: ''
+
+    icon:
+      material: GOLDEN_APPLE
+      name: '&#00FFD6&lGEAR & PvP'
+      lore:
+        - '&7Description'
+        - '&f'
+        - '&#00FFD6Information:'
+        - '&fWeapons, Armor & Combat Essentials'
+        - '&fDominate the Mace PvP arena!'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+
+    menu:
+      title: '&f'
+      filler-symbol: '-'
+      goods-symbol: 'x'
+      layout:
+        - '---------'
+        - '-xxxxxxx-'
+        - '-xxxxxxx-'
+        - 'b--------'
+
+    items:
+      back:
+        material: RED_STAINED_GLASS_PANE
+        name: '&#FF2121&lBACK'
+        lore:
+          - '&#FF2121▶ &fClick to go back'
+        symbol: 'b'
+        action: back
+
+    goods:
+      # --- WEAPONS & TOOLS ---
+      mace:
+        material: MACE
+        price: 350
+      diamond_sword:
+        material: DIAMOND_SWORD
+        price: 250
+      diamond_pickaxe:
+        material: DIAMOND_PICKAXE
+        price: 150
+      bow:
+        material: BOW
+        price: 450
+      crossbow:
+        material: CROSSBOW
+        price: 550
+      shield:
+        material: SHIELD
+        price: 60
+
+      # --- COMBAT UTILITIES ---
+      arrow:
+        material: ARROW
+        price: 15
+      wind_charge:
+        material: WIND_CHARGE
+        price: 25
+      ender_pearl:
+        material: ENDER_PEARL
+        price: 60
+        max-amount: 16
+      rocket_nivel_1:
+        material: FIREWORK_ROCKET
+        label: 'Rocket Level 1'
+        price: 800
+      experience_bottle:
+        material: EXPERIENCE_BOTTLE
+        price: 400
+      ender_chest:
+        material: ENDER_CHEST
+        price: 6000
+
+      # --- PROVISIONS / BUFFS ---
+      golden_apple:
+        material: GOLDEN_APPLE
+        price: 400
+      golden_carrot:
+        material: GOLDEN_CARROT
+        price: 300
+
+  # ===================================================================
+  # 2. NATURAL
+  # ===================================================================
+  natural:
+    label: 'Natural'
+    symbol: 'N'
+    currency: money
+    permission: ''
+
+    icon:
+      material: KELP
+      name: '&#27F123&lNATURAL & SEEDS'
+      lore:
+        - '&7Description'
+        - '&f'
+        - '&#27F123Information:'
+        - '&fCrops, Normal Seeds & Nature Items'
+        - '&fHigh prices to balance server economy'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+
+    menu:
+      title: '&f'
+      filler-symbol: '-'
+      goods-symbol: 'x'
+      layout:
+        - '---------'
+        - '-xxxxxxx-'
+        - '-xxxxxxx-'
+        - '-xxxxxxx-'
+        - 'b--------'
+
+    items:
+      back:
+        material: RED_STAINED_GLASS_PANE
+        name: '&#FF2121&lBACK'
+        lore:
+          - '&#FF2121▶ &fClick to go back'
+        symbol: 'b'
+        action: back
+
+    goods:
+      kelp:
+        material: KELP
+        price: 100
+      cactus:
+        material: CACTUS
+        price: 150
+      bamboo:
+        material: BAMBOO
+        price: 100
+      potato:
+        material: POTATO
+        price: 200
+      carrot:
+        material: CARROT
+        price: 200
+      pumpkin:
+        material: PUMPKIN
+        price: 300
+      sweet_berries:
+        material: SWEET_BERRIES
+        price: 200
+      glow_berries:
+        material: GLOW_BERRIES
+        price: 400
+      chorus_fruit:
+        material: CHORUS_FRUIT
+        price: 800
+      wheat_seeds:
+        material: WHEAT_SEEDS
+        price: 100
+      sugar_cane:
+        material: SUGAR_CANE
+        price: 200
+      sea_pickle:
+        material: SEA_PICKLE
+        price: 500
+      lily_pad:
+        material: LILY_PAD
+        price: 300
+      nether_wart:
+        material: NETHER_WART
+        price: 600
+
+  # ===================================================================
+  # 3. FOOD
+  # ===================================================================
+  food:
+    label: 'Food'
+    symbol: 'F'
+    currency: money
+    permission: ''
+
+    icon:
+      material: COOKED_BEEF
+      name: '&#FF8600&lFOOD'
+      lore:
+        - '&7Description'
+        - '&f'
+        - '&#FF8600Information:'
+        - '&fHigh tier food & provisions'
+        - '&fNever run out of energy in combat'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+
+    menu:
+      title: '&f'
+      filler-symbol: '-'
+      goods-symbol: 'x'
+      layout:
+        - '---------'
+        - '-xxxxxxx-'
+        - '-xxxxxxx-'
+        - 'b--------'
+
+    items:
+      back:
+        material: RED_STAINED_GLASS_PANE
+        name: '&#FF2121&lBACK'
+        lore:
+          - '&#FF2121▶ &fClick to go back'
+        symbol: 'b'
+        action: back
+
+    goods:
+      golden_apple:
+        material: GOLDEN_APPLE
+        price: 400
+      golden_carrot:
+        material: GOLDEN_CARROT
+        price: 300
+      cooked_beef:
+        material: COOKED_BEEF
+        price: 150
+      cooked_mutton:
+        material: COOKED_MUTTON
+        price: 150
+      cooked_chicken:
+        material: COOKED_CHICKEN
+        price: 120
+      pumpkin_pie:
+        material: PUMPKIN_PIE
+        price: 200
+      cookie:
+        material: COOKIE
+        price: 80
+      cake:
+        material: CAKE
+        price: 1000
+      milk:
+        material: MILK_BUCKET
+        label: 'Milk'
+        price: 500
+
+  # ===================================================================
+  # 4. STORAGE
+  # ===================================================================
+  storage:
+    label: 'Storage'
+    symbol: 'S'
+    currency: money
+    permission: ''
+
+    icon:
+      material: CHEST
+      name: '&#FFD900&lSTORAGE'
+      lore:
+        - '&7Description'
+        - '&f'
+        - '&#FFD900Information:'
+        - '&fChests, Building Blocks & Shulker Boxes'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+
+    menu:
+      title: '&f'
+      filler-symbol: '-'
+      goods-symbol: 'x'
+      layout:
+        - '---------'
+        - '-xxxxxxx-'
+        - '-xxxxxxx-'
+        - 'b--------'
+
+    items:
+      back:
+        material: RED_STAINED_GLASS_PANE
+        name: '&#FF2121&lBACK'
+        lore:
+          - '&#FF2121▶ &fClick to go back'
+        symbol: 'b'
+        action: back
+
+    goods:
+      oak_log:
+        material: OAK_LOG
+        price: 20
+      cobblestone:
+        material: COBBLESTONE
+        price: 20
+      cobbled_deepslate:
+        material: COBBLED_DEEPSLATE
+        price: 20
+      chest:
+        material: CHEST
+        price: 200
+      decorated_pot:
+        material: DECORATED_POT
+        price: 300
+      flower_pot:
+        material: FLOWER_POT
+        price: 150
+      armor_stand:
+        material: ARMOR_STAND
+        price: 400
+      bookshelf:
+        material: BOOKSHELF
+        price: 800
+      barrel:
+        material: BARREL
+        price: 250
+      ender_chest:
+        material: ENDER_CHEST
+        price: 6000
+      shulker_box:
+        material: SHULKER_BOX
+        price: 12000
+        max-amount: 1
+
+  # ===================================================================
+  # 5. REDSTONE
+  # ===================================================================
+  redstone:
+    label: 'Redstone'
+    symbol: 'R'
+    currency: money
+    permission: ''
+
+    icon:
+      material: REDSTONE
+      name: '&#FF0000&lREDSTONE'
+      lore:
+        - '&7Description'
+        - '&f'
+        - '&#FF0000Information:'
+        - '&fBasic mechanisms & Redstone parts'
+        - '&fHigh pricing protection for farms'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+
+    menu:
+      title: '&f'
+      filler-symbol: '-'
+      goods-symbol: 'x'
+      layout:
+        - '---------'
+        - '-xxxxxxx-'
+        - '-xxxxxxx-'
+        - 'b--------'
+
+    items:
+      back:
+        material: RED_STAINED_GLASS_PANE
+        name: '&#FF2121&lBACK'
+        lore:
+          - '&#FF2121▶ &fClick to go back'
+        symbol: 'b'
+        action: back
+
+    goods:
+      slime_ball:
+        material: SLIME_BALL
+        price: 400
+      redstone_dust:
+        material: REDSTONE
+        price: 100
+      redstone_torch:
+        material: REDSTONE_TORCH
+        price: 120
+      repeater:
+        material: REPEATER
+        price: 350
+      comparator:
+        material: COMPARATOR
+        price: 450
+      piston:
+        material: PISTON
+        price: 800
+      observer:
+        material: OBSERVER
+        price: 650
+      hopper:
+        material: HOPPER
+        price: 750
+      dispenser:
+        material: DISPENSER
+        price: 300
+      dropper:
+        material: DROPPER
+        price: 200
+      redstone_lamp:
+        material: REDSTONE_LAMP
+        price: 400
+      target:
+        material: TARGET
+        price: 300
+      daylight_detector:
+        material: DAYLIGHT_DETECTOR
+        price: 350
+      tripwire_hook:
+        material: TRIPWIRE_HOOK
+        price: 150

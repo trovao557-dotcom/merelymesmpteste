@@ -1,0 +1,605 @@
+# POI refill — Skript 2.16 / Paper 26.2
+# Fixes: force-load chunks before fill (old "load chunk" did not parse → false success)
+# Persistence: Skript variables only (file API needs SkBee and was wiping list on load)
+# /poiwand /poisave /poiremove /poilist /poiclear /poirefillnow /poistatus /poiforceload
+
+options:
+	prefix: &c&lPOI &8» &f
+	interval: 3600
+	cx: -239
+	cy: 71
+	cz: 290
+
+function poiBroadcast(msg: text):
+	broadcast " "
+	broadcast "{@prefix}%{_msg}%"
+	broadcast "{@prefix}&7Coords: &fX {@cx} &7Y &f{@cy} &7Z &f{@cz}"
+	broadcast " "
+
+function poiWandItem() :: item:
+	set {_i} to blaze rod named "&c&lPOI &f&lWand"
+	set line 1 of lore of {_i} to "&7Right-click a chest/shulker to save"
+	set line 2 of lore of {_i} to "&7Shift + click = remove"
+	set line 3 of lore of {_i} to "&7Or use &f/poisave &7while looking"
+	return {_i}
+
+function poiHasWand(p: player) :: boolean:
+	if name of {_p}'s tool contains "POI":
+		return true
+	if name of offhand item of {_p} contains "POI":
+		return true
+	return false
+
+function poiBlockType(b: block) :: text:
+	if {_b} is not set:
+		return ""
+	set {_t} to "%type of {_b}%" in lower case
+	return {_t}
+
+function poiIsBox(b: block) :: boolean:
+	set {_t} to poiBlockType({_b})
+	if {_t} contains "chest":
+		return true
+	if {_t} contains "barrel":
+		return true
+	if {_t} contains "shulker":
+		return true
+	return false
+
+function poiLootKind(b: block) :: text:
+	if {_b} is yellow shulker box:
+		return "yellow"
+	if {_b} is red shulker box:
+		return "red"
+	set {_t} to poiBlockType({_b})
+	if {_t} contains "yellow":
+		if {_t} contains "shulker":
+			return "yellow"
+	if {_t} contains "red":
+		if {_t} contains "shulker":
+			return "red"
+	return "normal"
+
+function poiClearInv(inv: inventory):
+	loop 54 times:
+		set slot loop-number - 1 of {_inv} to air
+
+function poiPickNormalSlots(id: number):
+	set {_s1} to random integer between 0 and 26
+	set {_s2} to random integer between 0 and 26
+	while {_s2} is {_s1}:
+		set {_s2} to random integer between 0 and 26
+	set {_s3} to random integer between 0 and 26
+	while {_s3} is {_s1}:
+		set {_s3} to random integer between 0 and 26
+	while {_s3} is {_s2}:
+		set {_s3} to random integer between 0 and 26
+	set {_s4} to random integer between 0 and 26
+	while {_s4} is {_s1}:
+		set {_s4} to random integer between 0 and 26
+	while {_s4} is {_s2}:
+		set {_s4} to random integer between 0 and 26
+	while {_s4} is {_s3}:
+		set {_s4} to random integer between 0 and 26
+	set {poi::%{_id}%::s1} to {_s1}
+	set {poi::%{_id}%::s2} to {_s2}
+	set {poi::%{_id}%::s3} to {_s3}
+	set {poi::%{_id}%::s4} to {_s4}
+
+function poiFillNormal(inv: inventory, id: number):
+	poiClearInv({_inv})
+	if {_id} > 0:
+		if {poi::%{_id}%::s1} is not set:
+			poiPickNormalSlots({_id})
+		set {_s1} to {poi::%{_id}%::s1}
+		set {_s2} to {poi::%{_id}%::s2}
+		set {_s3} to {poi::%{_id}%::s3}
+		set {_s4} to {poi::%{_id}%::s4}
+	else:
+		set {_s1} to random integer between 0 and 26
+		set {_s2} to random integer between 0 and 26
+		while {_s2} is {_s1}:
+			set {_s2} to random integer between 0 and 26
+		set {_s3} to random integer between 0 and 26
+		while {_s3} is {_s1}:
+			set {_s3} to random integer between 0 and 26
+		while {_s3} is {_s2}:
+			set {_s3} to random integer between 0 and 26
+		set {_s4} to random integer between 0 and 26
+		while {_s4} is {_s1}:
+			set {_s4} to random integer between 0 and 26
+		while {_s4} is {_s2}:
+			set {_s4} to random integer between 0 and 26
+		while {_s4} is {_s3}:
+			set {_s4} to random integer between 0 and 26
+	set slot {_s1} of {_inv} to random integer between 2 and 4 of diamond block
+	set slot {_s2} of {_inv} to random integer between 4 and 12 of iron block
+	set slot {_s3} of {_inv} to random integer between 12 and 30 of experience bottle
+	set slot {_s4} of {_inv} to 1 totem of undying
+
+function poiFillRed(inv: inventory):
+	poiClearInv({_inv})
+	set slot 3 of {_inv} to random integer between 1 and 2 of netherite ingot
+	set slot 7 of {_inv} to random integer between 4 and 8 of diamond block
+	set slot 11 of {_inv} to poiFreshVillagerEgg(random integer between 1 and 2)
+	set slot 19 of {_inv} to random integer between 1 and 2 of totem of undying
+	set slot 23 of {_inv} to random integer between 1 and 2 of shulker shell
+
+function poiFreshVillagerEgg(amount: number) :: item:
+	# Build a new vanilla egg every refill. This intentionally carries no
+	# entity data, profession, owner or saved trade data from an old villager.
+	set {_egg} to villager spawn egg
+	set amount of {_egg} to {_amount}
+	return {_egg}
+
+function poiFillYellow(inv: inventory):
+	poiClearInv({_inv})
+	set {_e} to 1 elytra
+	enchant {_e} with unbreaking 3
+	enchant {_e} with mending 1
+	set slot 4 of {_inv} to {_e}
+	set slot 11 of {_inv} to 1 enchanted golden apple
+	set slot 13 of {_inv} to random integer between 3 and 6 of netherite ingot
+	set slot 15 of {_inv} to poiFreshVillagerEgg(random integer between 4 and 6)
+	set slot 22 of {_inv} to random integer between 10 and 20 of diamond block
+
+function poiFindId(w: text, x: number, y: number, z: number) :: number:
+	loop {poi::ids::*}:
+		set {_id} to loop-value
+		if {poi::%{_id}%::w} is {_w}:
+			if {poi::%{_id}%::x} is {_x}:
+				if {poi::%{_id}%::y} is {_y}:
+					if {poi::%{_id}%::z} is {_z}:
+						return {_id}
+	return 0
+
+function poiAddBlock(b: block) :: number:
+	if poiIsBox({_b}) is false:
+		return -1
+	set {_w} to name of world of {_b}
+	set {_x} to floor(x-coord of {_b})
+	set {_y} to floor(y-coord of {_b})
+	set {_z} to floor(z-coord of {_b})
+	if poiFindId({_w}, {_x}, {_y}, {_z}) > 0:
+		return 0
+	if {poi::next} is not set:
+		set {poi::next} to 1
+	set {_id} to {poi::next}
+	add 1 to {poi::next}
+	set {poi::%{_id}%::w} to {_w}
+	set {poi::%{_id}%::x} to {_x}
+	set {poi::%{_id}%::y} to {_y}
+	set {poi::%{_id}%::z} to {_z}
+	set {poi::%{_id}%::kind} to poiLootKind({_b})
+	add {_id} to {poi::ids::*}
+	return {_id}
+
+function poiRemoveBlock(b: block) :: boolean:
+	set {_w} to name of world of {_b}
+	set {_x} to floor(x-coord of {_b})
+	set {_y} to floor(y-coord of {_b})
+	set {_z} to floor(z-coord of {_b})
+	set {_id} to poiFindId({_w}, {_x}, {_y}, {_z})
+	if {_id} is 0:
+		return false
+	delete {poi::%{_id}%::*}
+	remove {_id} from {poi::ids::*}
+	return true
+
+# Force-load POI chunk so tile-entity inventory actually saves (Paper)
+function poiForceChunk(w: text, x: number, y: number, z: number):
+	set {_cx} to floor({_x} / 16)
+	set {_cz} to floor({_z} / 16)
+	set {_dim} to poiDimensionName({_w})
+	execute console command "execute in %{_dim}% run forceload add %{_cx}% %{_cz}%"
+
+function poiDimensionName(w: text) :: text:
+	# Stored POI data may use either a world name or a namespaced dimension.
+	# Paper's /execute in command needs the canonical dimension id.
+	if {_w} is "world":
+		return "minecraft:overworld"
+	if {_w} is "minecraft:world":
+		return "minecraft:overworld"
+	if {_w} is "world_nether":
+		return "minecraft:the_nether"
+	if {_w} is "minecraft:world_nether":
+		return "minecraft:the_nether"
+	if {_w} is "world_the_end":
+		return "minecraft:the_end"
+	if {_w} is "minecraft:world_the_end":
+		return "minecraft:the_end"
+	return {_w}
+
+function poiWorldName(w: text) :: text:
+	# The world expression uses server world names, not dimension ids.
+	if {_w} is "minecraft:overworld":
+		return "world"
+	if {_w} is "minecraft:the_nether":
+		return "world_nether"
+	if {_w} is "minecraft:the_end":
+		return "world_the_end"
+	return {_w}
+
+function poiLocOf(id: number) :: location:
+	set {_w} to poiWorldName({poi::%{_id}%::w})
+	return location at {poi::%{_id}%::x}, {poi::%{_id}%::y}, {poi::%{_id}%::z} in world named {_w}
+
+# Returns: 1 = filled, 0 = fail
+function poiFillOne(id: number) :: number:
+	set {_w} to {poi::%{_id}%::w}
+	set {_x} to {poi::%{_id}%::x}
+	set {_y} to {poi::%{_id}%::y}
+	set {_z} to {poi::%{_id}%::z}
+	if {_w} is not set:
+		return 0
+	set {_loc} to location at {_x}, {_y}, {_z} in world named {_w}
+	if {_loc} is not set:
+		return 0
+	set {_b} to block at {_loc}
+	if poiIsBox({_b}) is false:
+		return 0
+	set {_kind} to poiLootKind({_b})
+	set {poi::%{_id}%::kind} to {_kind}
+	set {_inv} to inventory of {_b}
+	if {_inv} is not set:
+		return 0
+	if {_kind} is "yellow":
+		poiFillYellow({_inv})
+	else if {_kind} is "red":
+		poiFillRed({_inv})
+	else:
+		poiFillNormal({_inv}, {_id})
+	# Verify at least one slot is not empty (catches fake unloaded inventories)
+	set {_has} to false
+	loop 27 times:
+		if slot loop-number - 1 of {_inv} is not air:
+			set {_has} to true
+			stop loop
+	if {_has} is false:
+		return 0
+	return 1
+
+command /poistatus:
+	permission: op
+	trigger:
+		send "{@prefix}&7Script &aOK &7| Containers: &f%size of {poi::ids::*}% &7| Timer: &f%{poi::secs}%s" to player
+		if poiHasWand(player) is true:
+			send "{@prefix}&7You are holding the &aPOI Wand" to player
+		else:
+			send "{@prefix}&7Use &f/poiwand &7or &f/poisave" to player
+
+command /poiwand:
+	permission: op
+	trigger:
+		give poiWandItem() to player
+		send "{@prefix}&aPOI Wand given! Right-click or use &f/poisave" to player
+
+command /poisave:
+	permission: op
+	trigger:
+		set {_b} to target block of player
+		if {_b} is not set:
+			set {_b} to player's target block
+		if {_b} is not set:
+			send "{@prefix}&cLook at a chest, barrel or shulker (closer)." to player
+			stop
+		if poiIsBox({_b}) is false:
+			send "{@prefix}&cThat is not a valid container." to player
+			stop
+		set {_id} to poiAddBlock({_b})
+		set {_x} to floor(x-coord of {_b})
+		set {_y} to floor(y-coord of {_b})
+		set {_z} to floor(z-coord of {_b})
+		set {_w} to name of world of {_b}
+		if {_id} > 0:
+			poiForceChunk({_w}, {_x}, {_y}, {_z})
+			send "{@prefix}&a&lSAVED #%{_id}% &8| &f%{poi::%{_id}%::kind}% loot &7| X%{_x}% Y%{_y}% Z%{_z}%" to player
+			send "{@prefix}&7Location saved permanently. Total: &f%size of {poi::ids::*}%" to player
+			play sound "entity.experience_orb.pickup" with volume 1 and pitch 1.5 to player
+		else if {_id} is 0:
+			send "{@prefix}&7Already saved here (X%{_x}% Y%{_y}% Z%{_z}%)." to player
+		else:
+			send "{@prefix}&cInvalid block." to player
+
+command /poiremove:
+	permission: op
+	trigger:
+		set {_b} to target block of player
+		if {_b} is not set:
+			set {_b} to player's target block
+		if {_b} is not set:
+			send "{@prefix}&cLook at the container." to player
+			stop
+		if poiRemoveBlock({_b}) is true:
+			send "{@prefix}&cRemoved! Total: &f%size of {poi::ids::*}%" to player
+		else:
+			send "{@prefix}&cNot on the list." to player
+
+command /poilist:
+	permission: op
+	trigger:
+		set {_r} to 0
+		set {_y} to 0
+		set {_n} to 0
+		loop {poi::ids::*}:
+			set {_id} to loop-value
+			add 1 to {_n}
+			if {poi::%{_id}%::kind} is "red":
+				add 1 to {_r}
+			else if {poi::%{_id}%::kind} is "yellow":
+				add 1 to {_y}
+		set {_norm} to {_n} - {_r} - {_y}
+		send "{@prefix}&7Total &f%{_n}% &8| &cRed %{_r}% &8| &eYellow %{_y}% &8| &fNormal %{_norm}%" to player
+
+command /poiclear:
+	permission: op
+	trigger:
+		loop {poi::ids::*}:
+			set {_id} to loop-value
+			delete {poi::%{_id}%::*}
+		delete {poi::ids::*}
+		delete {poi::next}
+		send "{@prefix}&cList wiped!" to player
+
+command /poishow:
+	permission: op
+	trigger:
+		if size of {poi::ids::*} is 0:
+			send "{@prefix}&cNo containers saved." to player
+			stop
+		loop {poi::ids::*}:
+			set {_id} to loop-value
+			send "{@prefix}&7#%{_id}% &f%{poi::%{_id}%::kind}% &8| &7%{poi::%{_id}%::w}% X%{poi::%{_id}%::x}% Y%{poi::%{_id}%::y}% Z%{poi::%{_id}%::z}%" to player
+
+command /poilook:
+	permission: op
+	trigger:
+		set {_b} to target block of player
+		if {_b} is not set:
+			set {_b} to player's target block
+		if {_b} is not set:
+			send "{@prefix}&cLook at a container." to player
+			stop
+		send "{@prefix}&7Block: &f%poiBlockType({_b})%" to player
+		send "{@prefix}&7Loot kind: &f%poiLootKind({_b})%" to player
+
+command /poitestfill:
+	permission: op
+	trigger:
+		set {_b} to target block of player
+		if {_b} is not set:
+			set {_b} to player's target block
+		if {_b} is not set:
+			send "{@prefix}&cLook at the chest." to player
+			stop
+		set {_inv} to inventory of {_b}
+		if {_inv} is not set:
+			send "{@prefix}&cNo inventory on this block (%poiBlockType({_b})%)." to player
+			stop
+		set {_kind} to poiLootKind({_b})
+		if {_kind} is "yellow":
+			poiFillYellow({_inv})
+		else if {_kind} is "red":
+			poiFillRed({_inv})
+		else:
+			poiFillNormal({_inv}, 0)
+		send "{@prefix}&aTest fill &f%{_kind}% &7(%poiBlockType({_b})%) X%floor(x-coord of {_b})% Y%floor(y-coord of {_b})% Z%floor(z-coord of {_b})%" to player
+
+command /poipurge:
+	permission: op
+	executable by: players and console
+	trigger:
+		set {_n} to 0
+		set {_keep::*} to {poi::ids::*}
+		loop {_keep::*}:
+			set {_id} to loop-value
+			poiForceChunk({poi::%{_id}%::w}, {poi::%{_id}%::x}, {poi::%{_id}%::y}, {poi::%{_id}%::z})
+		wait 40 ticks
+		loop {_keep::*}:
+			set {_id} to loop-value
+			set {_loc} to poiLocOf({_id})
+			if {_loc} is not set:
+				delete {poi::%{_id}%::*}
+				remove {_id} from {poi::ids::*}
+				add 1 to {_n}
+				continue
+			set {_b} to block at {_loc}
+			if poiIsBox({_b}) is false:
+				delete {poi::%{_id}%::*}
+				remove {_id} from {poi::ids::*}
+				add 1 to {_n}
+		if player is set:
+			send "{@prefix}&aRemoved &f%{_n}% &ainvalid entries. Total: &f%size of {poi::ids::*}%" to player
+		else:
+			broadcast "{@prefix}&aPurged &f%{_n}% &ainvalid POI entries."
+
+command /poirefixtypes:
+	permission: op
+	trigger:
+		set {_n} to 0
+		loop {poi::ids::*}:
+			set {_id} to loop-value
+			poiForceChunk({poi::%{_id}%::w}, {poi::%{_id}%::x}, {poi::%{_id}%::y}, {poi::%{_id}%::z})
+		wait 40 ticks
+		loop {poi::ids::*}:
+			set {_id} to loop-value
+			set {_loc} to poiLocOf({_id})
+			set {_b} to block at {_loc}
+			if poiIsBox({_b}) is true:
+				set {poi::%{_id}%::kind} to poiLootKind({_b})
+				add 1 to {_n}
+		send "{@prefix}&aFixed types on &f%{_n}% &acontainers." to player
+
+command /poiforceload:
+	permission: op
+	executable by: players and console
+	trigger:
+		set {_n} to 0
+		loop {poi::ids::*}:
+			set {_id} to loop-value
+			poiForceChunk({poi::%{_id}%::w}, {poi::%{_id}%::x}, {poi::%{_id}%::y}, {poi::%{_id}%::z})
+			add 1 to {_n}
+		if player is set:
+			send "{@prefix}&aForce-loaded chunks for &f%{_n}% &acontainers." to player
+		else:
+			broadcast "{@prefix}&aForce-loaded &f%{_n}% &aPOI chunks."
+
+command /poirefillnow:
+	permission: op
+	executable by: players and console
+	trigger:
+		if size of {poi::ids::*} is 0:
+			if player is set:
+				send "{@prefix}&cNo containers saved. Use &f/poisave &cfirst." to player
+			else:
+				broadcast "{@prefix}&cPOI refill skipped — no containers saved."
+			stop
+		# 1) Force-load every POI chunk so inventories persist
+		loop {poi::ids::*}:
+			set {_id} to loop-value
+			poiForceChunk({poi::%{_id}%::w}, {poi::%{_id}%::x}, {poi::%{_id}%::y}, {poi::%{_id}%::z})
+		wait 40 ticks
+		# 2) Fill + verify
+		set {_ok} to 0
+		set {_fail} to 0
+		loop {poi::ids::*}:
+			set {_id} to loop-value
+			set {_r} to poiFillOne({_id})
+			if {_r} is 1:
+				add 1 to {_ok}
+				if player is set:
+					send "{@prefix}&a#%{_id}% &f%{poi::%{_id}%::kind}% &7X%{poi::%{_id}%::x}% Y%{poi::%{_id}%::y}% Z%{poi::%{_id}%::z}%" to player
+			else:
+				add 1 to {_fail}
+				if player is set:
+					send "{@prefix}&c#%{_id}% failed &7X%{poi::%{_id}%::x}% Y%{poi::%{_id}%::y}% Z%{poi::%{_id}%::z}%" to player
+		set {poi::secs} to {@interval}
+		if {_ok} is 0:
+			if player is set:
+				send "{@prefix}&cRefill failed! Try &f/poitestfill &cwhile looking at a chest, or &f/poipurge&c." to player
+			else:
+				broadcast "{@prefix}&cPOI refill failed (0 containers filled)."
+			stop
+		if player is set:
+			send "{@prefix}&a&lREFILL OK! &f%{_ok}% &afilled (&c%{_fail}% &afailed)." to player
+			if {_fail} > 0:
+				send "{@prefix}&7Run &f/poipurge &7to clean invalid coords." to player
+	else:
+		broadcast "{@prefix}&aPOI refill: &f%{_ok}% &acontainers filled&7 (&c%{_fail}% &7failed)."
+
+command /poifixvillagers:
+	permission: op
+	executable by: players and console
+	trigger:
+		set {_n} to 0
+		set {_keep::*} to {poi::ids::*}
+		loop {_keep::*}:
+			set {_id} to loop-value
+			poiForceChunk({poi::%{_id}%::w}, {poi::%{_id}%::x}, {poi::%{_id}%::y}, {poi::%{_id}%::z})
+		wait 40 ticks
+		loop {_keep::*}:
+			set {_id} to loop-value
+			set {_loc} to poiLocOf({_id})
+			if {_loc} is set:
+				set {_b} to block at {_loc}
+				if poiIsBox({_b}) is true:
+					set {_inv} to inventory of {_b}
+					loop 54 times:
+						set {_slot} to loop-number - 1
+						set {_item} to slot {_slot} of {_inv}
+						if {_item} is a villager spawn egg:
+							set {_amount} to amount of {_item}
+							set slot {_slot} of {_inv} to poiFreshVillagerEgg({_amount})
+							add 1 to {_n}
+		if player is set:
+			send "{@prefix}&aRebuilt &f%{_n}% &avillager egg stack(s) with clean vanilla data." to player
+		else:
+			broadcast "{@prefix}&aRebuilt &f%{_n}% &avillager egg stack(s) with clean vanilla data."
+
+on right click:
+	if player is not op:
+		stop
+	if poiHasWand(player) is false:
+		stop
+	set {_b} to clicked block
+	if {_b} is not set:
+		set {_b} to event-block
+	if {_b} is not set:
+		set {_b} to target block of player
+	if {_b} is not set:
+		send "{@prefix}&cLook at a chest/shulker." to player
+		stop
+	cancel event
+	if poiIsBox({_b}) is false:
+		send "{@prefix}&cNot a chest, barrel or shulker." to player
+		stop
+	if player is sneaking:
+		if poiRemoveBlock({_b}) is true:
+			send "{@prefix}&cRemoved! Total: &f%size of {poi::ids::*}%" to player
+		else:
+			send "{@prefix}&cNot on the list." to player
+		stop
+	set {_id} to poiAddBlock({_b})
+	set {_x} to floor(x-coord of {_b})
+	set {_y} to floor(y-coord of {_b})
+	set {_z} to floor(z-coord of {_b})
+	set {_w} to name of world of {_b}
+	if {_id} > 0:
+		poiForceChunk({_w}, {_x}, {_y}, {_z})
+		send "{@prefix}&a&lSAVED #%{_id}% &8| &f%{poi::%{_id}%::kind}% &7| X%{_x}% Y%{_y}% Z%{_z}%" to player
+		send "{@prefix}&7Total: &f%size of {poi::ids::*}%" to player
+		play sound "entity.experience_orb.pickup" with volume 1 and pitch 1.5 to player
+	else if {_id} is 0:
+		send "{@prefix}&7Already saved X%{_x}% Y%{_y}% Z%{_z}%" to player
+	else:
+		send "{@prefix}&cError." to player
+
+on load:
+	if {poi::secs} is not set:
+		set {poi::secs} to {@interval}
+	# Keep POI chunks loaded so hourly refill always works
+	loop {poi::ids::*}:
+		set {_id} to loop-value
+		poiForceChunk({poi::%{_id}%::w}, {poi::%{_id}%::x}, {poi::%{_id}%::y}, {poi::%{_id}%::z})
+	broadcast "{@prefix}&aPOI v5 loaded. Containers: &f%size of {poi::ids::*}%"
+
+every 1 second:
+	if {poi::secs} is not set:
+		set {poi::secs} to {@interval}
+	subtract 1 from {poi::secs}
+	set {_s} to {poi::secs}
+	if {_s} is 1800:
+		poiBroadcast("&e30 minutes until POI refill!")
+	if {_s} is 600:
+		poiBroadcast("&e10 minutes until POI refill!")
+	if {_s} is 300:
+		poiBroadcast("&e5 minutes until POI refill!")
+	if {_s} is 60:
+		poiBroadcast("&e1 minute until POI refill!")
+	if {_s} is 30:
+		poiBroadcast("&e30 seconds until POI refill!")
+	if {_s} is 5:
+		poiBroadcast("&c5 seconds until POI refill!")
+	if {_s} <= 0:
+		poiBroadcast("&c&lPOI REFILL NOW!")
+		set {poi::secs} to {@interval}
+		# Run refill in this trigger (waits allowed) — not via console command
+		if size of {poi::ids::*} is 0:
+			broadcast "{@prefix}&cPOI refill skipped — no containers saved."
+			stop
+		loop {poi::ids::*}:
+			set {_id} to loop-value
+			poiForceChunk({poi::%{_id}%::w}, {poi::%{_id}%::x}, {poi::%{_id}%::y}, {poi::%{_id}%::z})
+		wait 40 ticks
+		set {_ok} to 0
+		set {_fail} to 0
+		loop {poi::ids::*}:
+			set {_id} to loop-value
+			if poiFillOne({_id}) is 1:
+				add 1 to {_ok}
+			else:
+				add 1 to {_fail}
+		if {_ok} is 0:
+			broadcast "{@prefix}&cPOI refill failed (0 containers filled)."
+		else:
+			broadcast "{@prefix}&aPOI refill: &f%{_ok}% &acontainers filled&7 (&c%{_fail}% &7failed)."

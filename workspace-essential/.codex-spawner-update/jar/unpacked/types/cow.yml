@@ -1,0 +1,53 @@
+# =====================================================================
+#  Spawner type: Cow
+# =====================================================================
+#  TO ADD A NEW MOB: copy this file, rename it (the file name IS the id
+#  used by /spawners give), and edit the values. Then /skcore reload.
+#  A new file also has to be listed in SpawnerTypeRegistry so a fresh
+#  install ships it - see the note there.
+#
+#  Every sell-price below is the same number SKSell's prices.yml uses,
+#  so emptying a spawner and running /sell pay identically. Change one
+#  and change the other, or players will route loot through whichever
+#  side pays more.
+# =====================================================================
+
+display-name: none
+
+colour: '&#A9765A'
+
+head-texture: 'https://textures.minecraft.net/texture/5d6c6eda942f7f5f71c3161c7306f4aed307d82895f9d2b07ab4525718edc5'
+
+drops:
+  beef:
+    material: BEEF
+    amount:
+      min: 1
+      max: 2
+    chance: 100
+    sell-price: 3
+
+  leather:
+    material: LEATHER
+    amount:
+      min: 1
+      max: 1
+    chance: 30
+    sell-price: 4
+
+spawn-delays:
+  min: 10
+  max: 20
+
+xp:
+  min: 1
+  max: 3
+
+max-stack: default
+
+storage:
+  max-items: 1000
+  max-xp: 1000
+
+# Price used by %spawner_price% - for your own shop menus.
+spawner-price: 30000

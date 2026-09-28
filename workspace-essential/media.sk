@@ -1,0 +1,5 @@
+# /media is handled by SKInfo (plugins/SKInfo/settings.yml).
+# This file replaces the old MerelyMeSMP media.sk menu.
+
+on load:
+	log "[MerelyMe] media.sk disabled — use SKInfo /media menu."

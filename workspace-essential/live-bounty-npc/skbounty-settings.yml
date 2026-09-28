@@ -1,0 +1,362 @@
+# =====================================================================
+#  SKBounty - behaviour and text
+# =====================================================================
+#  Put money on a player's head; whoever kills them collects it.
+#
+#  The two menus have their own files so you can redesign them without
+#  scrolling past the rules:
+#    menu-bounties.yml   the list of heads
+#    menu-confirm.yml    the "are you sure" screen
+#
+#  Money goes through Vault, so bounties are paid from and into the same
+#  balance as the rest of your server. Without an economy plugin the
+#  commands refuse politely instead of inventing a second wallet.
+#
+#  Reload everything with  /bounty reload
+# =====================================================================
+
+# Sits in front of every message below. Blank it out for silent, prefix-free
+# chat lines - the messages themselves stay untouched.
+prefix: '&#00B5FF&lBOUNTY &#9B9B9B» '
+
+
+# ---------------------------------------------------------------------
+#  Placing bounties
+# ---------------------------------------------------------------------
+bounty:
+  
+  # The smallest bounty anyone may place.
+  # Set this high enough that a bounty means something: with a minimum of 1
+  # players will paper the list with pocket change and the menu becomes
+  # useless as a hit list.
+  minimum-amount: 1.0
+  
+  # The largest amount a single /bounty add may contribute.
+  # 0 or below removes the cap entirely. This is per command, not per head -
+  # ten players can still stack ten times this on the same target unless you
+  # also set maximum-total-per-player below.
+  maximum-amount: 1.0E9
+  
+  # What happens when someone asks for more than maximum-amount.
+  #   CLAMP   quietly reduce it to the maximum and tell them (original behaviour)
+  #   REJECT  refuse the command and explain why
+  # CLAMP is friendlier for typos; REJECT is better if you want players to
+  # notice the ceiling exists.
+  when-above-maximum: CLAMP
+  
+  # Ceiling for everything sitting on one player's head at once.
+  # 0 means no ceiling. Worth setting on a server with a big economy: an
+  # unbounded bounty turns one player into a target nobody can afford to be.
+  maximum-total-per-player: 0.0
+  
+  # Round amounts down to whole numbers before charging.
+  # Off, "1.005k" becomes 1005 and your chat fills with decimals; on, the
+  # same input becomes 1005 as well but 0.7 is refused as below the minimum.
+  whole-amounts-only: true
+  
+  # Whether a player may put a bounty on themselves.
+  # Leaving this off is not just flavour: with it on, two accounts can move
+  # money between each other at will by bountying and killing themselves.
+  allow-self: false
+  
+  # Whether you can place a bounty on someone who is not online.
+  # Turning this off makes bounties a live, reactive thing instead of a
+  # standing revenge list.
+  allow-offline-targets: true
+  
+  # Seconds a player must wait between two /bounty add commands.
+  # 0 disables it. Only useful if the announcement is loud enough that
+  # someone could spam-advertise with one-coin bounties.
+  set-cooldown-seconds: 0
+  
+  # A player holding this permission can never have a bounty placed on them.
+  # Give it to staff who are expected to fight players.
+  # NOTE: permissions only exist for players who are online, so an offline
+  # target cannot be checked. Combine this with allow-offline-targets: false
+  # if the exemption has to be airtight.
+  # Empty = nobody is exempt (OPs can receive bounties too)
+  exempt-permission: ''
+
+
+# ---------------------------------------------------------------------
+#  How amounts are typed
+# ---------------------------------------------------------------------
+#  Letters players may append to a number: "5k" instead of "5000".
+#  Add your own line to invent a suffix - the key is the letter, the value
+#  is what it multiplies by. Delete a line to switch that suffix off, and
+#  the plugin will then read "5k" as an invalid amount instead.
+#
+#  Also accepted without configuring anything: 10,000 and 10000 are the
+#  same, and a lone comma with no dot is read as a decimal point, so both
+#  "1.5k" and "1,5k" mean 1500.
+amount-suffixes:
+  k: 1000.0
+  m: 1000000.0
+  b: 1.0E9
+  t: 1.0E12
+
+
+# ---------------------------------------------------------------------
+#  The confirmation screen
+# ---------------------------------------------------------------------
+confirm:
+  
+  # Show the "are you sure" screen before charging.
+  # Turn it off and /bounty add takes the money immediately. Only do that
+  # if your players are used to it - the amount is typed as text, and a
+  # slipped key turns 5k into 5m with no way back.
+  enabled: true
+  
+  # Clicks landing sooner than this after the screen opens are ignored.
+  # Guards against a player who was already mid-click when the inventory
+  # appeared and confirms something they never read. Raise it for a
+  # high-ping server, set 0 to accept clicks immediately.
+  click-delay-millis: 300
+
+
+# ---------------------------------------------------------------------
+#  Paying out
+# ---------------------------------------------------------------------
+payout:
+  
+  # Percentage the server keeps when a bounty is claimed.
+  # A money sink: bounties otherwise move the exact same coins around
+  # forever. 0 pays the killer the full amount.
+  tax-percent: 0.0
+  
+  # Whether dying with no player killer (lava, fall, a mob) also wipes the
+  # bounty.
+  # Off, the bounty waits for someone to actually earn it - which is the
+  # point of a bounty. On, players can dodge a bounty by drowning
+  # themselves, so leave this off unless you want that as a mechanic.
+  clear-when-no-killer: true
+  
+  # Seconds before the same killer can collect on the same victim again.
+  # 0 disables it. This is the anti-alt setting: without it, two accounts
+  # can bounty and kill each other in a loop, and the only cost is the tax
+  # above. A few hours is a reasonable value on a survival server.
+  claim-cooldown-seconds: 0
+
+
+# ---------------------------------------------------------------------
+#  Announcements
+# ---------------------------------------------------------------------
+alerts:
+  
+  # Whether the whole server hears about new bounties / claimed ones.
+  # A bounty nobody hears about is just a private grudge, so turning these
+  # off largely removes the point of the feature - but they are separate
+  # switches so you can keep the kills loud and the placements quiet.
+  announce-new-bounties: true
+  announce-claims: true
+  
+  # Players with this permission see neither announcement.
+  # The person who placed a bounty always sees their own confirmation, even
+  # with the permission - it is their money.
+  mute-permission: skbounty.mute
+  
+  # Also write announcements to the server log.
+  # Useful as an audit trail when a player claims their bounty vanished.
+  log-to-console: true
+
+
+# ---------------------------------------------------------------------
+#  Permissions
+# ---------------------------------------------------------------------
+#  Rename these to fit your rank setup. An empty string means "no
+#  permission required" - use that to hand a command to everyone without
+#  having to grant a node to every rank.
+permissions:
+  # Empty = everyone can use (no LuckPerms node needed)
+  use: '' # open the menu, look bounties up
+  place: '' # /bounty add — any player can bounty others
+  admin: skbounty.admin # /bounty remove, /bounty reload
+
+
+# ---------------------------------------------------------------------
+#  The menu
+# ---------------------------------------------------------------------
+menu:
+  
+  # Show each wanted player's own skin on their head.
+  # Off, every head is the default skin. The lookup is local (no request to
+  # Mojang) so there is no performance reason to disable it; the option is
+  # here for servers that run custom head textures instead.
+  show-player-skins: true
+  
+  # Clicking a head prints that player's bounty in chat.
+  # Off, heads are decoration only.
+  head-click-shows-info: true
+  
+  # What %status% turns into in the head lore.
+  status-online: '&#71F521online'
+  status-offline: '&7offline'
+
+
+# ---------------------------------------------------------------------
+#  Data
+# ---------------------------------------------------------------------
+data:
+  
+  # Seconds between automatic writes of data/bounties.yml.
+  # Bounties are also saved on shutdown; this only decides how much is lost
+  # if the server is killed rather than stopped. Minimum 30.
+  save-interval-seconds: 300
+
+
+# ---------------------------------------------------------------------
+#  Sounds
+# ---------------------------------------------------------------------
+#  Sound keys are the ones Minecraft itself uses (the /playsound list).
+#  Clear the `name` of an entry to silence that one event.
+#  volume is loudness, pitch is speed - 1.0 is normal, 2.0 is an octave up.
+sounds:
+  menu-open:
+    name: block.chest.open
+    volume: 0.8
+    pitch: 1.3
+  page:
+    name: ui.button.click
+    volume: 0.7
+    pitch: 1.4
+  click:
+    name: ui.button.click
+    volume: 0.7
+    pitch: 1.2
+  error:
+    name: entity.villager.no
+    volume: 1.0
+    pitch: 1.0
+  cancel:
+    name: entity.villager.no
+    volume: 1.0
+    pitch: 1.2
+  bounty-placed:
+    name: entity.player.levelup
+    volume: 1.0
+    pitch: 1.5
+  claim:
+    name: entity.player.levelup
+    volume: 1.0
+    pitch: 1.8
+
+
+# ---------------------------------------------------------------------
+#  Messages
+# ---------------------------------------------------------------------
+#  Every line is prefixed with `prefix` above.
+#  An empty string switches a message off completely - that is the intended
+#  way to silence one line without editing anything else.
+#  The comment above each line lists the placeholders it may use.
+messages:
+  
+  # ---- command handling ----
+
+    # (no placeholders) - shown when the console tries a player-only command
+  players-only: '&#FF2121This command has to be run by a player.'
+  
+  # %permission%
+  no-permission: '&#FF2121You are not allowed to do that.'
+  
+  # (no placeholders)
+  usage-add: '&fUse &#71F521/bounty add (player) (amount)&f!'
+  
+  # (no placeholders)
+  usage-check: '&fUse &#71F521/bounty check (player)&f!'
+  
+  # (no placeholders)
+  usage-remove: '&fUse &#71F521/bounty remove (player)&f!'
+  
+  # %player% - the name exactly as it was typed
+  unknown-player: '&#FF2121This player does not exist.'
+  
+  # (no placeholders)
+  target-self: '&#FF2121You can''t set a bounty on yourself!'
+  
+  # %player%
+  target-offline: '&#FF2121%player% is not online right now.'
+  
+  # %player%
+  target-exempt: '&#FF2121%player% cannot have a bounty placed on them.'
+  
+  # ---- amounts and money ----
+
+    # %input% - what the player typed
+  invalid-amount: '&#FF2121Invalid amount!'
+  
+  # %minimum%
+  amount-too-low: '&#FF2121The smallest bounty is &#71F521$%minimum%&#FF2121.'
+  
+  # %maximum%
+  amount-too-high: '&#FF2121The largest bounty is &#71F521$%maximum%&#FF2121.'
+  
+  # %maximum% - sent when the amount was reduced instead of refused
+  amount-clamped: '&fThat is over the limit - using &#71F521$%maximum% &finstead.'
+  
+  # %player% %maximum%
+  total-cap-reached: '&#FF2121%player% already carries close to the maximum of &#71F521$%maximum%&#FF2121.'
+  
+  # %seconds%
+  set-cooldown: '&#FF2121Wait &f%seconds%s &#FF2121before setting another bounty.'
+  
+  # (no placeholders) - no Vault economy installed, or it failed
+  no-economy: '&#FF2121The economy is unavailable, try again later.'
+  
+  # %amount% %balance%
+  not-enough-money: '&#FF2121You don''t have enough money!'
+  
+  # ---- placing ----
+
+    # %player% %setter% %amount% %total% - only the player who paid sees this
+  bounty-placed: '&fYou placed &#71F521$%amount% &fon &#00B5FF%player%&f. Total: &#71F521$%total%'
+  
+  # %player% %setter% %amount% %total% - the server-wide announcement
+  bounty-announce: '&#71F521A new bounty of $%amount% has been set on %player%!'
+  
+  # (no placeholders)
+  bounty-cancelled: '&#FF2121Bounty cancelled.'
+  
+  # ---- looking up ----
+
+    # %player% %amount% %setter%
+  check-found: '&f%player% has a bounty of &#71F521$%amount%'
+  
+  # %player%
+  check-none: '&#FF2121The user has no bounty.'
+  
+  # ---- claiming ----
+
+    # %killer% %victim% %amount% %gross% %tax% - the server-wide announcement
+  claim-announce: '&#00B5FF%killer% &fkilled &#00B5FF%victim% &fand claimed the &#71F521$%amount%
+    &fbounty!'
+  
+  # %killer% %victim% %amount% %gross% %tax% - only the killer sees this
+  # Blank by default: the announcement above already tells them. Fill it in
+  # if you charge a tax and want the killer to see the breakdown.
+  claim-reward: ''
+  
+  # %victim% %seconds% - claimed too soon after the last kill of the same player
+  claim-cooldown: '&#FF2121You already claimed %victim% recently - wait %seconds%s.'
+  
+  # %amount% - only sent when payout.clear-when-no-killer is on
+  claim-lost: '&#FF2121A bounty of &f$%amount% &#FF2121was lost when its target died.'
+  
+  # ---- admin ----
+
+    # %player% %amount%
+  removed: '&fRemoved the &#71F521$%amount% &fbounty on &#00B5FF%player%&f.'
+  
+  # %player%
+  remove-none: '&#FF2121%player% has no bounty.'
+  
+  # (no placeholders)
+  reloaded: '&#71F521Config, menus and messages reloaded.'
+# Language of everything this plugin says: EN or DE.
+#
+# EN is the default and reads this file. DE lays the translation in
+# lang/de/ over it - the file you are reading stays English and stays the
+# reference. A line the translation does not have falls back to English,
+# so nothing breaks if you add a setting we have not translated yet.
+#
+# The translated files are yours to edit as well, same as this one.
+language: EN

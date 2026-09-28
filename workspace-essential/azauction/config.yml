@@ -1,0 +1,58 @@
+# AzAuctions - config.yml
+# All GUI item names in small font with color code #FF8600 e.g. &#FF8600ᴍʏ ɪᴛᴇᴍѕ
+
+language: "en_US" # change directly to any file in /lang (without .yml)
+
+storage:
+  mode: "YAML" # YAML or SQLITE
+  yaml-file: "data/auctions.yml"
+  sqlite-file: "data/auctions.db"
+
+auction:
+  default-duration: 259200 # 3 days
+  cleanup-interval-seconds: 300
+  drop-unclaimed: true
+  min-price: 1.0
+  max-price: 1000000000.0
+  fee:
+    flat: 0.0
+    percent: 0.0
+    confirm-menu: true
+  tax:
+    percent: 0.0
+    cap: 0.0 # 0 = no cap
+
+restrictions:
+  enabled: true
+  rules: []
+
+open-triggers:
+  sign:
+    enabled: true
+    trigger: "[AzAuctions]"
+  named-block-entities:
+    enabled: true
+    names: ["Auction House"]
+    types: [CHEST, SHULKER_BOX, DISPENSER, DROPPER, HOPPER, FURNACE, ENCHANTING_TABLE, BREWING_STAND]
+  named-entities:
+    enabled: true
+    names: ["Auctioneer"]
+
+announce:
+  enable-chat: true
+  enable-discord: false
+  discord-webhook-url: ""
+  format: "&#FF8600&l[AH] &f%seller% listed &e%x% %item% &ffor &#FF8600%price%"
+
+economy:
+  require-vault: true
+
+gui:
+  folder: "gui"
+  main: "main-gui.yml"
+  my-items: "my-items.yml"
+  sold: "sold.yml"
+  expired: "expired.yml"
+  confirm: "confirm.yml"
+  preview: "preview.yml"
+  admin-remove: "admin-removel.yml"

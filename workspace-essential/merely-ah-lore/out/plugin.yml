@@ -1,0 +1,8 @@
+name: MerelyAhLore
+version: 1.0.0
+main: me.merelyme.ahlore.MerelyAhLore
+api-version: '1.21'
+authors: [MerelyMe]
+description: Fixes DonutAuctionHouse price lore on Paper 1.21+ for all item types.
+softdepend: [DonutAuctionHouse]
+loadafter: [DonutAuctionHouse]

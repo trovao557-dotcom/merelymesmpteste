@@ -1,0 +1,14 @@
+menu:
+  title: '&8PLAYTIME LEVELS'
+
+boosts:
+  money-multiplier: 1.40
+  points-multiplier: 2.00
+
+messages:
+  prefix: '&#7C4DFF&lCLAIM &8» '
+  available-on-join: '&fYou have &#7CFF6B%amount% &fplaytime reward(s) ready. &#FFD65C/claim'
+  claimed: '&#7CFF6BClaimed milestone #%level% &8• &f%hours% hours'
+  claimed-all: '&#7CFF6BClaimed %amount% rewards &8• &#00B5FF%points% Points'
+  none-ready: '&7You have no unlocked rewards waiting.'
+  reward-error: '&#FF4545A reward could not be delivered. Tell an admin and do not claim again.'

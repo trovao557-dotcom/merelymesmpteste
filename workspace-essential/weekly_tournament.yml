@@ -1,0 +1,22 @@
+world: world
+x: 135.5
+y: 76
+z: 157.5
+enabled: true
+per-player: false
+lines:
+  - '&#FFD900&lWEEKLY TOURNAMENT'
+  - '&f'
+  - '&#55FFFF▶ &fEvery Sunday — every 7 days'
+  - '&f'
+  - '&#FFD900&l▶ &f&nCLICK HERE&f to join'
+look:
+  billboard: VERTICAL
+  alignment: CENTER
+  background: transparent
+  text-shadow: true
+  see-through: false
+  text-opacity: 255
+  line-width: 400
+  scale: 1.0
+  view-range: 0.75

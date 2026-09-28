@@ -1,0 +1,31 @@
+name: MerelyDaily
+version: 1.2.0
+main: com.merelyme.daily.MerelyDaily
+api-version: '1.21'
+author: MerelyMeSMP
+description: One-time starter rewards and rotating daily quests.
+softdepend: [Vault, SKMoney, SKCore, SKSpawners]
+commands:
+  daily:
+    description: Show today's three daily quests
+    aliases: [dailyquests, quests]
+    usage: /daily
+    permission: merelydaily.use
+  weekly:
+    description: Show this week's harder quests
+    aliases: [weeklyquests]
+    usage: /weekly
+    permission: merelydaily.use
+  dailylogin:
+    description: Open the seven-day login reward menu
+    aliases: [loginrewards, loginreward]
+    usage: /dailylogin
+    permission: merelydaily.use
+  updatevote:
+    description: Open the next update voting menu
+    aliases: [voteupdates, updates]
+    usage: /updatevote
+    permission: merelydaily.use
+permissions:
+  merelydaily.use:
+    default: true

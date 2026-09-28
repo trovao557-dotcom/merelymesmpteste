@@ -1,0 +1,78 @@
+menu_title: '&f'
+open_command:
+  - ranks
+  - rank
+size: 54
+
+items:
+  'rank_member':
+    material: NAME_TAG
+    slot: 20
+    display_name: '&#D4D4D4&lMEMBER'
+    lore:
+      - '&7&m-----------------------'
+      - '&6&lPerks:'
+      - ' &e• &fKit: &7Member'
+      - ' &e• &fAuction House: &79 items'
+      - ' &e• &fHomes: &72 homes'
+      - '&7&m-----------------------'
+
+  'rank_knight':
+    material: NAME_TAG
+    slot: 21
+    display_name: '&#4CFF3A&lKNIGHT'
+    lore:
+      - '&7&m-----------------------'
+      - '&6&lPerks:'
+      - ' &e• &fVaults: &72 (/pv)'
+      - ' &e• &fAuction House: &714 items'
+      - ' &e• &fHomes: &73 homes'
+      - ' &e• &fEconomy: &71.1x /sell'
+      - ' &e• &fKit & Tag: &7Knight'
+      - '&7&m-----------------------'
+
+  'rank_warrior':
+    material: NAME_TAG
+    slot: 22
+    display_name: '&#FF3B3B&lWARRIOR'
+    lore:
+      - '&7&m-----------------------'
+      - '&6&lPerks:'
+      - ' &e• &fVaults: &73 (/pv)'
+      - ' &e• &fAuction House: &718 items'
+      - ' &e• &fHomes: &74 homes'
+      - ' &e• &fEconomy: &71.1x /sell'
+      - ' &e• &fKit & Tag: &7Warrior'
+      - '&7&m-----------------------'
+
+  'rank_macer':
+    material: NAME_TAG
+    slot: 23
+    display_name: '&#2ECBFF&lMACER'
+    lore:
+      - '&7&m-----------------------'
+      - '&6&lPerks:'
+      - ' &e• &fKey Booster: &72x keys'
+      - ' &e• &fVaults: &74 (/pv)'
+      - ' &e• &fAuction House: &722 items'
+      - ' &e• &fHomes: &75 homes'
+      - ' &e• &fEconomy: &71.4x /sell'
+      - ' &e• &fKit & Tag: &7Macer'
+      - '&7&m-----------------------'
+
+  'rank_prime':
+    material: NAME_TAG
+    slot: 24
+    display_name: '&#FFD400&lPRIME'
+    lore:
+      - '&7&m-----------------------'
+      - '&6&lPerks:'
+      - ' &e• &fKey Booster: &72x keys'
+      - ' &e• &fVaults: &75 (/pv)'
+      - ' &e• &fAuction House: &730 items'
+      - ' &e• &fHomes: &77 homes'
+      - ' &e• &fEconomy: &71.5x /sell'
+      - ' &e• &fTeleport: &7Zero RTP cooldown'
+      - ' &e• &fKit & Tag: &7Prime'
+      - '&7&m-----------------------'
+

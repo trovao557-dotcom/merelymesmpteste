@@ -1,0 +1,82 @@
+# /spec <player> — staff spectator. Use /unspec to return (no shift exit).
+
+options:
+	prefix: &9&lSPEC &8» &7
+
+function specCanUse(p: player) :: boolean:
+	if {_p} is op:
+		return true
+	if {_p} has permission "merelymesmp.spec":
+		return true
+	if {_p} has permission "group.helper":
+		return true
+	if {_p} has permission "group.mod":
+		return true
+	if {_p} has permission "group.admin":
+		return true
+	if {_p} has permission "group.owner":
+		return true
+	return false
+
+function specStop(p: player):
+	set {_id} to uuid of {_p}
+	if {spec::active::%{_id}%} is not set:
+		stop
+	if {spec::mode::%{_id}%} is set:
+		set gamemode of {_p} to {spec::mode::%{_id}%}
+	else:
+		set gamemode of {_p} to survival
+	if {spec::loc::%{_id}%} is set:
+		teleport {_p} to {spec::loc::%{_id}%}
+	delete {spec::active::%{_id}%}
+	delete {spec::loc::%{_id}%}
+	delete {spec::mode::%{_id}%}
+
+command /spec <player>:
+	trigger:
+		if specCanUse(player) is false:
+			send "{@prefix}&cYou do not have permission." to player
+			stop
+		if arg-1 is player:
+			send "{@prefix}&cYou cannot spectate yourself." to player
+			stop
+		if arg-1 is not online:
+			send "{@prefix}&cThat player is not online." to player
+			stop
+		set {_id} to uuid of player
+		if {spec::active::%{_id}%} is set:
+			specStop(player)
+		set {spec::loc::%{_id}%} to location of player
+		set {spec::mode::%{_id}%} to gamemode of player
+		set {spec::active::%{_id}%} to true
+		# Activate spectator after the world is ready.
+		if world of player is world of arg-1:
+			set gamemode of player to spectator
+			set spectator target of player to arg-1
+		else:
+			# Cross-dimension: load the target world first.
+			teleport player to location of arg-1
+			wait 2 ticks
+			set gamemode of player to spectator
+			wait 1 tick
+			set spectator target of player to arg-1
+		send "{@prefix}&fNow spectating &b%name of arg-1%&7. Use &f/unspec &7to return." to player
+
+command /unspec:
+	trigger:
+		if specCanUse(player) is false:
+			send "{@prefix}&cYou do not have permission." to player
+			stop
+		if {spec::active::%uuid of player%} is not set:
+			send "{@prefix}&7You are not spectating anyone." to player
+			stop
+		specStop(player)
+		send "{@prefix}&aYou returned to your previous location." to player
+
+on quit:
+	player is set
+	set {_id} to uuid of player
+	if {spec::active::%{_id}%} is set:
+		delete {spec::active::%{_id}%}
+		delete {spec::loc::%{_id}%}
+		delete {spec::mode::%{_id}%}

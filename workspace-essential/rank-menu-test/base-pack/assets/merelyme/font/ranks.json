@@ -1,0 +1,121 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "merelyme:font/ranks/player.png",
+      "ascent": 10,
+      "height": 13,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "merelyme:font/ranks/member.png",
+      "ascent": 10,
+      "height": 13,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "merelyme:font/ranks/booster.png",
+      "ascent": 10,
+      "height": 13,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "merelyme:font/ranks/knight.png",
+      "ascent": 10,
+      "height": 13,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "merelyme:font/ranks/warrior.png",
+      "ascent": 10,
+      "height": 13,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "merelyme:font/ranks/macer.png",
+      "ascent": 10,
+      "height": 13,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "merelyme:font/ranks/prime.png",
+      "ascent": 10,
+      "height": 13,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "merelyme:font/ranks/clipper.png",
+      "ascent": 10,
+      "height": 13,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "merelyme:font/ranks/media.png",
+      "ascent": 10,
+      "height": 13,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "merelyme:font/ranks/helper.png",
+      "ascent": 10,
+      "height": 13,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "merelyme:font/ranks/mod.png",
+      "ascent": 10,
+      "height": 13,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "merelyme:font/ranks/admin.png",
+      "ascent": 10,
+      "height": 13,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "merelyme:font/ranks/owner.png",
+      "ascent": 10,
+      "height": 13,
+      "chars": [
+        ""
+      ]
+    }
+  ]
+}

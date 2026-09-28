@@ -1,0 +1,160 @@
+# =====================================================================
+#  SKCommands - what players see when they type a slash
+# =====================================================================
+#  A fresh Paper server hands the client several hundred commands:
+#  every vanilla one, every alias, the internals of every plugin, and a
+#  namespaced copy of each ("minecraft:me", "luckperms:lp"). This list
+#  is what survives that.
+#
+#  Names go in WITHOUT the slash. Aliases are separate entries - hiding
+#  "msg" does not hide "tell", because to the client they are two
+#  commands. Namespaces are handled automatically: "msg" also covers
+#  "minecraft:msg".
+#
+#  HIDING IS NOT BLOCKING. This only changes what the client is TOLD
+#  about; a player who knows a name can still type it, exactly as before.
+#  Every command that mattered was already behind its own permission.
+#  Set block-hidden: true if you also want them refused - see below.
+#
+#  After editing: /skcommands reload
+# =====================================================================
+
+enabled: true
+
+# Players with this permission see the full tree, untouched. Keep an eye
+# on it: it is what stops a mistake in the list from locking you out.
+see-all-permission: skcommands.see-all
+
+# Every command also exists in a namespaced form - "skshop:shop",
+# "minecraft:me" - which is what the client shows when two plugins
+# register the same name. Nobody types those, and they double the list.
+hide-namespaced: true
+
+# false = the list only decides what is SHOWN (recommended).
+# true  = a command not on the list is also refused when typed. Powerful
+#         and easy to regret: anything you forget to list stops working
+#         for everyone without the permission above.
+block-hidden: true
+
+
+# ---------------------------------------------------------------------
+#  Visible to everyone
+# ---------------------------------------------------------------------
+visible:
+- spawn
+- home
+- homes
+- sethome
+- rtp
+- randomteleport
+- rtpqueue
+- duelqueue
+- leavequeue
+- leave
+- rtpqueuetoggle
+- tpa
+- tpahere
+- tpaccept
+- tpadeny
+- tpacancel
+- tpauto
+- shop
+- sell
+- sellmulti
+- sellmultiplier
+- sellhistory
+- worth
+- itemworth
+- ah
+- auction
+- auctionhouse
+- orders
+- order
+- balance
+- bal
+- money
+- pay
+- bounty
+- bounties
+- pointshop
+- ps
+- skcombat
+- shout
+- chatcolor
+- tags
+- keys
+- msg
+- whisper
+- r
+- reply
+- msgtoggle
+- ignore
+- unignore
+- ignorelist
+- team
+- stats
+- settings
+- kit
+- kits
+- tag
+- tags
+- nightvision
+- nv
+- phantom
+- bin
+- trash
+- dustbin
+- help
+- guide
+- info
+- serverinfo
+- rules
+- discord
+- store
+- media
+- me
+- trade
+- troca
+- trader
+- tradeaccept
+- tradedeny
+- trocaaceitar
+- trocarecusar
+- rank
+- ranks
+- smith
+- smithing
+- enderchest
+- ec
+- craft
+- workbench
+- wb
+- grindstone
+- gs
+- grind
+- anvil
+- pv
+- playervault
+- playervaults
+- sign
+- spec
+- unspec
+
+
+messages:
+  # %command%
+  hidden: '&#00B5FF&lSMP &#9B9B9B» &#FF2121This command does not exist! &7(/help)'
+  # %count%
+  # %count% visible commands, %players% clients that got the new tree
+  reloaded: '&#00B5FF&lSMP &#9B9B9B» &#71F521Reloaded - &f%count% &#71F521commands
+    visible, &f%players% &#71F521clients refreshed.'
+  usage: '&7/skcommands reload'
+# Language of everything this plugin says: EN or DE.
+#
+# EN is the default and reads this file. DE lays the translation in
+# lang/de/ over it - the file you are reading stays English and stays the
+# reference. A line the translation does not have falls back to English,
+# so nothing breaks if you add a setting we have not translated yet.
+#
+# The translated files are yours to edit as well, same as this one.
+language: EN

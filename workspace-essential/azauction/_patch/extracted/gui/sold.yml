@@ -1,0 +1,20 @@
+title: "&0Sold Items (%current_page%/%max_page%)"
+rows: 6
+page-size: 45
+auto-update-ticks: -1
+
+clear:
+  slot: 48
+  material: "LAVA_BUCKET"
+  name: "&#FF8600&lᴄʟᴇᴀʀ"
+  actions:
+    - "[SOLD] clear"
+    - "[SOUND] ui.button.click|1|1"
+
+back:
+  slot: 49
+  material: "BARRIER"
+  name: "&#FF8600&lʙᴀᴄᴋ"
+  actions:
+    - "[MENU] main"
+    - "[SOUND] ui.button.click|1|1"

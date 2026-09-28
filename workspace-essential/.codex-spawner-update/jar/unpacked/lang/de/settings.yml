@@ -1,0 +1,38 @@
+# =====================================================================
+#  SKSpawners - deutsche Texte aus der settings.yml
+# =====================================================================
+#  Aktiv, sobald in der settings.yml `language: DE` steht.
+#
+#  In der settings.yml steckt vor allem Verhalten - Radius, Stapelgroesse,
+#  Sounds. Das bleibt dort und hat hier nichts zu suchen. Sichtbar sind
+#  nur zwei Stellen: die Zeilen unter jedem Gegenstand im Lagermenue und
+#  der Spawner als Gegenstand im Inventar. Die stehen hier.
+#
+#  Die Begriffe folgen der messages.yml: gelagert, Gegenstaende, Wert.
+#
+#  Platzhalter: %amount% %price% %unit_price% und in spawner-item
+#  %entity% %displayname% %displayname_caps% %color%
+# =====================================================================
+
+loot:
+  item-lore:
+    - '&7Gelagert'
+    - '&f'
+    - '&#FF8600⚑ &fMenge: &#FF8600%amount%'
+    - '&#6BFF00$ &fWert: &#6BFF00$%price%'
+    - '&a'
+    - '&#FFD900&l▶ &#FFD900&l&nLINKS&#FFD900 nimmt 1  &#FFD900&l&nRECHTS&#FFD900 nimmt 64'
+
+spawner-item:
+  name: '%color%&l%displayname_caps%&f-SPAWNER'
+  lore:
+    - '&7Spawner'
+    - '&f'
+    - '%color%Information:'
+    - '&fSetze diesen Block, damit er'
+    - '&fautomatisch Gegenstaende erzeugt.'
+    - '&e'
+    - '&#55C8FF⚓ &fShift-Rechtsklick legt mehr'
+    - '&#55C8FF   auf einen gesetzten Spawner.'
+    - '&b'
+    - '&#FFD900&l▶ &#FFD900&l&nSETZEN&#FFD900 aktiviert ihn'

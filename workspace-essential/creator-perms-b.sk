@@ -1,0 +1,10 @@
+command /fixcreatorperms2:
+	permission: op
+	trigger:
+		execute console command "lp group media parent remove warrior"
+		execute console command "lp group media parent remove knight"
+		execute console command "lp group media parent remove macer"
+		execute console command "lp group media parent add prime"
+		execute console command "lp group media parent add member"
+		execute console command "lp group media permission unset skkeyall.bonus.creator"
+		send "&d&lMEDIA &8» &aClipper=Knight perms. Media=Prime. Corre &f/fixcreatorperms &atambem." to player

@@ -1,0 +1,135 @@
+timezone: Europe/Lisbon
+registration-day: SUNDAY
+registration-open-hour: 12
+start-hour: 16
+minimum-players: 2
+maximum-players: 16
+maximum-duration-minutes: 45
+template-world: tournament_template
+main-world: world
+main-world-border:
+  center-x: 0.0
+  center-z: 0.0
+  size: 30000.0
+  damage-amount: 0.2
+  damage-buffer: 5.0
+duels:
+  invite-seconds: 60
+  maximum-match-seconds: 1200
+  daily-glory-cap: 200
+  wager:
+    minimum: 1000
+    maximum: 10000000
+  rewards:
+    1v1: 10
+    2v2: 15
+two-v-two-tournament:
+  day: SATURDAY
+  registration-open-hour: 12
+  start-hour: 16
+  minimum-teams: 2
+  maximum-teams: 8
+  rewards:
+    champion-per-player: 1000
+    finalist-per-player: 600
+    participant-per-player: 100
+arena:
+  center-x: 255.0
+  center-y: 168.0
+  center-z: 224.0
+  player-one: {x: 301.5, y: 168.0, z: 178.5, yaw: 45.0, pitch: 0.0}
+  player-two: {x: 209.5, y: 168.0, z: 270.5, yaw: -135.0, pitch: 0.0}
+  initial-border-size: 120.0
+  shrink-after-seconds: 300
+  shrink-duration-seconds: 120
+  final-border-size: 3.0
+  forced-damage-after-seconds: 420
+tournament-kit:
+  items:
+    helmet:
+      material: NETHERITE_HELMET
+      slot: helmet
+      name: '&#A855F7&lTOURNAMENT &fHelmet'
+      enchantments: ['protection:4', 'unbreaking:3', 'mending:1', 'respiration:3', 'aqua_affinity:1']
+    chestplate:
+      material: NETHERITE_CHESTPLATE
+      slot: chestplate
+      name: '&#A855F7&lTOURNAMENT &fChestplate'
+      enchantments: ['protection:4', 'unbreaking:3', 'mending:1']
+    leggings:
+      material: NETHERITE_LEGGINGS
+      slot: leggings
+      name: '&#A855F7&lTOURNAMENT &fLeggings'
+      enchantments: ['protection:4', 'unbreaking:3', 'mending:1', 'swift_sneak:3']
+    boots:
+      material: NETHERITE_BOOTS
+      slot: boots
+      name: '&#A855F7&lTOURNAMENT &fBoots'
+      enchantments: ['protection:4', 'unbreaking:3', 'mending:1', 'feather_falling:4', 'depth_strider:3', 'soul_speed:3']
+    totem-offhand: {material: TOTEM_OF_UNDYING, slot: offhand}
+    wind-mace:
+      material: MACE
+      slot: hotbar-1
+      name: '&#FF3CAC&lTOURNAMENT &fWind Mace'
+      enchantments: ['density:5', 'wind_burst:1', 'unbreaking:3', 'mending:1']
+    elytra:
+      material: ELYTRA
+      slot: hotbar-2
+      name: '&#A855F7&lTOURNAMENT &fElytra'
+      enchantments: ['unbreaking:3', 'mending:1']
+    axe:
+      material: NETHERITE_AXE
+      slot: hotbar-3
+      name: '&#A855F7&lTOURNAMENT &fAxe'
+      enchantments: ['efficiency:5', 'sharpness:5', 'unbreaking:3', 'mending:1']
+    sword:
+      material: NETHERITE_SWORD
+      slot: hotbar-4
+      name: '&#A855F7&lTOURNAMENT &fSword'
+      enchantments: ['sharpness:5', 'looting:3', 'sweeping_edge:3', 'unbreaking:3', 'mending:1']
+    breach-mace:
+      material: MACE
+      slot: hotbar-5
+      name: '&#FF3CAC&lTOURNAMENT &fBreach Mace'
+      enchantments: ['breach:4', 'unbreaking:3', 'mending:1']
+    pearls-1: {material: ENDER_PEARL, amount: 16, slot: hotbar-6}
+    shield:
+      material: SHIELD
+      slot: hotbar-7
+      name: '&#A855F7&lTOURNAMENT &fShield'
+      enchantments: ['unbreaking:3', 'mending:1']
+    wind-charges-1: {material: WIND_CHARGE, amount: 64, slot: hotbar-8}
+    gapples-1: {material: GOLDEN_APPLE, amount: 64, slot: hotbar-9}
+    wind-charges-2: {material: WIND_CHARGE, amount: 64, slot: inventory-1}
+    wind-charges-3: {material: WIND_CHARGE, amount: 64, slot: inventory-2}
+    wind-charges-4: {material: WIND_CHARGE, amount: 64, slot: inventory-3}
+    wind-charges-5: {material: WIND_CHARGE, amount: 64, slot: inventory-4}
+    pearls-2: {material: ENDER_PEARL, amount: 16, slot: inventory-5}
+    pearls-3: {material: ENDER_PEARL, amount: 16, slot: inventory-6}
+    pearls-4: {material: ENDER_PEARL, amount: 16, slot: inventory-7}
+    pearls-5: {material: ENDER_PEARL, amount: 16, slot: inventory-8}
+    gapples-2: {material: GOLDEN_APPLE, amount: 64, slot: inventory-9}
+    strength-1: {material: SPLASH_POTION, potion: STRONG_STRENGTH, slot: inventory-10}
+    strength-2: {material: SPLASH_POTION, potion: STRONG_STRENGTH, slot: inventory-11}
+    strength-3: {material: SPLASH_POTION, potion: STRONG_STRENGTH, slot: inventory-12}
+    strength-4: {material: SPLASH_POTION, potion: STRONG_STRENGTH, slot: inventory-13}
+    strength-5: {material: SPLASH_POTION, potion: STRONG_STRENGTH, slot: inventory-14}
+    speed-1: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, slot: inventory-15}
+    speed-2: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, slot: inventory-16}
+    totem-2: {material: TOTEM_OF_UNDYING, slot: inventory-17}
+    speed-7: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, slot: inventory-18}
+    strength-6: {material: SPLASH_POTION, potion: STRONG_STRENGTH, slot: inventory-19}
+    strength-7: {material: SPLASH_POTION, potion: STRONG_STRENGTH, slot: inventory-20}
+    strength-8: {material: SPLASH_POTION, potion: STRONG_STRENGTH, slot: inventory-21}
+    strength-9: {material: SPLASH_POTION, potion: STRONG_STRENGTH, slot: inventory-22}
+    strength-10: {material: SPLASH_POTION, potion: STRONG_STRENGTH, slot: inventory-23}
+    speed-3: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, slot: inventory-24}
+    speed-4: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, slot: inventory-25}
+    speed-5: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, slot: inventory-26}
+    speed-6: {material: SPLASH_POTION, potion: STRONG_SWIFTNESS, slot: inventory-27}
+rewards:
+  champion: 1000
+  finalist: 600
+  semifinalist: 350
+  quarterfinalist: 200
+  participant: 100

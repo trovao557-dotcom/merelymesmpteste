@@ -1,0 +1,30 @@
+# MerelyMe NPC daily points claim
+# FancyNpcs runs: console command "resgatargive {player}" (nothing in chat)
+
+options:
+	reward: 200
+	cooldown: 24 hours
+
+command /resgatargive <offline player>:
+	executable by: console
+	trigger:
+		set {_p} to arg-1
+		if {_p} is not set:
+			stop
+		if {_p} is not online:
+			stop
+		set {_uuid} to uuid of {_p}
+		if {resgatar::%{_uuid}%} is set:
+			set {_waited} to difference between {resgatar::%{_uuid}%} and now
+			if {_waited} < {@cooldown}:
+				set {_left} to {@cooldown} - {_waited}
+				send "&c&lMerelyMe &8» &fCome back in &#FFD900%{_left}%&f to claim again." to {_p}
+				stop
+		set {resgatar::%{_uuid}%} to now
+		execute console command "points give %{_p}% {@reward}"
+		send "&b&lMerelyMe &8» &fYou received &#00E0FF&l{@reward} points&f! Come back in &e24 hours&f." to {_p}
+
+command /resgatar:
+	executable by: players
+	trigger:
+		execute console command "resgatargive %player%"

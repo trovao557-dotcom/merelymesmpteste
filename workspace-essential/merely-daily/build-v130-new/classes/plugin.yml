@@ -1,0 +1,37 @@
+name: MerelyDaily
+version: 1.4.3
+main: com.merelyme.daily.MerelyDaily
+api-version: '1.21'
+author: MerelyMeSMP
+description: Starter rewards, Daily Wheel, weekly quests, login streaks and update voting.
+softdepend: [Vault, SKMoney, SKCore, SKSpawners]
+commands:
+  daily:
+    description: Open the once-per-day Daily Wheel
+    aliases: [dailywheel, wheel]
+    usage: /daily
+    permission: merelydaily.use
+  weekly:
+    description: Show this week's harder quests
+    aliases: [weeklyquests]
+    usage: /weekly
+    permission: merelydaily.use
+  dailylogin:
+    description: Open the seven-day login reward menu
+    aliases: [loginrewards, loginreward]
+    usage: /dailylogin
+    permission: merelydaily.use
+  updatevote:
+    description: Open the next update voting menu
+    aliases: [voteupdates, updates]
+    usage: /updatevote
+    permission: merelydaily.use
+  dailytoken:
+    description: Give an extra Daily Wheel spin
+    usage: /dailytoken give <player> <amount>
+    permission: merelydaily.admin
+permissions:
+  merelydaily.use:
+    default: true
+  merelydaily.admin:
+    default: op

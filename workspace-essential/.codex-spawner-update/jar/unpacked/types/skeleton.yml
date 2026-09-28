@@ -1,0 +1,55 @@
+# =====================================================================
+#  Spawner type: Skeleton
+# =====================================================================
+#  TO ADD A NEW MOB: copy this file, rename it (the file name IS the id
+#  used by /spawners give), and edit the values. Then /skcore reload.
+#  A new file also has to be listed in SpawnerTypeRegistry so a fresh
+#  install ships it - see the note there.
+#
+#  Every sell-price below is the same number SKSell's prices.yml uses,
+#  so emptying a spawner and running /sell pay identically. Change one
+#  and change the other, or players will route loot through whichever
+#  side pays more.
+# =====================================================================
+
+display-name: none
+
+colour: '&#C8C8C8'
+
+# Minecraft's own skeleton skull, not a player head wearing a picture of one.
+# icon takes any material; head-texture is for mobs vanilla has no item for.
+icon: SKELETON_SKULL
+
+drops:
+  bone:
+    material: BONE
+    amount:
+      min: 2
+      max: 4
+    chance: 100
+    sell-price: 3
+
+  arrow:
+    material: ARROW
+    amount:
+      min: 1
+      max: 4
+    chance: 80
+    sell-price: 1
+
+spawn-delays:
+  min: 10
+  max: 14
+
+xp:
+  min: 2
+  max: 4
+
+max-stack: default
+
+storage:
+  max-items: 1000
+  max-xp: 1000
+
+# Price used by %spawner_price% - for your own shop menus.
+spawner-price: 80000

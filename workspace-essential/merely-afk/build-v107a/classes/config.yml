@@ -1,0 +1,22 @@
+zone:
+  world: world
+  corner-one:
+    x: 190
+    y: 68
+    z: 126
+  corner-two:
+    x: 198
+    y: 82
+    z: 118
+
+rewards:
+  points-per-minute: 2
+
+crate:
+  money: 5000
+
+crate-block:
+  world: world
+  x: 200
+  y: 73
+  z: 117

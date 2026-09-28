@@ -1,0 +1,8 @@
+name: DonutAuction
+main: com.your.package.DonutAuction
+version: 1.0
+api-version: 1.13
+commands:
+  auction:
+    description: Auction command
+    usage: /auction version

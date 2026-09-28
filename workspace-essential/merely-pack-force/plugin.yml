@@ -1,0 +1,7 @@
+name: MerelyPack
+version: 1.0.0
+main: me.merelyme.pack.MerelyPack
+api-version: '1.21'
+authors: [MerelyMe]
+softdepend: [PlaceholderAPI, LuckPerms]
+description: Sends the required MerelyMe rank resource pack on join.

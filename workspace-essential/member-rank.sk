@@ -1,0 +1,7 @@
+# Every join: the player keeps the LuckPerms group "member".
+# Uses "parent add" so VIP / staff / owner ranks are not removed.
+
+on join:
+	wait 10 ticks
+	if player is online:
+		execute console command "lp user %uuid of player% parent add member"

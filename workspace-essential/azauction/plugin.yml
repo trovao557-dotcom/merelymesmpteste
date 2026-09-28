@@ -1,0 +1,29 @@
+name: AzAuctions
+main: org.HuzaiDev.AzAuctions.AzAuctions
+version: 1.7
+api-version: "1.21"
+author: HuzaiDev
+website: "Discord ID - huzaidev"
+depend: [Vault, SKMoney]
+softdepend: [PlaceholderAPI]
+folia-supported: true
+
+commands:
+  ah:
+    description: Open the Auction House
+    usage: "/ah [subcommand]"
+    aliases: [auctionhouse, auction, auctions]
+  ahadmin:
+    description: Admin Auction House commands
+    usage: "/ahadmin [subcommand]"
+    permission: azauctions.admin
+
+permissions:
+  azauctions.use:
+    default: true
+  azauctions.admin:
+    default: op
+  azauctions.sell:
+    default: true
+  azauctions.list.server:
+    default: op

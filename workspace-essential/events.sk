@@ -1,0 +1,204 @@
+# MerelyMeSMP event controls.
+# Reload with: /sk reload events.sk
+
+options:
+    prefix: &d&lEVENTS &8» &f
+
+command /event [<text>] [<text>] [<text>]:
+    aliases: events
+    permission: merelyme.events.admin
+    permission message: &cOnly administrators can use the event system.
+    trigger:
+        if argument 1 is "stop":
+            loop all players:
+                remove "mm_event_2x_points" from the scoreboard tags of loop-player
+            delete {mm.event.type}
+            delete {mm.event.left}
+            delete {mm.event.target}
+            delete {mm.event.poi.tick}
+            broadcast "{@prefix}&7The active event has ended."
+            stop
+
+        if argument 1 is not set:
+            send "&b/event points <duration> &7- 2x Points" to sender
+            send "&a/event money <duration> &7- 1.5x Money" to sender
+            send "&c/event trash <duration> &7- Slowness IV + Darkness" to sender
+            send "&e/event poi <duration> &7- POI refill every 10 minutes" to sender
+            send "&b/event pointshop <duration> &7- 40 percent PointShop discount" to sender
+            send "&d/event hunt <duration> &7- random target, 1,500 bounty / 3,000 reward" to sender
+            send "&d/event hunt <player> <duration> &7- choose the wanted target" to sender
+            send "&5/event triple keyall [crate] &7- give 3 keys to everyone" to sender
+            send "&7/event stop" to sender
+            stop
+
+        if sender doesn't have permission "merelyme.events.admin":
+            send "&cYou do not have permission to start or stop events." to sender
+            stop
+
+        if argument 1 is "triple":
+            if argument 2 is "keyall":
+                set {_crate} to argument 3
+                if {_crate} is not set:
+                    set {_crate} to "special"
+                if {_crate} is not "coal":
+                    if {_crate} is not "gold":
+                        if {_crate} is not "iron":
+                            if {_crate} is not "emerald":
+                                if {_crate} is not "special":
+                                    send "&cUse: /event triple keyall <coal|iron|gold|emerald|special>" to sender
+                                    stop
+                execute console command "crates keyall %{_crate}% 3"
+                broadcast "&d&lTRIPLE KEYALL &8» &fEvery online player received &d3 %{_crate}% keys&f."
+                stop
+        if argument 1 is "triplekeyall":
+            set {_crate} to argument 2
+            if {_crate} is not set:
+                set {_crate} to "special"
+            execute console command "crates keyall %{_crate}% 3"
+            broadcast "&d&lTRIPLE KEYALL &8» &fEvery online player received &d3 %{_crate}% keys&f."
+            stop
+
+        if argument 1 is "hunt":
+            if argument 3 is set:
+                set {_target} to argument 2 parsed as player
+                if {_target} is not set:
+                    send "&cThat player is not online. Use /event hunt <duration> for a random target." to sender
+                    stop
+                set {_duration} to argument 3
+            else:
+                set {_target} to random element out of all players
+                set {_duration} to argument 2
+            if {_target} is not set:
+                send "&cAt least one online player is required for Hunt." to sender
+                stop
+            set {_seconds} to {_duration}
+            replace all "s" with "" in {_seconds}
+            if {_duration} contains "m":
+                replace all "m" with "" in {_seconds}
+                set {_seconds} to {_seconds} parsed as number
+                set {_seconds} to {_seconds} * 60
+            else if {_duration} contains "h":
+                replace all "h" with "" in {_seconds}
+                set {_seconds} to {_seconds} parsed as number
+                set {_seconds} to {_seconds} * 3600
+            else:
+                set {_seconds} to {_seconds} parsed as number
+            if {_seconds} is not set:
+                send "&cUse a duration such as 30s, 10m or 1h." to sender
+                stop
+            if {_seconds} < 10:
+                send "&cDuration must be at least 10 seconds." to sender
+                stop
+            loop all players:
+                remove "mm_event_2x_points" from the scoreboard tags of loop-player
+            set {mm.event.type} to "hunt"
+            set {mm.event.left} to {_seconds}
+            set {mm.event.target} to uuid of {_target}
+            broadcast "&c&lWANTED HUNT &8» &f%{_target}% is the wanted target. Bounty: &b1,500 points&f. Kill them for &b3,000 points&f."
+            stop
+
+        if argument 1 is not "points":
+            if argument 1 is not "money":
+                if argument 1 is not "trash":
+                    if argument 1 is not "poi":
+                        if argument 1 is not "pointshop":
+                            send "&cUnknown event. Use /event to see every option." to sender
+                            stop
+        if argument 2 is not set:
+            send "&cUse a duration such as 30s, 10m or 1h." to sender
+            stop
+        set {_seconds} to argument 2
+        replace all "s" with "" in {_seconds}
+        if argument 2 contains "m":
+            replace all "m" with "" in {_seconds}
+            set {_seconds} to {_seconds} parsed as number
+            set {_seconds} to {_seconds} * 60
+        else if argument 2 contains "h":
+            replace all "h" with "" in {_seconds}
+            set {_seconds} to {_seconds} parsed as number
+            set {_seconds} to {_seconds} * 3600
+        else:
+            set {_seconds} to {_seconds} parsed as number
+        if {_seconds} is not set:
+            send "&cUse a duration such as 30s, 10m or 1h." to sender
+            stop
+        if {_seconds} < 10:
+            send "&cDuration must be at least 10 seconds." to sender
+            stop
+        loop all players:
+            remove "mm_event_2x_points" from the scoreboard tags of loop-player
+        set {mm.event.type} to argument 1
+        set {mm.event.left} to {_seconds}
+        delete {mm.event.target}
+        delete {mm.event.poi.tick}
+        if argument 1 is "points":
+            loop all players:
+                add "mm_event_2x_points" to the scoreboard tags of loop-player
+            broadcast "&b&l2x POINTS EVENT &8» &fStarted for %{_seconds}% seconds."
+        if argument 1 is "money":
+            broadcast "&a&l1.5x MONEY EVENT &8» &fStarted for %{_seconds}% seconds."
+        if argument 1 is "trash":
+            broadcast "&c&lTRASH EVENT &8» &fSlowness IV and Darkness are active."
+        if argument 1 is "poi":
+            broadcast "&e&lPOI SUPERCHARGED &8» &fPOI refill will run every 10 minutes."
+        if argument 1 is "pointshop":
+            broadcast "&b&lPOINTSHOP PROMOTION &8» &fEverything is 40 percent off for %{_seconds}% seconds."
+
+on command "/pointshop":
+    if {mm.event.type} is "pointshop":
+        send "&b&lPOINTSHOP PROMOTION &8» &f40 percent off is active for %{mm.event.left}% more seconds." to player
+
+on command "/shop":
+    if {mm.event.type} is "pointshop":
+        send "&b&lPOINTSHOP PROMOTION &8» &f40 percent off is active for %{mm.event.left}% more seconds." to player
+
+every 1 second:
+    if {mm.event.type} is set:
+        subtract 1 from {mm.event.left}
+        if {mm.event.left} <= 0:
+            loop all players:
+                remove "mm_event_2x_points" from the scoreboard tags of loop-player
+            broadcast "{@prefix}&7The %{mm.event.type}% event has ended."
+            delete {mm.event.type}
+            delete {mm.event.left}
+            delete {mm.event.target}
+            stop
+        loop all players:
+            set {_eventLabel} to "SERVER EVENT"
+            if {mm.event.type} is "points":
+                set {_eventLabel} to "2x POINTS"
+            if {mm.event.type} is "money":
+                set {_eventLabel} to "1.5x MONEY"
+            if {mm.event.type} is "trash":
+                set {_eventLabel} to "TRASH"
+            if {mm.event.type} is "poi":
+                set {_eventLabel} to "POI SUPERCHARGED"
+            if {mm.event.type} is "pointshop":
+                set {_eventLabel} to "POINTSHOP 40 PERCENT OFF"
+            if {mm.event.type} is "hunt":
+                set {_eventLabel} to "WANTED HUNT"
+            send action bar "&d&l%{_eventLabel}% &8» &f%{mm.event.left}%s remaining" to loop-player
+            if {mm.event.type} is "trash":
+                apply slowness 4 to loop-player for 2 seconds
+                apply darkness 1 to loop-player for 2 seconds
+        if {mm.event.type} is "poi":
+            add 1 to {mm.event.poi.tick}
+            if {mm.event.poi.tick} >= 600:
+                execute console command "poirefillnow"
+                broadcast "&e&lPOI SUPERCHARGED &8» &fThe POI has been refilled."
+                set {mm.event.poi.tick} to 0
+
+on join:
+    if {mm.event.type} is "points":
+        add "mm_event_2x_points" to the scoreboard tags of player
+
+on death of player:
+    if {mm.event.type} is "hunt":
+        if uuid of victim is {mm.event.target}:
+            if attacker is a player:
+                execute console command "points give %attacker% 3000"
+                broadcast "&c&lWANTED HUNT &8» &b%attacker% &fclaimed the target and won &b3,000 points&f!"
+                delete {mm.event.type}
+                delete {mm.event.left}
+                delete {mm.event.target}
+

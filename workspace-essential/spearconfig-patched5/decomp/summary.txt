@@ -1,0 +1,2 @@
+Summary for spearconfig-patched5\SpearConfig-1.0.0-patched.jar
+Decompiled with CFR 0.152

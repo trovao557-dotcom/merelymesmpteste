@@ -1,0 +1,28 @@
+players:
+  036bd293-8996-431d-b18f-ca8d391986e8:
+    balance: 450
+    owned:
+      particles:
+        crown: true
+        dragon: true
+        electric: true
+        soul: true
+        flame: true
+      kills:
+        flame: true
+        soul: true
+        lightning: true
+        dragon: true
+        fireworks: true
+      tags:
+        warlord: true
+    equipped:
+      particles: soul
+      kills: lightning
+      tags: warlord
+  add737d0-12da-4c8a-bab4-9548c1107eb0:
+    balance: 100
+  013b158f-6329-4a5c-8103-a375a7b01f71:
+    balance: 200
+  7057f7c8-4f4e-4f62-872f-cecf7114b0d9:
+    balance: 0

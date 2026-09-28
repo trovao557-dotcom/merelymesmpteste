@@ -1,0 +1,8 @@
+name: MerelyOrderEnchants
+main: me.merelyme.orderenchants.MerelyOrderEnchants
+version: 1.0.0
+api-version: '1.21'
+author: MerelyMe
+description: Pick specific enchanted books in SKOrders /orders
+depend: [SKOrders]
+load: POSTWORLD

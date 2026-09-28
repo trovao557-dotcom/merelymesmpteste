@@ -1,0 +1,76 @@
+{
+  "guildId": "1534136666984419348",
+  "roles": [
+    { "key": "member", "name": "🎮┃Member", "color": 13948116, "hoist": false, "mentionable": false },
+    { "key": "prime", "name": "⭐┃Prime", "color": 16763904, "hoist": true, "mentionable": false },
+    { "key": "media", "name": "💜┃Media", "color": 14763391, "hoist": true, "mentionable": true },
+    { "key": "helper", "name": "🧡┃Helper", "color": 16751135, "hoist": true, "mentionable": true },
+    { "key": "ticket", "name": "🎫┃Ticket Staff", "color": 5763463, "hoist": false, "mentionable": true },
+    { "key": "mod", "name": "🛠️┃Mod", "color": 4037631, "hoist": true, "mentionable": true },
+    { "key": "admin", "name": "⚡┃Admin", "color": 11035135, "hoist": true, "mentionable": true },
+    { "key": "owner", "name": "👑┃Owner", "color": 16722100, "hoist": true, "mentionable": true }
+  ],
+  "categories": [
+    {
+      "name": "📢┃INFORMATION",
+      "staffOnly": false,
+      "channels": [
+        { "key": "announcements", "name": "📣┃announcements", "type": 0, "topic": "Official MerelyMeSMP news only.", "announce": true },
+        { "key": "rules", "name": "📜┃rules", "type": 0, "topic": "Server rules - read before playing.", "announce": true },
+        { "key": "iplinks", "name": "🌐┃ip-links", "type": 0, "topic": "IP, store, socials, vote links.", "announce": true },
+        { "key": "updates", "name": "🎉┃updates", "type": 0, "topic": "Patch notes and season updates.", "announce": true }
+      ]
+    },
+    {
+      "name": "💬┃COMMUNITY",
+      "channels": [
+        { "key": "chat", "name": "💬┃chat-geral", "type": 0, "topic": "Main community chat. Be respectful." },
+        { "key": "media", "name": "📸┃media", "type": 0, "topic": "Clips, screenshots, builds." },
+        { "key": "bots", "name": "🤖┃bot-commands", "type": 0, "topic": "Use bot commands here." },
+        { "key": "suggestions", "name": "💡┃sugestoes", "type": 0, "topic": "Ideas for the SMP." },
+        { "key": "lft", "name": "🤝┃looking-for-team", "type": 0, "topic": "Find teammates." }
+      ]
+    },
+    {
+      "name": "🎮┃SERVER",
+      "channels": [
+        { "key": "store", "name": "🛒┃store", "type": 0, "topic": "Ranks, crates and support." },
+        { "key": "vote", "name": "🗳️┃vote", "type": 0, "topic": "Vote links and rewards." },
+        { "key": "leaderboard", "name": "🏆┃leaderboard", "type": 0, "topic": "Top players and events." },
+        { "key": "playtime", "name": "⏱️┃playtime", "type": 0, "topic": "Voice/playtime leaderboards." }
+      ]
+    },
+    {
+      "name": "🎫┃SUPPORT",
+      "channels": [
+        { "key": "ticket", "name": "🎫┃create-ticket", "type": 0, "topic": "Open a ticket for help, appeals, buys." }
+      ]
+    },
+    {
+      "name": "🔊┃VOICE",
+      "channels": [
+        { "key": "vc-geral", "name": "🔊┃geral", "type": 2 },
+        { "key": "vc-gaming", "name": "🎮┃gaming", "type": 2 },
+        { "key": "vc-music", "name": "🎵┃music", "type": 2 },
+        { "key": "vc-afk", "name": "💤┃afk", "type": 2 }
+      ]
+    },
+    {
+      "name": "🔒┃STAFF",
+      "staffOnly": true,
+      "channels": [
+        { "key": "owner-chat", "name": "👑┃owner", "type": 0, "topic": "Owner / admin decisions.", "ownerOnly": true },
+        { "key": "staff-chat", "name": "🛡️┃staff-chat", "type": 0, "topic": "Staff coordination." },
+        { "key": "logs", "name": "📝┃logs", "type": 0, "topic": "Moderation and bot logs." },
+        { "key": "reports", "name": "🚨┃reports", "type": 0, "topic": "Player reports." }
+      ]
+    }
+  ],
+  "messages": {
+    "announcements": "**MerelyMeSMP** is live.\nSeason 1 · EU · Survival Economy\nStay tuned for events, updates and giveaways.",
+    "rules": "**RULES — MerelyMeSMP**\n\n1. Be respectful — no toxicity, hate, or harassment.\n2. No cheating / hacked clients / freecam / xray.\n3. No scam, dupe, or real-money trades outside store.\n4. No spam, NSFW, or advertising other SMPs.\n5. English / Portuguese OK — keep chat clean.\n6. Staff decisions are final — appeal via ticket.\n\nIP: `merelymesmp.g-portal.game`",
+    "iplinks": "**CONNECT**\nIP: `merelymesmp.g-portal.game`\n\n**USEFUL**\n• Store / ranks — (add link)\n• Vote — (add link)\n• Twitch — twitch.tv/merelyme",
+    "ticket": "**NEED HELP?**\nOpen a ticket for:\n• Buy / payment issues\n• Ban / mute appeals\n• Bugs & reports\n• Staff applications\n\n_Ticket bot panel goes here next._",
+    "chat": "Welcome to **MerelyMeSMP**. Lock in.\nRead the rules and join the grind."
+  }
+}

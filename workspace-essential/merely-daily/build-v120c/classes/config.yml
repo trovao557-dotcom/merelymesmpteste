@@ -1,0 +1,18 @@
+timezone: Europe/Lisbon
+
+starter:
+  money: 25000
+  spawner-type: skeleton
+  spawner-amount: 1
+
+daily:
+  reward-min-points: 400
+  reward-max-points: 600
+
+weekly:
+  reward-points: 5000
+
+afk-zone:
+  world: world
+  corner-one: {x: 190, y: 68, z: 126}
+  corner-two: {x: 198, y: 82, z: 118}

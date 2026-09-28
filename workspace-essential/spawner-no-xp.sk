@@ -1,0 +1,5 @@
+# Spider and cave spider spawners should not reward XP when mined.
+on break of spawner:
+    set {_spawnerType} to spawner type of event-block
+    if {_spawnerType} is spider or cave spider:
+        clear dropped experience

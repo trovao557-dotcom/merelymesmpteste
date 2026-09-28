@@ -1,0 +1,8 @@
+# /enderchest — everyone (LuckPerms: sksmp.echest on default)
+
+command /enderchest:
+	trigger:
+		if player has permission "sksmp.echest":
+			open (ender chest of player) to player
+		else:
+			send "&c&lRANKS &8» &7You don't have permission for &f/enderchest&7." to player

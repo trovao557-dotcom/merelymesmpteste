@@ -1,0 +1,140 @@
+# =====================================================================
+#  SKMod - bans, mutes, kicks and warns
+# =====================================================================
+#  A ban is written into the SERVER'S OWN ban list, not only into this
+#  plugin's file. That matters: the vanilla check runs inside the server
+#  core and cannot be skipped, while a plugin listener can fail to run -
+#  a broken data file, a pulled jar, another plugin allowing the login.
+#  If this plugin ever dies, a banned player still cannot get in; they
+#  just see Minecraft's plain English screen instead of the one below.
+#
+#  The history in data/punishments.yml is append-only. Lifting a ban
+#  marks the row revoked, it never deletes it - otherwise "why is this
+#  player on their third strike" is unanswerable three months later.
+#
+#  DURATIONS: 10m 2h30m 7d 1w  and  perm
+#  m is MINUTES, never months. A bare number is refused on purpose.
+# =====================================================================
+
+prefix: '&#FF2121&lMOD &#9B9B9B» '
+
+# Shown on every ban and kick screen as %appeal%. One place to change it.
+appeal: discord.gg/S9gCBe7m2
+
+# Used when a command is given no reason.
+default-reason: No reason given
+permanent-word: permanent
+
+# Who sees the "X banned Y" notices.
+staff-permission: skmod.notify
+log-to-console: true
+
+# Refuse to punish a name the server has never seen. Stops a typo from
+# banning a UUID nobody owns; turn it off if you pre-ban known griefers.
+require-known-player: true
+
+# Stop a moderator from punishing someone with skmod.immune. Only
+# checkable while that player is ONLINE - an offline check would need a
+# permission lookup this plugin has no safe way to make.
+protect-staff: true
+immune-permission: skmod.immune
+
+# How many rows /history prints.
+history-lines: 10
+state-active: '&#FF2121active'
+state-served: '&7served'
+state-revoked: '&#71F521revoked'
+
+
+# ---------------------------------------------------------------------
+#  Warn escalation
+# ---------------------------------------------------------------------
+#  Each entry is "<mute|ban> <duration>". The first warn inside the
+#  window uses entry 1, the second entry 2, and so on; past the end the
+#  last entry repeats.
+#
+#  The window is what keeps this fair. Without it a player warned once a
+#  year ago is banned for a first offence today.
+escalation:
+  window: 30d
+  reason: Reached %count% warnings
+  ladder:
+  - mute 10m
+  - mute 1h
+  - ban 1d
+  - ban 7d
+
+
+messages:
+  
+  # ----- what the punished player sees --------------------------------
+  # %reason% %time%
+  ban-screen-permanent:
+  - '&#FF2121&lYOU ARE BANNED'
+  - '&f'
+  - '&fReason: &#FF2121%reason%'
+  - '&f'
+  - '&7Appeal at &#00B5FF%appeal%'
+  ban-screen-temporary:
+  - '&#FF2121&lYOU ARE BANNED'
+  - '&f'
+  - '&fReason: &#FF2121%reason%'
+  - '&fExpires in: &#FFD900%time%'
+  - '&f'
+  - '&7Appeal at &#00B5FF%appeal%'
+  kick-screen:
+  - '&#FF2121&lKICKED'
+  - '&f'
+  - '&fReason: &#FF2121%reason%'
+  
+  # %reason% %time% %staff%
+  you-are-warned: '&#FFD900You have been warned: &f%reason%'
+  you-are-muted: '&#FF2121You have been muted for &f%time%&#FF2121: &f%reason% &7(appeal:
+    &#00B5FF%appeal%&7)'
+  you-are-muted-permanent: '&#FF2121You have been muted: &f%reason% &7(appeal: &#00B5FF%appeal%&7)'
+  # Sent every time a muted player tries to talk. %time%
+  muted: '&#FF2121You are muted for another &f%time%&#FF2121.'
+  muted-permanent: '&#FF2121You are muted.'
+  
+  # ----- what staff sees ----------------------------------------------
+  # %target% %staff% %reason% %time%
+  ban-done: '&f%staff% &#FF2121banned &f%target% &7(%time%) &8- &7%reason%'
+  kick-done: '&f%staff% &#FF2121kicked &f%target% &8- &7%reason%'
+  mute-done: '&f%staff% &#FF2121muted &f%target% &7(%time%) &8- &7%reason%'
+  warn-done: '&f%staff% &#FFD900warned &f%target% &8- &7%reason%'
+  escalated: '&#FF2121Escalation: &f%target% &7- %reason% (%time%)'
+  lifted-broadcast: '&f%staff% &#71F521lifted a punishment on &f%target%&#71F521.'
+  
+  # ----- what the command tells you -----------------------------------
+  done: '&#71F521Done. &f%target% &7- %reason%'
+  lifted: '&#71F521Lifted &f%count% &#71F521punishment(s) on &f%target%&#71F521.'
+  nothing-to-lift: '&7%target% has nothing active to lift.'
+  immune: '&#FF2121%target% cannot be punished. &7(skmod.immune)'
+  looking-up: '&7Looking up %target%...'
+  unknown-player: '&#FF2121No player called &f%target%&#FF2121 has ever joined.'
+  bad-duration: '&#FF2121Not a duration I understand: &f%input% &7(try 10m, 2h30m,
+    7d, perm)'
+  
+  # %target% %count%
+  history-header: '&7Punishments of &f%target%&7: &f%count%'
+  # %id% %type% %reason% %staff% %state%
+  history-line: '  &8#%id% &f%type% &8- &7%reason% &8(&7%staff%&8, %state%&8)'
+  
+  usage-ban: '&7/ban <player> [reason]'
+  usage-tempban: '&7/tempban <player> <duration> [reason] &8- e.g. &f7d'
+  usage-unban: '&7/unban <player>'
+  usage-kick: '&7/kick <player> [reason]'
+  usage-mute: '&7/mute <player> [reason]'
+  usage-tempmute: '&7/tempmute <player> <duration> [reason] &8- e.g. &f10m'
+  usage-unmute: '&7/unmute <player>'
+  usage-warn: '&7/warn <player> [reason]'
+  usage-history: '&7/history <player>'
+# Language of everything this plugin says: EN or DE.
+#
+# EN is the default and reads this file. DE lays the translation in
+# lang/de/ over it - the file you are reading stays English and stays the
+# reference. A line the translation does not have falls back to English,
+# so nothing breaks if you add a setting we have not translated yet.
+#
+# The translated files are yours to edit as well, same as this one.
+language: EN

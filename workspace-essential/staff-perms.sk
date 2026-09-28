@@ -1,0 +1,30 @@
+# Apply CAPS two-tone rank prefixes + staff permissions. Run in-game as OP: /applystaffsetup
+
+options:
+	prefix: &b&lSETUP &8» &7
+
+command /applystaffsetup:
+	permission: op
+	trigger:
+		send "{@prefix}&7Applying ranks, bounty exempt, and /spec..." to player
+		execute console command "lp group member meta setprefix 10 "" &f"""
+		execute console command "lp group knight meta setprefix 20 "" &f"""
+		execute console command "lp group warrior meta setprefix 30 "" &f"""
+		execute console command "lp group macer meta setprefix 40 "" &f"""
+		execute console command "lp group prime meta setprefix 50 "" &f"""
+		execute console command "lp group clipper meta setprefix 55 "" &f"""
+		execute console command "lp group media meta setprefix 60 "" &f"""
+		execute console command "lp group helper meta setprefix 80 "" &f"""
+		execute console command "lp group mod meta setprefix 90 "" &f"""
+		execute console command "lp group owner meta setprefix 100 "" &f"""
+		execute console command "lp group admin meta setprefix 95 "" &f"""
+		execute console command "lp group helper permission set merelymesmp.spec true"
+		execute console command "lp group mod permission set merelymesmp.spec true"
+		execute console command "lp group admin permission set merelymesmp.spec true"
+		execute console command "lp group owner permission set merelymesmp.spec true"
+		execute console command "lp group helper permission set skbounty.exempt true"
+		execute console command "lp group mod permission set skbounty.exempt true"
+		execute console command "lp group admin permission set skbounty.exempt true"
+		execute console command "lp group owner permission set skbounty.exempt true"
+		execute console command "tab reload"
+		send "{@prefix}&aDone. CAPS ranks, staff /spec, and bounty exempt applied." to player

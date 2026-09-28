@@ -1,0 +1,99 @@
+# =====================================================================
+#  Spawners - the menu shown when a player right-clicks a spawner
+# =====================================================================
+#
+#  HOW THE LAYOUT WORKS
+#  Each line under `layout` is one row of the chest, exactly 9 characters
+#  wide. Each character is the `symbol` of an item defined below.
+#  '-' means empty.
+#
+#  Want the storage button one slot to the left? Move the letter.
+#  Want a taller menu? Add another line. The chest resizes itself.
+#
+#      layout:
+#        - '---------'      row 1
+#        - '--s-i-x--'      row 2:  s = storage, i = info, x = xp
+#        - '---------'      row 3
+#
+#  PLACEHOLDERS available in every name and lore below:
+#    %entity%              Cow
+#    %displayname_caps%    COW
+#    %color%               the mob's colour from its type file
+#    %stack%               how many spawners are stacked here
+#    %max_stack%           the cap for this mob
+#    %storage_amount%      items waiting inside
+#    %storage_percentage%  0-100, how full it is
+#    %storage_price%       what those items are worth
+#    %xp_amount%           XP waiting inside
+#    %speed%               seconds between production cycles
+#    %spawner_price%       shop price of this spawner
+# =====================================================================
+
+menu:
+  title: '%stack%x %entity% Spawner'
+  filler-symbol: '-'
+  layout:
+    - '---------'
+    - '--s-i-x--'
+    - '---------'
+
+items:
+
+  # The empty background. AIR leaves the slot genuinely empty; swap it for
+  # e.g. GRAY_STAINED_GLASS_PANE if you prefer a filled look.
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    name: ' '
+    symbol: '-'
+
+  # Opens the loot screen.
+  storage:
+    material: CHEST
+    symbol: s
+    action: storage
+    name: '&#FF8600&lSPAWNER LOOT'
+    lore:
+      - '&7Description'
+      - '&f'
+      - '&#FF8600Information:'
+      - '&fHere you can find the items'
+      - '&fthe spawner has generated.'
+      - '&e'
+      - '&#FF8600⚑ &fItems generated: &#FF8600%storage_amount%'
+      - '&#6BFF00$ &fMoney Value: &#6BFF00$%storage_price%'
+      - '&a'
+      - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to Open'
+
+  # Clicking this sells everything inside.
+  spawner_info:
+    material: PLAYER_HEAD
+    symbol: i
+    action: sell_all
+    name: '%color%&l%displayname_caps% SPAWNER'
+    lore:
+      - '&7Description'
+      - '&f'
+      - '%color%Information:'
+      - '&fSpawners generate items'
+      - '&fthat can be sold for money.'
+      - '&e'
+      - '&#FF4A00⌚ &fSpawner &#FF4A00%storage_percentage%% &ffilled'
+      - '&#55C8FF⚓ &fYou have &#55C8FF%stack% &fSpawners'
+      - '&b'
+      - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to Sell'
+
+  xp_collect:
+    material: EXPERIENCE_BOTTLE
+    symbol: x
+    action: xp_collect
+    name: '&#71F521&lSPAWNER XP'
+    lore:
+      - '&7Description'
+      - '&f'
+      - '&#71F521Information:'
+      - '&fHere you can collect the XP'
+      - '&fpoints that were generated.'
+      - '&e'
+      - '&#71F521⚗ &fXP Points: &#71F521%xp_amount%'
+      - '&a'
+      - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to Collect'

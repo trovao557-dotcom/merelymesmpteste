@@ -1,0 +1,18 @@
+# Creates the BOOSTER rank between MEMBER and KNIGHT.
+# Run once in game as OP with /applyboostersetup.
+
+options:
+	prefix: &d&lBOOSTER &8» &7
+
+command /applyboostersetup:
+	permission: op
+	trigger:
+		send "{@prefix}&7Applying the Booster rank..." to player
+		execute console command "lp creategroup booster"
+		execute console command "lp group booster parent add member"
+		execute console command "lp group booster setweight 15"
+		execute console command "lp group booster meta setprefix 15 \"&#F47FFF&lBOOSTER &f\""
+		execute console command "lp group booster permission set sksmp.homes.3 true"
+		execute console command "lp sync"
+		execute console command "tab reload"
+		send "{@prefix}&aDone. Booster inherits Member and has exactly 3 homes." to player

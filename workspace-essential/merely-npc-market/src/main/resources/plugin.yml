@@ -1,0 +1,19 @@
+name: MerelyNpcMarket
+version: 1.0.0
+main: com.merelyme.market.MerelyNpcMarket
+api-version: '1.21'
+author: MerelyMeSMP
+description: Seven rentable player shop NPCs with Points-only sales and voice mute enforcement.
+depend: [FancyNpcs, SKCore, SKMod]
+softdepend: [voicechat]
+commands:
+  npcmarket:
+    description: Open the rentable player NPC shops
+    aliases: [tradeshop, rentnpc, playershops]
+    usage: /npcmarket
+    permission: merelynpcmarket.use
+permissions:
+  merelynpcmarket.use:
+    default: true
+  merelynpcmarket.admin:
+    default: op

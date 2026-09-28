@@ -1,0 +1,36 @@
+# =====================================================================
+#  SKSpawners - deutsche Texte
+# =====================================================================
+#  Aktiv, sobald in der settings.yml `language: DE` steht.
+#
+#  Diese Datei heisst messages.yml, weil die englische so heisst - die
+#  Uebersetzung liegt immer ueber der Datei mit demselben Namen.
+#
+#  Platzhalter: %entity% das Wesen, %stack% die Stapelgroesse,
+#  %amount% %added% %max% %limit% %price% %item% %type%
+# =====================================================================
+
+prefix: '&#FF8600&lSPAWNER &#9B9B9B» '
+
+spawner:
+  placed: '&f%entity%-Spawner gesetzt. &7(Stapel: %stack%)'
+  broken: '&fDeinen %entity%-Spawner aufgesammelt. &7(Stapel: %stack%)'
+  received: '&fDu hast &#FFD900%amount%x %entity%&f-Spawner bekommen.'
+  stacked: '&#71F521+%added% &fSpawner hinzugefuegt. &7(jetzt: %stack%)'
+  stack-full: '&#FF2121Dieser Spawner hat sein Limit von %max% erreicht.'
+  stack-mismatch: '&#FF2121Das ist ein anderes Wesen - Spawner stapeln nur mit ihresgleichen.'
+  chunk-limit: '&#FF2121In diesem Chunk stehen schon %limit% Spawner. Stapel sie lieber.'
+  sold: '&#FFD900%amount% &fGegenstaende fuer &#6BFF00$%price% &fverkauft.'
+  loot-taken: '&#FFD900%amount%x &f%item% &fgenommen.'
+  loot-taken-all: '&#FFD900%amount% &fGegenstaende genommen.'
+  loot-dropped: '&#FFD900%amount% &fGegenstaende auf den Boden gelegt.'
+  xp-collected: '&#71F521+%amount% &fXP eingesammelt.'
+  storage-empty: '&#FF2121Dieser Spawner hat noch nichts gelagert.'
+  no-xp: '&#FF2121Es wurde noch kein XP erzeugt.'
+  inventory-full: '&#FF2121Dein Inventar ist voll.'
+  no-permission: '&#FF2121Das darfst du nicht.'
+  no-economy: '&#FF2121Verkaufen geht nicht - es ist keine Wirtschaft installiert.'
+  needs-silk-touch: '&#FF2121Du brauchst eine Spitzhacke mit Behutsamkeit, um diesen Spawner aufzunehmen.'
+  unknown-type: '&#FF2121Dieser Spawner verweist auf einen unbekannten Typ (%type%) und kann nicht gesetzt werden.'
+  vanilla-converted: '&#71F521Du hast einen &f%entity%&#71F521-Spawner aufgenommen.'
+  vanilla-unsupported: '&#FFD900In diesem Spawner war ein &f%entity%&#FFD900, der auf diesem Server nicht eingerichtet ist - es gibt nichts aufzunehmen.'

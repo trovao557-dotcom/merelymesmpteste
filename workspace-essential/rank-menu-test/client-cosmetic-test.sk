@@ -1,0 +1,319 @@
+options:
+    prefix: &8[&bCOSMETICS&8] &f
+    staff-permission: merely.staff.cosmetics
+
+function addCosmeticCompletions(p: player):
+    add "angel", "astronaut", "bluefire", "brown", "butterfly", "demon", "dragon", "eagle", "golden", "ocean", "purple", "phoenix" and "off" to chat completions of {_p}
+    add "diving", "chicken", "flight", "military", "motorcycle", "pot" and "off" to chat completions of {_p}
+    add "common", "rare", "epic" and "legendary" to chat completions of {_p}
+
+function restoreLegacyHelmet(p: player):
+    set {_key} to uuid of {_p}
+    if {cosmetic-test.saved-helmet::%{_key}%} is set:
+        set helmet of {_p} to {cosmetic-test.saved-helmet::%{_key}%}
+        delete {cosmetic-test.saved-helmet::%{_key}%}
+
+function equipCosmetic(p: player, label: text, id: number):
+    restoreLegacyHelmet({_p})
+    removeHat({_p})
+    set {_key} to uuid of {_p}
+    set {_item} to makeModelItem({_label}, {_id})
+    set {_loc} to location of {_p}
+    add 1.72 to y-coordinate of {_loc}
+    spawn an item display at {_loc}
+    set {_display} to last spawned item display
+    set item of {_display} to {_item}
+    set item display transform of {_display} to head
+    set teleport duration of {_display} to 0 ticks
+    set interpolation delay of {_display} to 0 ticks
+    set interpolation duration of {_display} to 0 ticks
+    set {cosmetic-test.hat-display::%{_key}%} to {_display}
+    send "{@prefix}Equipped &b%{_label}%&f. It uses no armour or inventory slot." to {_p}
+
+function removeWing(p: player):
+    set {_key} to uuid of {_p}
+    if {cosmetic-test.wing-display::%{_key}%} is set:
+        kill {cosmetic-test.wing-display::%{_key}%}
+        delete {cosmetic-test.wing-display::%{_key}%}
+    delete {cosmetic-test.wing-yaw::%{_key}%}
+    delete {cosmetic-test.wing-last-location::%{_key}%}
+
+function removeHat(p: player):
+    set {_key} to uuid of {_p}
+    if {cosmetic-test.hat-display::%{_key}%} is set:
+        kill {cosmetic-test.hat-display::%{_key}%}
+        delete {cosmetic-test.hat-display::%{_key}%}
+
+function equipWing(p: player, label: text, id: number):
+    restoreLegacyHelmet({_p})
+    set {_key} to uuid of {_p}
+    removeWing({_p})
+    set {_item} to makeModelItem({_label}, {_id})
+    set {_loc} to location of {_p}
+    add 1.25 to y-coordinate of {_loc}
+    spawn an item display at {_loc}
+    set {_display} to last spawned item display
+    set item of {_display} to {_item}
+    set item display transform of {_display} to fixed
+    set display scale of {_display} to vector(1.15, 1.15, 1.15)
+    # Zero-duration teleports remove the delayed trailing effect. Updating on
+    # every server tick keeps the display locked to the player's back.
+    set teleport duration of {_display} to 0 ticks
+    set interpolation delay of {_display} to 0 ticks
+    set interpolation duration of {_display} to 0 ticks
+    set view range of {_display} to 2.5
+    set {cosmetic-test.wing-display::%{_key}%} to {_display}
+    set {cosmetic-test.wing-yaw::%{_key}%} to yaw of {_p}
+    send "{@prefix}Equipped &b%{_label}%&f. The wings now stay straight on your back." to {_p}
+
+function removeCosmetic(p: player):
+    restoreLegacyHelmet({_p})
+    removeWing({_p})
+    removeHat({_p})
+    send "{@prefix}Cosmetic removed." to {_p}
+
+function makeModelItem(label: text, id: number) :: item:
+    set {_item} to paper named "&b&l%{_label}%"
+    set custom model data of {_item} to {_id}
+    return {_item}
+
+function openCosmeticCrate(p: player, label: text, closedId: number):
+    set {_key} to uuid of {_p}
+    if {cosmetic-test.opening::%{_key}%} is set:
+        send "{@prefix}&cWait for your current crate to finish opening." to {_p}
+        stop
+    set {cosmetic-test.opening::%{_key}%} to true
+    set {_closed} to makeModelItem({_label}, {_closedId})
+    set {_keyappear1} to makeModelItem({_label}, {_closedId} + 100)
+    set {_keyappear2} to makeModelItem({_label}, {_closedId} + 200)
+    set {_keyshow} to makeModelItem({_label}, {_closedId} + 300)
+    set {_keyinsert1} to makeModelItem({_label}, {_closedId} + 400)
+    set {_keyinsert2} to makeModelItem({_label}, {_closedId} + 500)
+    set {_keyturn1} to makeModelItem({_label}, {_closedId} + 600)
+    set {_keyturn2} to makeModelItem({_label}, {_closedId} + 700)
+    set {_lid1} to makeModelItem({_label}, {_closedId} + 800)
+    set {_lid2} to makeModelItem({_label}, {_closedId} + 900)
+    set {_open} to makeModelItem({_label}, {_closedId} + 1000)
+    set {_drop1} to makeModelItem({_label}, {_closedId} + 1100)
+    set {_drop2} to makeModelItem({_label}, {_closedId} + 1200)
+    # Use a horizontal direction so looking up/down cannot spawn the crate in
+    # the air. Search down to the closest floor, then lift the 4x model so its
+    # visual base rests on that block. The converted model starts at its
+    # display origin, so adding height here would put it at head level.
+    set {_loc} to location of {_p}
+    set {_playerYaw} to yaw of {_p}
+    set {_front} to vector from yaw {_playerYaw} and pitch 0
+    # Keep the large model well clear of the player's camera and body.
+    set vector length of {_front} to 72
+    add {_front} to {_loc}
+    add 4 to y-coordinate of {_loc}
+    loop 12 times:
+        if block below {_loc} is solid:
+            exit loop
+        subtract 1 from y-coordinate of {_loc}
+    # Rotate the chest another 180 degrees so its lock/front faces the player.
+    set yaw of {_loc} to yaw of {_p}
+    spawn an item display at {_loc}
+    set {_display} to last spawned item display
+    set item of {_display} to {_closed}
+    set item display transform of {_display} to fixed
+    set display scale of {_display} to vector(6.5, 6.5, 6.5)
+    set view range of {_display} to 12
+    set interpolation delay of {_display} to 0 ticks
+    set interpolation duration of {_display} to 2 ticks
+    play sound "block.chest.locked" with volume 1 and pitch 1 at {_loc} to {_p}
+    loop 3 times:
+        rotate {_display} around z axis by 10 degrees
+        wait 2 ticks
+        rotate {_display} around z axis by -20 degrees
+        wait 2 ticks
+        rotate {_display} around z axis by 10 degrees
+        wait 2 ticks
+    wait 2 ticks
+    set item of {_display} to {_keyappear1}
+    draw 18 electric spark particles with a distribution of vector(1.4, 0.8, 1.4) at {_loc}
+    wait 4 ticks
+    set item of {_display} to {_keyappear2}
+    wait 4 ticks
+    set item of {_display} to {_keyshow}
+    play sound "block.amethyst_block.chime" with volume 0.8 and pitch 1.4 at {_loc} to {_p}
+    draw 24 end rod particles with a distribution of vector(1.2, 0.9, 1.2) at {_loc}
+    wait 8 ticks
+    set item of {_display} to {_keyinsert1}
+    wait 5 ticks
+    set item of {_display} to {_keyinsert2}
+    wait 5 ticks
+    set item of {_display} to {_keyturn1}
+    wait 5 ticks
+    set item of {_display} to {_keyturn2}
+    play sound "block.tripwire.click_on" with volume 1 and pitch 0.8 at {_loc} to {_p}
+    draw 30 electric spark particles with a distribution of vector(1.6, 1.1, 1.6) at {_loc}
+    wait 5 ticks
+    set item of {_display} to {_lid1}
+    wait 2 ticks
+    set item of {_display} to {_lid2}
+    wait 2 ticks
+    play sound "block.iron_trapdoor.open" with volume 0.8 and pitch 1.2 at {_loc} to {_p}
+    set item of {_display} to {_open}
+    play sound "block.chest.open" with volume 1 and pitch 1 at {_loc} to {_p}
+    # Bright layered burst exactly when the lid opens.
+    draw 90 end rod particles with a distribution of vector(2.3, 1.9, 2.3) at {_loc}
+    draw 75 electric spark particles with a distribution of vector(2.6, 2.1, 2.6) at {_loc}
+    draw 45 firework particles with a distribution of vector(1.8, 1.4, 1.8) at {_loc}
+    play sound "entity.firework_rocket.blast" with volume 0.8 and pitch 1.35 at {_loc} to {_p}
+    wait 2 ticks
+    set item of {_display} to {_drop1}
+    wait 2 ticks
+    set item of {_display} to {_drop2}
+    play sound "block.chain.break" with volume 0.7 and pitch 1.1 at {_loc} to {_p}
+    draw 60 electric spark particles with a distribution of vector(2.2, 1.8, 2.2) at {_loc}
+    wait 10 ticks
+    give 2 diamond blocks to {_p}
+    play sound "entity.player.levelup" with volume 1 and pitch 1.2 at {_loc} to {_p}
+    send "{@prefix}&aYou received &b2 Diamond Blocks&a!" to {_p}
+    # Leave the opened crate on the ground for three seconds, then shrink it
+    # smoothly instead of removing it in a single frame.
+    wait 60 ticks
+    set interpolation duration of {_display} to 12 ticks
+    set display scale of {_display} to vector(0.01, 0.01, 0.01)
+    draw 35 end rod particles with a distribution of vector(1.2, 0.8, 1.2) at {_loc}
+    wait 12 ticks
+    kill {_display}
+    delete {cosmetic-test.opening::%{_key}%}
+
+on load:
+    loop all players:
+        restoreLegacyHelmet(loop-player)
+        if loop-player has permission "{@staff-permission}":
+            addCosmeticCompletions(loop-player)
+
+on join:
+    restoreLegacyHelmet(player)
+    if player has permission "{@staff-permission}":
+        addCosmeticCompletions(player)
+
+on quit:
+    removeWing(player)
+    removeHat(player)
+    delete {cosmetic-test.opening::%uuid of player%}
+
+every 1 tick:
+    loop all players:
+        set {_key} to uuid of loop-player
+        set {_display} to {cosmetic-test.wing-display::%{_key}%}
+        if {_display} is set:
+            if {_display} is dead:
+                delete {cosmetic-test.wing-display::%{_key}%}
+            else:
+                # Follow the player's look/body direction every tick. This
+                # keeps the model locked behind the back while turning or
+                # gliding instead of keeping an old movement direction.
+                set {_yaw} to yaw of loop-player
+                set {_pitch} to pitch of loop-player
+                set {_reverseYaw} to {_yaw} + 180
+                set {_reversePitch} to 0 - {_pitch}
+                set {_back} to vector from yaw {_reverseYaw} and pitch {_reversePitch}
+                set vector length of {_back} to 0.72
+                set {_loc} to location of loop-player
+                add {_back} to {_loc}
+                add 1.18 to y-coordinate of {_loc}
+                set yaw of {_loc} to {_yaw}
+                set pitch of {_loc} to {_pitch}
+                teleport {_display} to {_loc}
+        set {_hat} to {cosmetic-test.hat-display::%{_key}%}
+        if {_hat} is set:
+            if {_hat} is dead:
+                delete {cosmetic-test.hat-display::%{_key}%}
+            else:
+                set {_hatloc} to location of loop-player
+                add 1.72 to y-coordinate of {_hatloc}
+                set yaw of {_hatloc} to yaw of loop-player
+                set pitch of {_hatloc} to pitch of loop-player
+                teleport {_hat} to {_hatloc}
+
+command /wingtest [<text>]:
+    permission: {@staff-permission}
+    permission message: &cOnly Helper, Mod, Admin and Owner can use this command.
+    trigger:
+        if arg-1 is not set:
+            send "&b/wingtest &f<angel|astronaut|bluefire|brown|butterfly|demon|dragon|eagle|golden|ocean|purple|phoenix|off>"
+            stop
+        set {_n} to lowercase arg-1
+        if {_n} is "off":
+            removeWing(player)
+            send "{@prefix}Wing removed. Your hat stays equipped." to player
+        else if {_n} is "angel":
+            equipWing(player, "Angel Wings", 9000)
+        else if {_n} is "astronaut":
+            equipWing(player, "Astronaut Wings", 9001)
+        else if {_n} is "bluefire":
+            equipWing(player, "BlueFire Wings", 9002)
+        else if {_n} is "brown":
+            equipWing(player, "Brown Wings", 9003)
+        else if {_n} is "butterfly":
+            equipWing(player, "Butterfly Wings", 9004)
+        else if {_n} is "demon":
+            equipWing(player, "Demon Wings", 9005)
+        else if {_n} is "dragon":
+            equipWing(player, "Dragon Wings", 9006)
+        else if {_n} is "eagle":
+            equipWing(player, "Eagle Wings", 9007)
+        else if {_n} is "golden":
+            equipWing(player, "Golden Wings", 9008)
+        else if {_n} is "ocean":
+            equipWing(player, "Ocean Wings", 9009)
+        else if {_n} is "purple":
+            equipWing(player, "Purple Wings", 9010)
+        else if {_n} is "phoenix":
+            equipWing(player, "Phoenix Wings", 9011)
+        else:
+            send "&cUnknown wing. Use /wingtest to see every option."
+
+command /hattest [<text>]:
+    permission: {@staff-permission}
+    permission message: &cOnly Helper, Mod, Admin and Owner can use this command.
+    trigger:
+        if arg-1 is not set:
+            send "&b/hattest &f<diving|chicken|flight|military|motorcycle|pot|off>"
+            stop
+        set {_n} to lowercase arg-1
+        if {_n} is "off":
+            removeHat(player)
+            send "{@prefix}Hat removed. Your wing stays equipped." to player
+        else if {_n} is "diving":
+            equipCosmetic(player, "Diving Helmet", 10000)
+        else if {_n} is "chicken":
+            equipCosmetic(player, "Chicken Hat", 10001)
+        else if {_n} is "flight":
+            equipCosmetic(player, "Flight Hat", 10002)
+        else if {_n} is "military":
+            equipCosmetic(player, "Military Helmet", 10003)
+        else if {_n} is "motorcycle":
+            equipCosmetic(player, "Motorcycle Helmet", 10004)
+        else if {_n} is "pot":
+            equipCosmetic(player, "Pot Hat", 10005)
+        else:
+            send "&cUnknown hat. Use /hattest to see every option."
+
+command /cratetest [<text>]:
+    aliases: /crateopen
+    permission: {@staff-permission}
+    permission message: &cOnly Helper, Mod, Admin and Owner can use this command.
+    trigger:
+        if arg-1 is not set:
+            send "&b/cratetest &f<common|rare|epic|legendary>"
+            stop
+        set {_n} to lowercase arg-1
+        if {_n} is "common":
+            openCosmeticCrate(player, "Common Crate", 11000)
+        else if {_n} is "rare":
+            openCosmeticCrate(player, "Rare Crate", 11001)
+        else if {_n} is "epic":
+            openCosmeticCrate(player, "Epic Crate", 11002)
+        else if {_n} is "legendary":
+            openCosmeticCrate(player, "Legendary Crate", 11003)
+        else:
+            send "&cUnknown crate. Use /cratetest to see every option."
+
+
+

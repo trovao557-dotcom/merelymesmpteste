@@ -1,0 +1,1122 @@
+Compiled from "KitsPlugin.java"
+public final class net.skstudios.kits.KitsPlugin extends net.skstudios.core.SKPlugin implements org.bukkit.command.CommandExecutor,org.bukkit.command.TabCompleter,org.bukkit.event.Listener {
+  private net.skstudios.core.config.ConfigFile kitsFile;
+
+  private final java.util.Map<java.lang.String, net.skstudios.kits.Kit> kits;
+
+  private net.skstudios.kits.CooldownStore cooldowns;
+
+  private net.skstudios.core.sound.Sounds sounds;
+
+  private org.bukkit.configuration.ConfigurationSection menu;
+
+  private org.bukkit.configuration.ConfigurationSection preview;
+
+  private org.bukkit.configuration.ConfigurationSection rewards;
+
+  private final java.util.Map<java.lang.String, net.skstudios.core.gui.ItemSpec> previewItems;
+
+  private java.lang.String firstJoinKit;
+
+  private int firstJoinDelaySeconds;
+
+  private java.lang.String keyCommand;
+
+  public net.skstudios.kits.KitsPlugin();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/skstudios/core/SKPlugin."<init>":()V
+       4: aload_0
+       5: new           #7                  // class java/util/LinkedHashMap
+       8: dup
+       9: invokespecial #9                  // Method java/util/LinkedHashMap."<init>":()V
+      12: putfield      #10                 // Field kits:Ljava/util/Map;
+      15: aload_0
+      16: new           #7                  // class java/util/LinkedHashMap
+      19: dup
+      20: invokespecial #9                  // Method java/util/LinkedHashMap."<init>":()V
+      23: putfield      #16                 // Field previewItems:Ljava/util/Map;
+      26: return
+
+  protected void start();
+    Code:
+       0: aload_0
+       1: new           #19                 // class net/skstudios/kits/CooldownStore
+       4: dup
+       5: aload_0
+       6: invokespecial #21                 // Method net/skstudios/kits/CooldownStore."<init>":(Lnet/skstudios/kits/KitsPlugin;)V
+       9: putfield      #24                 // Field cooldowns:Lnet/skstudios/kits/CooldownStore;
+      12: aload_0
+      13: getfield      #24                 // Field cooldowns:Lnet/skstudios/kits/CooldownStore;
+      16: invokevirtual #28                 // Method net/skstudios/kits/CooldownStore.load:()V
+      19: aload_0
+      20: invokevirtual #31                 // Method applySettings:()V
+      23: aload_0
+      24: invokevirtual #34                 // Method getServer:()Lorg/bukkit/Server;
+      27: invokeinterface #38,  1           // InterfaceMethod org/bukkit/Server.getPluginManager:()Lorg/bukkit/plugin/PluginManager;
+      32: aload_0
+      33: aload_0
+      34: invokeinterface #44,  3           // InterfaceMethod org/bukkit/plugin/PluginManager.registerEvents:(Lorg/bukkit/event/Listener;Lorg/bukkit/plugin/Plugin;)V
+      39: iconst_2
+      40: anewarray     #50                 // class java/lang/String
+      43: dup
+      44: iconst_0
+      45: ldc           #52                 // String kit
+      47: aastore
+      48: dup
+      49: iconst_1
+      50: ldc           #54                 // String skkits
+      52: aastore
+      53: astore_1
+      54: aload_1
+      55: arraylength
+      56: istore_2
+      57: iconst_0
+      58: istore_3
+      59: iload_3
+      60: iload_2
+      61: if_icmpge     117
+      64: aload_1
+      65: iload_3
+      66: aaload
+      67: astore        4
+      69: aload_0
+      70: aload         4
+      72: invokevirtual #56                 // Method getCommand:(Ljava/lang/String;)Lorg/bukkit/command/PluginCommand;
+      75: astore        5
+      77: aload         5
+      79: ifnonnull     99
+      82: aload_0
+      83: invokevirtual #60                 // Method getLogger:()Ljava/util/logging/Logger;
+      86: aload         4
+      88: invokedynamic #64,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      93: invokevirtual #68                 // Method java/util/logging/Logger.warning:(Ljava/lang/String;)V
+      96: goto          111
+      99: aload         5
+     101: aload_0
+     102: invokevirtual #74                 // Method org/bukkit/command/PluginCommand.setExecutor:(Lorg/bukkit/command/CommandExecutor;)V
+     105: aload         5
+     107: aload_0
+     108: invokevirtual #80                 // Method org/bukkit/command/PluginCommand.setTabCompleter:(Lorg/bukkit/command/TabCompleter;)V
+     111: iinc          3, 1
+     114: goto          59
+     117: aload_0
+     118: invokevirtual #60                 // Method getLogger:()Ljava/util/logging/Logger;
+     121: aload_0
+     122: getfield      #10                 // Field kits:Ljava/util/Map;
+     125: invokeinterface #84,  1           // InterfaceMethod java/util/Map.size:()I
+     130: invokedynamic #90,  0             // InvokeDynamic #1:makeConcatWithConstants:(I)Ljava/lang/String;
+     135: invokevirtual #93                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+     138: return
+
+  protected void stop();
+    Code:
+       0: aload_0
+       1: getfield      #24                 // Field cooldowns:Lnet/skstudios/kits/CooldownStore;
+       4: ifnull        15
+       7: aload_0
+       8: getfield      #24                 // Field cooldowns:Lnet/skstudios/kits/CooldownStore;
+      11: iconst_1
+      12: invokevirtual #96                 // Method net/skstudios/kits/CooldownStore.save:(Z)V
+      15: return
+
+  private void applySettings();
+    Code:
+       0: aload_0
+       1: invokevirtual #100                // Method config:()Lnet/skstudios/core/config/ConfigFile;
+       4: invokevirtual #104                // Method net/skstudios/core/config/ConfigFile.yaml:()Lorg/bukkit/configuration/file/YamlConfiguration;
+       7: astore_1
+       8: aload_0
+       9: new           #110                // class net/skstudios/core/sound/Sounds
+      12: dup
+      13: aload_1
+      14: ldc           #112                // String sounds
+      16: invokevirtual #114                // Method org/bukkit/configuration/file/YamlConfiguration.getConfigurationSection:(Ljava/lang/String;)Lorg/bukkit/configuration/ConfigurationSection;
+      19: invokespecial #120                // Method net/skstudios/core/sound/Sounds."<init>":(Lorg/bukkit/configuration/ConfigurationSection;)V
+      22: putfield      #123                // Field sounds:Lnet/skstudios/core/sound/Sounds;
+      25: aload_0
+      26: aload_1
+      27: ldc           #126                // String menu
+      29: invokevirtual #114                // Method org/bukkit/configuration/file/YamlConfiguration.getConfigurationSection:(Ljava/lang/String;)Lorg/bukkit/configuration/ConfigurationSection;
+      32: putfield      #128                // Field menu:Lorg/bukkit/configuration/ConfigurationSection;
+      35: aload_0
+      36: aload_1
+      37: ldc           #131                // String preview
+      39: invokevirtual #114                // Method org/bukkit/configuration/file/YamlConfiguration.getConfigurationSection:(Ljava/lang/String;)Lorg/bukkit/configuration/ConfigurationSection;
+      42: putfield      #133                // Field preview:Lorg/bukkit/configuration/ConfigurationSection;
+      45: aload_0
+      46: aload_1
+      47: ldc           #135                // String reward-items
+      49: invokevirtual #114                // Method org/bukkit/configuration/file/YamlConfiguration.getConfigurationSection:(Ljava/lang/String;)Lorg/bukkit/configuration/ConfigurationSection;
+      52: putfield      #137                // Field rewards:Lorg/bukkit/configuration/ConfigurationSection;
+      55: aload_0
+      56: aload_1
+      57: ldc           #140                // String first-join.kit
+      59: ldc           #142                // String
+      61: invokevirtual #144                // Method org/bukkit/configuration/file/YamlConfiguration.getString:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      64: putfield      #148                // Field firstJoinKit:Ljava/lang/String;
+      67: aload_0
+      68: iconst_0
+      69: aload_1
+      70: ldc           #152                // String first-join.delay-seconds
+      72: iconst_5
+      73: invokevirtual #154                // Method org/bukkit/configuration/file/YamlConfiguration.getInt:(Ljava/lang/String;I)I
+      76: invokestatic  #158                // Method java/lang/Math.max:(II)I
+      79: putfield      #164                // Field firstJoinDelaySeconds:I
+      82: aload_0
+      83: aload_1
+      84: ldc           #168                // String key-command
+      86: ldc           #170                // String keys give %player% %crate% %amount%
+      88: invokevirtual #144                // Method org/bukkit/configuration/file/YamlConfiguration.getString:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      91: putfield      #172                // Field keyCommand:Ljava/lang/String;
+      94: aload_0
+      95: getfield      #16                 // Field previewItems:Ljava/util/Map;
+      98: invokeinterface #175,  1          // InterfaceMethod java/util/Map.clear:()V
+     103: aload_0
+     104: getfield      #133                // Field preview:Lorg/bukkit/configuration/ConfigurationSection;
+     107: ifnull        203
+     110: aload_0
+     111: getfield      #133                // Field preview:Lorg/bukkit/configuration/ConfigurationSection;
+     114: ldc           #178                // String items
+     116: invokeinterface #180,  2          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getConfigurationSection:(Ljava/lang/String;)Lorg/bukkit/configuration/ConfigurationSection;
+     121: astore_2
+     122: aload_2
+     123: ifnull        203
+     126: aload_2
+     127: iconst_0
+     128: invokeinterface #183,  2          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getKeys:(Z)Ljava/util/Set;
+     133: invokeinterface #187,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     138: astore_3
+     139: aload_3
+     140: invokeinterface #193,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     145: ifeq          203
+     148: aload_3
+     149: invokeinterface #199,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     154: checkcast     #50                 // class java/lang/String
+     157: astore        4
+     159: aload_2
+     160: aload         4
+     162: invokeinterface #180,  2          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getConfigurationSection:(Ljava/lang/String;)Lorg/bukkit/configuration/ConfigurationSection;
+     167: astore        5
+     169: aload         5
+     171: ifnonnull     177
+     174: goto          139
+     177: aload_0
+     178: getfield      #16                 // Field previewItems:Ljava/util/Map;
+     181: aload         4
+     183: aload         5
+     185: aload         4
+     187: aload_0
+     188: invokevirtual #60                 // Method getLogger:()Ljava/util/logging/Logger;
+     191: invokestatic  #203                // Method net/skstudios/core/gui/ItemSpec.from:(Lorg/bukkit/configuration/ConfigurationSection;Ljava/lang/String;Ljava/util/logging/Logger;)Lnet/skstudios/core/gui/ItemSpec;
+     194: invokeinterface #209,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     199: pop
+     200: goto          139
+     203: aload_0
+     204: new           #105                // class net/skstudios/core/config/ConfigFile
+     207: dup
+     208: aload_0
+     209: ldc           #213                // String kits.yml
+     211: invokespecial #215                // Method net/skstudios/core/config/ConfigFile."<init>":(Lorg/bukkit/plugin/Plugin;Ljava/lang/String;)V
+     214: iconst_0
+     215: invokevirtual #218                // Method net/skstudios/core/config/ConfigFile.load:(Z)Lnet/skstudios/core/config/ConfigFile;
+     218: putfield      #221                // Field kitsFile:Lnet/skstudios/core/config/ConfigFile;
+     221: aload_0
+     222: getfield      #10                 // Field kits:Ljava/util/Map;
+     225: invokeinterface #175,  1          // InterfaceMethod java/util/Map.clear:()V
+     230: aload_0
+     231: getfield      #221                // Field kitsFile:Lnet/skstudios/core/config/ConfigFile;
+     234: invokevirtual #104                // Method net/skstudios/core/config/ConfigFile.yaml:()Lorg/bukkit/configuration/file/YamlConfiguration;
+     237: iconst_0
+     238: invokevirtual #225                // Method org/bukkit/configuration/file/YamlConfiguration.getKeys:(Z)Ljava/util/Set;
+     241: invokeinterface #187,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     246: astore_2
+     247: aload_2
+     248: invokeinterface #193,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     253: ifeq          308
+     256: aload_2
+     257: invokeinterface #199,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     262: checkcast     #50                 // class java/lang/String
+     265: astore_3
+     266: aload_0
+     267: getfield      #221                // Field kitsFile:Lnet/skstudios/core/config/ConfigFile;
+     270: invokevirtual #104                // Method net/skstudios/core/config/ConfigFile.yaml:()Lorg/bukkit/configuration/file/YamlConfiguration;
+     273: aload_3
+     274: aload_0
+     275: invokevirtual #60                 // Method getLogger:()Ljava/util/logging/Logger;
+     278: invokestatic  #226                // Method net/skstudios/kits/Kit.read:(Lorg/bukkit/configuration/ConfigurationSection;Ljava/lang/String;Ljava/util/logging/Logger;)Lnet/skstudios/kits/Kit;
+     281: astore        4
+     283: aload         4
+     285: ifnull        305
+     288: aload_0
+     289: getfield      #10                 // Field kits:Ljava/util/Map;
+     292: aload         4
+     294: invokevirtual #232                // Method net/skstudios/kits/Kit.id:()Ljava/lang/String;
+     297: aload         4
+     299: invokeinterface #209,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     304: pop
+     305: goto          247
+     308: return
+
+  java.util.List<net.skstudios.kits.Kit> kits();
+    Code:
+       0: new           #236                // class java/util/ArrayList
+       3: dup
+       4: aload_0
+       5: getfield      #10                 // Field kits:Ljava/util/Map;
+       8: invokeinterface #238,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      13: invokespecial #242                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+      16: areturn
+
+  net.skstudios.kits.Kit kitAtSlot(int);
+    Code:
+       0: aload_0
+       1: getfield      #10                 // Field kits:Ljava/util/Map;
+       4: invokeinterface #238,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+       9: invokeinterface #245,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      14: astore_2
+      15: aload_2
+      16: invokeinterface #193,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      21: ifeq          47
+      24: aload_2
+      25: invokeinterface #199,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      30: checkcast     #227                // class net/skstudios/kits/Kit
+      33: astore_3
+      34: aload_3
+      35: invokevirtual #248                // Method net/skstudios/kits/Kit.slot:()I
+      38: iload_1
+      39: if_icmpne     44
+      42: aload_3
+      43: areturn
+      44: goto          15
+      47: aconst_null
+      48: areturn
+
+  net.skstudios.kits.CooldownStore cooldowns();
+    Code:
+       0: aload_0
+       1: getfield      #24                 // Field cooldowns:Lnet/skstudios/kits/CooldownStore;
+       4: areturn
+
+  java.lang.String menuTitle();
+    Code:
+       0: aload_0
+       1: getfield      #128                // Field menu:Lorg/bukkit/configuration/ConfigurationSection;
+       4: ifnonnull     12
+       7: ldc           #251                // String Kits
+       9: goto          25
+      12: aload_0
+      13: getfield      #128                // Field menu:Lorg/bukkit/configuration/ConfigurationSection;
+      16: ldc           #253                // String title
+      18: ldc           #251                // String Kits
+      20: invokeinterface #255,  3          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getString:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      25: areturn
+
+  int menuRows();
+    Code:
+       0: aload_0
+       1: getfield      #128                // Field menu:Lorg/bukkit/configuration/ConfigurationSection;
+       4: ifnonnull     11
+       7: iconst_3
+       8: goto          33
+      11: bipush        6
+      13: iconst_1
+      14: aload_0
+      15: getfield      #128                // Field menu:Lorg/bukkit/configuration/ConfigurationSection;
+      18: ldc_w         #256                // String rows
+      21: iconst_3
+      22: invokeinterface #258,  3          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getInt:(Ljava/lang/String;I)I
+      27: invokestatic  #158                // Method java/lang/Math.max:(II)I
+      30: invokestatic  #259                // Method java/lang/Math.min:(II)I
+      33: ireturn
+
+  java.util.List<java.lang.String> iconLore();
+    Code:
+       0: aload_0
+       1: getfield      #128                // Field menu:Lorg/bukkit/configuration/ConfigurationSection;
+       4: ifnonnull     13
+       7: invokestatic  #262                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      10: goto          25
+      13: aload_0
+      14: getfield      #128                // Field menu:Lorg/bukkit/configuration/ConfigurationSection;
+      17: ldc_w         #268                // String icon-lore
+      20: invokeinterface #270,  2          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getStringList:(Ljava/lang/String;)Ljava/util/List;
+      25: areturn
+
+  java.lang.String previewTitle();
+    Code:
+       0: aload_0
+       1: getfield      #133                // Field preview:Lorg/bukkit/configuration/ConfigurationSection;
+       4: ifnonnull     13
+       7: ldc_w         #274                // String %kit%
+      10: goto          27
+      13: aload_0
+      14: getfield      #133                // Field preview:Lorg/bukkit/configuration/ConfigurationSection;
+      17: ldc           #253                // String title
+      19: ldc_w         #274                // String %kit%
+      22: invokeinterface #255,  3          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getString:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      27: areturn
+
+  int previewRows();
+    Code:
+       0: aload_0
+       1: getfield      #133                // Field preview:Lorg/bukkit/configuration/ConfigurationSection;
+       4: ifnonnull     11
+       7: iconst_4
+       8: goto          33
+      11: bipush        6
+      13: iconst_1
+      14: aload_0
+      15: getfield      #133                // Field preview:Lorg/bukkit/configuration/ConfigurationSection;
+      18: ldc_w         #256                // String rows
+      21: iconst_4
+      22: invokeinterface #258,  3          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getInt:(Ljava/lang/String;I)I
+      27: invokestatic  #158                // Method java/lang/Math.max:(II)I
+      30: invokestatic  #259                // Method java/lang/Math.min:(II)I
+      33: ireturn
+
+  int previewFirstSlot();
+    Code:
+       0: aload_0
+       1: getfield      #133                // Field preview:Lorg/bukkit/configuration/ConfigurationSection;
+       4: ifnonnull     12
+       7: bipush        10
+       9: goto          26
+      12: aload_0
+      13: getfield      #133                // Field preview:Lorg/bukkit/configuration/ConfigurationSection;
+      16: ldc_w         #276                // String first-slot
+      19: bipush        10
+      21: invokeinterface #258,  3          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getInt:(Ljava/lang/String;I)I
+      26: ireturn
+
+  java.util.List<java.lang.Integer> previewSkipSlots();
+    Code:
+       0: aload_0
+       1: getfield      #133                // Field preview:Lorg/bukkit/configuration/ConfigurationSection;
+       4: ifnonnull     18
+       7: bipush        17
+       9: invokestatic  #278                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      12: invokestatic  #284                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+      15: goto          30
+      18: aload_0
+      19: getfield      #133                // Field preview:Lorg/bukkit/configuration/ConfigurationSection;
+      22: ldc_w         #287                // String wrap-at
+      25: invokeinterface #289,  2          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getIntegerList:(Ljava/lang/String;)Ljava/util/List;
+      30: areturn
+
+  int previewWrapTo();
+    Code:
+       0: aload_0
+       1: getfield      #133                // Field preview:Lorg/bukkit/configuration/ConfigurationSection;
+       4: ifnonnull     12
+       7: bipush        19
+       9: goto          26
+      12: aload_0
+      13: getfield      #133                // Field preview:Lorg/bukkit/configuration/ConfigurationSection;
+      16: ldc_w         #292                // String wrap-to
+      19: bipush        19
+      21: invokeinterface #258,  3          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getInt:(Ljava/lang/String;I)I
+      26: ireturn
+
+  int previewBackSlot();
+    Code:
+       0: aload_0
+       1: getfield      #133                // Field preview:Lorg/bukkit/configuration/ConfigurationSection;
+       4: ifnonnull     12
+       7: bipush        27
+       9: goto          26
+      12: aload_0
+      13: getfield      #133                // Field preview:Lorg/bukkit/configuration/ConfigurationSection;
+      16: ldc_w         #294                // String back-slot
+      19: bipush        27
+      21: invokeinterface #258,  3          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getInt:(Ljava/lang/String;I)I
+      26: ireturn
+
+  net.skstudios.core.gui.ItemSpec previewItem(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #16                 // Field previewItems:Ljava/util/Map;
+       4: aload_1
+       5: invokeinterface #296,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #204                // class net/skstudios/core/gui/ItemSpec
+      13: areturn
+
+  org.bukkit.inventory.ItemStack rewardItem(java.lang.String, java.util.Map<java.lang.String, java.lang.String>);
+    Code:
+       0: aload_0
+       1: getfield      #137                // Field rewards:Lorg/bukkit/configuration/ConfigurationSection;
+       4: ifnull        20
+       7: aload_0
+       8: getfield      #137                // Field rewards:Lorg/bukkit/configuration/ConfigurationSection;
+      11: aload_1
+      12: invokeinterface #300,  2          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.isConfigurationSection:(Ljava/lang/String;)Z
+      17: ifne          22
+      20: aconst_null
+      21: areturn
+      22: aload_0
+      23: getfield      #137                // Field rewards:Lorg/bukkit/configuration/ConfigurationSection;
+      26: aload_1
+      27: invokeinterface #180,  2          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getConfigurationSection:(Ljava/lang/String;)Lorg/bukkit/configuration/ConfigurationSection;
+      32: aload_1
+      33: aload_0
+      34: invokevirtual #60                 // Method getLogger:()Ljava/util/logging/Logger;
+      37: invokestatic  #203                // Method net/skstudios/core/gui/ItemSpec.from:(Lorg/bukkit/configuration/ConfigurationSection;Ljava/lang/String;Ljava/util/logging/Logger;)Lnet/skstudios/core/gui/ItemSpec;
+      40: astore_3
+      41: aload_3
+      42: ifnonnull     49
+      45: aconst_null
+      46: goto          54
+      49: aload_3
+      50: aload_2
+      51: invokevirtual #304                // Method net/skstudios/core/gui/ItemSpec.build:(Ljava/util/Map;)Lorg/bukkit/inventory/ItemStack;
+      54: areturn
+
+  org.bukkit.inventory.ItemStack filler();
+    Code:
+       0: aload_0
+       1: getfield      #128                // Field menu:Lorg/bukkit/configuration/ConfigurationSection;
+       4: ifnull        22
+       7: aload_0
+       8: getfield      #128                // Field menu:Lorg/bukkit/configuration/ConfigurationSection;
+      11: ldc_w         #308                // String filler
+      14: invokeinterface #300,  2          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.isConfigurationSection:(Ljava/lang/String;)Z
+      19: ifne          24
+      22: aconst_null
+      23: areturn
+      24: aload_0
+      25: getfield      #128                // Field menu:Lorg/bukkit/configuration/ConfigurationSection;
+      28: ldc_w         #308                // String filler
+      31: invokeinterface #180,  2          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getConfigurationSection:(Ljava/lang/String;)Lorg/bukkit/configuration/ConfigurationSection;
+      36: ldc_w         #308                // String filler
+      39: aload_0
+      40: invokevirtual #60                 // Method getLogger:()Ljava/util/logging/Logger;
+      43: invokestatic  #203                // Method net/skstudios/core/gui/ItemSpec.from:(Lorg/bukkit/configuration/ConfigurationSection;Ljava/lang/String;Ljava/util/logging/Logger;)Lnet/skstudios/core/gui/ItemSpec;
+      46: astore_1
+      47: aload_1
+      48: ifnonnull     55
+      51: aconst_null
+      52: goto          59
+      55: aload_1
+      56: invokevirtual #310                // Method net/skstudios/core/gui/ItemSpec.build:()Lorg/bukkit/inventory/ItemStack;
+      59: areturn
+
+  void sound(org.bukkit.entity.Player, java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #123                // Field sounds:Lnet/skstudios/core/sound/Sounds;
+       4: aload_1
+       5: aload_2
+       6: invokevirtual #313                // Method net/skstudios/core/sound/Sounds.play:(Lorg/bukkit/entity/Player;Ljava/lang/String;)V
+       9: return
+
+  java.lang.String text(java.lang.String, java.util.Map<java.lang.String, java.lang.String>);
+    Code:
+       0: aload_0
+       1: invokevirtual #100                // Method config:()Lnet/skstudios/core/config/ConfigFile;
+       4: invokevirtual #104                // Method net/skstudios/core/config/ConfigFile.yaml:()Lorg/bukkit/configuration/file/YamlConfiguration;
+       7: aload_1
+       8: invokedynamic #317,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      13: ldc           #142                // String
+      15: invokevirtual #144                // Method org/bukkit/configuration/file/YamlConfiguration.getString:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      18: astore_3
+      19: aload_3
+      20: ifnonnull     28
+      23: ldc           #142                // String
+      25: goto          33
+      28: aload_3
+      29: aload_2
+      30: invokestatic  #318                // Method net/skstudios/core/text/Text.apply:(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
+      33: areturn
+
+  java.lang.String formatMoney(double);
+    Code:
+       0: dload_1
+       1: invokestatic  #324                // Method net/skstudios/core/economy/EconomyHook.format:(D)Ljava/lang/String;
+       4: areturn
+
+  java.lang.String formatDuration(long);
+    Code:
+       0: lload_1
+       1: ldc2_w        #330                // long 3600l
+       4: lcmp
+       5: iflt          28
+       8: lload_1
+       9: ldc2_w        #330                // long 3600l
+      12: ldiv
+      13: lload_1
+      14: ldc2_w        #330                // long 3600l
+      17: lrem
+      18: ldc2_w        #332                // long 60l
+      21: ldiv
+      22: invokedynamic #334,  0            // InvokeDynamic #3:makeConcatWithConstants:(JJ)Ljava/lang/String;
+      27: areturn
+      28: lload_1
+      29: ldc2_w        #332                // long 60l
+      32: lcmp
+      33: iflt          52
+      36: lload_1
+      37: ldc2_w        #332                // long 60l
+      40: ldiv
+      41: lload_1
+      42: ldc2_w        #332                // long 60l
+      45: lrem
+      46: invokedynamic #337,  0            // InvokeDynamic #4:makeConcatWithConstants:(JJ)Ljava/lang/String;
+      51: areturn
+      52: lload_1
+      53: invokedynamic #338,  0            // InvokeDynamic #5:makeConcatWithConstants:(J)Ljava/lang/String;
+      58: areturn
+
+  boolean mayUse(org.bukkit.entity.Player, net.skstudios.kits.Kit);
+    Code:
+       0: aload_2
+       1: invokevirtual #341                // Method net/skstudios/kits/Kit.free:()Z
+       4: ifne          30
+       7: aload_2
+       8: invokevirtual #344                // Method net/skstudios/kits/Kit.permission:()Ljava/lang/String;
+      11: invokevirtual #347                // Method java/lang/String.isEmpty:()Z
+      14: ifne          30
+      17: aload_1
+      18: aload_2
+      19: invokevirtual #344                // Method net/skstudios/kits/Kit.permission:()Ljava/lang/String;
+      22: invokeinterface #350,  2          // InterfaceMethod org/bukkit/entity/Player.hasPermission:(Ljava/lang/String;)Z
+      27: ifeq          34
+      30: iconst_1
+      31: goto          35
+      34: iconst_0
+      35: ireturn
+
+  void claimFromMenu(org.bukkit.entity.Player, net.skstudios.kits.Kit);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #355                // Method mayUse:(Lorg/bukkit/entity/Player;Lnet/skstudios/kits/Kit;)Z
+       6: ifne          22
+       9: aload_1
+      10: invokeinterface #359,  1          // InterfaceMethod org/bukkit/entity/Player.closeInventory:()V
+      15: aload_0
+      16: aload_1
+      17: aload_2
+      18: invokevirtual #362                // Method locked:(Lorg/bukkit/entity/Player;Lnet/skstudios/kits/Kit;)V
+      21: return
+      22: aload_0
+      23: getfield      #24                 // Field cooldowns:Lnet/skstudios/kits/CooldownStore;
+      26: aload_2
+      27: invokevirtual #232                // Method net/skstudios/kits/Kit.id:()Ljava/lang/String;
+      30: aload_1
+      31: invokeinterface #366,  1          // InterfaceMethod org/bukkit/entity/Player.getUniqueId:()Ljava/util/UUID;
+      36: invokevirtual #370                // Method net/skstudios/kits/CooldownStore.remaining:(Ljava/lang/String;Ljava/util/UUID;)J
+      39: lstore_3
+      40: lload_3
+      41: lconst_0
+      42: lcmp
+      43: ifle          77
+      46: aload_0
+      47: aload_1
+      48: ldc_w         #374                // String on-cooldown
+      51: ldc_w         #376                // String time
+      54: aload_0
+      55: lload_3
+      56: invokevirtual #378                // Method formatDuration:(J)Ljava/lang/String;
+      59: invokestatic  #381                // InterfaceMethod java/util/Map.of:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+      62: invokevirtual #384                // Method message:(Lorg/bukkit/command/CommandSender;Ljava/lang/String;Ljava/util/Map;)V
+      65: aload_0
+      66: getfield      #123                // Field sounds:Lnet/skstudios/core/sound/Sounds;
+      69: aload_1
+      70: ldc_w         #388                // String deny
+      73: invokevirtual #313                // Method net/skstudios/core/sound/Sounds.play:(Lorg/bukkit/entity/Player;Ljava/lang/String;)V
+      76: return
+      77: aload_1
+      78: invokeinterface #359,  1          // InterfaceMethod org/bukkit/entity/Player.closeInventory:()V
+      83: aload_0
+      84: aload_1
+      85: aload_2
+      86: invokevirtual #390                // Method claim:(Lorg/bukkit/entity/Player;Lnet/skstudios/kits/Kit;)V
+      89: return
+
+  private void claim(org.bukkit.entity.Player, net.skstudios.kits.Kit);
+    Code:
+       0: aload_0
+       1: getfield      #24                 // Field cooldowns:Lnet/skstudios/kits/CooldownStore;
+       4: aload_2
+       5: invokevirtual #232                // Method net/skstudios/kits/Kit.id:()Ljava/lang/String;
+       8: aload_1
+       9: invokeinterface #366,  1          // InterfaceMethod org/bukkit/entity/Player.getUniqueId:()Ljava/util/UUID;
+      14: aload_2
+      15: invokevirtual #393                // Method net/skstudios/kits/Kit.cooldownSeconds:()J
+      18: invokevirtual #397                // Method net/skstudios/kits/CooldownStore.start:(Ljava/lang/String;Ljava/util/UUID;J)V
+      21: aload_0
+      22: getfield      #24                 // Field cooldowns:Lnet/skstudios/kits/CooldownStore;
+      25: iconst_0
+      26: invokevirtual #96                 // Method net/skstudios/kits/CooldownStore.save:(Z)V
+      29: aload_2
+      30: invokevirtual #401                // Method net/skstudios/kits/Kit.items:()Ljava/util/List;
+      33: invokeinterface #403,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      38: astore_3
+      39: aload_3
+      40: invokeinterface #193,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      45: ifeq          145
+      48: aload_3
+      49: invokeinterface #199,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      54: checkcast     #404                // class net/skstudios/kits/Kit$KitItem
+      57: astore        4
+      59: aload         4
+      61: invokevirtual #406                // Method net/skstudios/kits/Kit$KitItem.slot:()I
+      64: ifge          80
+      67: aload_0
+      68: aload_1
+      69: aload         4
+      71: invokevirtual #407                // Method net/skstudios/kits/Kit$KitItem.stack:()Lorg/bukkit/inventory/ItemStack;
+      74: invokevirtual #410                // Method spendieren:(Lorg/bukkit/entity/Player;Lorg/bukkit/inventory/ItemStack;)V
+      77: goto          39
+      80: aload_1
+      81: invokeinterface #414,  1          // InterfaceMethod org/bukkit/entity/Player.getInventory:()Lorg/bukkit/inventory/PlayerInventory;
+      86: aload         4
+      88: invokevirtual #406                // Method net/skstudios/kits/Kit$KitItem.slot:()I
+      91: invokeinterface #418,  2          // InterfaceMethod org/bukkit/inventory/PlayerInventory.getItem:(I)Lorg/bukkit/inventory/ItemStack;
+      96: astore        5
+      98: aload_1
+      99: invokeinterface #414,  1          // InterfaceMethod org/bukkit/entity/Player.getInventory:()Lorg/bukkit/inventory/PlayerInventory;
+     104: aload         4
+     106: invokevirtual #406                // Method net/skstudios/kits/Kit$KitItem.slot:()I
+     109: aload         4
+     111: invokevirtual #407                // Method net/skstudios/kits/Kit$KitItem.stack:()Lorg/bukkit/inventory/ItemStack;
+     114: invokeinterface #424,  3          // InterfaceMethod org/bukkit/inventory/PlayerInventory.setItem:(ILorg/bukkit/inventory/ItemStack;)V
+     119: aload         5
+     121: ifnull        142
+     124: aload         5
+     126: invokevirtual #428                // Method org/bukkit/inventory/ItemStack.getType:()Lorg/bukkit/Material;
+     129: invokevirtual #434                // Method org/bukkit/Material.isAir:()Z
+     132: ifne          142
+     135: aload_0
+     136: aload_1
+     137: aload         5
+     139: invokevirtual #410                // Method spendieren:(Lorg/bukkit/entity/Player;Lorg/bukkit/inventory/ItemStack;)V
+     142: goto          39
+     145: aload_0
+     146: aload_1
+     147: ldc_w         #439                // String claimed
+     150: ldc           #52                 // String kit
+     152: aload_2
+     153: invokevirtual #441                // Method net/skstudios/kits/Kit.displayName:()Ljava/lang/String;
+     156: invokestatic  #381                // InterfaceMethod java/util/Map.of:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+     159: invokevirtual #384                // Method message:(Lorg/bukkit/command/CommandSender;Ljava/lang/String;Ljava/util/Map;)V
+     162: aload_1
+     163: invokeinterface #444,  1          // InterfaceMethod org/bukkit/entity/Player.updateInventory:()V
+     168: aload_2
+     169: invokevirtual #447                // Method net/skstudios/kits/Kit.money:()D
+     172: dconst_0
+     173: dcmpl
+     174: ifle          212
+     177: aload_0
+     178: invokevirtual #451                // Method economy:()Lnet/skstudios/core/economy/EconomyHook;
+     181: aload_1
+     182: aload_2
+     183: invokevirtual #447                // Method net/skstudios/kits/Kit.money:()D
+     186: invokevirtual #455                // Method net/skstudios/core/economy/EconomyHook.deposit:(Lorg/bukkit/OfflinePlayer;D)Z
+     189: pop
+     190: aload_0
+     191: aload_1
+     192: ldc_w         #459                // String claimed-money
+     195: ldc_w         #461                // String money
+     198: aload_0
+     199: aload_2
+     200: invokevirtual #447                // Method net/skstudios/kits/Kit.money:()D
+     203: invokevirtual #462                // Method formatMoney:(D)Ljava/lang/String;
+     206: invokestatic  #381                // InterfaceMethod java/util/Map.of:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+     209: invokevirtual #384                // Method message:(Lorg/bukkit/command/CommandSender;Ljava/lang/String;Ljava/util/Map;)V
+     212: aload_2
+     213: invokevirtual #465                // Method net/skstudios/kits/Kit.keys:()Ljava/util/Map;
+     216: invokeinterface #469,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+     221: invokeinterface #187,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     226: astore_3
+     227: aload_3
+     228: invokeinterface #193,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     233: ifeq          346
+     236: aload_3
+     237: invokeinterface #199,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     242: checkcast     #473                // class java/util/Map$Entry
+     245: astore        4
+     247: aload_0
+     248: getfield      #172                // Field keyCommand:Ljava/lang/String;
+     251: ldc_w         #475                // String %player%
+     254: aload_1
+     255: invokeinterface #477,  1          // InterfaceMethod org/bukkit/entity/Player.getName:()Ljava/lang/String;
+     260: invokevirtual #480                // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+     263: ldc_w         #484                // String %crate%
+     266: aload         4
+     268: invokeinterface #486,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     273: checkcast     #489                // class java/lang/CharSequence
+     276: invokevirtual #480                // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+     279: ldc_w         #491                // String %amount%
+     282: aload         4
+     284: invokeinterface #493,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     289: invokestatic  #496                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     292: invokevirtual #480                // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+     295: astore        5
+     297: invokestatic  #499                // Method org/bukkit/Bukkit.getConsoleSender:()Lorg/bukkit/command/ConsoleCommandSender;
+     300: aload         5
+     302: invokestatic  #505                // Method org/bukkit/Bukkit.dispatchCommand:(Lorg/bukkit/command/CommandSender;Ljava/lang/String;)Z
+     305: pop
+     306: aload_0
+     307: aload_1
+     308: ldc_w         #509                // String claimed-key
+     311: ldc_w         #511                // String amount
+     314: aload         4
+     316: invokeinterface #493,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     321: invokestatic  #496                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     324: ldc_w         #513                // String crate
+     327: aload         4
+     329: invokeinterface #486,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     334: checkcast     #50                 // class java/lang/String
+     337: invokestatic  #515                // InterfaceMethod java/util/Map.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+     340: invokevirtual #384                // Method message:(Lorg/bukkit/command/CommandSender;Ljava/lang/String;Ljava/util/Map;)V
+     343: goto          227
+     346: aload_0
+     347: getfield      #123                // Field sounds:Lnet/skstudios/core/sound/Sounds;
+     350: aload_1
+     351: ldc_w         #439                // String claimed
+     354: invokevirtual #313                // Method net/skstudios/core/sound/Sounds.play:(Lorg/bukkit/entity/Player;Ljava/lang/String;)V
+     357: return
+
+  private void spendieren(org.bukkit.entity.Player, org.bukkit.inventory.ItemStack);
+    Code:
+       0: aload_1
+       1: invokeinterface #414,  1          // InterfaceMethod org/bukkit/entity/Player.getInventory:()Lorg/bukkit/inventory/PlayerInventory;
+       6: iconst_1
+       7: anewarray     #429                // class org/bukkit/inventory/ItemStack
+      10: dup
+      11: iconst_0
+      12: aload_2
+      13: aastore
+      14: invokeinterface #518,  2          // InterfaceMethod org/bukkit/inventory/PlayerInventory.addItem:([Lorg/bukkit/inventory/ItemStack;)Ljava/util/HashMap;
+      19: invokevirtual #522                // Method java/util/HashMap.values:()Ljava/util/Collection;
+      22: invokeinterface #245,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      27: astore_3
+      28: aload_3
+      29: invokeinterface #193,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      34: ifeq          71
+      37: aload_3
+      38: invokeinterface #199,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      43: checkcast     #429                // class org/bukkit/inventory/ItemStack
+      46: astore        4
+      48: aload_1
+      49: invokeinterface #525,  1          // InterfaceMethod org/bukkit/entity/Player.getWorld:()Lorg/bukkit/World;
+      54: aload_1
+      55: invokeinterface #529,  1          // InterfaceMethod org/bukkit/entity/Player.getLocation:()Lorg/bukkit/Location;
+      60: aload         4
+      62: invokeinterface #533,  3          // InterfaceMethod org/bukkit/World.dropItemNaturally:(Lorg/bukkit/Location;Lorg/bukkit/inventory/ItemStack;)Lorg/bukkit/entity/Item;
+      67: pop
+      68: goto          28
+      71: return
+
+  private void locked(org.bukkit.entity.Player, net.skstudios.kits.Kit);
+    Code:
+       0: aload_2
+       1: invokevirtual #539                // Method net/skstudios/kits/Kit.lockedMessage:()Ljava/lang/String;
+       4: invokevirtual #347                // Method java/lang/String.isEmpty:()Z
+       7: ifne          51
+      10: aload_1
+      11: aload_0
+      12: invokevirtual #542                // Method prefix:()Ljava/lang/String;
+      15: aload_2
+      16: invokevirtual #539                // Method net/skstudios/kits/Kit.lockedMessage:()Ljava/lang/String;
+      19: invokedynamic #545,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      24: ldc_w         #547                // String rank
+      27: aload_2
+      28: invokevirtual #549                // Method net/skstudios/kits/Kit.rankLabel:()Ljava/lang/String;
+      31: ldc           #52                 // String kit
+      33: aload_2
+      34: invokevirtual #441                // Method net/skstudios/kits/Kit.displayName:()Ljava/lang/String;
+      37: invokestatic  #515                // InterfaceMethod java/util/Map.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+      40: invokestatic  #318                // Method net/skstudios/core/text/Text.apply:(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
+      43: invokestatic  #552                // Method net/skstudios/core/text/Text.chat:(Ljava/lang/String;)Lnet/kyori/adventure/text/Component;
+      46: invokeinterface #556,  2          // InterfaceMethod org/bukkit/entity/Player.sendMessage:(Lnet/kyori/adventure/text/Component;)V
+      51: aload_0
+      52: getfield      #123                // Field sounds:Lnet/skstudios/core/sound/Sounds;
+      55: aload_1
+      56: ldc_w         #388                // String deny
+      59: invokevirtual #313                // Method net/skstudios/core/sound/Sounds.play:(Lorg/bukkit/entity/Player;Ljava/lang/String;)V
+      62: aload_2
+      63: invokevirtual #560                // Method net/skstudios/kits/Kit.lockedCommand:()Ljava/lang/String;
+      66: invokevirtual #347                // Method java/lang/String.isEmpty:()Z
+      69: ifne          81
+      72: aload_1
+      73: aload_2
+      74: invokevirtual #560                // Method net/skstudios/kits/Kit.lockedCommand:()Ljava/lang/String;
+      77: invokestatic  #505                // Method org/bukkit/Bukkit.dispatchCommand:(Lorg/bukkit/command/CommandSender;Ljava/lang/String;)Z
+      80: pop
+      81: return
+
+  public void onJoin(org.bukkit.event.player.PlayerJoinEvent);
+    Code:
+       0: aload_0
+       1: getfield      #148                // Field firstJoinKit:Ljava/lang/String;
+       4: invokevirtual #347                // Method java/lang/String.isEmpty:()Z
+       7: ifne          22
+      10: aload_1
+      11: invokevirtual #563                // Method org/bukkit/event/player/PlayerJoinEvent.getPlayer:()Lorg/bukkit/entity/Player;
+      14: invokeinterface #569,  1          // InterfaceMethod org/bukkit/entity/Player.hasPlayedBefore:()Z
+      19: ifeq          23
+      22: return
+      23: aload_0
+      24: getfield      #10                 // Field kits:Ljava/util/Map;
+      27: aload_0
+      28: getfield      #148                // Field firstJoinKit:Ljava/lang/String;
+      31: getstatic     #572                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+      34: invokevirtual #578                // Method java/lang/String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+      37: invokeinterface #296,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      42: checkcast     #227                // class net/skstudios/kits/Kit
+      45: astore_2
+      46: aload_2
+      47: ifnonnull     51
+      50: return
+      51: invokestatic  #582                // Method org/bukkit/Bukkit.getScheduler:()Lorg/bukkit/scheduler/BukkitScheduler;
+      54: aload_0
+      55: aload_0
+      56: aload_1
+      57: aload_2
+      58: invokedynamic #586,  0            // InvokeDynamic #7:run:(Lnet/skstudios/kits/KitsPlugin;Lorg/bukkit/event/player/PlayerJoinEvent;Lnet/skstudios/kits/Kit;)Ljava/lang/Runnable;
+      63: aload_0
+      64: getfield      #164                // Field firstJoinDelaySeconds:I
+      67: i2l
+      68: ldc2_w        #590                // long 20l
+      71: lmul
+      72: invokeinterface #592,  5          // InterfaceMethod org/bukkit/scheduler/BukkitScheduler.runTaskLater:(Lorg/bukkit/plugin/Plugin;Ljava/lang/Runnable;J)Lorg/bukkit/scheduler/BukkitTask;
+      77: pop
+      78: return
+
+  public boolean onCommand(org.bukkit.command.CommandSender, org.bukkit.command.Command, java.lang.String, java.lang.String[]);
+    Code:
+       0: aload_2
+       1: invokevirtual #598                // Method org/bukkit/command/Command.getName:()Ljava/lang/String;
+       4: ldc           #54                 // String skkits
+       6: invokevirtual #601                // Method java/lang/String.equalsIgnoreCase:(Ljava/lang/String;)Z
+       9: ifeq          75
+      12: aload_1
+      13: ldc_w         #604                // String skkits.admin
+      16: invokeinterface #606,  2          // InterfaceMethod org/bukkit/command/CommandSender.hasPermission:(Ljava/lang/String;)Z
+      21: ifne          34
+      24: aload_0
+      25: aload_1
+      26: ldc_w         #609                // String no-permission
+      29: invokevirtual #611                // Method message:(Lorg/bukkit/command/CommandSender;Ljava/lang/String;)V
+      32: iconst_1
+      33: ireturn
+      34: aload_0
+      35: invokevirtual #100                // Method config:()Lnet/skstudios/core/config/ConfigFile;
+      38: iconst_1
+      39: invokevirtual #218                // Method net/skstudios/core/config/ConfigFile.load:(Z)Lnet/skstudios/core/config/ConfigFile;
+      42: pop
+      43: aload_0
+      44: invokevirtual #31                 // Method applySettings:()V
+      47: aload_0
+      48: aload_1
+      49: ldc_w         #614                // String reloaded
+      52: ldc_w         #616                // String count
+      55: aload_0
+      56: getfield      #10                 // Field kits:Ljava/util/Map;
+      59: invokeinterface #84,  1           // InterfaceMethod java/util/Map.size:()I
+      64: invokestatic  #618                // Method java/lang/String.valueOf:(I)Ljava/lang/String;
+      67: invokestatic  #381                // InterfaceMethod java/util/Map.of:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+      70: invokevirtual #384                // Method message:(Lorg/bukkit/command/CommandSender;Ljava/lang/String;Ljava/util/Map;)V
+      73: iconst_1
+      74: ireturn
+      75: aload_1
+      76: instanceof    #351                // class org/bukkit/entity/Player
+      79: ifeq          91
+      82: aload_1
+      83: checkcast     #351                // class org/bukkit/entity/Player
+      86: astore        5
+      88: goto          101
+      91: aload_0
+      92: aload_1
+      93: ldc_w         #620                // String players-only
+      96: invokevirtual #611                // Method message:(Lorg/bukkit/command/CommandSender;Ljava/lang/String;)V
+      99: iconst_1
+     100: ireturn
+     101: aload         4
+     103: arraylength
+     104: ifne          134
+     107: aload_0
+     108: getfield      #123                // Field sounds:Lnet/skstudios/core/sound/Sounds;
+     111: aload         5
+     113: ldc_w         #622                // String menu-open
+     116: invokevirtual #313                // Method net/skstudios/core/sound/Sounds.play:(Lorg/bukkit/entity/Player;Ljava/lang/String;)V
+     119: new           #624                // class net/skstudios/kits/KitsMenu
+     122: dup
+     123: aload         5
+     125: aload_0
+     126: invokespecial #626                // Method net/skstudios/kits/KitsMenu."<init>":(Lorg/bukkit/entity/Player;Lnet/skstudios/kits/KitsPlugin;)V
+     129: invokevirtual #629                // Method net/skstudios/kits/KitsMenu.open:()V
+     132: iconst_1
+     133: ireturn
+     134: aload_0
+     135: getfield      #10                 // Field kits:Ljava/util/Map;
+     138: aload         4
+     140: iconst_0
+     141: aaload
+     142: getstatic     #572                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+     145: invokevirtual #578                // Method java/lang/String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+     148: invokeinterface #296,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     153: checkcast     #227                // class net/skstudios/kits/Kit
+     156: astore        6
+     158: aload         6
+     160: ifnonnull     207
+     163: aload_0
+     164: aload         5
+     166: ldc_w         #632                // String unknown-kit
+     169: ldc_w         #634                // String kits
+     172: ldc_w         #635                // String ,
+     175: aload_0
+     176: getfield      #10                 // Field kits:Ljava/util/Map;
+     179: invokeinterface #637,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+     184: invokestatic  #640                // Method java/lang/String.join:(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+     187: invokestatic  #381                // InterfaceMethod java/util/Map.of:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+     190: invokevirtual #384                // Method message:(Lorg/bukkit/command/CommandSender;Ljava/lang/String;Ljava/util/Map;)V
+     193: aload_0
+     194: getfield      #123                // Field sounds:Lnet/skstudios/core/sound/Sounds;
+     197: aload         5
+     199: ldc_w         #388                // String deny
+     202: invokevirtual #313                // Method net/skstudios/core/sound/Sounds.play:(Lorg/bukkit/entity/Player;Ljava/lang/String;)V
+     205: iconst_1
+     206: ireturn
+     207: aload_0
+     208: aload         5
+     210: aload         6
+     212: invokevirtual #355                // Method mayUse:(Lorg/bukkit/entity/Player;Lnet/skstudios/kits/Kit;)Z
+     215: ifne          228
+     218: aload_0
+     219: aload         5
+     221: aload         6
+     223: invokevirtual #362                // Method locked:(Lorg/bukkit/entity/Player;Lnet/skstudios/kits/Kit;)V
+     226: iconst_1
+     227: ireturn
+     228: aload_0
+     229: getfield      #24                 // Field cooldowns:Lnet/skstudios/kits/CooldownStore;
+     232: aload         6
+     234: invokevirtual #232                // Method net/skstudios/kits/Kit.id:()Ljava/lang/String;
+     237: aload         5
+     239: invokeinterface #366,  1          // InterfaceMethod org/bukkit/entity/Player.getUniqueId:()Ljava/util/UUID;
+     244: invokevirtual #370                // Method net/skstudios/kits/CooldownStore.remaining:(Ljava/lang/String;Ljava/util/UUID;)J
+     247: lstore        7
+     249: lload         7
+     251: lconst_0
+     252: lcmp
+     253: ifle          291
+     256: aload_0
+     257: aload         5
+     259: ldc_w         #374                // String on-cooldown
+     262: ldc_w         #376                // String time
+     265: aload_0
+     266: lload         7
+     268: invokevirtual #378                // Method formatDuration:(J)Ljava/lang/String;
+     271: invokestatic  #381                // InterfaceMethod java/util/Map.of:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+     274: invokevirtual #384                // Method message:(Lorg/bukkit/command/CommandSender;Ljava/lang/String;Ljava/util/Map;)V
+     277: aload_0
+     278: getfield      #123                // Field sounds:Lnet/skstudios/core/sound/Sounds;
+     281: aload         5
+     283: ldc_w         #388                // String deny
+     286: invokevirtual #313                // Method net/skstudios/core/sound/Sounds.play:(Lorg/bukkit/entity/Player;Ljava/lang/String;)V
+     289: iconst_1
+     290: ireturn
+     291: aload_0
+     292: aload         5
+     294: aload         6
+     296: invokevirtual #390                // Method claim:(Lorg/bukkit/entity/Player;Lnet/skstudios/kits/Kit;)V
+     299: iconst_1
+     300: ireturn
+
+  public java.util.List<java.lang.String> onTabComplete(org.bukkit.command.CommandSender, org.bukkit.command.Command, java.lang.String, java.lang.String[]);
+    Code:
+       0: aload_2
+       1: invokevirtual #598                // Method org/bukkit/command/Command.getName:()Ljava/lang/String;
+       4: ldc           #54                 // String skkits
+       6: invokevirtual #601                // Method java/lang/String.equalsIgnoreCase:(Ljava/lang/String;)Z
+       9: ifeq          32
+      12: aload         4
+      14: arraylength
+      15: iconst_1
+      16: if_icmpne     28
+      19: ldc_w         #644                // String reload
+      22: invokestatic  #284                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+      25: goto          31
+      28: invokestatic  #262                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      31: areturn
+      32: aload         4
+      34: arraylength
+      35: iconst_1
+      36: if_icmpne     55
+      39: aload_1
+      40: instanceof    #351                // class org/bukkit/entity/Player
+      43: ifeq          55
+      46: aload_1
+      47: checkcast     #351                // class org/bukkit/entity/Player
+      50: astore        5
+      52: goto          59
+      55: invokestatic  #262                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      58: areturn
+      59: aload         4
+      61: iconst_0
+      62: aaload
+      63: getstatic     #572                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+      66: invokevirtual #578                // Method java/lang/String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+      69: astore        6
+      71: new           #236                // class java/util/ArrayList
+      74: dup
+      75: invokespecial #646                // Method java/util/ArrayList."<init>":()V
+      78: astore        7
+      80: aload_0
+      81: getfield      #10                 // Field kits:Ljava/util/Map;
+      84: invokeinterface #238,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      89: invokeinterface #245,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      94: astore        8
+      96: aload         8
+      98: invokeinterface #193,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     103: ifeq          158
+     106: aload         8
+     108: invokeinterface #199,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     113: checkcast     #227                // class net/skstudios/kits/Kit
+     116: astore        9
+     118: aload         9
+     120: invokevirtual #232                // Method net/skstudios/kits/Kit.id:()Ljava/lang/String;
+     123: aload         6
+     125: invokevirtual #647                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+     128: ifeq          155
+     131: aload_0
+     132: aload         5
+     134: aload         9
+     136: invokevirtual #355                // Method mayUse:(Lorg/bukkit/entity/Player;Lnet/skstudios/kits/Kit;)Z
+     139: ifeq          155
+     142: aload         7
+     144: aload         9
+     146: invokevirtual #232                // Method net/skstudios/kits/Kit.id:()Ljava/lang/String;
+     149: invokeinterface #650,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     154: pop
+     155: goto          96
+     158: aload         7
+     160: areturn
+
+  private void lambda$onJoin$0(org.bukkit.event.player.PlayerJoinEvent, net.skstudios.kits.Kit);
+    Code:
+       0: aload_1
+       1: invokevirtual #563                // Method org/bukkit/event/player/PlayerJoinEvent.getPlayer:()Lorg/bukkit/entity/Player;
+       4: astore_3
+       5: aload_3
+       6: invokeinterface #654,  1          // InterfaceMethod org/bukkit/entity/Player.isOnline:()Z
+      11: ifeq          34
+      14: aload_0
+      15: getfield      #24                 // Field cooldowns:Lnet/skstudios/kits/CooldownStore;
+      18: aload_2
+      19: invokevirtual #232                // Method net/skstudios/kits/Kit.id:()Ljava/lang/String;
+      22: aload_3
+      23: invokeinterface #366,  1          // InterfaceMethod org/bukkit/entity/Player.getUniqueId:()Ljava/util/UUID;
+      28: invokevirtual #657                // Method net/skstudios/kits/CooldownStore.everClaimed:(Ljava/lang/String;Ljava/util/UUID;)Z
+      31: ifeq          35
+      34: return
+      35: aload_0
+      36: aload_3
+      37: aload_2
+      38: invokevirtual #390                // Method claim:(Lorg/bukkit/entity/Player;Lnet/skstudios/kits/Kit;)V
+      41: return
+}

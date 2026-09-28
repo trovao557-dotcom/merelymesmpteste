@@ -1,0 +1,107 @@
+# =====================================================================
+#  Clear Lag
+# =====================================================================
+#  Removes dropped items, arrows and experience orbs on a timer so they
+#  do not pile up and cost the server performance.
+#
+#  Players who should not see the messages get the permission
+#  skclearlag.mute - that is how a "toggle" is wired up if you run a
+#  settings menu.
+# =====================================================================
+
+prefix: '&#00B5FF&lCLEAR LAG &#9B9B9B» '
+
+# Seconds between sweeps. 300 = every five minutes.
+interval-seconds: 300
+
+# When to warn, in seconds before the sweep.
+# Mostrado apenas aos 30 segundos e depois a contagem de 5 a 1 segundo.
+warn-seconds-before:
+- 150
+- 60
+- 30
+- 5
+
+# What gets removed.
+clear:
+  dropped-items: true
+  # Flechas protegidas para não serem apagadas
+  arrows: false
+  experience-orbs: true
+  
+  # Never remove mobs or other living entities during a sweep.
+  creatures: false
+
+# Which worlds to sweep. Leave the list empty for every world.
+# Useful if you want a creative or event world left alone:
+#   worlds:
+#     - world
+#     - world_nether
+worlds: []
+
+# Players with this permission see none of the messages below.
+mute-permission: skclearlag.mute
+
+messages:
+  # %seconds%
+  warning: '&fEntities will be removed in &#00B5FF%seconds% &fseconds.'
+  
+  # %amount%
+  cleared: '&fA total of &#00B5FF%amount% &fentities were removed.'
+  
+  # /clearlag on its own, for anybody. %time% reads as "4m 20s".
+  next: '&fNext clear in &#00B5FF%time%&f.'
+  
+  no-permission: '&#FF2121You are not allowed to do that.'
+  reloaded: '&#71F521settings.yml reloaded.'
+  # %command%
+  usage: '&f%command% &7shows the time left, &f%command% now &7clears immediately.'
+  
+  # --- the bin ---
+  bin-players-only: '&#FF2121The bin belongs to a player, not to the console.'
+  bin-disabled: '&#FF2121The bin is switched off on this server.'
+  # %amount% - shown after a private bin closes
+  bin-binned: '&fBinned &#00B5FF%amount% &fitems.'
+  # %amount% - shown to everyone when a sweep empties the shared bin.
+  # Blank this line to keep sweeps quiet about it.
+  bin-cleared: '&fThe bin was emptied - &#00B5FF%amount% &fitems gone.'
+# Language of everything this plugin says: EN or DE.
+#
+# EN is the default and reads this file. DE lays the translation in
+# lang/de/ over it - the file you are reading stays English and stays the
+# reference. A line the translation does not have falls back to English,
+# so nothing breaks if you add a setting we have not translated yet.
+#
+# The translated files are yours to edit as well, same as this one.
+language: EN
+
+# Período de graça alterado para 15 segundos antes de um item poder ser limpo.
+grace-seconds: 15
+
+creatures:
+  
+  # Mobs this close to a player are left alone, in blocks. 0 switches the
+  # check off. This is what keeps a sweep from clearing the farm somebody
+  # is standing in.
+  keep-near-players: 16
+  
+  # Types that are never removed, on top of the built-in exceptions.
+  never-remove:
+  - IRON_GOLEM
+  - SNOW_GOLEM
+  - ALLAY
+  - AXOLOTL
+bin:
+  
+  enabled: true
+  
+  # false: everyone gets their own. What is inside is gone the moment the
+  #        screen closes - a shredder.
+  # true:  one bin for the whole server. Anybody can put things in and take
+  #        them back out, and the next sweep empties it - a give-away box.
+  shared: false
+  
+  # Rows of nine, 1 to 6. Six is a double chest.
+  rows: 6
+  
+  title: '&8Bin'

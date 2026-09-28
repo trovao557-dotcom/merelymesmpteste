@@ -1,0 +1,5 @@
+name: MerelyGameplayFixes
+version: 1.0.0
+main: com.merelyme.gameplay.MerelyGameplayFixes
+api-version: '1.21'
+description: Live gameplay safeguards for MerelyMeSMP.

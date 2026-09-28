@@ -1,0 +1,10 @@
+command /fixcreatorperms:
+	permission: op
+	trigger:
+		execute console command "lp group clipper parent remove member"
+		execute console command "lp group clipper parent remove warrior"
+		execute console command "lp group clipper parent remove macer"
+		execute console command "lp group clipper parent add knight"
+		execute console command "lp group clipper permission unset skauction.listings.18"
+		execute console command "lp group clipper permission set sksmp.homes.3 true"
+		send "&dMEDIA &aClipper=Knight perms. /fixcreatorperms2" to player

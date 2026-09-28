@@ -1,0 +1,12 @@
+# Prevent storage, teleport and utility command abuse inside private PvP arenas.
+# This applies to every player, including operators and staff.
+on command:
+    player is set
+    set {_arenaWorld} to "%world of player%"
+    if {_arenaWorld} contains "mt_match_":
+        cancel event
+        send "&d&lARENA &8» &cCommands are disabled during a match." to player
+        stop
+    if {_arenaWorld} contains "mt_duel_":
+        cancel event
+        send "&d&lARENA &8» &cCommands are disabled during a match." to player

@@ -1,0 +1,7 @@
+-encoding
+UTF-8
+-cp
+.tools\\paper-api.jar;.tmp-live\\candidate-jars\\SKCore.jar
+-d
+merely-events\\build-tab
+merely-events\\src\\me\\merelyme\\events\\MerelyEventsPlugin.java

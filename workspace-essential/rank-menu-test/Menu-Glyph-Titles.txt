@@ -1,0 +1,23 @@
+crates	&f	4 rows	CRATES
+afk_crate	&f	3 rows	AFK CRATE
+stats	&f	3 rows	STATS
+rank_perks	&f	6 rows	RANK PERKS
+help	&f	4 rows	HELP
+shop_3	&f	3 rows	SHOP
+shop_4	&f	4 rows	SHOP
+shop_5	&f	5 rows	SHOP
+playtime	&f	6 rows	PLAYTIME
+one_v_one	&f	3 rows	1V1
+two_v_two	&f	3 rows	2V2
+duel_players	&f	6 rows	DUEL PLAYERS
+tournaments	&f	3 rows	TOURNAMENTS
+kits	&f	3 rows	KITS
+kit_preview	&f	4 rows	KIT PREVIEW
+media	&f	3 rows	MEDIA
+rules	&f	3 rows	RULES
+battle_pass	&f	6 rows	BATTLE PASS
+update	&f	3 rows	UPDATE
+daily_wheel	&f	5 rows	DAILY WHEEL
+glory_shop	&f	5 rows	GLORY SHOP
+glory	&f	6 rows	GLORY
+afk_crate_4	&f	4 rows	AFK CRATE

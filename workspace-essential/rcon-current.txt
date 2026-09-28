@@ -1,0 +1,141 @@
+rg flag -w world __global__ pvp allow => §dRegion flag pvp set on '__global__' to 'ALLOW'.
+§7(Current flags: §finvincible: DENY§r, §fpvp: ALLOW§7)
+rg flag -w world __global__ invincible deny => §dRegion flag invincible set on '__global__' to 'DENY'.
+§7(Current flags: §finvincible: DENY§r, §fpvp: ALLOW§7)
+rg flag -w world_nether __global__ pvp allow => §dRegion flag pvp set on '__global__' to 'ALLOW'.
+§7(Current flags: §fpvp: ALLOW§7)
+rg flag -w world_the_end __global__ pvp allow => §dRegion flag pvp set on '__global__' to 'ALLOW'.
+§7(Current flags: §fpvp: ALLOW§7)
+plugins => §x§3§4§9§f§d§aℹ §fServer Plugins (68):
+§x§0§2§8§8§d§1Paper Plugins (3):
+ §8- §aBlueSlimeCore§r, §aFancyNpcs§r, §aRHSignItem
+§x§e§d§8§1§0§6Bukkit Plugins (65):
+ §8- §aAhPriceHover§r, §cAngleGuard§r, §aChatFilter§r, §aCollisionDisabler§r, §aDeluxeMenus§r, §aDonutAntiFreecam§r, §aFastAsyncWorldEdit§r, §aGrimAC§r, §aItemCooldowns§r, §aKillRewards
+ §aLuckPerms§r, §aMerelyEvents§r, §aMerelyNoPush§r, §aMerelyOrderEnchants§r, §aMerelyPack§r, §aMerelySmith§r, §aMerelyTrade§r, §aMinerTrack§r, §aMultiverse-Core§r, §cOreoScannerPro
+ §aPlaceholderAPI§r, §aPlayerVaultsX§r, §aPVPClumps§r, §aSimplePlayerUtils§r, §aSKAnnounce§r, §aSKAuction§r, §aSKBounty§r, §aSKClearLag§r, §aSKCommands§r, §aSKCore
+ §aSKCrates§r, §aSKEffects§r, §aSKHolograms§r, §aSKHomes§r, §aSKInfo§r, §aSKItems§r, §aSKKeyAll§r, §aSKKits§r, §aSKMod§r, §aSKMoney
+ §aSKMsg§r, §aSKOrders§r, §aSKPointShop§r, §aSkript§r, §aSKRtp§r, §aSKRules§r, §aSKSell§r, §aSKSettings§r, §aSKShop§r, §aSKSpawners
+ §aSKStats§r, §aSKTags§r, §aSKTeam§r, §aSKTpa§r, §aSKWipe§r, §aTAB§r, §aTip4serv§r, §aVault§r, §aViaBackwards§r, §aViaRewind
+ §aViaVersion§r, §avoicechat§r, §aVoidGen§r, §aWorldGuard§r, §aWorldGuardExtraFlags
+sk disable poi-refill.sk => §7[§6Skript§7] §6poi-refill.sk§r is already disabled!
+sk reload store-bought.sk => §7[§6Skript§7] §rReloading §6store-bought.sk§r...
+§aSuccessfully reloaded §6store-bought.sk§a. §7(§69ms§7)
+skinfo reload => §x§0§0§b§5§f§f§lSMP §x§9§b§9§b§9§b» §x§7§1§f§5§2§1settings.yml reloaded.
+sk list => §7[§6Skript§7] §fEnabled scripts:
+§7[§6Skript§7] §a  grindstone.sk
+§7[§6Skript§7] §a  poi-timer.sk
+§7[§6Skript§7] §a  creator-perms.sk
+§7[§6Skript§7] §a  ah-price-hover.sk
+§7[§6Skript§7] §a  ah-perms.sk
+§7[§6Skript§7] §a  combat-safezone.sk
+§7[§6Skript§7] §a  fix-rank-chat.sk
+§7[§6Skript§7] §a  ah-help.sk
+§7[§6Skript§7] §a  resgatar.sk
+§7[§6Skript§7] §a  fix-rank-perms.sk
+§7[§6Skript§7] §a  staff-perms.sk
+§7[§6Skript§7] §a  stonecutter.sk
+§7[§6Skript§7] §a  starterkit.sk.sk
+§7[§6Skript§7] §a  poi-scan.sk
+§7[§6Skript§7] §a  anvil.sk
+§7[§6Skript§7] §a  poi-scan2.sk
+§7[§6Skript§7] §a  poi-loot-red.sk
+§7[§6Skript§7] §a  world-border-15k.sk
+§7[§6Skript§7] §a  enderchest.sk
+§7[§6Skript§7] §a  spawn.sk
+§7[§6Skript§7] §a  craft.sk
+§7[§6Skript§7] §a  media.sk
+§7[§6Skript§7] §a  poi-utils.sk
+§7[§6Skript§7] §a  poi-loot-red2.sk
+§7[§6Skript§7] §a  creator-perms-b.sk
+§7[§6Skript§7] §a  poi-cmds.sk
+§7[§6Skript§7] §a  poi-loot-yellow.sk
+§7[§6Skript§7] §a  store-bought.sk
+§7[§6Skript§7] §a  creator-perms-a.sk
+§7[§6Skript§7] §a  member-rank.sk
+§7[§6Skript§7] §a  poi-config.sk
+§7[§6Skript§7] §a  staff-spec.sk
+§7[§6Skript§7] §a  poi-loot-normal.sk
+§7[§6Skript§7] §fDisabled scripts:
+§7[§6Skript§7] §c  -examples/loops.sk
+§7[§6Skript§7] §c  -examples/chest menus.sk
+§7[§6Skript§7] §c  -examples/text formatting.sk
+§7[§6Skript§7] §c  -examples/experimental features/queues.sk
+§7[§6Skript§7] §c  -examples/experimental features/for loops.sk
+§7[§6Skript§7] §c  -examples/experimental features/script reflection.sk
+§7[§6Skript§7] §c  -examples/options and meta.sk
+§7[§6Skript§7] §c  -examples/events.sk
+§7[§6Skript§7] §c  -examples/functions.sk
+§7[§6Skript§7] §c  -examples/timings.sk
+§7[§6Skript§7] §c  -examples/variables.sk
+§7[§6Skript§7] §c  -examples/commands.sk
+§7[§6Skript§7] §c  -poi-refill.sk
+plugins => §x§3§4§9§f§d§aℹ §fServer Plugins (68):
+§x§0§2§8§8§d§1Paper Plugins (3):
+ §8- §aBlueSlimeCore§r, §aFancyNpcs§r, §aRHSignItem
+§x§e§d§8§1§0§6Bukkit Plugins (65):
+ §8- §aAhPriceHover§r, §cAngleGuard§r, §aChatFilter§r, §aCollisionDisabler§r, §aDeluxeMenus§r, §aDonutAntiFreecam§r, §aFastAsyncWorldEdit§r, §aGrimAC§r, §aItemCooldowns§r, §aKillRewards
+ §aLuckPerms§r, §aMerelyEvents§r, §aMerelyNoPush§r, §aMerelyOrderEnchants§r, §aMerelyPack§r, §aMerelySmith§r, §aMerelyTrade§r, §aMinerTrack§r, §aMultiverse-Core§r, §cOreoScannerPro
+ §aPlaceholderAPI§r, §aPlayerVaultsX§r, §aPVPClumps§r, §aSimplePlayerUtils§r, §aSKAnnounce§r, §aSKAuction§r, §aSKBounty§r, §aSKClearLag§r, §aSKCommands§r, §aSKCore
+ §aSKCrates§r, §aSKEffects§r, §aSKHolograms§r, §aSKHomes§r, §aSKInfo§r, §aSKItems§r, §aSKKeyAll§r, §aSKKits§r, §aSKMod§r, §aSKMoney
+ §aSKMsg§r, §aSKOrders§r, §aSKPointShop§r, §aSkript§r, §aSKRtp§r, §aSKRules§r, §aSKSell§r, §aSKSettings§r, §aSKShop§r, §aSKSpawners
+ §aSKStats§r, §aSKTags§r, §aSKTeam§r, §aSKTpa§r, §aSKWipe§r, §aTAB§r, §aTip4serv§r, §aVault§r, §aViaBackwards§r, §aViaRewind
+ §aViaVersion§r, §avoicechat§r, §aVoidGen§r, §aWorldGuard§r, §aWorldGuardExtraFlags
+sk list => §7[§6Skript§7] §fEnabled scripts:
+§7[§6Skript§7] §a  grindstone.sk
+§7[§6Skript§7] §a  poi-timer.sk
+§7[§6Skript§7] §a  creator-perms.sk
+§7[§6Skript§7] §a  ah-price-hover.sk
+§7[§6Skript§7] §a  ah-perms.sk
+§7[§6Skript§7] §a  combat-safezone.sk
+§7[§6Skript§7] §a  fix-rank-chat.sk
+§7[§6Skript§7] §a  ah-help.sk
+§7[§6Skript§7] §a  resgatar.sk
+§7[§6Skript§7] §a  fix-rank-perms.sk
+§7[§6Skript§7] §a  staff-perms.sk
+§7[§6Skript§7] §a  stonecutter.sk
+§7[§6Skript§7] §a  starterkit.sk.sk
+§7[§6Skript§7] §a  poi-scan.sk
+§7[§6Skript§7] §a  anvil.sk
+§7[§6Skript§7] §a  poi-scan2.sk
+§7[§6Skript§7] §a  poi-loot-red.sk
+§7[§6Skript§7] §a  world-border-15k.sk
+§7[§6Skript§7] §a  enderchest.sk
+§7[§6Skript§7] §a  spawn.sk
+§7[§6Skript§7] §a  craft.sk
+§7[§6Skript§7] §a  media.sk
+§7[§6Skript§7] §a  poi-utils.sk
+§7[§6Skript§7] §a  poi-loot-red2.sk
+§7[§6Skript§7] §a  creator-perms-b.sk
+§7[§6Skript§7] §a  poi-cmds.sk
+§7[§6Skript§7] §a  poi-loot-yellow.sk
+§7[§6Skript§7] §a  store-bought.sk
+§7[§6Skript§7] §a  creator-perms-a.sk
+§7[§6Skript§7] §a  member-rank.sk
+§7[§6Skript§7] §a  poi-config.sk
+§7[§6Skript§7] §a  staff-spec.sk
+§7[§6Skript§7] §a  poi-loot-normal.sk
+§7[§6Skript§7] §fDisabled scripts:
+§7[§6Skript§7] §c  -examples/loops.sk
+§7[§6Skript§7] §c  -examples/chest menus.sk
+§7[§6Skript§7] §c  -examples/text formatting.sk
+§7[§6Skript§7] §c  -examples/experimental features/queues.sk
+§7[§6Skript§7] §c  -examples/experimental features/for loops.sk
+§7[§6Skript§7] §c  -examples/experimental features/script reflection.sk
+§7[§6Skript§7] §c  -examples/options and meta.sk
+§7[§6Skript§7] §c  -examples/events.sk
+§7[§6Skript§7] §c  -examples/functions.sk
+§7[§6Skript§7] §c  -examples/timings.sk
+§7[§6Skript§7] §c  -examples/variables.sk
+§7[§6Skript§7] §c  -examples/commands.sk
+§7[§6Skript§7] §c  -poi-refill.sk
+plugins => §x§3§4§9§f§d§aℹ §fServer Plugins (68):
+§x§0§2§8§8§d§1Paper Plugins (3):
+ §8- §aBlueSlimeCore§r, §aFancyNpcs§r, §aRHSignItem
+§x§e§d§8§1§0§6Bukkit Plugins (65):
+ §8- §aAhPriceHover§r, §cAngleGuard§r, §aChatFilter§r, §aCollisionDisabler§r, §aDeluxeMenus§r, §aDonutAntiFreecam§r, §aFastAsyncWorldEdit§r, §aGrimAC§r, §aItemCooldowns§r, §aKillRewards
+ §aLuckPerms§r, §aMerelyEvents§r, §aMerelyNoPush§r, §aMerelyOrderEnchants§r, §aMerelyPack§r, §aMerelySmith§r, §aMerelyTrade§r, §aMinerTrack§r, §aMultiverse-Core§r, §cOreoScannerPro
+ §aPlaceholderAPI§r, §aPlayerVaultsX§r, §aPVPClumps§r, §aSimplePlayerUtils§r, §aSKAnnounce§r, §aSKAuction§r, §aSKBounty§r, §aSKClearLag§r, §aSKCommands§r, §aSKCore
+ §aSKCrates§r, §aSKEffects§r, §aSKHolograms§r, §aSKHomes§r, §aSKInfo§r, §aSKItems§r, §aSKKeyAll§r, §aSKKits§r, §aSKMod§r, §aSKMoney
+ §aSKMsg§r, §aSKOrders§r, §aSKPointShop§r, §aSkript§r, §aSKRtp§r, §aSKRules§r, §aSKSell§r, §aSKSettings§r, §aSKShop§r, §aSKSpawners
+ §aSKStats§r, §aSKTags§r, §aSKTeam§r, §aSKTpa§r, §aSKWipe§r, §aTAB§r, §aTip4serv§r, §aVault§r, §aViaBackwards§r, §aViaRewind
+ §aViaVersion§r, §avoicechat§r, §aVoidGen§r, §aWorldGuard§r, §aWorldGuardExtraFlags

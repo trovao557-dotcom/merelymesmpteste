@@ -1,0 +1,199 @@
+# =====================================================================
+#  Shop - behaviour, sounds and text
+# =====================================================================
+#  This file decides HOW the shop behaves.
+#  WHAT it sells is in shop.yml, and the confirmation screen is in
+#  menu-buy.yml.
+#
+#  Reload everything with:  /shop reload
+# =====================================================================
+
+
+# Put in front of every message below. Blank it to remove it everywhere.
+prefix: '&#FFD900&lSHOP &#9B9B9B» '
+
+
+# ---------------------------------------------------------------------
+#  Permissions
+# ---------------------------------------------------------------------
+#  The node names themselves are configurable so you can fold the shop
+#  into a permission group you already use instead of adding new nodes.
+#  Individual categories and goods can require their own node on top -
+#  see `permission:` in shop.yml.
+permissions:
+  
+  # Needed to open the shop and to buy anything.
+  use: skshop.use
+  
+  # Needed for /shop reload.
+  reload: skshop.reload
+
+
+# ---------------------------------------------------------------------
+#  Purchasing
+# ---------------------------------------------------------------------
+purchasing:
+  
+  # What clicking a product does.
+  #   menu    open the confirmation screen where the player picks an amount
+  #   none    that mouse button does nothing
+  #   <1-64>  buy exactly that many immediately, no confirmation
+  # A common setup is `left-click: menu` and `right-click: 1` so regulars
+  # can spam-buy single items while newcomers get the safe screen.
+  # Any category in shop.yml may override both of these for itself.
+  left-click: menu
+  right-click: menu
+  
+  # Highest amount the confirmation screen will go to.
+  # 64 is the sensible ceiling because that is what one click hands over
+  # as a single stack. A product may lower it with `max-amount:`.
+  max-amount: 64
+  
+  # Minimum time between two purchases by the same player, in
+  # milliseconds. This is what stops a double-click from buying twice.
+  #   0     off
+  #   300   roughly one purchase per third of a second (default)
+  # Measured on the wall clock, so it stays accurate while the server
+  # is lagging - which is exactly when double clicks happen.
+  cooldown-millis: 300
+  
+  # true   refuse the sale when the items do not all fit
+  # false  sell anyway and drop the remainder at the player's feet
+  # Whatever you choose, items are never destroyed: anything that does
+  # not fit after a successful sale is always dropped, never deleted.
+  refuse-when-inventory-full: true
+  
+  # Where the player lands after a successful purchase.
+  #   category  back to the category page (default)
+  #   stay      stay in the confirmation screen and buy again
+  #   close     close the menu entirely
+  after-purchase: stay
+  
+  # Hide categories a player has no permission for, instead of showing
+  # the button and refusing the click. Turn this on if your shop has
+  # rank-only sections you do not want to advertise.
+  hide-locked-categories: false
+  
+  # The same for individual products inside a category.
+  hide-locked-goods: false
+
+
+# ---------------------------------------------------------------------
+#  Economy
+# ---------------------------------------------------------------------
+economy:
+  
+  # Where money is taken from. Points always come from the SKCore
+  # player record and are not affected by this setting.
+  #   auto    use Vault when an economy plugin is installed, otherwise
+  #            fall back to SKCore's own balances (recommended)
+  #   vault   always Vault; purchases are refused when it is missing
+  #   skcore  always SKCore's balances, ignoring Vault entirely
+  # Use `skcore` while you are still migrating away from an old economy
+  # script, so the shop cannot accidentally spend the wrong wallet.
+  backend: auto
+
+
+# ---------------------------------------------------------------------
+#  Sounds
+# ---------------------------------------------------------------------
+#  Any sound id the server knows works here, including ones added by a
+#  resource pack. Leave `name` empty to switch a sound off.
+#     volume  loudness, 1.0 is normal
+#     pitch   0.5 is an octave down, 2.0 an octave up
+sounds:
+  
+  # Opening the shop.
+  open:
+    name: block.chest.open
+    volume: 0.8
+    pitch: 1.3
+  
+  # Moving between menus.
+  click:
+    name: ui.button.click
+    volume: 0.7
+    pitch: 1.2
+  
+  # Changing the amount in the confirmation screen.
+  amount:
+    name: ui.button.click
+    volume: 0.5
+    pitch: 1.3
+  
+  # A completed purchase.
+  purchase:
+    name: entity.player.levelup
+    volume: 1.0
+    pitch: 1.5
+  
+  # Any refusal: too poor, full inventory, no permission.
+  denied:
+    name: entity.villager.no
+    volume: 1.0
+    pitch: 1.0
+
+
+# ---------------------------------------------------------------------
+#  Messages
+# ---------------------------------------------------------------------
+#  Every line a player can see. An empty string switches that message
+#  off completely.
+#  Colours: &a style codes and &#RRGGBB hex both work.
+messages:
+  
+  # %amount% bought  %item% its name
+  # %price_full% what it cost, written the way shop.yml spells that
+  # currency ("$1.2K" or "50 Points")
+  # %price% the same as a bare number, and %currency% just the label,
+  # for when you want to arrange them yourself
+  purchased: '&#71F521You bought &f%amount%x %item% &#71F521for &f%price_full%&#71F521!'
+  
+  # %amount% how many items did not fit and were dropped instead.
+  # Only ever sent when purchasing.refuse-when-inventory-full is false.
+  dropped: '&#FFD900%amount% items did not fit and were dropped at your feet.'
+  
+  # %price_full% total  %balance_full% what they have
+  # %missing_full% the difference - all three also exist as bare numbers
+  # under %price%, %balance% and %missing%
+  not-enough-money: '&#FF2121You do not have enough money! &7(Price: %price_full%,
+    missing: %missing_full%)'
+  
+  # %price_full% %balance_full% %missing_full%
+  not-enough-points: '&#FF2121You do not have enough points! &7(Price: %price_full%,
+    you have %balance_full%)'
+  
+  inventory-full: '&#FF2121Your inventory is full!'
+  
+  # %millis% how much of the cooldown is left.
+  # Empty by default: the cooldown exists to swallow double clicks, and
+  # telling players off for double-clicking is just noise.
+  cooldown: ''
+  
+  no-permission: '&#FF2121You are not allowed to do that.'
+  
+  # %category%
+  category-locked: '&#FF2121This category is not unlocked for you.'
+  
+  # %item%
+  item-locked: '&#FF2121You cannot buy this yet.'
+  
+  # Sent when economy.backend is `vault` but no economy plugin answered.
+  no-economy: '&#FF2121The shop is not connected to an economy right now.'
+  
+  # %category% what they typed
+  unknown-category: '&#FF2121There is no shop category called &f%category%&#FF2121.'
+  
+  players-only: '&#FF2121Only players can open the shop.'
+  
+  # %categories% %goods%
+  reloaded: '&#71F521Shop reloaded: &f%categories% &#71F521categories, &f%goods% &#71F521products.'
+# Language of everything this plugin says: EN or DE.
+#
+# EN is the default and reads this file. DE lays the translation in
+# lang/de/ over it - the file you are reading stays English and stays the
+# reference. A line the translation does not have falls back to English,
+# so nothing breaks if you add a setting we have not translated yet.
+#
+# The translated files are yours to edit as well, same as this one.
+language: EN

@@ -1,0 +1,9 @@
+# /craft — Knight+ (LP: sksmp.craft)
+
+command /craft:
+	aliases: workbench, wb
+	trigger:
+		if player has permission "sksmp.craft":
+			open crafting table to player
+		else:
+			send "&c&lRANKS &8» &7Precisas de &fKNIGHT &7ou rank superior para &f/craft&7." to player

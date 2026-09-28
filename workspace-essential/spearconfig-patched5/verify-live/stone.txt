@@ -1,0 +1,9 @@
+# /stonecutter — Knight+ (LP: sksmp.stonecutter)
+
+command /stonecutter:
+  aliases: sc
+  trigger:
+    if player has permission "sksmp.stonecutter":
+      open stonecutter inventory to player
+    else:
+      send "&c&lRANKS &8» &7Precisas de &fKNIGHT &7ou rank superior para &f/stonecutter&7." to player

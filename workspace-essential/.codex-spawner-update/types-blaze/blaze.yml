@@ -1,0 +1,53 @@
+# =====================================================================
+#  Spawner type: Blaze
+# =====================================================================
+#  TO ADD A NEW MOB: copy this file, rename it (the file name IS the id
+#  used by /spawners give), and edit the values. Then /skcore reload.
+#  A new file also has to be listed in SpawnerTypeRegistry so a fresh
+#  install ships it - see the note there.
+#
+#  Every sell-price below is the same number SKSell's prices.yml uses,
+#  so emptying a spawner and running /sell pay identically. Change one
+#  and change the other, or players will route loot through whichever
+#  side pays more.
+# =====================================================================
+
+display-name: none
+
+colour: '&#FF8600'
+
+head-texture: 'https://textures.minecraft.net/texture/b20657e24b56e1b2f8fc219da1de788c0c24f36388b1a409d0cd2d8dba44aa3b'
+
+drops:
+  blaze_rod:
+    material: BLAZE_ROD
+    amount:
+      min: 2
+      max: 4
+    chance: 100
+    sell-price: 28
+
+  glowstone:
+    material: GLOWSTONE_DUST
+    amount:
+      min: 1
+      max: 1
+    chance: 25
+    sell-price: 5
+
+spawn-delays:
+  min: 15
+  max: 20
+
+xp:
+  min: 5
+  max: 15
+
+max-stack: default
+
+storage:
+  max-items: 5000
+  max-xp: 10000
+
+# Price used by %spawner_price% - for your own shop menus.
+spawner-price: 200000

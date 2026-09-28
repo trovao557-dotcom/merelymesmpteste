@@ -1,0 +1,18 @@
+# Spider spawner: string is common, spider eyes are rare.
+display-name: 'Spider'
+colour: '&#4A235A'
+drops:
+  string:
+    material: STRING
+    amount:
+      min: 1
+      max: 3
+    chance: 100
+    sell-price: 14
+  spider_eye:
+    material: SPIDER_EYE
+    amount:
+      min: 1
+      max: 1
+    chance: 8
+    sell-price: 20

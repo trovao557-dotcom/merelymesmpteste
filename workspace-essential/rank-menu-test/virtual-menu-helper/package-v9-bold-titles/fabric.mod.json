@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "merelyme_virtual_menus",
+  "version": "1.0.9",
+  "name": "MerelyMe Virtual Menu Support",
+  "description": "Layers MerelyMe menu tops over the player's selected GUI pack.",
+  "environment": "client",
+  "mixins": ["merelyme-virtual-menus.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.19.0",
+    "minecraft": ">=1.21.11"
+  }
+}

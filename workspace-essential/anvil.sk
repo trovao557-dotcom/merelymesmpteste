@@ -1,0 +1,8 @@
+# /anvil — Macer+ (LP: sksmp.anvil)
+
+command /anvil:
+	trigger:
+		if player has permission "sksmp.anvil":
+			open anvil inventory to player
+		else:
+			send "&c&lRANKS &8» &7Precisas de &fMACER &7ou rank superior para &f/anvil&7." to player

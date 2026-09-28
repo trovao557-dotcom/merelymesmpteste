@@ -1,0 +1,6 @@
+name: MerelyNoPush
+version: 1.0.0
+main: me.merelyme.nopush.MerelyNoPush
+api-version: '1.21'
+authors: [MerelyMe]
+description: Stops players from pushing each other.

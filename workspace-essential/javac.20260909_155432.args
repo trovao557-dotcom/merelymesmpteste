@@ -1,0 +1,7 @@
+-encoding
+UTF-8
+-cp
+ah-price-hover\\build\\paper-api.jar;current-check\\SKCore.jar
+-d
+merely-events\\build-out
+merely-events\\src\\me\\merelyme\\events\\MerelyEventsPlugin.java

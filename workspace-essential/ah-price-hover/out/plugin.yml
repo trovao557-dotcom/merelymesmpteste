@@ -1,0 +1,6 @@
+name: AhPriceHover
+main: me.merelyme.ahprice.AhPriceHover
+version: 1.0.0
+api-version: '1.21'
+author: MerelyMe
+description: Show SKAuction listing prices on item hover.

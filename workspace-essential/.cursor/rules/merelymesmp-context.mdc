@@ -1,0 +1,11 @@
+---
+description: Live MerelyMeSMP context from G-Portal (server 8699357) — owner, join address, Paper version, plugins, ops.
+alwaysApply: true
+---
+
+# MerelyMeSMP (live)
+
+- Owner: **MerelyMe** (Twitch, UUID `036bd293-8996-431d-b18f-ca8d391986e8`, OP 4).
+- G-Portal 8699357. Join `merelymesmp.g-portal.game`. Paper 26.2 #84, Java 25, survival, MOTD First Season EU.
+- Use Brave Automation for the panel. Do not write FTP/RCON passwords into chat or files.
+- Plugin pack: SK* EconomySMP + WorldGuard, DeluxeMenus, voicechat, Via*, FAWE, FancyNpcs, LuckPerms, TAB, Skript, and extra PvP/anticheat jars. Combat: SKCombat + `combat-safezone.sk` (spawn glass only for tagged players). CelestCombat-Pro was removed. Local copy: `Documents/EconomySMP`.

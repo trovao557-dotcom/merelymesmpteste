@@ -1,0 +1,35 @@
+name: 'CrazyAuctions'
+main: 'com.badbones69.crazyauctions.CrazyAuctions'
+
+version: '26.1.2-f6e007a'
+api-version: '26.1.2'
+description: 'Auction off your items in style!'
+
+folia-supported: true
+
+dependencies:
+  server:
+    PlaceholderAPI:
+      load: BEFORE
+      required: false
+      join-classpath: true
+    HeadDatabase:
+      load: BEFORE
+      required: false
+      join-classpath: true
+    ItemsAdder:
+      load: BEFORE
+      required: false
+      join-classpath: true
+    Oraxen:
+      load: BEFORE
+      required: false
+      join-classpath: true
+    Nexo:
+      load: BEFORE
+      required: false
+      join-classpath: true
+    Vault:
+      load: BEFORE
+      required: true
+      join-classpath: true

@@ -1,0 +1,26 @@
+Animation1:
+  change-interval: 6500
+  texts:
+    - '&#00FF8D&l&nSTORE&#9B9B9B&l • &#00B7FF&lDISCORD&#9B9B9B&l • &#FF7200&lP&#FF8200&lR&#FF9100&lI&#FFA100&lM&#FFB000&lE'
+    - '&#00FF8D&lSTORE&#9B9B9B&l • &#00B7FF&l&nDISCORD&#9B9B9B&l • &#FF7200&lP&#FF8200&lR&#FF9100&lI&#FFA100&lM&#FFB000&lE'
+    - '&#00FF8D&lSTORE&#9B9B9B&l • &#00B7FF&lDISCORD&#9B9B9B&l • &#FF7200&l&nP&#FF8200&l&nR&#FF9100&l&nI&#FFA100&l&nM&#FFB000&l&nE'
+
+Animation2:
+  change-interval: 6500
+  texts:
+    - '&#9B9B9BPlay with style and purchase'
+    - "&#9B9B9BJoin our community and"
+    - "&#9B9B9BUnlock many cool perks and stand"
+
+Animation3:
+  change-interval: 6500
+  texts:
+    - '&#9B9B9Btons of goodies in our store'
+    - "&#9B9B9Bwith other players on Discord"
+    - "&#9B9B9Bout from the crowd with Prime"
+
+Animation4:
+  change-interval: 6500
+  texts:
+    - '&#00FF8D▶ &#00FF8D&nmerelymesmp.com&#00FF8D ◀'
+    - "&#00B7FF▶ &#00B7FF&ndiscord.gg/NEybDXCkhA&#00B7FF ◀"

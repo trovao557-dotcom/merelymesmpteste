@@ -1,0 +1,178 @@
+# =====================================================================
+#  GOLD CRATE
+# =====================================================================
+#  The top crate - fewest rewards, every one of them worth walking to
+#  spawn for. Same format as normal.yml; every option is documented
+#  there.
+#  Edit in-game with /crates edit gold
+# =====================================================================
+
+# --- identity --------------------------------------------------------
+
+display-name: '&#FFD900&lGOLD CRATE'
+
+description:
+  - '&7The best crate on the server.'
+  - '&7Netherite, Elytra, and the big jackpot.'
+
+# The hologram above the block already reads %skcore_keys_gold%, so this
+# id is what makes that line count anything.
+key-id: gold
+
+key-name: 'Gold'
+
+keys-per-open: 1
+
+permission: ''
+
+colour: '&#FFD900'
+
+enabled: true
+
+cooldown-seconds: default
+
+lid-animation: true
+
+menu-title: '&f'
+
+
+# --- where it stands -------------------------------------------------
+# The yellow shulker at spawn, confirmed against the world rather than
+# copied from the example: the hologram sits at 3.5/2.5/-14.5, which is
+# the block below it at 3/1/-15.
+locations:
+  - 'Spawn;3;1;-15'
+
+
+# --- what it offers --------------------------------------------------
+rewards:
+
+  # The Keyall set one tier up: netherite instead of diamond, Mending on
+  # everything, and a Mace where Keyall has a Spear. Same layout, so a player
+  # who knows one crate can read the other at a glance.
+  #
+  # THE MONEY PRIZE HAS A CEILING
+  # A key costs 1,500 points and a point is worth 100 money, so anything above
+  # $150,000 here would pay for its own key and the crate would print money.
+  # $100,000 keeps a clear gap.
+
+  money:
+    slot: 10
+    display:
+      material: LIME_DYE
+      glow: true
+      name: '&#71F521$100,000'
+      lore:
+        - '&fInstantly receive &#71F521$100,000 &fin-game money'
+    money: 100000
+    broadcast: '&#FFD900%player% &fwon &#71F521$100,000 &ffrom the %crate%&f!'
+
+  points:
+    slot: 11
+    display:
+      material: LIGHT_BLUE_DYE
+      glow: true
+      name: '&#00E0FF500 Points'
+      lore:
+        - '&fInstantly receive &#00E0FF500 Points'
+    points: 500
+
+  crystals:
+    slot: 12
+    display:
+      material: END_CRYSTAL
+      amount: 16
+
+  apples:
+    slot: 13
+    display:
+      material: ENCHANTED_GOLDEN_APPLE
+      amount: 8
+
+  netherite:
+    slot: 14
+    display:
+      material: NETHERITE_INGOT
+      amount: 6
+
+  totems:
+    slot: 15
+    display:
+      material: TOTEM_OF_UNDYING
+      amount: 3
+
+  sword:
+    slot: 16
+    display:
+      material: NETHERITE_SWORD
+      hide-attributes: false
+      name: '&#FFD900&lGOLD &#FFD900Sword'
+      enchantments: ['SHARPNESS:5', 'FIRE_ASPECT:2', 'LOOTING:3', 'UNBREAKING:3', 'MENDING:1']
+
+  mace:
+    slot: 19
+    display:
+      material: MACE
+      hide-attributes: false
+      name: '&#FFD900&lGOLD &#FFD900Mace'
+      enchantments: ['DENSITY:5', 'BREACH:4', 'UNBREAKING:3', 'MENDING:1']
+
+  axe:
+    slot: 20
+    display:
+      material: NETHERITE_AXE
+      hide-attributes: false
+      name: '&#FFD900&lGOLD &#FFD900Axe'
+      enchantments: ['EFFICIENCY:5', 'UNBREAKING:3', 'MENDING:1']
+
+  pickaxe:
+    slot: 21
+    display:
+      material: NETHERITE_PICKAXE
+      hide-attributes: false
+      name: '&#FFD900&lGOLD &#FFD900Pickaxe'
+      enchantments: ['EFFICIENCY:5', 'FORTUNE:3', 'UNBREAKING:3', 'MENDING:1']
+
+  helmet:
+    slot: 22
+    display:
+      material: NETHERITE_HELMET
+      hide-attributes: false
+      name: '&#FFD900&lGOLD &#FFD900Helmet'
+      trim:
+        pattern: WILD
+        material: GOLD
+      enchantments: ['PROTECTION:4', 'RESPIRATION:3', 'AQUA_AFFINITY:1', 'UNBREAKING:3', 'MENDING:1']
+
+  chestplate:
+    slot: 23
+    display:
+      material: NETHERITE_CHESTPLATE
+      hide-attributes: false
+      name: '&#FFD900&lGOLD &#FFD900Chestplate'
+      trim:
+        pattern: WILD
+        material: GOLD
+      enchantments: ['PROTECTION:4', 'THORNS:3', 'UNBREAKING:3', 'MENDING:1']
+
+  leggings:
+    slot: 24
+    display:
+      material: NETHERITE_LEGGINGS
+      hide-attributes: false
+      name: '&#FFD900&lGOLD &#FFD900Leggings'
+      trim:
+        pattern: WILD
+        material: GOLD
+      enchantments: ['PROTECTION:4', 'SWIFT_SNEAK:3', 'UNBREAKING:3', 'MENDING:1']
+
+  boots:
+    slot: 25
+    display:
+      material: NETHERITE_BOOTS
+      hide-attributes: false
+      name: '&#FFD900&lGOLD &#FFD900Boots'
+      trim:
+        pattern: WILD
+        material: GOLD
+      enchantments: ['PROTECTION:4', 'DEPTH_STRIDER:3', 'FEATHER_FALLING:4', 'UNBREAKING:3', 'MENDING:1']

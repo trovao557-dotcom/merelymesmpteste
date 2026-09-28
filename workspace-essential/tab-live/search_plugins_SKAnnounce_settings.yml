@@ -1,0 +1,192 @@
+# =====================================================================
+#  SKAnnounce - the lines everybody reads
+# =====================================================================
+#  welcome  a player joining for the very first time
+#  join     everybody else arriving
+#  quit     somebody leaving
+#  kill     one player killed another
+#
+#  All four are sent by this plugin rather than by the server, because
+#  the vanilla versions cannot be muted per player. Each category has a
+#  mute permission: a player holding it stops seeing that kind of line,
+#  which is exactly what the switches in /settings flip.
+#
+#  An empty `message` switches a category off just as well as
+#  `enabled: false`.
+# =====================================================================
+
+prefix: ''
+
+# Write every broadcast to the server log as well. Off by default - the
+# console has better things to show than chat.
+log-to-console: false
+
+
+# ---------------------------------------------------------------------
+#  First join
+# ---------------------------------------------------------------------
+#  Shown INSTEAD of the join line, never on top of it.
+#  %player% and %number% - how many players have ever joined, this one
+#  included, so the first person to log in is #1.
+welcome:
+  enabled: true
+  message: '&#71F521✎ &fWelcome &#00B5FF%player% &fto &#00B5FF&lMerelyMe SMP SEASON
+    1&f! &#9B9B9B(#%number%)'
+  mute-permission: skannounce.mute-welcome
+
+
+# ---------------------------------------------------------------------
+#  Join and quit
+# ---------------------------------------------------------------------
+#  One category to a player, so they share a mute permission and a single
+#  switch in /settings.
+join:
+  enabled: true
+  message: '&#75FF00+ &7%player%'
+  mute-permission: skannounce.mute-join
+
+quit:
+  enabled: true
+  message: '&#FF2121- &7%player%'
+  mute-permission: skannounce.mute-join
+
+
+# ---------------------------------------------------------------------
+#  Kills
+# ---------------------------------------------------------------------
+#  %killer% %victim%
+kill:
+  enabled: false
+  message: ''
+  mute-permission: skannounce.mute-kill
+  
+  # Deaths that were NOT a player kill - drowned, fell, blown up.
+  other-deaths: hide
+
+
+# ---------------------------------------------------------------------
+#  Advancements
+# ---------------------------------------------------------------------
+#  false hides "PlayerX has made the advancement [...]" from chat.
+#  Done with a listener rather than the announceAdvancements gamerule
+#  because that rule is per dimension - this server has five - and would
+#  need setting again for every world added later.
+advancements:
+  announce: false
+
+# ---------------------------------------------------------------------
+#  Timed announcements
+# ---------------------------------------------------------------------
+#  One entry under `list:` is one announcement. They go out on a timer,
+#  in the order written here unless `random` is on.
+#
+#  `lines` is the body - plain text, colours as everywhere else.
+#  `command` is the last line and the only clickable one:
+#      label  what is written
+#      run    a command to run on click, with or without the slash
+#      url    a link to open instead (use one or the other)
+#      hover  the tooltip shown while pointing at it
+#  Leave `command` out and the announcement is text only.
+#
+#  Nothing is sent while the server is empty: the rotation waits rather
+#  than talking to nobody and greeting the evening's first player with
+#  announcement number four.
+announcements:
+  enabled: true
+  
+  # Minutes between two announcements. Decimals are allowed.
+  interval-minutes: 6
+  
+  # false = one after another in the order below, true = pick at random.
+  random: false
+  
+  # Blank lines above and below each announcement, so it never ends up
+  # wedged between two other broadcasts. 0 switches the spacing off.
+  padding: 1
+  
+  mute-permission: skannounce.mute-broadcast
+  
+  list:
+    
+    discord:
+      lines:
+      - '&#00B5FF✉ &#9B9B9B▶ &#00B5FF&lDISCORD SERVER'
+      - '&f'
+      - '&fJoin our Discord so you never miss'
+      - '&fnews, events or giveaways!'
+      - '&f'
+      command:
+        label: '&#00B5FF● &fCommand: &#00B5FF&n/discord'
+        run: discord
+        hover: '&#00B5FFClick to join'
+    
+    guide:
+      lines:
+      - '&#71F521⚑ &#9B9B9B▶ &#71F521&lSERVER GUIDE'
+      - '&f'
+      - '&fNew here? The guide explains every'
+      - '&ffeature this server has to offer.'
+      - '&f'
+      command:
+        label: '&#71F521● &fCommand: &#71F521&n/guide'
+        run: guide
+        hover: '&#71F521Click to open'
+    
+    kits:
+      lines:
+      - '&#FFD900✦ &#9B9B9B▶ &#FFD900&lFREE KITS'
+      - '&f'
+      - '&fClaim your free kit and come back'
+      - '&fwhenever the cooldown runs out.'
+      - '&f'
+      command:
+        label: '&#FFD900● &fCommand: &#FFD900&n/kit'
+        run: kit
+        hover: '&#FFD900Click to open'
+    
+    auction:
+      lines:
+      - '&#FF8600$ &#9B9B9B▶ &#FF8600&lAUCTION HOUSE'
+      - '&f'
+      - '&fBuy from other players, or put your'
+      - '&fown spare gear up for sale.'
+      - '&f'
+      command:
+        label: '&#FF8600● &fCommand: &#FF8600&n/ah'
+        run: ah
+        hover: '&#FF8600Click to open'
+    
+    rtp:
+      lines:
+      - '&#9FFF00⚑ &#9B9B9B▶ &#9FFF00&lRANDOM TELEPORT'
+      - '&f'
+      - '&fLooking for untouched land? One'
+      - '&fclick puts you far from spawn.'
+      - '&f'
+      command:
+        label: '&#9FFF00● &fCommand: &#9FFF00&n/rtp'
+        run: rtp
+        hover: '&#9FFF00Click to teleport'
+    
+    # A web store is a link, not a command - swap the address for yours,
+    # or delete this entry if you do not run one.
+    store:
+      lines:
+      - '&#FF79F5✦ &#9B9B9B▶ &#FF79F5&lSERVER STORE'
+      - '&f'
+      - '&fRanks, keys and cosmetics - and'
+      - '&fevery purchase keeps us online.'
+      - '&f'
+      command:
+        label: '&#FF79F5● &fStore: &#FF79F5&nmerelymesmp.com'
+        url: https://merelymesmp.com
+        hover: '&#FF79F5Click to open in your browser'
+# Language of everything this plugin says: EN or DE.
+#
+# EN is the default and reads this file. DE lays the translation in
+# lang/de/ over it - the file you are reading stays English and stays the
+# reference. A line the translation does not have falls back to English,
+# so nothing breaks if you add a setting we have not translated yet.
+#
+# The translated files are yours to edit as well, same as this one.
+language: EN

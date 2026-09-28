@@ -1,0 +1,15 @@
+season: 1
+# XP needed for each next level grows automatically:
+# Level 1: 500, Level 12: 700, Level 50-60: 1,500.
+xp:
+  play-minute: 10
+  player-kill: 75
+  mob-kill: 3
+  ore-mined: 5
+  blocks-per-reward: 25
+  block-reward: 2
+  fish: 15
+  enchant: 20
+  breed: 10
+  villager-trade: 5
+  craft-batch: 5

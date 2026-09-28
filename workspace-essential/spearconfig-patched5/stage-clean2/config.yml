@@ -1,0 +1,56 @@
+# Each tier has an independent master toggle and amount.
+# An enabled limit of 0 allows no spears of that tier to be crafted.
+limits:
+  wood:
+    enabled: false
+    amount: 0
+  stone:
+    enabled: false
+    amount: 0
+  copper:
+    enabled: false
+    amount: 0
+  iron:
+    enabled: false
+    amount: 0
+  gold:
+    enabled: false
+    amount: 0
+  diamond:
+    enabled: false
+    amount: 0
+  netherite:
+    enabled: false
+    amount: 0
+
+# Remove spear drops from naturally spear-carrying mobs.
+blockMobDrop: true
+
+# Each attack cooldown has an independent master toggle.
+cooldown:
+  jab:
+    enabled: false
+    seconds: 0
+  lunge:
+    enabled: false
+    seconds: 0
+
+# Compatible enchantments are discovered from Paper's registry on startup.
+# Each discovered key receives:
+#   allowed: true
+#   maxLevel: the enchantment's vanilla maximum
+enchantable: true
+enchantments: {}
+
+# Inventory owners are considered spear wielders.
+glow: false
+tab: false
+color: GOLD
+
+reveal:
+  enabled: false
+  interval: 300
+
+announcements:
+  chat: true
+  title: true

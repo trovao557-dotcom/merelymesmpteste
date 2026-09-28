@@ -1,0 +1,13 @@
+title: "&0Previewing %item%"
+# a gui can have 1-6 rows
+rows: 5
+
+# ----- ITEMS -----
+
+item:
+  slot: 4
+
+filler:
+  slot: [0, 1, 2, 3, 5, 6, 7, 8, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+  material: "LIGHT_BLUE_STAINED_GLASS_PANE"
+  name: " "

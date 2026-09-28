@@ -1,0 +1,511 @@
+# =====================================================================
+#  SKInfo - the information screens
+# =====================================================================
+#  /help    a command overview; a click opens that system
+#  /guide   what this server is, in one screen
+#  /media   the creator programme and how to apply
+#  /discord the Discord link, clickable
+#  /store   the store link, clickable
+#  /skinfo reload
+#
+#  HOW A MENU WORKS
+#  Every entry has a `slot`, a face (material, name, lore) and one of:
+#    run:          a command, run as the player. The screen closes first.
+#    message:      lines printed into the chat instead.
+#    message-from: the name of a list under this menu's `texts:` - for
+#                  when several icons say the same thing.
+#  An entry with neither does nothing when clicked, which is right for a
+#  card that is only there to be read.
+#
+#  Colours: &a style codes and &#RRGGBB hex both work everywhere.
+# =====================================================================
+
+# Language of everything this plugin says: EN or DE.
+#
+# EN is the default and reads this file. DE lays the translation in
+# lang/de/ over it - the file you are reading stays English and stays the
+# reference. A line the translation does not have falls back to English,
+# so nothing breaks if you add a setting we have not translated yet.
+#
+# The translated files are yours to edit as well, same as this one.
+language: EN
+
+prefix: '&#00B5FF&lSMP &#9B9B9B» '
+
+
+# ---------------------------------------------------------------------
+#  Sounds
+# ---------------------------------------------------------------------
+sounds:
+  menu-open:
+    sound: block.chest.open
+    volume: 0.8
+    pitch: 1.3
+  click:
+    sound: ui.button.click
+    volume: 0.7
+    pitch: 1.2
+  read:
+    sound: entity.experience_orb.pickup
+    volume: 1.0
+    pitch: 1.4
+  link:
+    sound: entity.experience_orb.pickup
+    volume: 0.8
+    pitch: 1.5
+
+
+# ---------------------------------------------------------------------
+#  The clickable links
+# ---------------------------------------------------------------------
+#  Two blank lines are printed around each one on purpose: a link
+#  somebody has to click is worth nothing if it scrolls past inside a
+#  wall of chat.
+links:
+  
+  discord:
+    heading: '      &#00B5FF&lDISCORD SERVER'
+    text: '       &f&ndiscord.gg/NEybDXCkhA'
+    url: https://discord.gg/NEybDXCkhA
+    hover: '&#71F521Click to join!'
+  
+  # The address is a placeholder. Put your own in, or delete this whole
+  # entry if you do not run a store - /store then says so politely.
+  store:
+    heading: '      &#FFD900&lSTORE'
+    text: '       &f&nmerelymesmp.com'
+    url: https://merelymesmp.com
+    hover: '&#71F521Click to open!'
+
+
+# ---------------------------------------------------------------------
+#  The menus
+# ---------------------------------------------------------------------
+menus:
+  
+  # ===== /help =======================================================
+  help:
+    title: '&f'
+    rows: 6
+    items:
+      
+      shop:
+        slot: 10
+        material: CHEST
+        name: '&f &#FFD900&lSHOP'
+        run: shop
+        lore:
+        - '&7Help'
+        - '&f'
+        - '&#FFD900▶ &f/shop'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+      
+      economy:
+        slot: 11
+        material: GOLD_INGOT
+        name: '&#6BFF00&lECONOMY'
+        run: worth
+        lore:
+        - '&7Help'
+        - '&f'
+        - '&#6BFF00▶ &f/balance'
+        - '&#6BFF00▶ &f/pay (player) (amount)'
+        - '&#6BFF00▶ &f/sell'
+        - '&#6BFF00▶ &f/worth'
+        - '&#6BFF00▶ &f/sellmulti'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+      
+      auction:
+        slot: 12
+        material: DIAMOND
+        name: '&#00B5FF&lAUCTION HOUSE'
+        run: ah
+        lore:
+        - '&7Help'
+        - '&f'
+        - '&#00B5FF▶ &f/ah'
+        - '&#00B5FF▶ &f/ah sell (price)'
+        - '&#00B5FF▶ &f/ah help'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+      
+      orders:
+        slot: 13
+        material: BELL
+        name: '&#00B5FF&lORDERS'
+        run: orders
+        lore:
+        - '&7Help'
+        - '&f'
+        - '&#00B5FF▶ &f/orders'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+      
+      teleport:
+        slot: 14
+        material: ENDER_PEARL
+        name: '&#9FFF00&lTELEPORT'
+        run: rtp
+        lore:
+        - '&7Help'
+        - '&f'
+        - '&#9FFF00▶ &f/spawn'
+        - '&#9FFF00▶ &f/rtp'
+        - '&#9FFF00▶ &f/tpa (player)'
+        - '&#9FFF00▶ &f/tpahere (player)'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+      
+      homes:
+        slot: 15
+        material: LIGHT_BLUE_BED
+        name: '&#00B5FF&lHOMES'
+        run: homes
+        lore:
+        - '&7Help'
+        - '&f'
+        - '&#00B5FF▶ &f/homes'
+        - '&#00B5FF▶ &f/home (1-5)'
+        - '&#00B5FF▶ &f/sethome'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+      
+      teams:
+        slot: 16
+        material: CHAINMAIL_HELMET
+        name: '&#00B5FF&lTEAMS'
+        run: team
+        lore:
+        - '&7Help'
+        - '&f'
+        - '&#00B5FF▶ &f/team'
+        - '&#00B5FF▶ &f/team create (name)'
+        - '&#00B5FF▶ &f/team chat'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+      
+      pvp:
+        slot: 19
+        material: IRON_SWORD
+        name: '&#FF2121&lPVP'
+        run: bounty
+        lore:
+        - '&7Help'
+        - '&f'
+        - '&#FF2121▶ &f/bounty'
+        - '&#FF2121▶ &f/rtpqueue'
+        - '&#FF2121▶ &f/leavequeue'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+      
+      stats:
+        slot: 20
+        material: CLOCK
+        name: '&#D2FF00&lSTATS'
+        run: stats
+        lore:
+        - '&7Help'
+        - '&f'
+        - '&#D2FF00▶ &f/stats'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+      
+      crates:
+        slot: 21
+        material: TRIPWIRE_HOOK
+        name: '&#27F123&lCRATES &#27F123& &lKEYS'
+        run: keys
+        lore:
+        - '&7Help'
+        - '&f'
+        - '&#27F123▶ &f/keys'
+        - '&#27F123▶ &fOpen crates at spawn'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+      
+      social:
+        slot: 22
+        material: NAME_TAG
+        name: '&#FF79F5&lSOCIAL'
+        run: tags
+        lore:
+        - '&7Help'
+        - '&f'
+        - '&#FF79F5▶ &f/msg (player) (text)'
+        - '&#FF79F5▶ &f/r (text)'
+        - '&#FF79F5▶ &f/ignore (player)'
+        - '&#FF79F5▶ &f/tags'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+      
+      creator:
+        slot: 23
+        material: AMETHYST_SHARD
+        name: '&#C77DFF&lCREATOR'
+        run: media
+        lore:
+        - '&7Help'
+        - '&f'
+        - '&#C77DFF▶ &f/media'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+      
+      settings:
+        slot: 24
+        material: FIREWORK_STAR
+        name: '&#AEADAD&lSETTINGS'
+        run: settings
+        lore:
+        - '&7Help'
+        - '&f'
+        - '&#AEADAD▶ &f/settings'
+        - '&#AEADAD▶ &f/nightvision'
+        - '&#AEADAD▶ &f/phantom'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+      
+      info:
+        slot: 25
+        material: KNOWLEDGE_BOOK
+        name: '&#71F521&lINFO'
+        run: guide
+        lore:
+        - '&7Help'
+        - '&f'
+        - '&#71F521▶ &f/guide'
+        - '&#71F521▶ &f/rules'
+        - '&#71F521▶ &f/discord'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+      
+      kits:
+        slot: 26
+        material: IRON_CHESTPLATE
+        name: '&#FF8600&lKITS'
+        run: kit
+        lore:
+        - '&7Help'
+        - '&f'
+        - '&#FF8600▶ &f/kit'
+        - '&#FF8600▶ &f/kit (name)'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to open'
+    filler:
+      material: GRAY_STAINED_GLASS_PANE
+      name: ' '
+  
+  
+  # ===== /guide ======================================================
+  guide:
+    title: '&f'
+    rows: 3
+    items:
+      
+      # No `run` - this card is here to be read, not clicked through.
+      server:
+        slot: 10
+        material: WIND_CHARGE
+        name: '&#00B5FF&lMERELYME SMP'
+        lore:
+        - '&7Server'
+        - '&f'
+        - '&#00B5FFInformation:'
+        - '&fBuild a base, fight, and'
+        - '&fbecome the richest player.'
+        - '&f'
+        - '&fPVP: &#71F521On &#9B9B9B| &fDifficulty: &#FF2121Hard'
+        - '&fInventory: &#FF2121Off'
+      
+      economy:
+        slot: 11
+        material: GOLD_INGOT
+        name: '&#6BFF00&lECONOMY'
+        run: worth
+        lore:
+        - '&7Economy'
+        - '&f'
+        - '&#6BFF00Information:'
+        - '&fEarn money by selling items.'
+        - '&fBuy better armor and PVP gear.'
+        - '&f'
+        - '&fCommands: &#6BFF00/sell &#9B9B9B& &#6BFF00/auction'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to View'
+      
+      rules:
+        slot: 12
+        material: KNOWLEDGE_BOOK
+        name: '&#71F521&lRULES'
+        run: rules
+        lore:
+        - '&7Safety'
+        - '&f'
+        - '&#71F521Information:'
+        - '&fTo keep the community safe,'
+        - '&feveryone must follow our rules.'
+        - '&f'
+        - '&fCommand: &#71F521/rules'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to View'
+      
+      leaderboards:
+        slot: 13
+        material: CLOCK
+        name: '&#FFD900&lLEADERBOARDS'
+        run: stats
+        lore:
+        - '&7Stats'
+        - '&f'
+        - '&#FFD900Information:'
+        - '&fCheck out the top players'
+        - '&fand fight for the top spots.'
+        - '&f'
+        - '&fCommand: &#FFD900/stats'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to View'
+      
+      media:
+        slot: 14
+        material: AMETHYST_SHARD
+        name: '&#C77DFF&lMEDIA'
+        run: media
+        lore:
+        - '&7Creator'
+        - '&f'
+        - '&#C77DFFInformation:'
+        - '&fEarn creator ranks by making'
+        - '&fcontent about MerelyMe SMP.'
+        - '&f'
+        - '&fCommand: &#C77DFF/media'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to View'
+      
+      settings:
+        slot: 15
+        material: FIREWORK_STAR
+        name: '&#AEADAD&lSETTINGS'
+        lore:
+        - '&7Options'
+        - '&f'
+        - '&#AEADADInformation:'
+        - '&fCustomize certain settings'
+        - '&fto your liking.'
+        - '&f'
+        - '&#AEADAD/nightvision &#9B9B9B| &#AEADAD/phantom'
+        - '&#AEADAD/tpauto &#9B9B9B| &#AEADAD/rtpqueuetoggle'
+      
+      rtp:
+        slot: 16
+        material: AZALEA
+        name: '&#9FFF00&lRANDOM TELEPORT'
+        run: rtp
+        lore:
+        - '&7World'
+        - '&f'
+        - '&#9FFF00Information:'
+        - '&fUse Random Teleport to'
+        - '&fget far away from spawn.'
+        - '&f'
+        - '&fOW: &#9FFF0010-35k &#9B9B9B| &fNether: &#9FFF002-5k &#9B9B9B| &fEnd:
+          &#9FFF005-15k'
+        - '&fCommand: &#9FFF00/rtp'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to View'
+    filler:
+      material: GRAY_STAINED_GLASS_PANE
+      name: ' '
+  
+  
+  # ===== /media ======================================================
+  media:
+    title: '&f'
+    rows: 3
+    
+    # All four cards print this, so it is written once.
+    texts:
+      apply:
+      - ''
+      - '&#C77DFF&lMEDIA &#9B9B9B» &fApply for a Creator Rank:'
+      - '&#C77DFF▶ &fCreate a ticket on our Discord: &#00B5FFdiscord.gg/NEybDXCkhA'
+      - '&#C77DFF▶ &fInclude your channel link and the MerelyMe SMP content'
+      - '&#C77DFF▶ &fYou will get an answer within &#71F52124 hours&f!'
+      - ''
+    
+    items:
+      
+      clipper:
+        slot: 11
+        material: AMETHYST_SHARD
+        name: '&#C77DFF&lCLIPPER'
+        message-from: apply
+        lore:
+        - '&7Creator Rank &8• &fTier 1'
+        - '&f'
+        - '&#C77DFFRequirements: &7(only one needed)'
+        - '&#FF6FF2▶ &f1 TikTok, Short or Reel about MerelyMe SMP'
+        - '&#FF6FF2▶ &f500 total views on MerelyMe SMP content'
+        - '&#FF6FF2▶ &f1 stream on the server'
+        - '&f'
+        - '&#71F521Perks:'
+        - '&#71F521▶ &fCLIPPER tag in chat and tab'
+        - '&#71F521▶ &fCreator kit access'
+        - '&#71F521▶ &f3 Homes &7(member-level gameplay perks)'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to Apply'
+      
+      media:
+        slot: 15
+        material: PURPLE_DYE
+        name: '&#8B4BEE&lMEDIA'
+        message-from: apply
+        lore:
+        - '&7Creator Rank &8• &fTier 2'
+        - '&f'
+        - '&#8B4BEERequirements: &7(only one needed)'
+        - '&#FF6FF2▶ &f1k views on a YouTube video'
+        - '&#FF6FF2▶ &f5k views on a TikTok or Short'
+        - '&#FF6FF2▶ &f5 average viewers in the last 30 days'
+        - '&#FF6FF2▶ &f5 hours streaming time on MerelyMe SMP'
+        - '&#FF6FF2▶ &f2 previous streams on the server'
+        - '&f'
+        - '&#71F521Perks:'
+        - '&#71F521▶ &fMEDIA tag in chat and tab'
+        - '&#71F521▶ &fAll &#FFD900Prime &#71F521rank perks'
+        - '&#71F521▶ &fCreator kit + featured in our Discord'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to Apply'
+      
+      how-to-apply:
+        slot: 22
+        material: WRITABLE_BOOK
+        name: '&#00B5FF&lHOW TO APPLY'
+        message-from: apply
+        lore:
+        - '&7Description'
+        - '&f'
+        - '&#00B5FFInformation:'
+        - '&#00B5FF▶ &fCreate a ticket on our Discord'
+        - '&#00B5FF▶ &fdiscord.gg/NEybDXCkhA'
+        - '&#00B5FF▶ &fAnswer within 24 hours'
+        - '&f'
+        - '&#C77DFFNotes:'
+        - '&7▶ &fThe IP must be visible in the content'
+        - '&7▶ &fMust be from the current season'
+        - '&7▶ &fRank stays as long as you post 1x per month'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to Apply'
+    filler:
+      material: GRAY_STAINED_GLASS_PANE
+      name: ' '
+
+
+# ---------------------------------------------------------------------
+#  Messages
+# ---------------------------------------------------------------------
+messages:
+  not-configured: '&#FF2121/%command% is not set up on this server.'
+  no-permission: '&#FF2121You are not allowed to do that.'
+  players-only: '&#FF2121Only players can use this.'
+  reloaded: '&#71F521settings.yml reloaded.'

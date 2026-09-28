@@ -1,0 +1,176 @@
+# =====================================================================
+#  Shop - the buy confirmation screen
+# =====================================================================
+#  This is the screen a player lands on after clicking a product: pick
+#  an amount with the -/+ buttons, watch the total change, confirm.
+#
+#  There is exactly one of these screens and every category uses it, so
+#  a change here is a change to the whole shop.
+#
+#  Reload with:  /shop reload
+# =====================================================================
+
+
+menu:
+
+  # The chest title.
+  #   %item%      what is being bought
+  #   %category%  which category it came from
+  # The title is fixed the moment the screen opens, so it cannot show
+  # the amount - the amount lives in the middle item's lore instead.
+  title: '&f'
+
+  # The character that means "empty slot" in the layout below.
+  filler-symbol: '-'
+
+  # The screen, one line per chest row, nine characters wide.
+  # Every character refers to an item under `items:` further down; move
+  # a letter to move that button. Adding a line makes the chest taller,
+  # removing one makes it shorter (1-6 rows).
+  #
+  #   A B C  the minus buttons        D E F  the plus buttons
+  #   P      the item being bought
+  #   X      cancel                   Y      confirm
+  layout:
+    - '---------'
+    - 'ABC-P-DEF'
+    - '---X-Y---'
+
+
+# ---------------------------------------------------------------------
+#  The buttons
+# ---------------------------------------------------------------------
+#  material    any Minecraft item id
+#  name / lore what the button says; &a codes and &#RRGGBB hex work
+#  symbol      where it goes - the same letter as in the layout above
+#  action      what a click does. The shop understands these:
+#                confirm  buy the amount currently shown
+#                cancel   go back to the category
+#                preview  the item being bought, not clickable
+#              Anything else is a quantity button and needs
+#              `amount-change:` to do something.
+#  amount-change  how much a click adds to the amount. Negative
+#                 subtracts. Add your own buttons by copying a block
+#                 and changing this number - a "+128" button is nine
+#                 lines of YAML, no Java.
+#  stack-size     how tall the button's item stack is drawn, purely
+#                 cosmetic: it is what makes the "-64" button look like
+#                 64 panes. Leave it out for a single item.
+#  glow           true puts an enchantment shimmer on the button
+items:
+
+  # Slots nothing can be put into. Grey glass says so at a glance, and the
+  # blank name keeps "Gray Stained Glass Pane" from appearing under the
+  # cursor.
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    symbol: '-'
+    name: ' '
+
+  minus_64:
+    material: RED_STAINED_GLASS_PANE
+    name: '&#FF2121-64'
+    lore:
+      - '&7Remove &f64 &7from the amount'
+    symbol: 'A'
+    action: minus_64
+    amount-change: -64
+    stack-size: 64
+
+  minus_10:
+    material: RED_STAINED_GLASS_PANE
+    name: '&#FF2121-10'
+    lore:
+      - '&7Remove &f10 &7from the amount'
+    symbol: 'B'
+    action: minus_10
+    amount-change: -10
+    stack-size: 10
+
+  minus_1:
+    material: RED_STAINED_GLASS_PANE
+    name: '&#FF2121-1'
+    lore:
+      - '&7Remove &f1 &7from the amount'
+    symbol: 'C'
+    action: minus_1
+    amount-change: -1
+
+  plus_1:
+    material: LIME_STAINED_GLASS_PANE
+    name: '&#71F521+1'
+    lore:
+      - '&7Add &f1 &7to the amount'
+    symbol: 'D'
+    action: plus_1
+    amount-change: 1
+
+  plus_10:
+    material: LIME_STAINED_GLASS_PANE
+    name: '&#71F521+10'
+    lore:
+      - '&7Add &f10 &7to the amount'
+    symbol: 'E'
+    action: plus_10
+    amount-change: 10
+    stack-size: 10
+
+  plus_64:
+    material: LIME_STAINED_GLASS_PANE
+    name: '&#71F521+64'
+    lore:
+      - '&7Add &f64 &7to the amount'
+    symbol: 'F'
+    action: plus_64
+    amount-change: 64
+    stack-size: 64
+
+  # The item in the middle.
+  #
+  # Its material is NOT taken from here - it is the product itself, kept
+  # exactly as it looks in the category (custom heads and model data
+  # included). AIR simply means "this file does not decide the item".
+  # Only the wording below is ours, because on this screen the text has
+  # to talk about the running total instead of the unit price.
+  #
+  #   %item%        product name          %category%  where it came from
+  #   %amount%      current amount        %max%       highest allowed
+  #   %price%       total, bare number    %price_full%       total, written
+  #   %unit_price%  one, bare number      %unit_price_full%  one, written
+  #   %balance%     held, bare number     %balance_full%     held, written
+  #   %currency%    the currency label from shop.yml
+  # Prefer the _full ones: they come out as "$1.2K" for a money product
+  # and "50 Points" for a points product, so one line fits both. The bare
+  # numbers are there for when you want to place the symbol yourself.
+  # Leave `name` empty to keep the product's own name, and `lore` empty
+  # to keep its own lore.
+  preview:
+    material: AIR
+    # Die Menge steht im Namen, nicht nur in der Lore: ein Eimer kann
+    # keine Stapelzahl anzeigen, und genau danach schaut ein Spieler.
+    name: '&f%item% &7x%amount%'
+    lore:
+      - '&7Amount: &f%amount%x'
+      - '&7Each: &f%unit_price_full%'
+      - '&f'
+      - '&fTotal: &#71F521%price_full%'
+      - '&7You have: &f%balance_full%'
+    symbol: 'P'
+    action: preview
+
+  cancel:
+    material: RED_STAINED_GLASS_PANE
+    name: '&#FF2121&lCANCEL'
+    lore:
+      - '&#FF2121▶ &fBack to the category'
+    symbol: 'X'
+    action: cancel
+
+  confirm:
+    material: LIME_STAINED_GLASS_PANE
+    name: '&#71F521&lCONFIRM'
+    lore:
+      - '&#71F521▶ &fClick to buy'
+    symbol: 'Y'
+    action: confirm
+

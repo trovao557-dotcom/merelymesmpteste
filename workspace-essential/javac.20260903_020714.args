@@ -1,0 +1,10 @@
+-encoding
+UTF-8
+-cp
+C:\\Users\\MerelyMe\\Documents\\MerelyMeSMP\\merely-order-enchants\\build\\paper-api.jar
+-d
+C:\\Users\\MerelyMe\\Documents\\MerelyMeSMP\\merely-order-enchants\\build\\classes
+C:\\Users\\MerelyMe\\Documents\\MerelyMeSMP\\merely-order-enchants\\src\\me\\merelyme\\orderenchants\\MerelyOrderEnchants.java
+C:\\Users\\MerelyMe\\Documents\\MerelyMeSMP\\merely-order-enchants\\src\\me\\merelyme\\orderenchants\\OrderCreateListener.java
+C:\\Users\\MerelyMe\\Documents\\MerelyMeSMP\\merely-order-enchants\\src\\me\\merelyme\\orderenchants\\OrderEnchantMenu.java
+C:\\Users\\MerelyMe\\Documents\\MerelyMeSMP\\merely-order-enchants\\src\\me\\merelyme\\orderenchants\\OrderSelectListener.java

@@ -1,0 +1,33 @@
+name: MerelyTrade
+version: 1.1.0
+main: me.merelyme.trade.MerelyTradePlugin
+api-version: '1.21'
+authors: [MerelyMe]
+description: Player item trades with clickable requests.
+depend: [SKCore]
+
+commands:
+  trade:
+    description: Trade items with another player
+    aliases: [troca, trader]
+    permission: merelytrade.use
+    usage: /trade <player> | /trade accept | /trade deny | /trade cancel
+  tradeaccept:
+    description: Accept a trade request
+    aliases: [trocaaceitar]
+    permission: merelytrade.use
+  tradedeny:
+    description: Deny a trade request
+    aliases: [trocarecusar]
+    permission: merelytrade.use
+
+permissions:
+  merelytrade.use:
+    description: Send and accept trades
+    default: true
+  merelytrade.deny:
+    description: Block incoming trade requests (settings toggle)
+    default: false
+  merelytrade.admin:
+    description: Reload MerelyTrade
+    default: op

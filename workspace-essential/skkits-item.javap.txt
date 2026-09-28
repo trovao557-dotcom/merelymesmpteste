@@ -1,0 +1,49 @@
+Compiled from "Kit.java"
+final class net.skstudios.kits.Kit$KitItem extends java.lang.Record {
+  private final org.bukkit.inventory.ItemStack stack;
+
+  private final int slot;
+
+  net.skstudios.kits.Kit$KitItem(org.bukkit.inventory.ItemStack, int);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field stack:Lorg/bukkit/inventory/ItemStack;
+       9: aload_0
+      10: iload_2
+      11: putfield      #13                 // Field slot:I
+      14: return
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #17,  0             // InvokeDynamic #0:toString:(Lnet/skstudios/kits/Kit$KitItem;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #21,  0             // InvokeDynamic #0:hashCode:(Lnet/skstudios/kits/Kit$KitItem;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #25,  0             // InvokeDynamic #0:equals:(Lnet/skstudios/kits/Kit$KitItem;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public org.bukkit.inventory.ItemStack stack();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field stack:Lorg/bukkit/inventory/ItemStack;
+       4: areturn
+
+  public int slot();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field slot:I
+       4: ireturn
+}

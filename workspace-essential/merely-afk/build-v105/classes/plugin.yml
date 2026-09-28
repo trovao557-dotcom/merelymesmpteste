@@ -1,0 +1,16 @@
+name: MerelyAFK
+version: 1.0.5
+main: com.merelyme.afk.MerelyAfk
+api-version: '1.21'
+author: MerelyMeSMP
+description: Spawn AFK Zone with fixed Points and pick-a-reward AFK Crates.
+depend: [SKCore]
+softdepend: [Vault, SKMoney]
+commands:
+  afkzone:
+    description: Show AFK Zone progress or manage AFK Crates.
+    usage: /afkzone [givecrate <player> [amount]|reload]
+permissions:
+  merelyafk.admin:
+    description: Manage the AFK Zone and give AFK Crates.
+    default: op

@@ -1,0 +1,214 @@
+# =====================================================================
+#  SKKits - the rank kits
+# =====================================================================
+#  /kit            opens the menu
+#  /kit <name>     claims one directly
+#  /skkits reload  re-reads this file and kits.yml
+#
+#  The kits themselves are in kits.yml - what is in them, what they
+#  cost in cooldown, and who may have them. This file is the frame
+#  around them: the menu, the preview, the sounds and every line said.
+#
+#  Left-click claims, right-click looks inside. That is written into the
+#  icon lore below, so changing the wording is a config edit.
+#
+#  Colours: &a style codes and &#RRGGBB hex both work.
+# =====================================================================
+
+# Language of everything this plugin says: EN or DE.
+#
+# EN is the default and reads this file. DE lays the translation in
+# lang/de/ over it - the file you are reading stays English and stays the
+# reference. A line the translation does not have falls back to English,
+# so nothing breaks if you add a setting we have not translated yet.
+#
+# The translated files are yours to edit as well, same as this one.
+language: EN
+
+prefix: '&#FF8600&lKIT &#9B9B9B» '
+
+
+# ---------------------------------------------------------------------
+#  The free kit on first join
+# ---------------------------------------------------------------------
+first-join:
+
+  # Which kit a brand new player is given. Empty ('') switches this off.
+  kit: 'player'
+
+  # Seconds to wait after they join.
+  #
+  # Not zero on purpose: a player who has just connected is still loading
+  # the world around them, and eleven items arriving in that moment is
+  # how a starter kit ends up on the floor of the spawn.
+  delay-seconds: 5
+
+
+# ---------------------------------------------------------------------
+#  Handing out keys
+# ---------------------------------------------------------------------
+#  Keys live in the crates plugin's database, so a kit asks that plugin
+#  for them instead of writing a number somewhere itself - a key written
+#  anywhere else is one /keys never shows and no crate ever accepts.
+#  %player% %crate% %amount%
+key-command: 'keys give %player% %crate% %amount%'
+
+
+# ---------------------------------------------------------------------
+#  The kit menu
+# ---------------------------------------------------------------------
+menu:
+  title: '&f'
+  rows: 3
+
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    name: ' '
+
+  # The lore under every kit icon.
+  #   %category%    the grey word from kits.yml
+  #   %colour%      that kit's colour
+  #   %description% expands to the lines from kits.yml
+  #   %cooldown%    the written cooldown, e.g. "1h"
+  #   %status%      Ready / the time left / no rank - see messages below
+  icon-lore:
+    - '%category%'
+    - '&f'
+    - '%colour%Information:'
+    - '%description%'
+    - '&f'
+    - '&fCooldown: %colour%%cooldown%'
+    - '&fStatus: %status%'
+    - '&e'
+    - '&#FFD900&l▶ &#FFD900&l&nL-CLICK&#FFD900 to Claim'
+    - '&#FFD900&l▶ &#FFD900&l&nR-CLICK&#FFD900 to Preview'
+
+
+# ---------------------------------------------------------------------
+#  The preview
+# ---------------------------------------------------------------------
+#  The kit's own items, shown as themselves. Money and keys are not
+#  items, so they get a stand-in each - see reward-items below.
+preview:
+  # Keep the hidden UI marker and expose the selected kit to the client helper,
+  # which paints MEMBER, KNIGHT, WARRIOR, MACER or PRIME in the blue plaque.
+  title: '&f %kit%'
+  rows: 4
+
+  # Items are laid out from here, one slot at a time.
+  first-slot: 10
+
+  # ...and jump when they would land in the frame. `wrap-at` lists the
+  # slots that are skipped, `wrap-to` is where the next row starts.
+  wrap-at: [17]
+  wrap-to: 19
+
+  back-slot: 27
+
+  items:
+    back:
+      material: RED_STAINED_GLASS_PANE
+      name: '&#FF2121&lBACK'
+      lore:
+        - '&7Navigation'
+        - '&f'
+        - '&#FF2121Information:'
+        - '&fClick to Navigate'
+        - '&fto The Kits Menu.'
+        - '&e'
+        - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to go Back'
+
+
+# ---------------------------------------------------------------------
+#  Stand-ins for the rewards that are not items
+# ---------------------------------------------------------------------
+#  `money` uses %money%. A key entry uses %amount% and %crate%.
+#  Name one `key-<crate>` to give that crate its own face; `key` is the
+#  fallback for every crate without one.
+reward-items:
+
+  money:
+    material: PAPER
+    name: '&#6BFF00&l$%money%'
+    lore:
+      - '&7Reward'
+      - '&f'
+      - '&#6BFF00Information:'
+      - '&fCash added straight'
+      - '&fto your balance.'
+
+  key:
+    material: LIME_CANDLE
+    name: '&#27F123&l%amount%x %crate% KEY'
+    lore:
+      - '&7Reward'
+      - '&f'
+      - '&#27F123Information:'
+      - '&fOpen the crate at spawn. &7(/keys)'
+
+  key-normal:
+    material: LIME_CANDLE
+    name: '&#27F123&l%amount%x NORMAL KEY'
+    lore:
+      - '&7Reward'
+      - '&f'
+      - '&#27F123Information:'
+      - '&fOpen the Normal Crate'
+      - '&fat spawn. &7(/keys)'
+
+  key-wind:
+    material: LIGHT_BLUE_CANDLE
+    name: '&#00B5FF&l%amount%x SPECIAL KEY'
+    lore:
+      - '&7Reward'
+      - '&f'
+      - '&#00B5FFInformation:'
+      - '&fOpen the Special Crate'
+      - '&fat spawn. &7(/keys)'
+
+
+# ---------------------------------------------------------------------
+#  Sounds
+# ---------------------------------------------------------------------
+sounds:
+  menu-open:
+    sound: 'block.chest.open'
+    volume: 0.8
+    pitch: 1.3
+  click:
+    sound: 'ui.button.click'
+    volume: 0.7
+    pitch: 1.2
+  claimed:
+    sound: 'entity.player.levelup'
+    volume: 1.0
+    pitch: 1.5
+  deny:
+    sound: 'entity.villager.no'
+    volume: 1.0
+    pitch: 1.0
+
+
+# ---------------------------------------------------------------------
+#  Messages
+# ---------------------------------------------------------------------
+#  An empty string ('') switches a line off - the action still happens.
+#  The three `status-` lines are not sent; they are written into the
+#  icon lore as %status%.
+messages:
+
+  status-ready: '&#71F521Ready to claim!'
+  status-cooldown: '&#FFD900%time%'
+  status-locked: '&#FF2121No %rank% rank!'
+
+  claimed: '&fYou claimed the %kit%&f!'
+  claimed-money: '&#6BFF00+ $%money%'
+  claimed-key: '&#27F123+ %amount%x %crate% Key &7(/keys)'
+
+  on-cooldown: '&#FF2121This kit is on cooldown! &7(%time%)'
+  unknown-kit: '&#FF2121Unknown kit! &7(%kits%)'
+
+  no-permission: '&#FF2121You are not allowed to do that.'
+  players-only: '&#FF2121Only players can use this.'
+  reloaded: '&#71F521Reloaded - &f%count% &#71F521kits.'
+

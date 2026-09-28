@@ -1,0 +1,9 @@
+--release
+21
+-encoding
+UTF-8
+-cp
+.tools\\paper-api-26.2.jar;.tools\\PlaceholderAPI-2.12.3.jar
+-d
+merely-claims\\build-v150b\\classes
+merely-claims\\src\\main\\java\\com\\merelyme\\claims\\MerelyClaims.java

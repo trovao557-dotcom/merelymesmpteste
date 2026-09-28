@@ -1,0 +1,22 @@
+name: SKTags
+version: 0.2.0
+main: net.skstudios.tags.TagsPlugin
+api-version: '1.21'
+authors: [MerelyMeSMP]
+description: Owned tag menu with equip and unequip support.
+depend: [SKCore]
+softdepend: [PlaceholderAPI]
+commands:
+  tags:
+    description: Open your owned tags menu
+    aliases: [tag]
+    usage: /tags [id|off]
+  sktags:
+    description: Reload SKTags
+    permission: sktags.admin
+    usage: /sktags reload
+permissions:
+  sktags.use:
+    default: true
+  sktags.admin:
+    default: op

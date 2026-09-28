@@ -1,0 +1,783 @@
+{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "property": "minecraft:custom_model_data",
+    "index": 0,
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "minecraft:item/paper"
+    },
+    "entries": [
+      {
+        "threshold": 1201,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/rank_badge_player"
+        }
+      },
+      {
+        "threshold": 1202,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/rank_badge_member"
+        }
+      },
+      {
+        "threshold": 1203,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/rank_badge_booster"
+        }
+      },
+      {
+        "threshold": 1204,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/rank_badge_knight"
+        }
+      },
+      {
+        "threshold": 1205,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/rank_badge_warrior"
+        }
+      },
+      {
+        "threshold": 1206,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/rank_badge_macer"
+        }
+      },
+      {
+        "threshold": 1207,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/rank_badge_prime"
+        }
+      },
+      {
+        "threshold": 1208,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/rank_badge_clipper"
+        }
+      },
+      {
+        "threshold": 1209,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/rank_badge_media"
+        }
+      },
+      {
+        "threshold": 1210,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/rank_badge_helper"
+        }
+      },
+      {
+        "threshold": 1211,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/rank_badge_mod"
+        }
+      },
+      {
+        "threshold": 1212,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/rank_badge_admin"
+        }
+      },
+      {
+        "threshold": 1213,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/rank_badge_owner"
+        }
+      },
+      {
+        "threshold": 1251,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_arrow_down"
+        }
+      },
+      {
+        "threshold": 1252,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_arrow_left"
+        }
+      },
+      {
+        "threshold": 1253,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_arrow_right"
+        }
+      },
+      {
+        "threshold": 1254,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_arrow_up"
+        }
+      },
+      {
+        "threshold": 1255,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_check"
+        }
+      },
+      {
+        "threshold": 1256,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_check_color"
+        }
+      },
+      {
+        "threshold": 1257,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_close"
+        }
+      },
+      {
+        "threshold": 1258,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_close_color"
+        }
+      },
+      {
+        "threshold": 1259,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_coins"
+        }
+      },
+      {
+        "threshold": 1260,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_exclamation"
+        }
+      },
+      {
+        "threshold": 1261,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_exclamation_color"
+        }
+      },
+      {
+        "threshold": 1262,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_lock_closed"
+        }
+      },
+      {
+        "threshold": 1263,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_lock_open"
+        }
+      },
+      {
+        "threshold": 1264,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_minus"
+        }
+      },
+      {
+        "threshold": 1265,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_minus_color"
+        }
+      },
+      {
+        "threshold": 1266,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_plus"
+        }
+      },
+      {
+        "threshold": 1267,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_plus_color"
+        }
+      },
+      {
+        "threshold": 1268,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_question"
+        }
+      },
+      {
+        "threshold": 1269,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_question_color"
+        }
+      },
+      {
+        "threshold": 1270,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_refresh"
+        }
+      },
+      {
+        "threshold": 1271,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_search"
+        }
+      },
+      {
+        "threshold": 1272,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/ui_settings"
+        }
+      },
+      {
+        "threshold": 9000,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_wings_pack:item/angel_wings"
+        }
+      },
+      {
+        "threshold": 9001,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_wings_pack:item/astronaut_wings"
+        }
+      },
+      {
+        "threshold": 9002,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_wings_pack:item/bluefire_wings"
+        }
+      },
+      {
+        "threshold": 9003,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_wings_pack:item/brown_wings"
+        }
+      },
+      {
+        "threshold": 9004,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_wings_pack:item/butterfly_wings"
+        }
+      },
+      {
+        "threshold": 9005,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_wings_pack:item/demon_wings"
+        }
+      },
+      {
+        "threshold": 9006,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_wings_pack:item/dragon_wings"
+        }
+      },
+      {
+        "threshold": 9007,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_wings_pack:item/eagle_wings"
+        }
+      },
+      {
+        "threshold": 9008,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_wings_pack:item/golden_wings"
+        }
+      },
+      {
+        "threshold": 9009,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_wings_pack:item/ocean_wings"
+        }
+      },
+      {
+        "threshold": 9010,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_wings_pack:item/purple_wings"
+        }
+      },
+      {
+        "threshold": 9011,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_wings_pack:item/phoenix_wings"
+        }
+      },
+      {
+        "threshold": 10000,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_free_hats_pack:item/diving_helmet"
+        }
+      },
+      {
+        "threshold": 10001,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_free_hats_pack:item/chicken_hat"
+        }
+      },
+      {
+        "threshold": 10002,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_free_hats_pack:item/flight_hat"
+        }
+      },
+      {
+        "threshold": 10003,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_free_hats_pack:item/military_helmet"
+        }
+      },
+      {
+        "threshold": 10004,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_free_hats_pack:item/motorcycle_helmet"
+        }
+      },
+      {
+        "threshold": 10005,
+        "model": {
+          "type": "minecraft:model",
+          "model": "ax_free_hats_pack:item/pot_hat"
+        }
+      },
+      {
+        "threshold": 11000,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_common"
+        }
+      },
+      {
+        "threshold": 11001,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_rare"
+        }
+      },
+      {
+        "threshold": 11002,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_epic"
+        }
+      },
+      {
+        "threshold": 11003,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_legendary"
+        }
+      },
+      {
+        "threshold": 11100,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_common_keyappear1"
+        }
+      },
+      {
+        "threshold": 11101,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_rare_keyappear1"
+        }
+      },
+      {
+        "threshold": 11102,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_epic_keyappear1"
+        }
+      },
+      {
+        "threshold": 11103,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_legendary_keyappear1"
+        }
+      },
+      {
+        "threshold": 11200,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_common_keyappear2"
+        }
+      },
+      {
+        "threshold": 11201,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_rare_keyappear2"
+        }
+      },
+      {
+        "threshold": 11202,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_epic_keyappear2"
+        }
+      },
+      {
+        "threshold": 11203,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_legendary_keyappear2"
+        }
+      },
+      {
+        "threshold": 11300,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_common_keyshow"
+        }
+      },
+      {
+        "threshold": 11301,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_rare_keyshow"
+        }
+      },
+      {
+        "threshold": 11302,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_epic_keyshow"
+        }
+      },
+      {
+        "threshold": 11303,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_legendary_keyshow"
+        }
+      },
+      {
+        "threshold": 11400,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_common_keyinsert1"
+        }
+      },
+      {
+        "threshold": 11401,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_rare_keyinsert1"
+        }
+      },
+      {
+        "threshold": 11402,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_epic_keyinsert1"
+        }
+      },
+      {
+        "threshold": 11403,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_legendary_keyinsert1"
+        }
+      },
+      {
+        "threshold": 11500,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_common_keyinsert2"
+        }
+      },
+      {
+        "threshold": 11501,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_rare_keyinsert2"
+        }
+      },
+      {
+        "threshold": 11502,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_epic_keyinsert2"
+        }
+      },
+      {
+        "threshold": 11503,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_legendary_keyinsert2"
+        }
+      },
+      {
+        "threshold": 11600,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_common_keyturn1"
+        }
+      },
+      {
+        "threshold": 11601,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_rare_keyturn1"
+        }
+      },
+      {
+        "threshold": 11602,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_epic_keyturn1"
+        }
+      },
+      {
+        "threshold": 11603,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_legendary_keyturn1"
+        }
+      },
+      {
+        "threshold": 11700,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_common_keyturn2"
+        }
+      },
+      {
+        "threshold": 11701,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_rare_keyturn2"
+        }
+      },
+      {
+        "threshold": 11702,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_epic_keyturn2"
+        }
+      },
+      {
+        "threshold": 11703,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_legendary_keyturn2"
+        }
+      },
+      {
+        "threshold": 11800,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_common_lid1"
+        }
+      },
+      {
+        "threshold": 11801,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_rare_lid1"
+        }
+      },
+      {
+        "threshold": 11802,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_epic_lid1"
+        }
+      },
+      {
+        "threshold": 11803,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_legendary_lid1"
+        }
+      },
+      {
+        "threshold": 11900,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_common_lid2"
+        }
+      },
+      {
+        "threshold": 11901,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_rare_lid2"
+        }
+      },
+      {
+        "threshold": 11902,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_epic_lid2"
+        }
+      },
+      {
+        "threshold": 11903,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_legendary_lid2"
+        }
+      },
+      {
+        "threshold": 12000,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_common_open"
+        }
+      },
+      {
+        "threshold": 12001,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_rare_open"
+        }
+      },
+      {
+        "threshold": 12002,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_epic_open"
+        }
+      },
+      {
+        "threshold": 12003,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_legendary_open"
+        }
+      },
+      {
+        "threshold": 12100,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_common_drop1"
+        }
+      },
+      {
+        "threshold": 12101,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_rare_drop1"
+        }
+      },
+      {
+        "threshold": 12102,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_epic_drop1"
+        }
+      },
+      {
+        "threshold": 12103,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_legendary_drop1"
+        }
+      },
+      {
+        "threshold": 12200,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_common_drop2"
+        }
+      },
+      {
+        "threshold": 12201,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_rare_drop2"
+        }
+      },
+      {
+        "threshold": 12202,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_epic_drop2"
+        }
+      },
+      {
+        "threshold": 12203,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_legendary_drop2"
+        }
+      },
+      {
+        "threshold": 13000,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_earth"
+        }
+      },
+      {
+        "threshold": 15000,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_key_common"
+        }
+      },
+      {
+        "threshold": 15001,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_key_rare"
+        }
+      },
+      {
+        "threshold": 15002,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_key_epic"
+        }
+      },
+      {
+        "threshold": 15003,
+        "model": {
+          "type": "minecraft:model",
+          "model": "merelyme:item/crate_key_legendary"
+        }
+      }
+    ]
+  }
+}

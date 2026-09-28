@@ -1,0 +1,45 @@
+# =====================================================================
+#  Spawner type: Pig
+# =====================================================================
+#  TO ADD A NEW MOB: copy this file, rename it (the file name IS the id
+#  used by /spawners give), and edit the values. Then /skcore reload.
+#  A new file also has to be listed in SpawnerTypeRegistry so a fresh
+#  install ships it - see the note there.
+#
+#  Every sell-price below is the same number SKSell's prices.yml uses,
+#  so emptying a spawner and running /sell pay identically. Change one
+#  and change the other, or players will route loot through whichever
+#  side pays more.
+# =====================================================================
+
+display-name: none
+
+colour: '&#FFA0B4'
+
+head-texture: 'https://textures.minecraft.net/texture/dd7af9e0392c2cea5a9def3317457a0f871b044c45ca85a61838076c551973e5'
+
+drops:
+  porkchop:
+    material: PORKCHOP
+    amount:
+      min: 1
+      max: 2
+    chance: 90
+    sell-price: 3
+
+spawn-delays:
+  min: 15
+  max: 25
+
+xp:
+  min: 1
+  max: 2
+
+max-stack: default
+
+storage:
+  max-items: 1000
+  max-xp: 1000
+
+# Price used by %spawner_price% - for your own shop menus.
+spawner-price: 15000

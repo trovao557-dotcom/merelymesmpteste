@@ -1,0 +1,57 @@
+# =====================================================================
+#  SKSpawners - deutsche Texte des Spawnermenues
+# =====================================================================
+#  Nur die sichtbaren Zeilen stehen hier. Aufbau, Materialien und Slots
+#  bleiben in der menu-main.yml - wer das Menue umbaut, macht das
+#  einmal dort und nicht in jeder Sprache neu.
+#
+#  spawner_info und xp_collect stehen mit Namen hier: deutsch wird
+#  daraus eine Zusammensetzung mit Bindestrich - KUH-SPAWNER und
+#  SPAWNER-XP, wie im Titel oben und in SPAWNER-LAGER.
+# =====================================================================
+
+menu:
+  title: '%stack%x %entity%-Spawner'
+
+items:
+
+  storage:
+    name: '&#FF8600&lSPAWNER-LAGER'
+    lore:
+      - '&7Beschreibung'
+      - '&f'
+      - '&#FF8600Information:'
+      - '&fHier liegen die Gegenstaende,'
+      - '&fdie der Spawner erzeugt hat.'
+      - '&e'
+      - '&#FF8600⚑ &fErzeugt: &#FF8600%storage_amount%'
+      - '&#6BFF00$ &fWert: &#6BFF00$%storage_price%'
+      - '&a'
+      - '&#FFD900&l▶ &#FFD900&l&nKLICK&#FFD900 zum Oeffnen'
+
+  spawner_info:
+    name: '%color%&l%displayname_caps%-SPAWNER'
+    lore:
+      - '&7Beschreibung'
+      - '&f'
+      - '%color%Information:'
+      - '&fSpawner erzeugen Gegenstaende,'
+      - '&fdie sich verkaufen lassen.'
+      - '&e'
+      - '&#FF4A00⌚ &fSpawner zu &#FF4A00%storage_percentage%% &fvoll'
+      - '&#55C8FF⚓ &fDu hast &#55C8FF%stack% &fSpawner'
+      - '&b'
+      - '&#FFD900&l▶ &#FFD900&l&nKLICK&#FFD900 zum Verkaufen'
+
+  xp_collect:
+    name: '&#71F521&lSPAWNER-XP'
+    lore:
+      - '&7Beschreibung'
+      - '&f'
+      - '&#71F521Information:'
+      - '&fHier kannst du die erzeugten'
+      - '&fXP-Punkte einsammeln.'
+      - '&e'
+      - '&#71F521⚗ &fXP-Punkte: &#71F521%xp_amount%'
+      - '&a'
+      - '&#FFD900&l▶ &#FFD900&l&nKLICK&#FFD900 zum Einsammeln'

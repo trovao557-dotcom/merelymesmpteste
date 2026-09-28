@@ -1,0 +1,899 @@
+npcs:
+  5777996e-324e-4cd1-84bb-59b839cc581c:
+    name: shop
+    creator: 30e59423-9441-4a7e-bd1e-7ce618d65fb0
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: Spawn
+      x: 4.5
+      y: 1.0
+      z: 15.5
+      yaw: 163.8
+      pitch: 0.0
+    showInTab: false
+    spawnEntity: true
+    collidable: false
+    glowing: false
+    turnToPlayer: true
+    turnToPlayerDistance: 6
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility: ALL
+    visibility_distance: -1
+    skin:
+      identifier: Notch
+      variant: AUTO
+      mirrorSkin: false
+    glowingColor: white
+    actions:
+      ANY_CLICK:
+        '0':
+          action: player_command
+          value: shop
+  4a6d9351-635a-4a15-936b-d4360935a580:
+    name: ah
+    creator: 30e59423-9441-4a7e-bd1e-7ce618d65fb0
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: Spawn
+      x: 7.5
+      y: 1.0
+      z: 13.5
+      yaw: 150.9
+      pitch: 0.0
+    showInTab: false
+    spawnEntity: true
+    collidable: false
+    glowing: false
+    turnToPlayer: true
+    turnToPlayerDistance: 6
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility: ALL
+    visibility_distance: -1
+    skin:
+      identifier: jeb_
+      variant: AUTO
+      mirrorSkin: false
+    glowingColor: white
+    actions:
+      ANY_CLICK:
+        '0':
+          action: player_command
+          value: ah
+  a9ce7590-8d8f-4ad4-bfd8-dc012f761362:
+    name: orders
+    creator: 30e59423-9441-4a7e-bd1e-7ce618d65fb0
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: Spawn
+      x: 10.5
+      y: 1.0
+      z: 10.5
+      yaw: 135.0
+      pitch: 0.0
+    showInTab: false
+    spawnEntity: true
+    collidable: false
+    glowing: false
+    turnToPlayer: true
+    turnToPlayerDistance: 6
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility: ALL
+    visibility_distance: -1
+    skin:
+      identifier: Purpled
+      variant: AUTO
+      mirrorSkin: false
+    glowingColor: white
+    actions:
+      ANY_CLICK:
+        '0':
+          action: player_command
+          value: orders
+  b4e5f885-c6c2-4560-911f-23839544d335:
+    name: kits
+    creator: 30e59423-9441-4a7e-bd1e-7ce618d65fb0
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: Spawn
+      x: 13.5
+      y: 1.0
+      z: 7.5
+      yaw: 119.1
+      pitch: 0.0
+    showInTab: false
+    spawnEntity: true
+    collidable: false
+    glowing: false
+    turnToPlayer: true
+    turnToPlayerDistance: 6
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility: ALL
+    visibility_distance: -1
+    skin:
+      identifier: Skeppy
+      variant: AUTO
+      mirrorSkin: false
+    glowingColor: white
+    actions:
+      ANY_CLICK:
+        '0':
+          action: player_command
+          value: kit
+  c1ad5bb7-c421-4b30-84aa-a276ab9f672e:
+    name: rtp
+    creator: 30e59423-9441-4a7e-bd1e-7ce618d65fb0
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: Spawn
+      x: 13.5
+      y: 1.0
+      z: -6.5
+      yaw: 64.3
+      pitch: 0.0
+    showInTab: false
+    spawnEntity: true
+    collidable: false
+    glowing: false
+    turnToPlayer: true
+    turnToPlayerDistance: 6
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility: ALL
+    visibility_distance: -1
+    skin:
+      identifier: Ninja
+      variant: AUTO
+      mirrorSkin: false
+    glowingColor: white
+    actions:
+      ANY_CLICK:
+        '0':
+          action: player_command
+          value: rtp
+  0c5aa14e-ca97-4878-a746-a78122fa7716:
+    name: stats
+    creator: 30e59423-9441-4a7e-bd1e-7ce618d65fb0
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: Spawn
+      x: 10.5
+      y: 1.0
+      z: -9.5
+      yaw: 47.9
+      pitch: 0.0
+    showInTab: false
+    spawnEntity: true
+    collidable: false
+    glowing: false
+    turnToPlayer: true
+    turnToPlayerDistance: 6
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility: ALL
+    visibility_distance: -1
+    skin:
+      identifier: GeorgeNotFound
+      variant: AUTO
+      mirrorSkin: false
+    glowingColor: white
+    actions:
+      ANY_CLICK:
+        '0':
+          action: player_command
+          value: stats
+  32fdb4b8-4a37-433b-b74f-920fdc748ab4:
+    name: rules
+    creator: 30e59423-9441-4a7e-bd1e-7ce618d65fb0
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: Spawn
+      x: -9.5
+      y: 1.0
+      z: -9.5
+      yaw: -45.0
+      pitch: 0.0
+    showInTab: false
+    spawnEntity: true
+    collidable: false
+    glowing: false
+    turnToPlayer: true
+    turnToPlayerDistance: 6
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility: ALL
+    visibility_distance: -1
+    skin:
+      identifier: Sapnap
+      variant: AUTO
+      mirrorSkin: false
+    glowingColor: white
+    actions:
+      ANY_CLICK:
+        '0':
+          action: player_command
+          value: rules
+  16b04c54-67ff-4738-b126-48a9e2d7e152:
+    name: discord
+    creator: 30e59423-9441-4a7e-bd1e-7ce618d65fb0
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: Spawn
+      x: -12.5
+      y: 1.0
+      z: -6.5
+      yaw: -62.5
+      pitch: 0.0
+    showInTab: false
+    spawnEntity: true
+    collidable: false
+    glowing: false
+    turnToPlayer: true
+    turnToPlayerDistance: 6
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility: ALL
+    visibility_distance: -1
+    skin:
+      identifier: MHF_Alex
+      variant: AUTO
+      mirrorSkin: false
+    glowingColor: white
+    actions:
+      ANY_CLICK:
+        '0':
+          action: player_command
+          value: discord
+  e7a018f8-f0d3-48fd-9428-dd1c72adc527:
+    name: SpiderDashh
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 159.5
+      y: 72.8125
+      z: 168.5
+      yaw: 179.03375
+      pitch: -1.9402685
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: true
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: Ebbot006
+      variant: AUTO
+      mirrorSkin: false
+    actions:
+      ANY_CLICK:
+        '1':
+          action: player_command
+          value: ah
+  3789acff-25de-48cd-b593-d47939934639:
+    name: '123'
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 171.5
+      y: 72.8125
+      z: 146.5
+      yaw: -0.09899902
+      pitch: 0.29236785
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: true
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: fleurily
+      variant: AUTO
+      mirrorSkin: false
+    actions:
+      ANY_CLICK:
+        '1':
+          action: player_command
+          value: sell
+  08a06ee6-0908-4a11-ba0b-d87d73e3d0ff:
+    name: '2'
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 171.5
+      y: 72.8125
+      z: 168.5
+      yaw: -178.25507
+      pitch: 3.9562109
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: true
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      mirrorSkin: false
+      identifier: _srxMC
+      variant: AUTO
+    actions:
+      ANY_CLICK:
+        '1':
+          action: player_command
+          value: shop
+  73a5a13c-52ba-423a-a9cb-3893b4794158:
+    name: top3
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 171.5
+      y: 73.0625
+      z: 140.5
+      yaw: -2.119873
+      pitch: -3.4286714
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: false
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: 6liz
+      variant: AUTO
+      mirrorSkin: false
+  fe3b3ab8-2086-478f-8354-cb6b56a09a7c:
+    name: '3'
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 159.5
+      y: 72.8125
+      z: 146.5
+      yaw: -4.083113
+      pitch: 21.98938
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: true
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: SpiderDashh
+      variant: AUTO
+      mirrorSkin: false
+    actions:
+      ANY_CLICK:
+        '1':
+          action: player_command
+          value: order
+  1ae6fb41-4aba-409c-8be6-3f0282161fc4:
+    name: top2
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 166.5
+      y: 74.0625
+      z: 140.5
+      yaw: -0.49353027
+      pitch: 78.206955
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: false
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: 6liz
+      variant: AUTO
+      mirrorSkin: false
+  0095a4cf-5e28-48b6-9f83-50ccbb856b57:
+    name: top33
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 161.5
+      y: 75.0625
+      z: 174.5
+      yaw: 179.7472
+      pitch: 72.53938
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: false
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: 6liz
+      variant: AUTO
+      mirrorSkin: false
+  f110a567-528b-4712-9626-dcf4af8a6385:
+    name: top1
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 161.5
+      y: 75.0625
+      z: 140.5
+      yaw: -3.1270752
+      pitch: 76.77573
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: false
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: 6liz
+      variant: AUTO
+      mirrorSkin: false
+  51c8ec42-8814-4bfa-a44b-736d4b564a0b:
+    name: top31
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 171.5
+      y: 73.0625
+      z: 174.5
+      yaw: 178.37317
+      pitch: 58.399128
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: false
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: 6liz
+      variant: AUTO
+      mirrorSkin: false
+  3c190220-cc75-4f9e-a957-3f50d1dd8504:
+    name: top32
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 166.5
+      y: 74.0625
+      z: 174.5
+      yaw: 178.37317
+      pitch: 58.399128
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: false
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: 6liz
+      variant: AUTO
+      mirrorSkin: false
+  bd18619d-fad4-4337-8d1e-1368e5ecf266:
+    name: MerelyMe
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 204.5
+      y: 81.0
+      z: 173.5
+      yaw: 56.27472
+      pitch: 36.217777
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: true
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: MerelyMe
+      variant: AUTO
+      mirrorSkin: false
+    actions:
+      ANY_CLICK:
+        '1':
+          action: console_command
+          value: resgatargive {player}
+  ef93648f-056d-4794-a632-9ec7a0c136fd:
+    name: rtp
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 134.5
+      y: 73.8125
+      z: 165.5
+      yaw: -89.22809
+      pitch: -3.7129886
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: true
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: AfterTimeFlys
+      variant: AUTO
+      mirrorSkin: false
+    actions:
+      ANY_CLICK:
+        '1':
+          action: player_command
+          value: rtp
+  628dae9e-c4f5-409a-abaf-77e496160078:
+    name: kits
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 134.42854916795133
+      y: 73.8125
+      z: 149.41987349738778
+      yaw: -82.68506
+      pitch: 10.312742
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: true
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: Kcantler
+      variant: AUTO
+      mirrorSkin: false
+    actions:
+      ANY_CLICK:
+        '1':
+          action: player_command
+          value: kits
+  a267842c-1f3e-4c7a-82fa-f1b4f6391ebb:
+    name: discord
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 179.5
+      y: 72.8125
+      z: 172.5
+      yaw: -104.04105
+      pitch: 65.66952
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: true
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: iWillPlay_
+      variant: AUTO
+      mirrorSkin: false
+    actions:
+      ANY_CLICK:
+        '1':
+          action: player_command
+          value: discord
+  1dbd665d-9721-4707-8abc-c3ecfb522528:
+    name: Rules
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 193.5
+      y: 75.0
+      z: 157.5
+      yaw: 90.83362
+      pitch: 2.639564
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: true
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: AxelButt
+      variant: AUTO
+      mirrorSkin: false
+    actions:
+      ANY_CLICK:
+        '1':
+          action: player_command
+          value: rules
+  661e299a-ac99-4e2b-98a5-12267b78162c:
+    name: stats
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 179.5
+      y: 72.8125
+      z: 142.5
+      yaw: 89.539
+      pitch: 64.92532
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: true
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: MarcelineBadBoy
+      variant: AUTO
+      mirrorSkin: false
+    actions:
+      ANY_CLICK:
+        '1':
+          action: player_command
+          value: stats
+  d4d017ce-50d1-4c05-9f9d-639c18e9ee66:
+    name: duel
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 145.5
+      y: 73.8125
+      z: 186.5
+      yaw: -179.05408
+      pitch: 54.162773
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: true
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: dus3kkX
+      variant: AUTO
+      mirrorSkin: false
+    actions:
+      ANY_CLICK:
+        '1':
+          action: player_command
+          value: bounties
+  da17bcdd-1972-4611-bd0d-9b66d5e8e703:
+    name: bouty
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 151.5
+      y: 73.8125
+      z: 186.5
+      yaw: 178.40082
+      pitch: 4.7577653
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: true
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: Blue_Axlot95
+      variant: AUTO
+      mirrorSkin: false
+    actions:
+      ANY_CLICK:
+        '1':
+          action: player_command
+          value: duelqueue
+  4c9483ba-6d50-4ffe-8b9c-670641f0a868:
+    name: rankperms
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 182.5
+      y: 72.8125
+      z: 146.5
+      yaw: 2.5250235
+      pitch: 57.705933
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: true
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: LameJit
+      variant: AUTO
+      mirrorSkin: false
+    actions:
+      ANY_CLICK:
+        '1':
+          action: player_command
+          value: ranks
+  9a3513e5-44d2-4e29-ae60-c3448c3c2aba:
+    name: help
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 182.5
+      y: 72.8125
+      z: 168.5
+      yaw: -68.28555
+      pitch: 79.52358
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: true
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: xavierworld
+      variant: AUTO
+      mirrorSkin: false
+    actions:
+      ANY_CLICK:
+        '1':
+          action: player_command
+          value: help
+  4694c450-3106-4102-aabf-a8baa485a717:
+    name: tournament
+    creator: 036bd293-8996-431d-b18f-ca8d391986e8
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: world
+      x: 135.5
+      y: 73.8125
+      z: 157.5
+      yaw: -85.02516
+      pitch: 22.332876
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: true
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.0
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      identifier: Nepson
+      variant: AUTO
+      mirrorSkin: false
+    actions:
+      ANY_CLICK:
+        '1':
+          action: player_command
+          value: tournament

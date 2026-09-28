@@ -1,0 +1,17 @@
+---
+description: Always use Brave Automation (DevTools) for web search, browsing, and page interaction instead of the Cursor built-in browser.
+alwaysApply: true
+---
+
+# Use Brave Automation
+
+For any web search, research, opening a URL, reading a page, or clicking in a browser, use **Brave Automation** (the agent Brave profile with DevTools on `http://127.0.0.1:9222`).
+
+Do not use the Cursor built-in browser unless Brave DevTools is down and starting it failed.
+
+1. Start if needed: `powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.cursor\brave-agent\brave-agent.ps1" start`
+2. Open tabs with `brave-agent.ps1 new <url>` or MCP `brave_tab_new` / `brave_navigate`.
+3. Interact with `brave_snapshot`, `brave_click`, `brave_fill`, `brave_screenshot` (or CDP on port 9222).
+4. Prefer Brave Search: `https://search.brave.com/search?q=...`
+
+Work only in the agent profile (`~/.cursor/brave-agent/profile`), never in the user's everyday Brave window.

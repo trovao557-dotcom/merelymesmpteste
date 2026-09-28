@@ -1,0 +1,9 @@
+# /grindstone — Warrior+ (LP: sksmp.grindstone)
+
+command /grindstone:
+	aliases: gs, grind
+	trigger:
+		if player has permission "sksmp.grindstone":
+			open grindstone inventory to player
+		else:
+			send "&c&lRANKS &8» &7Precisas de &fWARRIOR &7ou rank superior para &f/grindstone&7." to player

@@ -1,0 +1,6 @@
+name: MerelyArenaFixes
+version: 1.0.0
+main: com.merelyme.arenafixes.MerelyArenaFixes
+api-version: '1.21'
+author: MerelyMeSMP
+description: Live arena fixes for tournament, duels and bot training

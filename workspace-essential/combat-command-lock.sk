@@ -1,0 +1,18 @@
+# During combat, allow only essential communication and information commands.
+on command:
+    player is set
+    set {_id} to uuid of player
+    if {mmcombat::tagged::%{_id}%} is not set:
+        stop
+    set {_cmd} to command
+    if {_cmd} is "nightvision" or "nv":
+        stop
+    if {_cmd} is "msg" or "tell" or "w" or "whisper" or "r" or "reply":
+        stop
+    if {_cmd} is "rules" or "help" or "ping":
+        stop
+    if {_cmd} is "report":
+        stop
+
+    cancel event
+    send "&c&lCOMBAT &8» &fThat command is disabled while you are in combat." to player

@@ -1,0 +1,30 @@
+options:
+    x: 172
+    y: 73
+    z: 183
+
+on right click:
+    if clicked block is not set:
+        stop
+    set {_block} to clicked block
+    set {_type} to "%type of {_block}%"
+    if {_type} does not contain "shulker":
+        stop
+    set {_location} to location of {_block}
+    if x-coordinate of {_location} is {@x}:
+        if y-coordinate of {_location} is {@y}:
+            if z-coordinate of {_location} is {@z}:
+                cancel event
+                send action bar "&cThis shulker is locked." to player
+
+on break:
+    set {_block} to event-block
+    set {_type} to "%type of {_block}%"
+    if {_type} does not contain "shulker":
+        stop
+    set {_location} to location of {_block}
+    if x-coordinate of {_location} is {@x}:
+        if y-coordinate of {_location} is {@y}:
+            if z-coordinate of {_location} is {@z}:
+                cancel event
+                send action bar "&cThis shulker is protected." to player

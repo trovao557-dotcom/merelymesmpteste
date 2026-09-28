@@ -1,0 +1,695 @@
+# Combat + WorldGuard safezone (spawn)
+# Client-only glass on air. One nearby panel.
+# Push only when touching painted red glass (air). Doors/trapdoors ignored.
+# Clip inside the zone = teleport out. Combat end restores painted blocks.
+
+options:
+	sx1: 103
+	sx2: 223
+	sy1: 61
+	sy2: 199
+	sz1: 97
+	sz2: 217
+	near: 22
+	pw: 7
+	ph: 5
+	touch: 1.4
+	clickkb: 0.95
+
+function mmInSafezone(loc: location) :: boolean:
+	if {_loc} is not set:
+		return false
+	if "%world of {_loc}%" is not "world":
+		return false
+	set {_x} to x-coord of {_loc}
+	set {_y} to y-coord of {_loc}
+	set {_z} to z-coord of {_loc}
+	if {_x} < {@sx1}:
+		return false
+	if {_x} > {@sx2}:
+		return false
+	if {_y} < {@sy1}:
+		return false
+	if {_y} > {@sy2}:
+		return false
+	if {_z} < {@sz1}:
+		return false
+	if {_z} > {@sz2}:
+		return false
+	return true
+
+function mmAbs(n: number) :: number:
+	if {_n} < 0:
+		return {_n} * -1
+	return {_n}
+
+function mmClamp(n: number, lo: number, hi: number) :: number:
+	if {_n} < {_lo}:
+		return {_lo}
+	if {_n} > {_hi}:
+		return {_hi}
+	return {_n}
+
+function mmRestoreOne(p: player, x: number, y: number, z: number):
+	set {_l} to location at {_x}, {_y}, {_z} in world of {_p}
+	make {_p} see block at {_l} as type of block at {_l}
+
+function mmTryGlass(p: player, x: number, y: number, z: number):
+	set {_l} to location at {_x}, {_y}, {_z} in world of {_p}
+	if block at {_l} is air:
+		make {_p} see block at {_l} as red stained glass
+
+function mmRestorePanel(p: player):
+	if {_p} is not online:
+		stop
+	set {_id} to uuid of {_p}
+	set {_face} to {mmcombat::face::%{_id}%}
+	{_face} is set
+	set {_a} to {mmcombat::a::%{_id}%}
+	set {_b} to {mmcombat::b::%{_id}%}
+	set {_y1} to {mmcombat::y1::%{_id}%}
+	set {_y2} to {mmcombat::y2::%{_id}%}
+	set {_j} to 0
+	set {_ny} to {_y2} - {_y1} + 1
+	loop {_ny} times:
+		set {_y} to {_y1} + {_j}
+		set {_i} to 0
+		set {_n} to {_b} - {_a} + 1
+		loop {_n} times:
+			set {_c} to {_a} + {_i}
+			if {_face} is "n":
+				mmRestoreOne({_p}, {_c}, {_y}, {@sz1})
+			if {_face} is "s":
+				mmRestoreOne({_p}, {_c}, {_y}, {@sz2})
+			if {_face} is "w":
+				mmRestoreOne({_p}, {@sx1}, {_y}, {_c})
+			if {_face} is "e":
+				mmRestoreOne({_p}, {@sx2}, {_y}, {_c})
+			add 1 to {_i}
+		add 1 to {_j}
+	set {_rx1} to {mmcombat::rx1::%{_id}%}
+	if {_rx1} is set:
+		set {_rx2} to {mmcombat::rx2::%{_id}%}
+		set {_rz1} to {mmcombat::rz1::%{_id}%}
+		set {_rz2} to {mmcombat::rz2::%{_id}%}
+		set {_i} to 0
+		set {_nx} to {_rx2} - {_rx1} + 1
+		loop {_nx} times:
+			set {_x} to {_rx1} + {_i}
+			set {_k} to 0
+			set {_nz} to {_rz2} - {_rz1} + 1
+			loop {_nz} times:
+				set {_z} to {_rz1} + {_k}
+				mmRestoreOne({_p}, {_x}, {@sy2}, {_z})
+				add 1 to {_k}
+			add 1 to {_i}
+	delete {mmcombat::face::%{_id}%}
+	delete {mmcombat::a::%{_id}%}
+	delete {mmcombat::b::%{_id}%}
+	delete {mmcombat::y1::%{_id}%}
+	delete {mmcombat::y2::%{_id}%}
+	delete {mmcombat::rx1::%{_id}%}
+	delete {mmcombat::rx2::%{_id}%}
+	delete {mmcombat::rz1::%{_id}%}
+	delete {mmcombat::rz2::%{_id}%}
+
+function mmDrawPanel(p: player):
+	if {_p} is not online:
+		stop
+	if "%world of {_p}%" is not "world":
+		stop
+	set {_id} to uuid of {_p}
+	set {_px} to floor(x-coord of {_p})
+	set {_py} to floor(y-coord of {_p})
+	set {_pz} to floor(z-coord of {_p})
+	set {_dn} to mmAbs({_pz} - {@sz1})
+	set {_ds} to mmAbs({_pz} - {@sz2})
+	set {_dw} to mmAbs({_px} - {@sx1})
+	set {_de} to mmAbs({_px} - {@sx2})
+	set {_face} to "n"
+	set {_best} to {_dn}
+	if {_ds} < {_best}:
+		set {_best} to {_ds}
+		set {_face} to "s"
+	if {_dw} < {_best}:
+		set {_best} to {_dw}
+		set {_face} to "w"
+	if {_de} < {_best}:
+		set {_best} to {_de}
+		set {_face} to "e"
+	if {_best} > {@near}:
+		mmRestorePanel({_p})
+		stop
+	mmRestorePanel({_p})
+	set {_y1} to mmClamp({_py} - {@ph}, {@sy1}, {@sy2})
+	set {_y2} to mmClamp({_py} + {@ph}, {@sy1}, {@sy2})
+	if {_face} is "n":
+		set {_a} to mmClamp({_px} - {@pw}, {@sx1}, {@sx2})
+		set {_b} to mmClamp({_px} + {@pw}, {@sx1}, {@sx2})
+	if {_face} is "s":
+		set {_a} to mmClamp({_px} - {@pw}, {@sx1}, {@sx2})
+		set {_b} to mmClamp({_px} + {@pw}, {@sx1}, {@sx2})
+	if {_face} is "w":
+		set {_a} to mmClamp({_pz} - {@pw}, {@sz1}, {@sz2})
+		set {_b} to mmClamp({_pz} + {@pw}, {@sz1}, {@sz2})
+	if {_face} is "e":
+		set {_a} to mmClamp({_pz} - {@pw}, {@sz1}, {@sz2})
+		set {_b} to mmClamp({_pz} + {@pw}, {@sz1}, {@sz2})
+	set {mmcombat::face::%{_id}%} to {_face}
+	set {mmcombat::a::%{_id}%} to {_a}
+	set {mmcombat::b::%{_id}%} to {_b}
+	set {mmcombat::y1::%{_id}%} to {_y1}
+	set {mmcombat::y2::%{_id}%} to {_y2}
+	set {_j} to 0
+	set {_ny} to {_y2} - {_y1} + 1
+	loop {_ny} times:
+		set {_y} to {_y1} + {_j}
+		set {_i} to 0
+		set {_n} to {_b} - {_a} + 1
+		loop {_n} times:
+			set {_c} to {_a} + {_i}
+			if {_face} is "n":
+				mmTryGlass({_p}, {_c}, {_y}, {@sz1})
+			if {_face} is "s":
+				mmTryGlass({_p}, {_c}, {_y}, {@sz2})
+			if {_face} is "w":
+				mmTryGlass({_p}, {@sx1}, {_y}, {_c})
+			if {_face} is "e":
+				mmTryGlass({_p}, {@sx2}, {_y}, {_c})
+			add 1 to {_i}
+		add 1 to {_j}
+	if mmAbs({_py} - {@sy2}) <= {@near}:
+		set {_rx1} to mmClamp({_px} - {@pw}, {@sx1}, {@sx2})
+		set {_rx2} to mmClamp({_px} + {@pw}, {@sx1}, {@sx2})
+		set {_rz1} to mmClamp({_pz} - {@pw}, {@sz1}, {@sz2})
+		set {_rz2} to mmClamp({_pz} + {@pw}, {@sz1}, {@sz2})
+		set {mmcombat::rx1::%{_id}%} to {_rx1}
+		set {mmcombat::rx2::%{_id}%} to {_rx2}
+		set {mmcombat::rz1::%{_id}%} to {_rz1}
+		set {mmcombat::rz2::%{_id}%} to {_rz2}
+		set {_i} to 0
+		set {_nx} to {_rx2} - {_rx1} + 1
+		loop {_nx} times:
+			set {_x} to {_rx1} + {_i}
+			set {_k} to 0
+			set {_nz} to {_rz2} - {_rz1} + 1
+			loop {_nz} times:
+				set {_z} to {_rz1} + {_k}
+				mmTryGlass({_p}, {_x}, {@sy2}, {_z})
+				add 1 to {_k}
+			add 1 to {_i}
+
+function mmStartFullRestore(p: player):
+	set {_id} to uuid of {_p}
+	set {mmcombat::fullrest::%{_id}%} to true
+	set {mmcombat::resty::%{_id}%} to {@sy1}
+	set {mmcombat::restz::%{_id}%} to {@sz1}
+
+function mmStepFullRestore(p: player):
+	if {_p} is not online:
+		stop
+	set {_id} to uuid of {_p}
+	{mmcombat::fullrest::%{_id}%} is set
+	set {_y} to {mmcombat::resty::%{_id}%}
+	if {_y} <= {@sy2}:
+		set {_i} to 0
+		loop 121 times:
+			set {_x} to {@sx1} + {_i}
+			mmRestoreOne({_p}, {_x}, {_y}, {@sz1})
+			mmRestoreOne({_p}, {_x}, {_y}, {@sz2})
+			add 1 to {_i}
+		set {_k} to 0
+		loop 121 times:
+			set {_z} to {@sz1} + {_k}
+			mmRestoreOne({_p}, {@sx1}, {_y}, {_z})
+			mmRestoreOne({_p}, {@sx2}, {_y}, {_z})
+			add 1 to {_k}
+		add 2 to {mmcombat::resty::%{_id}%}
+	set {_z} to {mmcombat::restz::%{_id}%}
+	if {_z} <= {@sz2}:
+		set {_i} to 0
+		loop 121 times:
+			set {_x} to {@sx1} + {_i}
+			mmRestoreOne({_p}, {_x}, {@sy2}, {_z})
+			add 1 to {_i}
+		add 4 to {mmcombat::restz::%{_id}%}
+	if {mmcombat::resty::%{_id}%} > {@sy2}:
+		if {mmcombat::restz::%{_id}%} > {@sz2}:
+			delete {mmcombat::fullrest::%{_id}%}
+			delete {mmcombat::resty::%{_id}%}
+			delete {mmcombat::restz::%{_id}%}
+
+function mmGlassAir(p: player, x: number, y: number, z: number) :: boolean:
+	set {_l} to location at {_x}, {_y}, {_z} in world of {_p}
+	if block at {_l} is air:
+		return true
+	return false
+
+function mmTouchingGlass(p: player) :: boolean:
+	if {_p} is not online:
+		return false
+	set {_id} to uuid of {_p}
+	set {_face} to {mmcombat::face::%{_id}%}
+	if {_face} is not set:
+		return false
+	set {_x} to x-coord of {_p}
+	set {_y} to y-coord of {_p}
+	set {_z} to z-coord of {_p}
+	set {_fx} to floor({_x})
+	set {_fy} to floor({_y})
+	set {_fz} to floor({_z})
+	set {_t} to {@touch}
+	set {_a} to {mmcombat::a::%{_id}%}
+	set {_b} to {mmcombat::b::%{_id}%}
+	set {_y1} to {mmcombat::y1::%{_id}%}
+	set {_y2} to {mmcombat::y2::%{_id}%}
+	if {_face} is "n":
+		if mmAbs({_z} - {@sz1}) <= {_t}:
+			if {_x} >= {_a} - 1:
+				if {_x} <= {_b} + 1:
+					if {_y} >= {_y1} - 1:
+						if {_y} <= {_y2} + 2:
+							if mmGlassAir({_p}, {_fx}, {_fy}, {@sz1}) is true:
+								return true
+							if mmGlassAir({_p}, {_fx}, {_fy} + 1, {@sz1}) is true:
+								return true
+	if {_face} is "s":
+		if mmAbs({_z} - {@sz2}) <= {_t}:
+			if {_x} >= {_a} - 1:
+				if {_x} <= {_b} + 1:
+					if {_y} >= {_y1} - 1:
+						if {_y} <= {_y2} + 2:
+							if mmGlassAir({_p}, {_fx}, {_fy}, {@sz2}) is true:
+								return true
+							if mmGlassAir({_p}, {_fx}, {_fy} + 1, {@sz2}) is true:
+								return true
+	if {_face} is "w":
+		if mmAbs({_x} - {@sx1}) <= {_t}:
+			if {_z} >= {_a} - 1:
+				if {_z} <= {_b} + 1:
+					if {_y} >= {_y1} - 1:
+						if {_y} <= {_y2} + 2:
+							if mmGlassAir({_p}, {@sx1}, {_fy}, {_fz}) is true:
+								return true
+							if mmGlassAir({_p}, {@sx1}, {_fy} + 1, {_fz}) is true:
+								return true
+	if {_face} is "e":
+		if mmAbs({_x} - {@sx2}) <= {_t}:
+			if {_z} >= {_a} - 1:
+				if {_z} <= {_b} + 1:
+					if {_y} >= {_y1} - 1:
+						if {_y} <= {_y2} + 2:
+							if mmGlassAir({_p}, {@sx2}, {_fy}, {_fz}) is true:
+								return true
+							if mmGlassAir({_p}, {@sx2}, {_fy} + 1, {_fz}) is true:
+								return true
+	set {_rx1} to {mmcombat::rx1::%{_id}%}
+	if {_rx1} is set:
+		set {_rx2} to {mmcombat::rx2::%{_id}%}
+		set {_rz1} to {mmcombat::rz1::%{_id}%}
+		set {_rz2} to {mmcombat::rz2::%{_id}%}
+		if mmAbs({_y} - {@sy2}) <= {_t}:
+			if {_x} >= {_rx1} - 1:
+				if {_x} <= {_rx2} + 1:
+					if {_z} >= {_rz1} - 1:
+						if {_z} <= {_rz2} + 1:
+							if mmGlassAir({_p}, {_fx}, {@sy2}, {_fz}) is true:
+								return true
+	return false
+
+function mmLocOnGlass(p: player, x: number, y: number, z: number) :: boolean:
+	if {_p} is not online:
+		return false
+	set {_id} to uuid of {_p}
+	set {_face} to {mmcombat::face::%{_id}%}
+	if {_face} is not set:
+		return false
+	set {_a} to {mmcombat::a::%{_id}%}
+	set {_b} to {mmcombat::b::%{_id}%}
+	set {_y1} to {mmcombat::y1::%{_id}%}
+	set {_y2} to {mmcombat::y2::%{_id}%}
+	if {_face} is "n":
+		if mmAbs({_z} - {@sz1}) <= 0.7:
+			if {_x} >= {_a} - 0.3:
+				if {_x} <= {_b} + 1.3:
+					if {_y} >= {_y1} - 0.3:
+						if {_y} <= {_y2} + 1.5:
+							if mmGlassAir({_p}, floor({_x}), floor({_y}), {@sz1}) is true:
+								return true
+	if {_face} is "s":
+		if mmAbs({_z} - {@sz2}) <= 0.7:
+			if {_x} >= {_a} - 0.3:
+				if {_x} <= {_b} + 1.3:
+					if {_y} >= {_y1} - 0.3:
+						if {_y} <= {_y2} + 1.5:
+							if mmGlassAir({_p}, floor({_x}), floor({_y}), {@sz2}) is true:
+								return true
+	if {_face} is "w":
+		if mmAbs({_x} - {@sx1}) <= 0.7:
+			if {_z} >= {_a} - 0.3:
+				if {_z} <= {_b} + 1.3:
+					if {_y} >= {_y1} - 0.3:
+						if {_y} <= {_y2} + 1.5:
+							if mmGlassAir({_p}, {@sx1}, floor({_y}), floor({_z})) is true:
+								return true
+	if {_face} is "e":
+		if mmAbs({_x} - {@sx2}) <= 0.7:
+			if {_z} >= {_a} - 0.3:
+				if {_z} <= {_b} + 1.3:
+					if {_y} >= {_y1} - 0.3:
+						if {_y} <= {_y2} + 1.5:
+							if mmGlassAir({_p}, {@sx2}, floor({_y}), floor({_z})) is true:
+								return true
+	set {_rx1} to {mmcombat::rx1::%{_id}%}
+	if {_rx1} is set:
+		set {_rx2} to {mmcombat::rx2::%{_id}%}
+		set {_rz1} to {mmcombat::rz1::%{_id}%}
+		set {_rz2} to {mmcombat::rz2::%{_id}%}
+		if mmAbs({_y} - {@sy2}) <= 0.7:
+			if {_x} >= {_rx1} - 0.3:
+				if {_x} <= {_rx2} + 1.3:
+					if {_z} >= {_rz1} - 0.3:
+						if {_z} <= {_rz2} + 1.3:
+							if mmGlassAir({_p}, floor({_x}), {@sy2}, floor({_z})) is true:
+								return true
+	return false
+
+function mmRayHitsGlass(p: player) :: boolean:
+	if {_p} is not online:
+		return false
+	set {_id} to uuid of {_p}
+	if {mmcombat::face::%{_id}%} is not set:
+		return false
+	set {_n} to 1
+	loop 16 times:
+		set {_loc} to location ({_n} * 0.35) meters in front of {_p}
+		if mmLocOnGlass({_p}, x-coord of {_loc}, y-coord of {_loc}, z-coord of {_loc}) is true:
+			return true
+		add 1 to {_n}
+	return false
+
+function mmKnockFromGlass(p: player, str: number):
+	if {_p} is not online:
+		stop
+	set {_id} to uuid of {_p}
+	set {_face} to {mmcombat::face::%{_id}%}
+	set {_vx} to 0
+	set {_vy} to 0.22
+	set {_vz} to 0
+	if {_face} is "n":
+		set {_vz} to {_str} * -1
+	if {_face} is "s":
+		set {_vz} to {_str}
+	if {_face} is "w":
+		set {_vx} to {_str} * -1
+	if {_face} is "e":
+		set {_vx} to {_str}
+	set {_rx1} to {mmcombat::rx1::%{_id}%}
+	if {_rx1} is set:
+		set {_dy} to y-coord of {_p} - {@sy2}
+		if mmAbs({_dy}) <= {@touch}:
+			set {_hx} to floor(x-coord of {_p})
+			set {_hz} to floor(z-coord of {_p})
+			if mmGlassAir({_p}, {_hx}, {@sy2}, {_hz}) is true:
+				set {_vy} to -0.22
+	set velocity of {_p} to vector({_vx}, {_vy}, {_vz})
+
+function mmBounceGlass(p: player):
+	if {_p} is not online:
+		stop
+	if mmTouchingGlass({_p}) is false:
+		stop
+	mmKnockFromGlass({_p}, 0.38)
+
+function mmLockLook(p: player):
+	set {_id} to uuid of {_p}
+	set {mmcombat::lockyaw::%{_id}%} to yaw of {_p}
+	set {mmcombat::lockpitch::%{_id}%} to pitch of {_p}
+	set {mmcombat::lookn::%{_id}%} to 8
+
+function mmApplyLook(p: player):
+	set {_id} to uuid of {_p}
+	{mmcombat::lookn::%{_id}%} is set
+	set yaw of {_p} to {mmcombat::lockyaw::%{_id}%}
+	set pitch of {_p} to {mmcombat::lockpitch::%{_id}%}
+	remove 1 from {mmcombat::lookn::%{_id}%}
+	if {mmcombat::lookn::%{_id}%} <= 0:
+		delete {mmcombat::lookn::%{_id}%}
+		delete {mmcombat::lockyaw::%{_id}%}
+		delete {mmcombat::lockpitch::%{_id}%}
+
+function mmEjectOut(p: player):
+	if {_p} is not online:
+		stop
+	set {_id} to uuid of {_p}
+	if {mmcombat::punishcd::%{_id}%} is set:
+		stop
+	set {mmcombat::punishcd::%{_id}%} to true
+	set {_back} to {mmcombat::last::%{_id}%}
+	if {_back} is set:
+		if mmInSafezone({_back}) is false:
+			set yaw of {_back} to yaw of {_p}
+			set pitch of {_back} to pitch of {_p}
+			teleport {_p} to {_back}
+			if {mmcombat::msgcd::%{_id}%} is not set:
+				set {mmcombat::msgcd::%{_id}%} to true
+				send "&c&lCOMBAT &8» &fSpawn is locked. You were sent back." to {_p}
+			stop
+	set {_cx} to 163
+	set {_cz} to 157
+	set {_px} to x-coord of {_p}
+	set {_py} to y-coord of {_p}
+	set {_pz} to z-coord of {_p}
+	set {_dx} to {_px} - {_cx}
+	set {_dz} to {_pz} - {_cz}
+	set {_ax} to mmAbs({_dx})
+	set {_az} to mmAbs({_dz})
+	set {_tx} to {_px}
+	set {_tz} to {_pz}
+	if {_ax} >= {_az}:
+		if {_dx} >= 0:
+			set {_tx} to {@sx2} + 2
+		else:
+			set {_tx} to {@sx1} - 2
+	else:
+		if {_dz} >= 0:
+			set {_tz} to {@sz2} + 2
+		else:
+			set {_tz} to {@sz1} - 2
+	if {_py} > {@sy2}:
+		set {_py} to {@sy2} - 2
+	set {_out} to location at {_tx}, {_py}, {_tz} in world of {_p}
+	set yaw of {_out} to yaw of {_p}
+	set pitch of {_out} to pitch of {_p}
+	teleport {_p} to {_out}
+	if {mmcombat::msgcd::%{_id}%} is not set:
+		set {mmcombat::msgcd::%{_id}%} to true
+		send "&c&lCOMBAT &8» &fSpawn is locked. You were sent back." to {_p}
+
+function mmTag(p: player):
+	set {_id} to uuid of {_p}
+	{mmcombat::tagged::%{_id}%} is not set
+	set {mmcombat::tagged::%{_id}%} to true
+	set {mmcombat::left::%{_id}%} to 20
+	set {mmcombat::last::%{_id}%} to location of {_p}
+	delete {mmcombat::fullrest::%{_id}%}
+	mmDrawPanel({_p})
+	send "&c&lCOMBAT &8» &fYou entered combat. Do not enter spawn." to {_p}
+	send action bar "&cCombat: &f20s" to {_p}
+
+function mmRefresh(p: player):
+	set {_id} to uuid of {_p}
+	{mmcombat::tagged::%{_id}%} is set
+	set {mmcombat::left::%{_id}%} to 20
+	if mmInSafezone(location of {_p}) is false:
+		set {mmcombat::last::%{_id}%} to location of {_p}
+
+function mmUntag(p: player):
+	set {_id} to uuid of {_p}
+	{mmcombat::tagged::%{_id}%} is set
+	mmRestorePanel({_p})
+	mmStartFullRestore({_p})
+	delete {mmcombat::tagged::%{_id}%}
+	delete {mmcombat::left::%{_id}%}
+	delete {mmcombat::last::%{_id}%}
+	delete {mmcombat::punishcd::%{_id}%}
+	delete {mmcombat::glasscd::%{_id}%}
+	delete {mmcombat::msgcd::%{_id}%}
+	send action bar "&aCombat ended" to {_p}
+	send "&a&lCOMBAT &8» &fYou are no longer in combat." to {_p}
+
+function mmUnstuck(p: player):
+	if {_p} is not online:
+		stop
+	set {_id} to uuid of {_p}
+	{mmcombat::tagged::%{_id}%} is set
+	if {mm::unstucklock::%{_id}%} is set:
+		stop
+	set {_type} to "%type of block at {_p}%"
+	if {_type} contains "door":
+		stop
+	if {_type} contains "gate":
+		stop
+	if {_type} contains "sign":
+		stop
+	if {_type} contains "button":
+		stop
+	if {_type} contains "plate":
+		stop
+	if {_type} contains "carpet":
+		stop
+	if block at {_p} is not solid:
+		set {mm::air::%{_id}%} to location of {_p}
+		stop
+	set {mm::unstucklock::%{_id}%} to true
+	set {_safe} to {mm::air::%{_id}%}
+	if {_safe} is set:
+		set yaw of {_safe} to yaw of {_p}
+		set pitch of {_safe} to pitch of {_p}
+		teleport {_p} to {_safe}
+
+on damage:
+	attacker is a player
+	victim is a player
+	if attacker is victim:
+		stop
+	set {mmcombat::lasthit::%uuid of victim%} to attacker
+	mmTag(attacker)
+	mmTag(victim)
+	mmRefresh(attacker)
+	mmRefresh(victim)
+
+on death:
+	victim is a player
+	set {_v} to victim
+	set {_id} to uuid of {_v}
+	if {mmcombat::tagged::%{_id}%} is set:
+		mmUntag({_v})
+	set {_a} to attacker
+	if {_a} is not a player:
+		set {_a} to {mmcombat::lasthit::%{_id}%}
+	delete {mmcombat::lasthit::%{_id}%}
+	if {_a} is a player:
+		if {_a} is not {_v}:
+			set {_aid} to uuid of {_a}
+			if {mmcombat::tagged::%{_aid}%} is set:
+				mmUntag({_a})
+
+on respawn:
+	player is set
+	set {_id} to uuid of player
+	if {mmcombat::tagged::%{_id}%} is set:
+		mmUntag(player)
+
+on quit:
+	player is set
+	set {_id} to uuid of player
+	if {mmcombat::tagged::%{_id}%} is set:
+		set {_p} to player
+		set {_loc} to location of {_p}
+		loop items in inventory of {_p}:
+			drop loop-item at {_loc}
+		if helmet of {_p} is set:
+			drop helmet of {_p} at {_loc}
+		if chestplate of {_p} is set:
+			drop chestplate of {_p} at {_loc}
+		if leggings of {_p} is set:
+			drop leggings of {_p} at {_loc}
+		if boots of {_p} is set:
+			drop boots of {_p} at {_loc}
+		# Off-hand items are equipment, not part of the normal inventory.
+		# Drop it once and clear the slot before the player is killed; otherwise
+		# Paper can save the off-hand item and restore it on the next respawn.
+		if {_p}'s offhand tool is not air:
+			drop {_p}'s offhand tool at {_loc}
+		set offhand tool of {_p} to air
+		clear {_p}'s inventory
+		set helmet of {_p} to air
+		set chestplate of {_p} to air
+		set leggings of {_p} to air
+		set boots of {_p} to air
+		kill {_p}
+		broadcast "&c&lCOMBAT &8» &f%name of {_p}% logged out in combat and lost everything."
+	delete {mmcombat::tagged::%{_id}%}
+	delete {mmcombat::left::%{_id}%}
+	delete {mmcombat::last::%{_id}%}
+	delete {mmcombat::face::%{_id}%}
+	delete {mmcombat::a::%{_id}%}
+	delete {mmcombat::b::%{_id}%}
+	delete {mmcombat::y1::%{_id}%}
+	delete {mmcombat::y2::%{_id}%}
+	delete {mmcombat::rx1::%{_id}%}
+	delete {mmcombat::rx2::%{_id}%}
+	delete {mmcombat::rz1::%{_id}%}
+	delete {mmcombat::rz2::%{_id}%}
+	delete {mmcombat::fullrest::%{_id}%}
+	delete {mmcombat::resty::%{_id}%}
+	delete {mmcombat::restz::%{_id}%}
+	delete {mmcombat::punishcd::%{_id}%}
+	delete {mmcombat::glasscd::%{_id}%}
+	delete {mmcombat::msgcd::%{_id}%}
+	delete {mmcombat::lookn::%{_id}%}
+	delete {mmcombat::lockyaw::%{_id}%}
+	delete {mmcombat::lockpitch::%{_id}%}
+	delete {mmcombat::clickkb::%{_id}%}
+	delete {mm::air::%{_id}%}
+	delete {mm::unstucklock::%{_id}%}
+
+on right click:
+	player is set
+	set {_id} to uuid of player
+	{mmcombat::tagged::%{_id}%} is set
+	if {mmcombat::clickkb::%{_id}%} is set:
+		stop
+	if mmRayHitsGlass(player) is false:
+		if mmTouchingGlass(player) is false:
+			stop
+	set {mmcombat::clickkb::%{_id}%} to true
+	mmKnockFromGlass(player, {@clickkb})
+
+on join:
+	mmStartFullRestore(player)
+
+every 1 tick:
+	loop all players:
+		set {_p} to loop-player
+		set {_id} to uuid of {_p}
+		if {mmcombat::tagged::%{_id}%} is set:
+			if mmInSafezone(location of {_p}) is true:
+				mmEjectOut({_p})
+
+every 2 ticks:
+	loop all players:
+		set {_p} to loop-player
+		set {_id} to uuid of {_p}
+		if {mmcombat::fullrest::%{_id}%} is set:
+			mmStepFullRestore({_p})
+
+every 4 ticks:
+	loop all players:
+		set {_id} to uuid of loop-player
+		delete {mmcombat::punishcd::%{_id}%}
+
+every 8 ticks:
+	loop all players:
+		set {_id} to uuid of loop-player
+		delete {mmcombat::clickkb::%{_id}%}
+
+every 1 second:
+	loop all players:
+		set {_p} to loop-player
+		set {_id} to uuid of {_p}
+		delete {mmcombat::msgcd::%{_id}%}
+		if {mmcombat::tagged::%{_id}%} is set:
+			if mmInSafezone(location of {_p}) is true:
+				mmEjectOut({_p})
+			else:
+				set {mmcombat::last::%{_id}%} to location of {_p}
+			mmBounceGlass({_p})
+			remove 1 from {mmcombat::left::%{_id}%}
+			set {_s} to {mmcombat::left::%{_id}%}
+			if {_s} <= 0:
+				mmUntag({_p})
+			else:
+				mmDrawPanel({_p})
+				send action bar "&cCombat: &f%{_s}%s" to {_p}

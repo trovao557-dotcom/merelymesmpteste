@@ -1,0 +1,20 @@
+name: MerelyEvents
+version: 1.2.1
+main: me.merelyme.events.MerelyEventsPlugin
+api-version: '1.21'
+depend: [SKCore]
+softdepend: [PlaceholderAPI, Vault, SKMoney, SKPointShop]
+authors: [MerelyMe]
+description: Timed server events with a shared boss bar.
+
+commands:
+  event:
+    description: Start or stop a timed MerelyMe SMP event.
+    usage: /event <points|money|trash|poi|pointshop|hunt|triple keyall|triplekeyall|stop> [30s|10m|1h]
+    permission: merelyevents.admin
+    aliases: [events, serverevent]
+
+permissions:
+  merelyevents.admin:
+    description: Start and stop server events.
+    default: op

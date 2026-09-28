@@ -1,0 +1,135 @@
+info:
+  # Creator: Hungry(Hungry22)
+  # Discord: https://discord.gg/uNcADBt3Kb
+  namespace: key1
+items:
+  key1_wood_key1:
+    display_name: "Wood Key 1"
+    resource:
+      generate: true
+      material: PAPER
+      model_id: 200150
+      textures:
+        - items/wood_key1.png
+  key1_wood_key2:
+    display_name: "Wood Key 2"
+    resource:
+      generate: true
+      material: PAPER
+      model_id: 200151
+      textures:
+        - items/wood_key2.png
+  key1_stone_key1:
+    display_name: "Stone Key 1"
+    resource:
+      generate: true
+      material: PAPER
+      model_id: 200152
+      textures:
+        - items/stone_key1.png
+  key1_stone_key2:
+    display_name: "Stone Key 2"
+    resource:
+      generate: true
+      material: PAPER
+      model_id: 200153
+      textures:
+        - items/stone_key2.png
+  key1_ice_key1:
+    display_name: "Ice Key 1"
+    resource:
+      generate: true
+      material: PAPER
+      model_id: 200154
+      textures:
+        - items/ice_key1.png
+  key1_ice_key2:
+    display_name: "Ice Key 2"
+    resource:
+      generate: true
+      material: PAPER
+      model_id: 200155
+      textures:
+        - items/ice_key2.png
+  key1_fire_key1:
+    display_name: "Fire Key 1"
+    resource:
+      generate: true
+      material: PAPER
+      model_id: 200156
+      textures:
+        - items/fire_key1.png
+  key1_fire_key2:
+    display_name: "Fire Key 2"
+    resource:
+      generate: true
+      material: PAPER
+      model_id: 200157
+      textures:
+        - items/fire_key2.png
+  key1_copper_key1:
+    display_name: "Copper Key 1"
+    resource:
+      generate: true
+      material: PAPER
+      model_id: 200158
+      textures:
+        - items/copper_key1.png
+  key1_copper_key2:
+    display_name: "Copper Key 2"
+    resource:
+      generate: true
+      material: PAPER
+      model_id: 200159
+      textures:
+        - items/copper_key2.png
+  key1_iron_key1:
+    display_name: "Iron Key 1"
+    resource:
+      generate: true
+      material: PAPER
+      model_id: 200160
+      textures:
+        - items/iron_key1.png
+  key1_iron_key2:
+    display_name: "Iron Key 2"
+    resource:
+      generate: true
+      material: PAPER
+      model_id: 200161
+      textures:
+        - items/iron_key2.png
+  key1_golden_key1:
+    display_name: "Golden Key 1"
+    resource:
+      generate: true
+      material: PAPER
+      model_id: 200162
+      textures:
+        - items/golden_key1.png
+  key1_golden_key2:
+    display_name: "Golden Key 2"
+    resource:
+      generate: true
+      material: PAPER
+      model_id: 200163
+      textures:
+        - items/golden_key2.png
+  key1_mythic_key1:
+    display_name: "Mythic Key 1"
+    resource:
+      generate: true
+      material: PAPER
+      model_id: 200164
+      textures:
+        - items/mythic_key1.png
+  key1_mythic_key2:
+    display_name: "Mythic Key 2"
+    resource:
+      generate: true
+      material: PAPER
+      model_id: 200165
+      textures:
+        - items/mythic_key2.png
+
+#0e70e41e3e8cbf812e6e3b1830c4b447

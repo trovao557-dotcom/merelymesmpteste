@@ -1,0 +1,71 @@
+# =====================================================================
+#  Spawners - every line of text a player can see
+# =====================================================================
+#  Set any line to '' (two quotes) to switch that message off entirely.
+#  The prefix is prepended to all of them.
+#
+#  Colours: &a &c &l work as usual, &#RRGGBB gives you any hex colour.
+#  Placeholders are listed above each line - using one that is not listed
+#  simply leaves the %text% in place, it does not break anything.
+# =====================================================================
+
+prefix: '&#FF8600&lSPAWNERS &#9B9B9B» '
+
+
+spawner:
+
+  # %entity% %stack%
+  placed: '&fPlaced a %entity% spawner. &7(stack: %stack%)'
+
+  # %entity% %stack%
+  broken: '&fPicked up your %entity% spawner. &7(stack: %stack%)'
+
+  # %entity% %amount%
+  received: '&fYou received &#FFD900%amount%x %entity% &fspawner.'
+
+  # %added% %stack%
+  stacked: '&#71F521+%added% &fspawners added. &7(now: %stack%)'
+
+  # %max%
+  stack-full: '&#FF2121This spawner has reached its limit of %max%.'
+
+  stack-mismatch: '&#FF2121That is a different mob - spawners only stack with their own kind.'
+
+  # %limit%
+  chunk-limit: '&#FF2121This chunk already holds %limit% spawners. Stack them instead.'
+
+  # %amount% %price%
+  sold: '&fSold &#FFD900%amount% &fitems for &#6BFF00$%price%&f.'
+
+  # %amount% %item%
+  loot-taken: '&fTook &#FFD900%amount%x &f%item%.'
+
+  # %amount%
+  loot-taken-all: '&fTook &#FFD900%amount% &fitems.'
+
+  # %amount%
+  loot-dropped: '&fDropped &#FFD900%amount% &fitems on the ground.'
+
+  # %amount%
+  xp-collected: '&#71F521+%amount% &fXP collected.'
+
+  storage-empty: '&#FF2121This spawner has nothing stored yet.'
+
+  no-xp: '&#FF2121No XP has been generated yet.'
+
+  inventory-full: '&#FF2121Your inventory is full.'
+
+  no-permission: '&#FF2121You are not allowed to do that.'
+
+  no-economy: '&#FF2121Selling is unavailable - no economy plugin is installed.'
+
+  # %type%
+  # Shown when breaking was refused because of breaking.require.
+  needs-silk-touch: '&#FF2121You need a pickaxe with Silk Touch to pick this spawner up.'
+
+  unknown-type: '&#FF2121This spawner refers to an unknown type (%type%) and cannot be placed.'
+
+  # Both only reachable with breaking.vanilla-spawners on.
+  # %entity% - the mob that was inside the dungeon spawner.
+  vanilla-converted: '&#71F521You picked up a &f%entity% &#71F521spawner.'
+  vanilla-unsupported: '&#FFD900This spawner held a &f%entity%&#FFD900, which is not set up on this server - nothing to pick up.'

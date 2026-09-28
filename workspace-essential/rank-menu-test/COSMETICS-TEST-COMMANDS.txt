@@ -1,0 +1,41 @@
+MERELYME SMP - STAFF COSMETICS TEST
+
+Allowed ranks: Helper, Mod, Admin, Owner
+Permission: merely.staff.cosmetics
+
+WINGS
+/wingtest angel
+/wingtest astronaut
+/wingtest bluefire
+/wingtest brown
+/wingtest butterfly
+/wingtest demon
+/wingtest dragon
+/wingtest eagle
+/wingtest golden
+/wingtest ocean
+/wingtest purple
+/wingtest phoenix
+/wingtest off
+
+HATS
+/hattest diving
+/hattest chicken
+/hattest flight
+/hattest military
+/hattest motorcycle
+/hattest pot
+/hattest off
+
+ANIMATED CRATES
+/cratetest common
+/cratetest rare
+/cratetest epic
+/cratetest legendary
+
+Alias: /crateopen <type>
+
+Each test crate appears far in front of the player's camera, faces them,
+shakes, opens, plays sounds, then gives 2 Diamond Blocks.
+
+Use F3+T after replacing/updating the resource pack.

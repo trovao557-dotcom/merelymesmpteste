@@ -1,0 +1,526 @@
+players:
+  036bd293-8996-431d-b18f-ca8d391986e8:
+    name: MerelyMe
+    inventory:
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:cooked_beef
+      count: 16
+      schema_version: 1
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    armor:
+    - null
+    - null
+    - null
+    - null
+    offhand:
+      ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:totem_of_undying
+      count: 1
+      schema_version: 1
+    cursor:
+      ==: org.bukkit.inventory.ItemStack
+      id: minecraft:air
+      DataVersion: 4903
+      schema_version: 1
+    world: world
+    x: 137.01127697810819
+    y: 73.5
+    z: 156.04668574434726
+    yaw: 47.979984
+    pitch: -1.9464055
+    held-slot: 6
+    allow-flight: false
+    flying: false
+    level: 22
+    exp: 0.781362
+    total-exp: 926
+    health: 20.0
+    food: 20
+    saturation: 16.800001
+    gamemode: SURVIVAL
+    effects: []
+  f0ccea4e-9a4a-4fd3-9173-f2b34e7b84dd:
+    name: i_am_lub4o
+    inventory:
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:stone_axe
+      count: 1
+      components:
+        minecraft:enchantments: '{"minecraft:vanishing_curse":1}'
+      schema_version: 1
+    - null
+    - null
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:cooked_beef
+      count: 15
+      schema_version: 1
+    - null
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:mace
+      count: 1
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:wind_charge
+      count: 31
+      schema_version: 1
+    - null
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:stone_sword
+      count: 1
+      components:
+        minecraft:enchantments: '{"minecraft:vanishing_curse":1}'
+      schema_version: 1
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    armor:
+    - null
+    - null
+    - null
+    - null
+    offhand:
+      ==: org.bukkit.inventory.ItemStack
+      id: minecraft:air
+      DataVersion: 4903
+      schema_version: 1
+    cursor:
+      ==: org.bukkit.inventory.ItemStack
+      id: minecraft:air
+      DataVersion: 4903
+      schema_version: 1
+    world: world
+    x: 139.04127384656334
+    y: 73.0
+    z: 158.3599389527069
+    yaw: 121.97497
+    pitch: 12.701368
+    held-slot: 8
+    allow-flight: false
+    flying: false
+    level: 0
+    exp: 0.0
+    total-exp: 0
+    health: 20.0
+    food: 20
+    saturation: 12.8
+    gamemode: SURVIVAL
+    effects: []
+  74deb9d0-f174-40d6-9c6c-7b66028f5763:
+    name: IKEA_Kunden11
+    inventory:
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:netherite_sword
+      count: 1
+      components:
+        minecraft:enchantments: '{"minecraft:fire_aspect":2,"minecraft:knockback":1,"minecraft:looting":3,"minecraft:mending":1,"minecraft:sharpness":5,"minecraft:sweeping_edge":3,"minecraft:unbreaking":3}'
+        minecraft:custom_name: '{extra:[{bold:1b,color:"#FF9800",text:"PRIME "},{color:"white",text:"Sword"}],italic:0b,text:""}'
+        minecraft:damage: '1'
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:netherite_axe
+      count: 1
+      components:
+        minecraft:enchantments: '{"minecraft:efficiency":5,"minecraft:fortune":3,"minecraft:mending":1,"minecraft:sharpness":5,"minecraft:unbreaking":3}'
+        minecraft:custom_name: '{extra:[{bold:1b,color:"#FF9800",text:"PRIME "},{color:"white",text:"Axe"}],italic:0b,text:""}'
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:mace
+      count: 1
+      components:
+        minecraft:repair_cost: '3'
+        minecraft:enchantments: '{"minecraft:density":5,"minecraft:mending":1,"minecraft:unbreaking":3,"minecraft:wind_burst":2}'
+        minecraft:custom_name: '{extra:[{bold:1b,color:"#FF9800",text:"PRIME "},{color:"white",text:"Mace"}],italic:0b,text:""}'
+        minecraft:damage: '8'
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:ender_pearl
+      count: 9
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:golden_apple
+      count: 56
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:elytra
+      count: 1
+      components:
+        minecraft:enchantments: '{"minecraft:mending":1,"minecraft:unbreaking":3}'
+        minecraft:custom_name: '{extra:[{bold:1b,color:"#FF9800",text:"PRIME "},{color:"white",text:"Elytra"}],italic:0b,text:""}'
+        minecraft:damage: '63'
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:wind_charge
+      count: 38
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:netherite_spear
+      count: 1
+      components:
+        minecraft:lore: '[{extra:[{color:"gray",text:"Worth: "},{color:"#71F521",text:"$500"}],italic:0b,text:""}]'
+        minecraft:enchantments: '{"minecraft:knockback":2,"minecraft:lunge":3,"minecraft:sharpness":3,"minecraft:unbreaking":3}'
+        minecraft:custom_data: '{PublicBukkitValues:{"sksell:worth_lore":500.0d}}'
+        minecraft:damage: '253'
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:firework_rocket
+      count: 59
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:shield
+      count: 1
+      components:
+        minecraft:enchantments: '{"minecraft:mending":1,"minecraft:unbreaking":3}'
+        minecraft:custom_name: '{extra:[{bold:1b,color:"#FF9800",text:"PRIME "},{color:"white",text:"Shield"}],italic:0b,text:""}'
+        minecraft:damage: '74'
+      schema_version: 1
+    - null
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:totem_of_undying
+      count: 1
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:totem_of_undying
+      count: 1
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:totem_of_undying
+      count: 1
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:totem_of_undying
+      count: 1
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:totem_of_undying
+      count: 1
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:totem_of_undying
+      count: 1
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:totem_of_undying
+      count: 1
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:experience_bottle
+      count: 64
+      schema_version: 1
+    - null
+    - null
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:totem_of_undying
+      count: 1
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:wind_charge
+      count: 64
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:wind_charge
+      count: 64
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:totem_of_undying
+      count: 1
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:totem_of_undying
+      count: 1
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:totem_of_undying
+      count: 1
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:experience_bottle
+      count: 64
+      components:
+        minecraft:lore: '[{extra:[{color:"gray",text:"Worth: "},{color:"#71F521",text:"$15"}],italic:0b,text:""}]'
+        minecraft:custom_data: '{PublicBukkitValues:{"sksell:worth_lore":15.0d}}'
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:ender_pearl
+      count: 16
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:ender_pearl
+      count: 16
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:ender_pearl
+      count: 16
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:golden_apple
+      count: 64
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:wind_charge
+      count: 64
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:wind_charge
+      count: 64
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:totem_of_undying
+      count: 1
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:totem_of_undying
+      count: 1
+      schema_version: 1
+    armor:
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:netherite_boots
+      count: 1
+      components:
+        minecraft:enchantments: '{"minecraft:depth_strider":3,"minecraft:feather_falling":4,"minecraft:mending":1,"minecraft:protection":4,"minecraft:soul_speed":3,"minecraft:unbreaking":3}'
+        minecraft:custom_name: '{extra:[{bold:1b,color:"#FF9800",text:"PRIME "},{color:"white",text:"Boots"}],italic:0b,text:""}'
+        minecraft:trim: '{material:"minecraft:diamond",pattern:"minecraft:silence"}'
+        minecraft:damage: '56'
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:netherite_leggings
+      count: 1
+      components:
+        minecraft:enchantments: '{"minecraft:mending":1,"minecraft:protection":4,"minecraft:swift_sneak":3,"minecraft:unbreaking":3}'
+        minecraft:custom_name: '{extra:[{bold:1b,color:"#FF9800",text:"PRIME "},{color:"white",text:"Leggings"}],italic:0b,text:""}'
+        minecraft:trim: '{material:"minecraft:diamond",pattern:"minecraft:silence"}'
+        minecraft:damage: '46'
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:netherite_chestplate
+      count: 1
+      components:
+        minecraft:enchantments: '{"minecraft:mending":1,"minecraft:protection":4,"minecraft:unbreaking":3}'
+        minecraft:custom_name: '{extra:[{bold:1b,color:"#FF9800",text:"PRIME "},{color:"white",text:"Chestplate"}],italic:0b,text:""}'
+        minecraft:trim: '{material:"minecraft:diamond",pattern:"minecraft:eye"}'
+        minecraft:damage: '32'
+      schema_version: 1
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:netherite_helmet
+      count: 1
+      components:
+        minecraft:enchantments: '{"minecraft:aqua_affinity":1,"minecraft:mending":1,"minecraft:protection":4,"minecraft:respiration":3,"minecraft:unbreaking":3}'
+        minecraft:custom_name: '{extra:[{bold:1b,color:"#FF9800",text:"PRIME "},{color:"white",text:"Helmet"}],italic:0b,text:""}'
+        minecraft:trim: '{material:"minecraft:diamond",pattern:"minecraft:silence"}'
+        minecraft:damage: '47'
+      schema_version: 1
+    offhand:
+      ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:totem_of_undying
+      count: 1
+      schema_version: 1
+    cursor:
+      ==: org.bukkit.inventory.ItemStack
+      id: minecraft:air
+      DataVersion: 4903
+      schema_version: 1
+    world: world
+    x: 220.19035844449738
+    y: 66.0
+    z: 157.4826673494531
+    yaw: 43.198975
+    pitch: 29.999935
+    held-slot: 4
+    allow-flight: false
+    flying: false
+    level: 2
+    exp: 0.17021264
+    total-exp: 402
+    health: 20.0
+    food: 20
+    saturation: 1.0
+    gamemode: SURVIVAL
+    effects:
+    - ==: PotionEffect
+      effect: minecraft:absorption
+      duration: 1341
+      amplifier: 0
+      ambient: false
+      has-particles: true
+      has-icon: true
+  add737d0-12da-4c8a-bab4-9548c1107eb0:
+    name: cometAnvil
+    inventory:
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:shield
+      count: 1
+      components:
+        minecraft:enchantments: '{"minecraft:unbreaking":2}'
+        minecraft:custom_name: '{extra:[{bold:1b,color:"#A02828",text:"WARRIOR "},{color:"white",text:"Shield"}],italic:0b,text:""}'
+      schema_version: 1
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    armor:
+    - null
+    - null
+    - null
+    - null
+    offhand:
+      ==: org.bukkit.inventory.ItemStack
+      DataVersion: 4903
+      id: minecraft:totem_of_undying
+      count: 1
+      schema_version: 1
+    cursor:
+      ==: org.bukkit.inventory.ItemStack
+      id: minecraft:air
+      DataVersion: 4903
+      schema_version: 1
+    world: world
+    x: 218.2554778437872
+    y: 66.0
+    z: 158.36183463728
+    yaw: 123.31393
+    pitch: 15.132064
+    held-slot: 3
+    allow-flight: false
+    flying: false
+    level: 0
+    exp: 0.0
+    total-exp: 0
+    health: 20.0
+    food: 20
+    saturation: 1.0
+    gamemode: SURVIVAL
+    effects: []

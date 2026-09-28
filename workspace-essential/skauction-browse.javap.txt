@@ -1,0 +1,697 @@
+Compiled from "BrowseMenu.java"
+public final class net.skstudios.auction.BrowseMenu extends net.skstudios.core.gui.Menu {
+  private final net.skstudios.auction.AuctionPlugin plugin;
+
+  private final net.skstudios.core.gui.MenuConfig config;
+
+  private final java.util.List<java.lang.Integer> listingSlots;
+
+  private net.skstudios.auction.SortMode sort;
+
+  private int page;
+
+  private final java.lang.String query;
+
+  private final java.util.Map<java.lang.Integer, java.lang.Long> drawn;
+
+  public net.skstudios.auction.BrowseMenu(org.bukkit.entity.Player, net.skstudios.auction.AuctionPlugin, java.lang.String);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #1                  // Method net/skstudios/core/gui/Menu."<init>":(Lorg/bukkit/entity/Player;)V
+         5: aload_0
+         6: getstatic     #7                  // Field net/skstudios/auction/SortMode.NEWEST:Lnet/skstudios/auction/SortMode;
+         9: putfield      #13                 // Field sort:Lnet/skstudios/auction/SortMode;
+        12: aload_0
+        13: new           #18                 // class java/util/HashMap
+        16: dup
+        17: invokespecial #20                 // Method java/util/HashMap."<init>":()V
+        20: putfield      #23                 // Field drawn:Ljava/util/Map;
+        23: aload_0
+        24: aload_2
+        25: putfield      #27                 // Field plugin:Lnet/skstudios/auction/AuctionPlugin;
+        28: aload_0
+        29: aload_2
+        30: invokevirtual #31                 // Method net/skstudios/auction/AuctionPlugin.browseMenuConfig:()Lnet/skstudios/core/gui/MenuConfig;
+        33: putfield      #37                 // Field config:Lnet/skstudios/core/gui/MenuConfig;
+        36: aload_0
+        37: aload_0
+        38: getfield      #37                 // Field config:Lnet/skstudios/core/gui/MenuConfig;
+        41: invokevirtual #41                 // Method net/skstudios/core/gui/MenuConfig.layout:()Lnet/skstudios/core/gui/LayoutGrid;
+        44: aload_0
+        45: getfield      #37                 // Field config:Lnet/skstudios/core/gui/MenuConfig;
+        48: invokevirtual #47                 // Method net/skstudios/core/gui/MenuConfig.fillerSymbol:()C
+        51: invokevirtual #51                 // Method net/skstudios/core/gui/LayoutGrid.slotsOf:(C)Ljava/util/List;
+        54: putfield      #57                 // Field listingSlots:Ljava/util/List;
+        57: aload_0
+        58: aload_3
+        59: ifnull        69
+        62: aload_3
+        63: invokevirtual #61                 // Method java/lang/String.isBlank:()Z
+        66: ifeq          73
+        69: aconst_null
+        70: goto          80
+        73: aload_3
+        74: getstatic     #67                 // Field java/util/Locale.ROOT:Ljava/util/Locale;
+        77: invokevirtual #73                 // Method java/lang/String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+        80: putfield      #77                 // Field query:Ljava/lang/String;
+        83: return
+
+  protected java.lang.String title();
+    Code:
+         0: aload_0
+         1: getfield      #37                 // Field config:Lnet/skstudios/core/gui/MenuConfig;
+         4: invokevirtual #81                 // Method net/skstudios/core/gui/MenuConfig.title:()Ljava/lang/String;
+         7: ldc           #85                 // String page
+         9: aload_0
+        10: getfield      #87                 // Field page:I
+        13: iconst_1
+        14: iadd
+        15: invokestatic  #90                 // Method java/lang/String.valueOf:(I)Ljava/lang/String;
+        18: ldc           #94                 // String max_page
+        20: iconst_1
+        21: aload_0
+        22: invokevirtual #96                 // Method pageCount:()I
+        25: invokestatic  #100                // Method java/lang/Math.max:(II)I
+        28: invokestatic  #90                 // Method java/lang/String.valueOf:(I)Ljava/lang/String;
+        31: invokestatic  #106                // InterfaceMethod java/util/Map.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+        34: invokestatic  #112                // Method net/skstudios/core/text/Text.apply:(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
+        37: areturn
+
+  protected int rows();
+    Code:
+         0: aload_0
+         1: getfield      #37                 // Field config:Lnet/skstudios/core/gui/MenuConfig;
+         4: invokevirtual #118                // Method net/skstudios/core/gui/MenuConfig.rows:()I
+         7: ireturn
+
+  private java.util.List<net.skstudios.auction.Listing> current();
+    Code:
+         0: aload_0
+         1: getfield      #27                 // Field plugin:Lnet/skstudios/auction/AuctionPlugin;
+         4: invokevirtual #121                // Method net/skstudios/auction/AuctionPlugin.store:()Lnet/skstudios/auction/AuctionStore;
+         7: aload_0
+         8: getfield      #13                 // Field sort:Lnet/skstudios/auction/SortMode;
+        11: invokevirtual #125                // Method net/skstudios/auction/AuctionStore.view:(Lnet/skstudios/auction/SortMode;)Ljava/util/List;
+        14: astore_1
+        15: aload_0
+        16: getfield      #77                 // Field query:Ljava/lang/String;
+        19: ifnonnull     24
+        22: aload_1
+        23: areturn
+        24: new           #131                // class java/util/ArrayList
+        27: dup
+        28: invokespecial #133                // Method java/util/ArrayList."<init>":()V
+        31: astore_2
+        32: aload_1
+        33: invokeinterface #134,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        38: astore_3
+        39: aload_3
+        40: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        45: ifeq          99
+        48: aload_3
+        49: invokeinterface #145,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        54: checkcast     #149                // class net/skstudios/auction/Listing
+        57: astore        4
+        59: aload_0
+        60: getfield      #27                 // Field plugin:Lnet/skstudios/auction/AuctionPlugin;
+        63: aload         4
+        65: invokevirtual #151                // Method net/skstudios/auction/Listing.item:()Lorg/bukkit/inventory/ItemStack;
+        68: invokevirtual #155                // Method net/skstudios/auction/AuctionPlugin.itemName:(Lorg/bukkit/inventory/ItemStack;)Ljava/lang/String;
+        71: getstatic     #67                 // Field java/util/Locale.ROOT:Ljava/util/Locale;
+        74: invokevirtual #73                 // Method java/lang/String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+        77: aload_0
+        78: getfield      #77                 // Field query:Ljava/lang/String;
+        81: invokevirtual #159                // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+        84: ifeq          96
+        87: aload_2
+        88: aload         4
+        90: invokeinterface #163,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+        95: pop
+        96: goto          39
+        99: aload_2
+       100: areturn
+
+  private int pageCount();
+    Code:
+         0: iconst_1
+         1: aload_0
+         2: getfield      #57                 // Field listingSlots:Ljava/util/List;
+         5: invokeinterface #167,  1          // InterfaceMethod java/util/List.size:()I
+        10: invokestatic  #100                // Method java/lang/Math.max:(II)I
+        13: istore_1
+        14: aload_0
+        15: invokevirtual #170                // Method current:()Ljava/util/List;
+        18: invokeinterface #167,  1          // InterfaceMethod java/util/List.size:()I
+        23: i2d
+        24: iload_1
+        25: i2d
+        26: ddiv
+        27: invokestatic  #174                // Method java/lang/Math.ceil:(D)D
+        30: d2i
+        31: ireturn
+
+  protected void draw();
+    Code:
+         0: aload_0
+         1: invokevirtual #170                // Method current:()Ljava/util/List;
+         4: astore_1
+         5: iconst_1
+         6: aload_0
+         7: getfield      #57                 // Field listingSlots:Ljava/util/List;
+        10: invokeinterface #167,  1          // InterfaceMethod java/util/List.size:()I
+        15: invokestatic  #100                // Method java/lang/Math.max:(II)I
+        18: istore_2
+        19: iconst_1
+        20: aload_1
+        21: invokeinterface #167,  1          // InterfaceMethod java/util/List.size:()I
+        26: i2d
+        27: iload_2
+        28: i2d
+        29: ddiv
+        30: invokestatic  #174                // Method java/lang/Math.ceil:(D)D
+        33: d2i
+        34: invokestatic  #100                // Method java/lang/Math.max:(II)I
+        37: istore_3
+        38: aload_0
+        39: getfield      #87                 // Field page:I
+        42: iload_3
+        43: if_icmplt     53
+        46: aload_0
+        47: iload_3
+        48: iconst_1
+        49: isub
+        50: putfield      #87                 // Field page:I
+        53: new           #18                 // class java/util/HashMap
+        56: dup
+        57: invokespecial #20                 // Method java/util/HashMap."<init>":()V
+        60: astore        4
+        62: aload         4
+        64: ldc           #85                 // String page
+        66: aload_0
+        67: getfield      #87                 // Field page:I
+        70: iconst_1
+        71: iadd
+        72: invokestatic  #90                 // Method java/lang/String.valueOf:(I)Ljava/lang/String;
+        75: invokeinterface #178,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        80: pop
+        81: aload         4
+        83: ldc           #94                 // String max_page
+        85: iload_3
+        86: invokestatic  #90                 // Method java/lang/String.valueOf:(I)Ljava/lang/String;
+        89: invokeinterface #178,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        94: pop
+        95: aload         4
+        97: ldc           #182                // String sort
+        99: aload_0
+       100: getfield      #27                 // Field plugin:Lnet/skstudios/auction/AuctionPlugin;
+       103: aload_0
+       104: getfield      #13                 // Field sort:Lnet/skstudios/auction/SortMode;
+       107: invokevirtual #183                // Method net/skstudios/auction/AuctionPlugin.sortName:(Lnet/skstudios/auction/SortMode;)Ljava/lang/String;
+       110: invokeinterface #178,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       115: pop
+       116: aload         4
+       118: ldc           #187                // String count
+       120: aload_1
+       121: invokeinterface #167,  1          // InterfaceMethod java/util/List.size:()I
+       126: invokestatic  #90                 // Method java/lang/String.valueOf:(I)Ljava/lang/String;
+       129: invokeinterface #178,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       134: pop
+       135: aload         4
+       137: ldc           #189                // String search
+       139: aload_0
+       140: getfield      #77                 // Field query:Ljava/lang/String;
+       143: ifnonnull     151
+       146: ldc           #191                // String
+       148: goto          155
+       151: aload_0
+       152: getfield      #77                 // Field query:Ljava/lang/String;
+       155: invokeinterface #178,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       160: pop
+       161: aload         4
+       163: ldc           #193                // String mine
+       165: aload_0
+       166: getfield      #27                 // Field plugin:Lnet/skstudios/auction/AuctionPlugin;
+       169: invokevirtual #121                // Method net/skstudios/auction/AuctionPlugin.store:()Lnet/skstudios/auction/AuctionStore;
+       172: aload_0
+       173: getfield      #195                // Field viewer:Lorg/bukkit/entity/Player;
+       176: invokeinterface #199,  1          // InterfaceMethod org/bukkit/entity/Player.getUniqueId:()Ljava/util/UUID;
+       181: invokevirtual #205                // Method net/skstudios/auction/AuctionStore.countOf:(Ljava/util/UUID;)I
+       184: invokestatic  #90                 // Method java/lang/String.valueOf:(I)Ljava/lang/String;
+       187: invokeinterface #178,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       192: pop
+       193: aload         4
+       195: ldc           #209                // String max
+       197: aload_0
+       198: getfield      #27                 // Field plugin:Lnet/skstudios/auction/AuctionPlugin;
+       201: aload_0
+       202: getfield      #195                // Field viewer:Lorg/bukkit/entity/Player;
+       205: invokevirtual #210                // Method net/skstudios/auction/AuctionPlugin.maxListings:(Lorg/bukkit/entity/Player;)I
+       208: invokestatic  #90                 // Method java/lang/String.valueOf:(I)Ljava/lang/String;
+       211: invokeinterface #178,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       216: pop
+       217: invokestatic  #214                // Method net/skstudios/auction/SortMode.values:()[Lnet/skstudios/auction/SortMode;
+       220: astore        5
+       222: aload         5
+       224: arraylength
+       225: istore        6
+       227: iconst_0
+       228: istore        7
+       230: iload         7
+       232: iload         6
+       234: if_icmpge     298
+       237: aload         5
+       239: iload         7
+       241: aaload
+       242: astore        8
+       244: aload         4
+       246: aload         8
+       248: invokevirtual #218                // Method net/skstudios/auction/SortMode.id:()Ljava/lang/String;
+       251: invokedynamic #221,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       256: aload_0
+       257: getfield      #27                 // Field plugin:Lnet/skstudios/auction/AuctionPlugin;
+       260: aload         8
+       262: aload_0
+       263: getfield      #13                 // Field sort:Lnet/skstudios/auction/SortMode;
+       266: invokevirtual #225                // Method net/skstudios/auction/AuctionPlugin.sortLine:(Lnet/skstudios/auction/SortMode;Lnet/skstudios/auction/SortMode;)Ljava/lang/String;
+       269: ldc           #182                // String sort
+       271: aload_0
+       272: getfield      #27                 // Field plugin:Lnet/skstudios/auction/AuctionPlugin;
+       275: aload         8
+       277: invokevirtual #183                // Method net/skstudios/auction/AuctionPlugin.sortName:(Lnet/skstudios/auction/SortMode;)Ljava/lang/String;
+       280: invokestatic  #229                // InterfaceMethod java/util/Map.of:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+       283: invokestatic  #112                // Method net/skstudios/core/text/Text.apply:(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
+       286: invokeinterface #178,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       291: pop
+       292: iinc          7, 1
+       295: goto          230
+       298: aload_0
+       299: getfield      #37                 // Field config:Lnet/skstudios/core/gui/MenuConfig;
+       302: aload_0
+       303: invokevirtual #232                // Method getInventory:()Lorg/bukkit/inventory/Inventory;
+       306: aload         4
+       308: iconst_1
+       309: newarray       char
+       311: dup
+       312: iconst_0
+       313: aload_0
+       314: getfield      #37                 // Field config:Lnet/skstudios/core/gui/MenuConfig;
+       317: invokevirtual #47                 // Method net/skstudios/core/gui/MenuConfig.fillerSymbol:()C
+       320: castore
+       321: invokevirtual #236                // Method net/skstudios/core/gui/MenuConfig.render:(Lorg/bukkit/inventory/Inventory;Ljava/util/Map;[C)V
+       324: aload_0
+       325: getfield      #37                 // Field config:Lnet/skstudios/core/gui/MenuConfig;
+       328: aload_0
+       329: invokevirtual #232                // Method getInventory:()Lorg/bukkit/inventory/Inventory;
+       332: iload_3
+       333: invokevirtual #240                // Method net/skstudios/core/gui/MenuConfig.paging:(Lorg/bukkit/inventory/Inventory;I)V
+       336: aload_0
+       337: getfield      #23                 // Field drawn:Ljava/util/Map;
+       340: invokeinterface #244,  1          // InterfaceMethod java/util/Map.clear:()V
+       345: aload_0
+       346: getfield      #87                 // Field page:I
+       349: iload_2
+       350: imul
+       351: istore        5
+       353: invokestatic  #247                // Method java/lang/System.currentTimeMillis:()J
+       356: lstore        6
+       358: iconst_0
+       359: istore        8
+       361: iload         8
+       363: aload_0
+       364: getfield      #57                 // Field listingSlots:Ljava/util/List;
+       367: invokeinterface #167,  1          // InterfaceMethod java/util/List.size:()I
+       372: if_icmpge     488
+       375: aload_0
+       376: getfield      #57                 // Field listingSlots:Ljava/util/List;
+       379: iload         8
+       381: invokeinterface #253,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+       386: checkcast     #257                // class java/lang/Integer
+       389: invokevirtual #259                // Method java/lang/Integer.intValue:()I
+       392: istore        9
+       394: iload         5
+       396: iload         8
+       398: iadd
+       399: istore        10
+       401: iload         10
+       403: aload_1
+       404: invokeinterface #167,  1          // InterfaceMethod java/util/List.size:()I
+       409: if_icmplt     427
+       412: aload_0
+       413: invokevirtual #232                // Method getInventory:()Lorg/bukkit/inventory/Inventory;
+       416: iload         9
+       418: aconst_null
+       419: invokeinterface #262,  3          // InterfaceMethod org/bukkit/inventory/Inventory.setItem:(ILorg/bukkit/inventory/ItemStack;)V
+       424: goto          482
+       427: aload_1
+       428: iload         10
+       430: invokeinterface #253,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+       435: checkcast     #149                // class net/skstudios/auction/Listing
+       438: astore        11
+       440: aload_0
+       441: invokevirtual #232                // Method getInventory:()Lorg/bukkit/inventory/Inventory;
+       444: iload         9
+       446: aload_0
+       447: aload         11
+       449: lload         6
+       451: invokevirtual #268                // Method decorate:(Lnet/skstudios/auction/Listing;J)Lorg/bukkit/inventory/ItemStack;
+       454: invokeinterface #262,  3          // InterfaceMethod org/bukkit/inventory/Inventory.setItem:(ILorg/bukkit/inventory/ItemStack;)V
+       459: aload_0
+       460: getfield      #23                 // Field drawn:Ljava/util/Map;
+       463: iload         9
+       465: invokestatic  #272                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       468: aload         11
+       470: invokevirtual #275                // Method net/skstudios/auction/Listing.id:()J
+       473: invokestatic  #277                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+       476: invokeinterface #178,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       481: pop
+       482: iinc          8, 1
+       485: goto          361
+       488: return
+
+  private org.bukkit.inventory.ItemStack decorate(net.skstudios.auction.Listing, long);
+    Code:
+         0: aload_1
+         1: invokevirtual #151                // Method net/skstudios/auction/Listing.item:()Lorg/bukkit/inventory/ItemStack;
+         4: invokevirtual #282                // Method org/bukkit/inventory/ItemStack.clone:()Lorg/bukkit/inventory/ItemStack;
+         7: astore        4
+         9: aload         4
+        11: invokevirtual #287                // Method org/bukkit/inventory/ItemStack.getItemMeta:()Lorg/bukkit/inventory/meta/ItemMeta;
+        14: astore        5
+        16: aload         5
+        18: ifnonnull     24
+        21: aload         4
+        23: areturn
+        24: aload         5
+        26: invokeinterface #291,  1          // InterfaceMethod org/bukkit/inventory/meta/ItemMeta.hasLore:()Z
+        31: ifeq          61
+        34: aload         5
+        36: invokeinterface #296,  1          // InterfaceMethod org/bukkit/inventory/meta/ItemMeta.lore:()Ljava/util/List;
+        41: ifnull        61
+        44: new           #131                // class java/util/ArrayList
+        47: dup
+        48: aload         5
+        50: invokeinterface #296,  1          // InterfaceMethod org/bukkit/inventory/meta/ItemMeta.lore:()Ljava/util/List;
+        55: invokespecial #299                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+        58: goto          68
+        61: new           #131                // class java/util/ArrayList
+        64: dup
+        65: invokespecial #133                // Method java/util/ArrayList."<init>":()V
+        68: astore        6
+        70: ldc_w         #302                // String price
+        73: aload_0
+        74: getfield      #27                 // Field plugin:Lnet/skstudios/auction/AuctionPlugin;
+        77: aload_1
+        78: invokevirtual #304                // Method net/skstudios/auction/Listing.price:()D
+        81: invokevirtual #307                // Method net/skstudios/auction/AuctionPlugin.money:(D)Ljava/lang/String;
+        84: ldc_w         #311                // String seller
+        87: aload_1
+        88: invokevirtual #313                // Method net/skstudios/auction/Listing.sellerName:()Ljava/lang/String;
+        91: ldc_w         #316                // String remaining
+        94: aload_1
+        95: lload_2
+        96: invokevirtual #318                // Method net/skstudios/auction/Listing.remaining:(J)J
+        99: invokestatic  #321                // Method remaining:(J)Ljava/lang/String;
+       102: invokestatic  #324                // InterfaceMethod java/util/Map.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+       105: astore        7
+       107: aload_0
+       108: getfield      #27                 // Field plugin:Lnet/skstudios/auction/AuctionPlugin;
+       111: invokevirtual #327                // Method net/skstudios/auction/AuctionPlugin.listingLore:()Ljava/util/List;
+       114: invokeinterface #134,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       119: astore        8
+       121: aload         8
+       123: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       128: ifeq          164
+       131: aload         8
+       133: invokeinterface #145,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       138: checkcast     #62                 // class java/lang/String
+       141: astore        9
+       143: aload         6
+       145: aload         9
+       147: aload         7
+       149: invokestatic  #112                // Method net/skstudios/core/text/Text.apply:(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
+       152: invokestatic  #330                // Method net/skstudios/core/text/Text.item:(Ljava/lang/String;)Lnet/kyori/adventure/text/Component;
+       155: invokeinterface #163,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       160: pop
+       161: goto          121
+       164: aload         5
+       166: aload         6
+       168: invokeinterface #333,  2          // InterfaceMethod org/bukkit/inventory/meta/ItemMeta.lore:(Ljava/util/List;)V
+       173: aload         4
+       175: aload         5
+       177: invokevirtual #336                // Method org/bukkit/inventory/ItemStack.setItemMeta:(Lorg/bukkit/inventory/meta/ItemMeta;)Z
+       180: pop
+       181: aload         4
+       183: areturn
+
+  static java.lang.String remaining(long);
+    Code:
+         0: lload_0
+         1: ldc2_w        #340                // long 60000l
+         4: ldiv
+         5: lstore_2
+         6: lload_2
+         7: ldc2_w        #342                // long 1440l
+        10: lcmp
+        11: iflt          34
+        14: lload_2
+        15: ldc2_w        #342                // long 1440l
+        18: ldiv
+        19: lload_2
+        20: ldc2_w        #342                // long 1440l
+        23: lrem
+        24: ldc2_w        #344                // long 60l
+        27: ldiv
+        28: invokedynamic #346,  0            // InvokeDynamic #1:makeConcatWithConstants:(JJ)Ljava/lang/String;
+        33: areturn
+        34: lload_2
+        35: ldc2_w        #344                // long 60l
+        38: lcmp
+        39: iflt          58
+        42: lload_2
+        43: ldc2_w        #344                // long 60l
+        46: ldiv
+        47: lload_2
+        48: ldc2_w        #344                // long 60l
+        51: lrem
+        52: invokedynamic #349,  0            // InvokeDynamic #2:makeConcatWithConstants:(JJ)Ljava/lang/String;
+        57: areturn
+        58: lconst_1
+        59: lload_2
+        60: invokestatic  #350                // Method java/lang/Math.max:(JJ)J
+        63: invokedynamic #353,  0            // InvokeDynamic #3:makeConcatWithConstants:(J)Ljava/lang/String;
+        68: areturn
+
+  protected void onClick(org.bukkit.event.inventory.InventoryClickEvent);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #355                // Method clickedTopInventory:(Lorg/bukkit/event/inventory/InventoryClickEvent;)Z
+         5: ifne          9
+         8: return
+         9: aload_1
+        10: invokevirtual #359                // Method org/bukkit/event/inventory/InventoryClickEvent.getSlot:()I
+        13: istore_2
+        14: aload_0
+        15: getfield      #23                 // Field drawn:Ljava/util/Map;
+        18: iload_2
+        19: invokestatic  #272                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        22: invokeinterface #364,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        27: checkcast     #278                // class java/lang/Long
+        30: astore_3
+        31: aload_3
+        32: ifnull        122
+        35: aload_0
+        36: getfield      #27                 // Field plugin:Lnet/skstudios/auction/AuctionPlugin;
+        39: invokevirtual #121                // Method net/skstudios/auction/AuctionPlugin.store:()Lnet/skstudios/auction/AuctionStore;
+        42: aload_3
+        43: invokevirtual #367                // Method java/lang/Long.longValue:()J
+        46: invokevirtual #370                // Method net/skstudios/auction/AuctionStore.byId:(J)Lnet/skstudios/auction/Listing;
+        49: astore        4
+        51: aload         4
+        53: ifnonnull     61
+        56: aload_0
+        57: invokevirtual #374                // Method refresh:()V
+        60: return
+        61: aload         4
+        63: invokevirtual #377                // Method net/skstudios/auction/Listing.seller:()Ljava/util/UUID;
+        66: aload_0
+        67: getfield      #195                // Field viewer:Lorg/bukkit/entity/Player;
+        70: invokeinterface #199,  1          // InterfaceMethod org/bukkit/entity/Player.getUniqueId:()Ljava/util/UUID;
+        75: invokevirtual #379                // Method java/util/UUID.equals:(Ljava/lang/Object;)Z
+        78: ifeq          99
+        81: aload_0
+        82: getfield      #27                 // Field plugin:Lnet/skstudios/auction/AuctionPlugin;
+        85: aload_0
+        86: getfield      #195                // Field viewer:Lorg/bukkit/entity/Player;
+        89: ldc_w         #384                // String own-listing
+        92: invokestatic  #386                // InterfaceMethod java/util/Map.of:()Ljava/util/Map;
+        95: invokevirtual #389                // Method net/skstudios/auction/AuctionPlugin.send:(Lorg/bukkit/entity/Player;Ljava/lang/String;Ljava/util/Map;)V
+        98: return
+        99: new           #393                // class net/skstudios/auction/ConfirmMenu
+       102: dup
+       103: aload_0
+       104: getfield      #195                // Field viewer:Lorg/bukkit/entity/Player;
+       107: aload_0
+       108: getfield      #27                 // Field plugin:Lnet/skstudios/auction/AuctionPlugin;
+       111: aload_3
+       112: invokevirtual #367                // Method java/lang/Long.longValue:()J
+       115: invokespecial #395                // Method net/skstudios/auction/ConfirmMenu."<init>":(Lorg/bukkit/entity/Player;Lnet/skstudios/auction/AuctionPlugin;J)V
+       118: invokevirtual #398                // Method net/skstudios/auction/ConfirmMenu.open:()V
+       121: return
+       122: aload_0
+       123: getfield      #37                 // Field config:Lnet/skstudios/core/gui/MenuConfig;
+       126: iload_2
+       127: invokevirtual #401                // Method net/skstudios/core/gui/MenuConfig.actionAt:(I)Ljava/lang/String;
+       130: astore        4
+       132: aload         4
+       134: ifnonnull     138
+       137: return
+       138: aload         4
+       140: astore        5
+       142: iconst_m1
+       143: istore        6
+       145: aload         5
+       147: invokevirtual #404                // Method java/lang/String.hashCode:()I
+       150: lookupswitch  { // 7
+             -1273775369: 315
+              -906336856: 282
+                 3351635: 216
+                 3377907: 298
+                 3536286: 249
+               926934164: 232
+              1085444827: 265
+                 default: 330
+            }
+       216: aload         5
+       218: ldc           #193                // String mine
+       220: invokevirtual #407                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       223: ifeq          330
+       226: iconst_0
+       227: istore        6
+       229: goto          330
+       232: aload         5
+       234: ldc_w         #408                // String history
+       237: invokevirtual #407                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       240: ifeq          330
+       243: iconst_1
+       244: istore        6
+       246: goto          330
+       249: aload         5
+       251: ldc           #182                // String sort
+       253: invokevirtual #407                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       256: ifeq          330
+       259: iconst_2
+       260: istore        6
+       262: goto          330
+       265: aload         5
+       267: ldc_w         #410                // String refresh
+       270: invokevirtual #407                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       273: ifeq          330
+       276: iconst_3
+       277: istore        6
+       279: goto          330
+       282: aload         5
+       284: ldc           #189                // String search
+       286: invokevirtual #407                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       289: ifeq          330
+       292: iconst_4
+       293: istore        6
+       295: goto          330
+       298: aload         5
+       300: ldc_w         #411                // String next
+       303: invokevirtual #407                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       306: ifeq          330
+       309: iconst_5
+       310: istore        6
+       312: goto          330
+       315: aload         5
+       317: ldc_w         #412                // String previous
+       320: invokevirtual #407                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       323: ifeq          330
+       326: bipush        6
+       328: istore        6
+       330: iload         6
+       332: tableswitch   { // 0 to 6
+                       0: 376
+                       1: 397
+                       2: 418
+                       3: 441
+                       4: 448
+                       5: 477
+                       6: 507
+                 default: 531
+            }
+       376: new           #414                // class net/skstudios/auction/MineMenu
+       379: dup
+       380: aload_0
+       381: getfield      #195                // Field viewer:Lorg/bukkit/entity/Player;
+       384: aload_0
+       385: getfield      #27                 // Field plugin:Lnet/skstudios/auction/AuctionPlugin;
+       388: invokespecial #416                // Method net/skstudios/auction/MineMenu."<init>":(Lorg/bukkit/entity/Player;Lnet/skstudios/auction/AuctionPlugin;)V
+       391: invokevirtual #419                // Method net/skstudios/auction/MineMenu.open:()V
+       394: goto          531
+       397: new           #420                // class net/skstudios/auction/HistoryMenu
+       400: dup
+       401: aload_0
+       402: getfield      #195                // Field viewer:Lorg/bukkit/entity/Player;
+       405: aload_0
+       406: getfield      #27                 // Field plugin:Lnet/skstudios/auction/AuctionPlugin;
+       409: invokespecial #422                // Method net/skstudios/auction/HistoryMenu."<init>":(Lorg/bukkit/entity/Player;Lnet/skstudios/auction/AuctionPlugin;)V
+       412: invokevirtual #423                // Method net/skstudios/auction/HistoryMenu.open:()V
+       415: goto          531
+       418: aload_0
+       419: aload_0
+       420: getfield      #13                 // Field sort:Lnet/skstudios/auction/SortMode;
+       423: invokevirtual #424                // Method net/skstudios/auction/SortMode.next:()Lnet/skstudios/auction/SortMode;
+       426: putfield      #13                 // Field sort:Lnet/skstudios/auction/SortMode;
+       429: aload_0
+       430: iconst_0
+       431: putfield      #87                 // Field page:I
+       434: aload_0
+       435: invokevirtual #374                // Method refresh:()V
+       438: goto          531
+       441: aload_0
+       442: invokevirtual #374                // Method refresh:()V
+       445: goto          531
+       448: aload_0
+       449: getfield      #195                // Field viewer:Lorg/bukkit/entity/Player;
+       452: invokeinterface #427,  1          // InterfaceMethod org/bukkit/entity/Player.closeInventory:()V
+       457: aload_0
+       458: getfield      #27                 // Field plugin:Lnet/skstudios/auction/AuctionPlugin;
+       461: aload_0
+       462: getfield      #195                // Field viewer:Lorg/bukkit/entity/Player;
+       465: ldc_w         #430                // String search-hint
+       468: invokestatic  #386                // InterfaceMethod java/util/Map.of:()Ljava/util/Map;
+       471: invokevirtual #389                // Method net/skstudios/auction/AuctionPlugin.send:(Lorg/bukkit/entity/Player;Ljava/lang/String;Ljava/util/Map;)V
+       474: goto          531
+       477: aload_0
+       478: getfield      #87                 // Field page:I
+       481: iconst_1
+       482: iadd
+       483: aload_0
+       484: invokevirtual #96                 // Method pageCount:()I
+       487: if_icmpge     531
+       490: aload_0
+       491: dup
+       492: getfield      #87                 // Field page:I
+       495: iconst_1
+       496: iadd
+       497: putfield      #87                 // Field page:I
+       500: aload_0
+       501: invokevirtual #374                // Method refresh:()V
+       504: goto          531
+       507: aload_0
+       508: getfield      #87                 // Field page:I
+       511: ifle          531
+       514: aload_0
+       515: dup
+       516: getfield      #87                 // Field page:I
+       519: iconst_1
+       520: isub
+       521: putfield      #87                 // Field page:I
+       524: aload_0
+       525: invokevirtual #374                // Method refresh:()V
+       528: goto          531
+       531: return
+}

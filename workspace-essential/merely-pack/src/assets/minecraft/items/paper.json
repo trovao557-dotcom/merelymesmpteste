@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "property": "minecraft:custom_model_data",
+    "index": 0,
+    "fallback": { "type": "minecraft:model", "model": "minecraft:item/paper" },
+    "entries": [
+      { "threshold": 1001, "model": { "type": "minecraft:model", "model": "merelyme:item/rank_member" } },
+      { "threshold": 1002, "model": { "type": "minecraft:model", "model": "merelyme:item/rank_knight" } },
+      { "threshold": 1003, "model": { "type": "minecraft:model", "model": "merelyme:item/rank_warrior" } },
+      { "threshold": 1004, "model": { "type": "minecraft:model", "model": "merelyme:item/rank_macer" } },
+      { "threshold": 1005, "model": { "type": "minecraft:model", "model": "merelyme:item/rank_prime" } },
+      { "threshold": 1101, "model": { "type": "minecraft:model", "model": "merelyme:item/skill_sky_anchor" } }
+    ]
+  }
+}

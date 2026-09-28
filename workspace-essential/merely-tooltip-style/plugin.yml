@@ -1,0 +1,5 @@
+name: MerelyTooltipBlue
+version: 1.0.1
+main: com.merelyme.tooltip.MerelyTooltipStyle
+api-version: '1.21'
+description: Applies the MerelyMe blue tooltip only to named special tools.

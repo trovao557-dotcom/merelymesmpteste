@@ -1,0 +1,134 @@
+# Basic UI Icons - Nexo item configuration
+# Install the complete Nexo folder into plugins/Nexo, then run /nexo reload.
+
+arrow_down:
+  itemname: "Arrow Down"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/arrow_down
+
+arrow_left:
+  itemname: "Arrow Left"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/arrow_left
+
+arrow_right:
+  itemname: "Arrow Right"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/arrow_right
+
+arrow_up:
+  itemname: "Arrow Up"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/arrow_up
+
+check:
+  itemname: "Check"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/check
+
+check_color:
+  itemname: "Check Color"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/check_color
+
+close:
+  itemname: "Close"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/close
+
+close_color:
+  itemname: "Close Color"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/close_color
+
+coins:
+  itemname: "Coins"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/coins
+
+exclamation:
+  itemname: "Exclamation"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/exclamation
+
+exclamation_color:
+  itemname: "Exclamation Color"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/exclamation_color
+
+lock_closed:
+  itemname: "Lock Closed"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/lock_closed
+
+lock_open:
+  itemname: "Lock Open"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/lock_open
+
+minus:
+  itemname: "Minus"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/minus
+
+minus_color:
+  itemname: "Minus Color"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/minus_color
+
+plus:
+  itemname: "Plus"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/plus
+
+plus_color:
+  itemname: "Plus Color"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/plus_color
+
+question:
+  itemname: "Question"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/question
+
+question_color:
+  itemname: "Question Color"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/question_color
+
+refresh:
+  itemname: "Refresh"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/refresh
+
+search:
+  itemname: "Search"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/search
+
+settings:
+  itemname: "Settings"
+  material: PAPER
+  Pack:
+    texture: basic_ui_icons:item/settings

@@ -1,0 +1,24 @@
+# Tip4Serv / web store: run from the product commands:
+#   storebought %player% Prime Rank
+# Console and ops only. Plays a goat horn and broadcasts what they bought.
+
+command /store:
+	trigger:
+		send "&b&lMERELYME SMP &8» &fStore: &bhttps://merelymesmp.com" to player
+
+command /storebought <offline player> [<text>]:
+	permission: merely.storebought
+	permission message: &cNo.
+	executable by: console and players
+	trigger:
+		set {_name} to name of arg-1
+		set {_item} to arg-2
+		if {_item} is not set:
+			set {_item} to "a store package"
+		broadcast " "
+		broadcast "&#6BFF00&lMERELYME SMP"
+		broadcast "&#71F521%{_name}% &fjust purchased"
+		broadcast "&#00E0FF➥ &f%{_item}%"
+		broadcast "&#FFD900&n/store"
+		broadcast " "
+		execute console command "execute as @a at @s run playsound minecraft:item.goat_horn.sound.0 master @s ~ ~ ~ 1 1"

@@ -1,0 +1,575 @@
+Compiled from "Kit.java"
+final class net.skstudios.kits.Kit {
+  private final java.lang.String id;
+
+  private final java.lang.String displayName;
+
+  private final java.lang.String category;
+
+  private final java.util.List<java.lang.String> description;
+
+  private final java.lang.String colour;
+
+  private final java.lang.String rankLabel;
+
+  private final int slot;
+
+  private final org.bukkit.Material icon;
+
+  private final long cooldownSeconds;
+
+  private final java.lang.String cooldownText;
+
+  private final boolean free;
+
+  private final java.lang.String permission;
+
+  private final double money;
+
+  private final java.util.Map<java.lang.String, java.lang.Integer> keys;
+
+  private final java.util.List<net.skstudios.kits.Kit$KitItem> items;
+
+  private final java.lang.String lockedMessage;
+
+  private final java.lang.String lockedCommand;
+
+  private net.skstudios.kits.Kit(java.lang.String, org.bukkit.configuration.ConfigurationSection, java.util.logging.Logger);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field id:Ljava/lang/String;
+       9: aload_0
+      10: aload_2
+      11: ldc           #13                 // String display-name
+      13: aload_1
+      14: getstatic     #15                 // Field java/util/Locale.ROOT:Ljava/util/Locale;
+      17: invokevirtual #21                 // Method java/lang/String.toUpperCase:(Ljava/util/Locale;)Ljava/lang/String;
+      20: invokeinterface #27,  3           // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getString:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      25: putfield      #33                 // Field displayName:Ljava/lang/String;
+      28: aload_0
+      29: aload_2
+      30: ldc           #36                 // String category
+      32: ldc           #38                 // String
+      34: invokeinterface #27,  3           // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getString:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      39: putfield      #40                 // Field category:Ljava/lang/String;
+      42: aload_0
+      43: aload_2
+      44: ldc           #42                 // String description
+      46: invokeinterface #44,  2           // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getStringList:(Ljava/lang/String;)Ljava/util/List;
+      51: putfield      #48                 // Field description:Ljava/util/List;
+      54: aload_0
+      55: aload_2
+      56: ldc           #51                 // String colour
+      58: ldc           #53                 // String &f
+      60: invokeinterface #27,  3           // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getString:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      65: putfield      #55                 // Field colour:Ljava/lang/String;
+      68: aload_0
+      69: aload_2
+      70: ldc           #57                 // String rank-label
+      72: ldc           #38                 // String
+      74: invokeinterface #27,  3           // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getString:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      79: putfield      #59                 // Field rankLabel:Ljava/lang/String;
+      82: aload_0
+      83: aload_2
+      84: ldc           #62                 // String slot
+      86: iconst_m1
+      87: invokeinterface #64,  3           // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getInt:(Ljava/lang/String;I)I
+      92: putfield      #68                 // Field slot:I
+      95: aload_2
+      96: ldc           #71                 // String icon
+      98: ldc           #73                 // String CHEST
+     100: invokeinterface #27,  3           // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getString:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     105: getstatic     #15                 // Field java/util/Locale.ROOT:Ljava/util/Locale;
+     108: invokevirtual #21                 // Method java/lang/String.toUpperCase:(Ljava/util/Locale;)Ljava/lang/String;
+     111: invokestatic  #75                 // Method org/bukkit/Material.matchMaterial:(Ljava/lang/String;)Lorg/bukkit/Material;
+     114: astore        4
+     116: aload_0
+     117: aload         4
+     119: ifnonnull     128
+     122: getstatic     #81                 // Field org/bukkit/Material.CHEST:Lorg/bukkit/Material;
+     125: goto          130
+     128: aload         4
+     130: putfield      #84                 // Field icon:Lorg/bukkit/Material;
+     133: aload_0
+     134: lconst_0
+     135: aload_2
+     136: ldc           #86                 // String cooldown-seconds
+     138: ldc2_w        #88                 // long 3600l
+     141: invokeinterface #90,  4           // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getLong:(Ljava/lang/String;J)J
+     146: invokestatic  #94                 // Method java/lang/Math.max:(JJ)J
+     149: putfield      #100                // Field cooldownSeconds:J
+     152: aload_0
+     153: aload_2
+     154: ldc           #104                // String cooldown-text
+     156: ldc           #38                 // String
+     158: invokeinterface #27,  3           // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getString:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     163: putfield      #106                // Field cooldownText:Ljava/lang/String;
+     166: aload_0
+     167: aload_2
+     168: ldc           #109                // String free
+     170: iconst_0
+     171: invokeinterface #111,  3          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getBoolean:(Ljava/lang/String;Z)Z
+     176: putfield      #115                // Field free:Z
+     179: aload_0
+     180: aload_2
+     181: ldc           #118                // String permission
+     183: ldc           #38                 // String
+     185: invokeinterface #27,  3           // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getString:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     190: putfield      #120                // Field permission:Ljava/lang/String;
+     193: aload_0
+     194: aload_2
+     195: ldc           #122                // String money
+     197: dconst_0
+     198: invokeinterface #124,  4          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getDouble:(Ljava/lang/String;D)D
+     203: putfield      #128                // Field money:D
+     206: aload_0
+     207: new           #131                // class java/util/LinkedHashMap
+     210: dup
+     211: invokespecial #133                // Method java/util/LinkedHashMap."<init>":()V
+     214: putfield      #134                // Field keys:Ljava/util/Map;
+     217: aload_2
+     218: ldc           #138                // String keys
+     220: invokeinterface #139,  2          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getConfigurationSection:(Ljava/lang/String;)Lorg/bukkit/configuration/ConfigurationSection;
+     225: astore        5
+     227: aload         5
+     229: ifnull        306
+     232: aload         5
+     234: iconst_0
+     235: invokeinterface #143,  2          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getKeys:(Z)Ljava/util/Set;
+     240: invokeinterface #147,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     245: astore        6
+     247: aload         6
+     249: invokeinterface #153,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     254: ifeq          306
+     257: aload         6
+     259: invokeinterface #159,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     264: checkcast     #22                 // class java/lang/String
+     267: astore        7
+     269: aload         5
+     271: aload         7
+     273: iconst_0
+     274: invokeinterface #64,  3           // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getInt:(Ljava/lang/String;I)I
+     279: istore        8
+     281: iload         8
+     283: ifle          303
+     286: aload_0
+     287: getfield      #134                // Field keys:Ljava/util/Map;
+     290: aload         7
+     292: iload         8
+     294: invokestatic  #163                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     297: invokeinterface #169,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     302: pop
+     303: goto          247
+     306: aload_0
+     307: new           #175                // class java/util/ArrayList
+     310: dup
+     311: invokespecial #177                // Method java/util/ArrayList."<init>":()V
+     314: putfield      #178                // Field items:Ljava/util/List;
+     317: aload_2
+     318: ldc           #181                // String items
+     320: invokeinterface #139,  2          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getConfigurationSection:(Ljava/lang/String;)Lorg/bukkit/configuration/ConfigurationSection;
+     325: astore        6
+     327: aload         6
+     329: ifnull        442
+     332: aload         6
+     334: iconst_0
+     335: invokeinterface #143,  2          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getKeys:(Z)Ljava/util/Set;
+     340: invokeinterface #147,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     345: astore        7
+     347: aload         7
+     349: invokeinterface #153,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     354: ifeq          442
+     357: aload         7
+     359: invokeinterface #159,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     364: checkcast     #22                 // class java/lang/String
+     367: astore        8
+     369: aload         6
+     371: aload         8
+     373: invokeinterface #139,  2          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getConfigurationSection:(Ljava/lang/String;)Lorg/bukkit/configuration/ConfigurationSection;
+     378: astore        9
+     380: aload         9
+     382: ifnonnull     388
+     385: goto          347
+     388: aload         9
+     390: aload_3
+     391: invokestatic  #182                // InterfaceMethod java/util/Map.of:()Ljava/util/Map;
+     394: invokestatic  #186                // Method net/skstudios/core/item/Items.read:(Lorg/bukkit/configuration/ConfigurationSection;Ljava/util/logging/Logger;Ljava/util/Map;)Lorg/bukkit/inventory/ItemStack;
+     397: astore        10
+     399: aload         10
+     401: ifnull        439
+     404: aload_0
+     405: getfield      #178                // Field items:Ljava/util/List;
+     408: new           #192                // class net/skstudios/kits/Kit$KitItem
+     411: dup
+     412: aload         10
+     414: aload         9
+     416: ldc           #62                 // String slot
+     418: invokeinterface #194,  2          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getString:(Ljava/lang/String;)Ljava/lang/String;
+     423: aload_1
+     424: aload         8
+     426: aload_3
+     427: invokestatic  #197                // Method slotOf:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/logging/Logger;)I
+     430: invokespecial #201                // Method net/skstudios/kits/Kit$KitItem."<init>":(Lorg/bukkit/inventory/ItemStack;I)V
+     433: invokeinterface #204,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     438: pop
+     439: goto          347
+     442: aload_0
+     443: aload_2
+     444: ldc           #210                // String locked-message
+     446: ldc           #38                 // String
+     448: invokeinterface #27,  3           // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getString:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     453: putfield      #212                // Field lockedMessage:Ljava/lang/String;
+     456: aload_0
+     457: aload_2
+     458: ldc           #215                // String locked-command
+     460: ldc           #38                 // String
+     462: invokeinterface #27,  3           // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getString:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     467: putfield      #217                // Field lockedCommand:Ljava/lang/String;
+     470: return
+
+  static net.skstudios.kits.Kit read(org.bukkit.configuration.ConfigurationSection, java.lang.String, java.util.logging.Logger);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokeinterface #139,  2          // InterfaceMethod org/bukkit/configuration/ConfigurationSection.getConfigurationSection:(Ljava/lang/String;)Lorg/bukkit/configuration/ConfigurationSection;
+       7: astore_3
+       8: aload_3
+       9: ifnonnull     16
+      12: aconst_null
+      13: goto          32
+      16: new           #8                  // class net/skstudios/kits/Kit
+      19: dup
+      20: aload_1
+      21: getstatic     #15                 // Field java/util/Locale.ROOT:Ljava/util/Locale;
+      24: invokevirtual #220                // Method java/lang/String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+      27: aload_3
+      28: aload_2
+      29: invokespecial #223                // Method "<init>":(Ljava/lang/String;Lorg/bukkit/configuration/ConfigurationSection;Ljava/util/logging/Logger;)V
+      32: areturn
+
+  java.lang.String id();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field id:Ljava/lang/String;
+       4: areturn
+
+  java.lang.String displayName();
+    Code:
+       0: aload_0
+       1: getfield      #33                 // Field displayName:Ljava/lang/String;
+       4: areturn
+
+  java.lang.String category();
+    Code:
+       0: aload_0
+       1: getfield      #40                 // Field category:Ljava/lang/String;
+       4: areturn
+
+  java.util.List<java.lang.String> description();
+    Code:
+       0: aload_0
+       1: getfield      #48                 // Field description:Ljava/util/List;
+       4: areturn
+
+  java.lang.String colour();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field colour:Ljava/lang/String;
+       4: areturn
+
+  java.lang.String rankLabel();
+    Code:
+       0: aload_0
+       1: getfield      #59                 // Field rankLabel:Ljava/lang/String;
+       4: areturn
+
+  int slot();
+    Code:
+       0: aload_0
+       1: getfield      #68                 // Field slot:I
+       4: ireturn
+
+  org.bukkit.Material icon();
+    Code:
+       0: aload_0
+       1: getfield      #84                 // Field icon:Lorg/bukkit/Material;
+       4: areturn
+
+  long cooldownSeconds();
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field cooldownSeconds:J
+       4: lreturn
+
+  java.lang.String cooldownText();
+    Code:
+       0: aload_0
+       1: getfield      #106                // Field cooldownText:Ljava/lang/String;
+       4: areturn
+
+  boolean free();
+    Code:
+       0: aload_0
+       1: getfield      #115                // Field free:Z
+       4: ireturn
+
+  java.lang.String permission();
+    Code:
+       0: aload_0
+       1: getfield      #120                // Field permission:Ljava/lang/String;
+       4: areturn
+
+  double money();
+    Code:
+       0: aload_0
+       1: getfield      #128                // Field money:D
+       4: dreturn
+
+  java.util.Map<java.lang.String, java.lang.Integer> keys();
+    Code:
+       0: aload_0
+       1: getfield      #134                // Field keys:Ljava/util/Map;
+       4: areturn
+
+  java.util.List<net.skstudios.kits.Kit$KitItem> items();
+    Code:
+       0: new           #175                // class java/util/ArrayList
+       3: dup
+       4: aload_0
+       5: getfield      #178                // Field items:Ljava/util/List;
+       8: invokeinterface #226,  1          // InterfaceMethod java/util/List.size:()I
+      13: invokespecial #230                // Method java/util/ArrayList."<init>":(I)V
+      16: astore_1
+      17: aload_0
+      18: getfield      #178                // Field items:Ljava/util/List;
+      21: invokeinterface #233,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      26: astore_2
+      27: aload_2
+      28: invokeinterface #153,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      33: ifeq          74
+      36: aload_2
+      37: invokeinterface #159,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      42: checkcast     #192                // class net/skstudios/kits/Kit$KitItem
+      45: astore_3
+      46: aload_1
+      47: new           #192                // class net/skstudios/kits/Kit$KitItem
+      50: dup
+      51: aload_3
+      52: invokevirtual #234                // Method net/skstudios/kits/Kit$KitItem.stack:()Lorg/bukkit/inventory/ItemStack;
+      55: invokevirtual #238                // Method org/bukkit/inventory/ItemStack.clone:()Lorg/bukkit/inventory/ItemStack;
+      58: aload_3
+      59: invokevirtual #243                // Method net/skstudios/kits/Kit$KitItem.slot:()I
+      62: invokespecial #201                // Method net/skstudios/kits/Kit$KitItem."<init>":(Lorg/bukkit/inventory/ItemStack;I)V
+      65: invokeinterface #204,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      70: pop
+      71: goto          27
+      74: aload_1
+      75: areturn
+
+  private static int slotOf(java.lang.String, java.lang.String, java.lang.String, java.util.logging.Logger);
+    Code:
+       0: aload_0
+       1: ifnull        11
+       4: aload_0
+       5: invokevirtual #245                // Method java/lang/String.isBlank:()Z
+       8: ifeq          13
+      11: iconst_m1
+      12: ireturn
+      13: aload_0
+      14: invokevirtual #248                // Method java/lang/String.trim:()Ljava/lang/String;
+      17: getstatic     #15                 // Field java/util/Locale.ROOT:Ljava/util/Locale;
+      20: invokevirtual #220                // Method java/lang/String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+      23: astore        4
+      25: aload         4
+      27: astore        6
+      29: iconst_m1
+      30: istore        7
+      32: aload         6
+      34: invokevirtual #252                // Method java/lang/String.hashCode:()I
+      37: lookupswitch  { // 10
+           -1548738978: 265
+           -1220934547: 128
+            -903340183: 283
+               3138990: 247
+               3198432: 144
+               3317797: 212
+              93922241: 229
+              94627585: 178
+            1069952181: 161
+            1735676010: 195
+               default: 298
+          }
+     128: aload         6
+     130: ldc           #255                // String helmet
+     132: invokevirtual #257                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     135: ifeq          298
+     138: iconst_0
+     139: istore        7
+     141: goto          298
+     144: aload         6
+     146: ldc_w         #260                // String head
+     149: invokevirtual #257                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     152: ifeq          298
+     155: iconst_1
+     156: istore        7
+     158: goto          298
+     161: aload         6
+     163: ldc_w         #262                // String chestplate
+     166: invokevirtual #257                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     169: ifeq          298
+     172: iconst_2
+     173: istore        7
+     175: goto          298
+     178: aload         6
+     180: ldc_w         #264                // String chest
+     183: invokevirtual #257                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     186: ifeq          298
+     189: iconst_3
+     190: istore        7
+     192: goto          298
+     195: aload         6
+     197: ldc_w         #266                // String leggings
+     200: invokevirtual #257                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     203: ifeq          298
+     206: iconst_4
+     207: istore        7
+     209: goto          298
+     212: aload         6
+     214: ldc_w         #268                // String legs
+     217: invokevirtual #257                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     220: ifeq          298
+     223: iconst_5
+     224: istore        7
+     226: goto          298
+     229: aload         6
+     231: ldc_w         #270                // String boots
+     234: invokevirtual #257                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     237: ifeq          298
+     240: bipush        6
+     242: istore        7
+     244: goto          298
+     247: aload         6
+     249: ldc_w         #272                // String feet
+     252: invokevirtual #257                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     255: ifeq          298
+     258: bipush        7
+     260: istore        7
+     262: goto          298
+     265: aload         6
+     267: ldc_w         #274                // String offhand
+     270: invokevirtual #257                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     273: ifeq          298
+     276: bipush        8
+     278: istore        7
+     280: goto          298
+     283: aload         6
+     285: ldc_w         #276                // String shield
+     288: invokevirtual #257                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     291: ifeq          298
+     294: bipush        9
+     296: istore        7
+     298: iload         7
+     300: tableswitch   { // 0 to 9
+                     0: 356
+                     1: 356
+                     2: 364
+                     3: 364
+                     4: 372
+                     5: 372
+                     6: 380
+                     7: 380
+                     8: 388
+                     9: 388
+               default: 396
+          }
+     356: bipush        39
+     358: invokestatic  #163                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     361: goto          397
+     364: bipush        38
+     366: invokestatic  #163                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     369: goto          397
+     372: bipush        37
+     374: invokestatic  #163                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     377: goto          397
+     380: bipush        36
+     382: invokestatic  #163                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     385: goto          397
+     388: bipush        40
+     390: invokestatic  #163                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     393: goto          397
+     396: aconst_null
+     397: astore        5
+     399: aload         5
+     401: ifnull        410
+     404: aload         5
+     406: invokevirtual #278                // Method java/lang/Integer.intValue:()I
+     409: ireturn
+     410: aload         4
+     412: ldc_w         #281                // String hotbar-
+     415: invokevirtual #283                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+     418: ifeq          435
+     421: aload         4
+     423: ldc_w         #281                // String hotbar-
+     426: invokevirtual #287                // Method java/lang/String.length:()I
+     429: invokevirtual #290                // Method java/lang/String.substring:(I)Ljava/lang/String;
+     432: goto          437
+     435: aload         4
+     437: astore        6
+     439: aload         4
+     441: ldc_w         #281                // String hotbar-
+     444: invokevirtual #283                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+     447: istore        7
+     449: aload         6
+     451: invokestatic  #294                // Method java/lang/Integer.parseInt:(Ljava/lang/String;)I
+     454: istore        8
+     456: iload         7
+     458: ifeq          479
+     461: iload         8
+     463: iconst_1
+     464: if_icmplt     479
+     467: iload         8
+     469: bipush        9
+     471: if_icmpgt     479
+     474: iload         8
+     476: iconst_1
+     477: isub
+     478: ireturn
+     479: iload         7
+     481: ifne          499
+     484: iload         8
+     486: iflt          499
+     489: iload         8
+     491: bipush        40
+     493: if_icmpgt     499
+     496: iload         8
+     498: ireturn
+     499: goto          504
+     502: astore        8
+     504: aload_3
+     505: aload_1
+     506: aload_2
+     507: aload_0
+     508: invokedynamic #300,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     513: invokevirtual #304                // Method java/util/logging/Logger.warning:(Ljava/lang/String;)V
+     516: iconst_m1
+     517: ireturn
+    Exception table:
+       from    to  target type
+         449   478   502   Class java/lang/NumberFormatException
+         479   498   502   Class java/lang/NumberFormatException
+
+  java.lang.String lockedMessage();
+    Code:
+       0: aload_0
+       1: getfield      #212                // Field lockedMessage:Ljava/lang/String;
+       4: areturn
+
+  java.lang.String lockedCommand();
+    Code:
+       0: aload_0
+       1: getfield      #217                // Field lockedCommand:Ljava/lang/String;
+       4: areturn
+}

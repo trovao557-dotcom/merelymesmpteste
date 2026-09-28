@@ -1,0 +1,126 @@
+![Tiny5 presentation](documentation/tiny5-presentation.jpg)
+
+# Tiny5
+
+**Tiny5** is a family of compact 5-pixel variable fonts that capture the essence of 1980s–90s digital minimalism. Inspired by the graphing calculators and pocket gadgets of the era, they distill letterforms to their absolute essentials—proving that even at just five pixels tall, clarity, charm, and personality can thrive together.
+
+The family has two members, sharing the same letterforms, variable axes and character set:
+
+- [**Tiny5**](https://fonts.google.com/specimen/Tiny5) draws every stroke one pixel wide—the text face of the family, at home in body copy and dense readouts.
+- [**Tiny5 Duo**](https://fonts.google.com/specimen/Tiny5+Duo) doubles the vertical stems, giving the same letterforms a sturdier, more emphatic presence—ideal for headlines, labels and anywhere a little extra weight helps the text hold its own.
+
+Used together, they give you a light and a heavy voice that stay true to the pixel-perfect aesthetic.
+
+Both fonts feature six variable axes — **Weight, Width, Italic, Roundness, Bleed and Jitter** — giving you precise control over their look: from crisp geometric shapes and sharp LCD edges to the soft glow of CRT monitors and the subtle ink spread of dot-matrix printers.
+
+The family excels at evoking retro-futurism, constrained-tech nostalgia, and clean minimalism. It's especially well-suited for:
+
+- Pixel art and lo-fi games, with Tiny5 Duo for titles, headings and HUDs
+- Terminal-style interfaces and embedded systems
+- Micro-typography in UI/UX design
+- Branding with a distinct 8/16-bit or vintage electronics vibe
+
+The family provides broad language support, covering **Latin, Greek, Cyrillic and Armenian scripts** across **974 languages** and **1,771 glyphs**.
+
+For pixel-perfect results, set the font size to **increments of 6 pt (8 px)**.
+
+Both fonts are also available in [BDF](https://en.wikipedia.org/wiki/Glyph_Bitmap_Distribution_Format) format for seamless integration with the [mcu-renderer](https://github.com/Gissio/mcu-renderer), [u8g2](https://github.com/olikraus/u8g2) and [TFT_eSPI](https://github.com/Bodmer/TFT_eSPI) libraries.
+
+![Tiny5 character ROM](documentation/tiny5-sample1.jpg)
+
+![Size ramp, Tiny5](documentation/tiny5-sample2.jpg)
+
+![Departures board, Tiny5 and Tiny5 Duo](documentation/tiny5-sample3.jpg)
+
+![Variation axes, Tiny5 Duo](documentation/tiny5-sample4.jpg)
+
+![Amber CRT, Tiny5](documentation/tiny5-sample5.jpg)
+
+![9-pin printer self test, Tiny5](documentation/tiny5-sample6.jpg)
+
+## About
+
+Stefan Schmidt is an electrical engineer with graduate studies in signal processing, multimodal artistic languages and sociology. Fascinated by the interplay between the virtual and the real, his work probes the boundaries between perception and technology.
+
+Learn more at [http://www.stefanschmidtart.com](http://www.stefanschmidtart.com).
+
+## Building
+
+Fonts are built automatically by GitHub Actions — take a look in the "Actions" tab for the latest build.
+
+If you want to build fonts manually on your own computer:
+
+- `make build` will produce font files.
+- `make test` will run [Fontspector](https://fonttools.github.io/fontspector/)'s quality assurance tests.
+- `make proof` will generate HTML proof files.
+
+## Acknowledgements
+
+- Thanks to [type.today](https://type.today/en/journal/display2#tiny5httpsfontsgooglecomspecimentiny5targetblank) for reviewing Tiny5 and offering invaluable criticism.
+- Thanks to the Google Fonts team for their superb support.
+- Thanks to [Fontesk](https://fontesk.com) and [1001 Fonts](https://1001fonts.com) for their friendly support.
+
+## Changelog
+
+### 2.007
+
+- Fixed combining marks
+- Fixed duplicate overlapping pixels in composed glyphs.
+- Fixed the OS/2 WWS bit in the font metadata.
+
+### 2.006
+
+- Added missing characters.
+
+### 2.005
+
+- Replaced axis **Slant** with **Italic**.
+- Fixed font names of the **Italic** and **Medium** styles.
+
+### 2.004
+
+- Improved how pixel elements respond to the variable axes.
+- Added Armenian language support.
+
+### 2.003
+
+- Renamed bold weight to **Tiny5 Duo** variant.
+- Added axes: **Width**, **Slant** and **Jitter**.
+- Renamed axes: **Element Size** → **Weight**.
+- Fixes: latin uppercase l, latin uppercase q, latin uppercase v, latin uppercase x, latin uppercase y, latin uppercase z, latin lowercase x, comma, semicolon, double angle quotation marks, double acute, double grave, latin small sharp s, greek capital delta, greek capital xi, greek lowercase epsilon, greek lowercase phi, greek lowercase psi, greek descenders, cyrillic capital ghe, various diacritics.
+
+### 2.002
+
+- Fixes: percent sign, latin lowercase j, various cyrillic glyphs, various hooks and descenders.
+
+### 2.001
+
+- Minor fixes.
+
+### 2.000
+
+- Added variable font support with axes for: **Element Size**, **Roundness** and **Bleed**.
+- Added bold weight.
+- Added Vietnamese language support (Google Fonts Latin Vietnamese character set).
+- Added Google Fonts Latin Beyond, Latin PriAfrican, Greek Plus and Greek Pro character sets.
+- Improved build workflow with [bdf2ufo](https://github.com/Gissio/bdf2ufo).
+- Major corrections to the greek and cyrillic character sets.
+- Updated presentation image and samples.
+
+### 1.002
+
+- Added Google Fonts Greek Core, Cyrillic Core and Cyrillic Plus character sets.
+
+### 1.001
+
+- Added Google Fonts Latin Plus and Latin African character sets.
+- Major corrections.
+
+### 1.000
+
+- First release.
+
+## License
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is available with a FAQ at https://openfontlicense.org

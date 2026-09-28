@@ -1,0 +1,234 @@
+# =====================================================================
+#  NORMAL CRATE
+# =====================================================================
+#  One file = one crate. To add a crate: copy this file, rename it
+#  (the file name is the crate id), edit it, run /crates reload.
+#  Everything in here can also be edited in-game: /crates edit normal
+#
+#  HOW A PICK WORKS (no gambling!)
+#  The player right-clicks a crate block, sees every reward below,
+#  picks ONE and confirms - that pick costs `keys-per-open` keys.
+#  There is no roll and no chance anywhere.
+# =====================================================================
+
+# --- identity --------------------------------------------------------
+
+# Shown in menus and messages. Colours: &a and &#RRGGBB.
+display-name: '&#27F123&lNORMAL CRATE'
+
+# Shown under the crate's icon in the /crates overview.
+description:
+  - '&7The everyday crate.'
+  - '&7Pick what you need.'
+
+# Which key from the player database this crate spends. Keys are given
+# out with /keys give, the hourly key-all, votes or your shop. Two
+# crates may share one key-id (a seasonal re-skin keeps eating the
+# same keys).
+key-id: normal
+
+# What the key is called in menus and messages.
+key-name: 'Normal'
+
+# What one pick costs.
+keys-per-open: 1
+
+# Extra permission to open THIS crate. Empty = everybody
+# (the global open permission in settings.yml still applies).
+permission: ''
+
+# Colour used by the %color% placeholder in menus and messages.
+colour: '&#27F123'
+
+# false takes the crate offline: blocks stop reacting, menus close.
+# Keys are kept - nobody loses what they paid for.
+enabled: true
+
+# Per-player cooldown in seconds between picks from this crate.
+# 'default' uses open.default-cooldown-seconds from settings.yml.
+cooldown-seconds: default
+
+# Open the lid of the crate block while somebody is browsing
+# (works on shulker boxes, chests and barrels).
+lid-animation: true
+
+# Optional own menu title; empty uses the one from menu-crate.yml.
+menu-title: '&f'
+
+
+# --- where it stands -------------------------------------------------
+# The blocks players click, as 'World;x;y;z'. Any number of blocks can
+# serve the same crate. Easiest way: look at the block and run
+# /crates setloc normal
+#
+# The lines below are EXAMPLES - replace them with the coordinates of
+# YOUR spawn (F3 shows them; decimals are fine, they are rounded to
+# the block).
+# EXAMPLE coordinates - point these at YOUR crate blocks, or stand in
+# front of one and run /crates setloc normal instead of editing here.
+locations:
+  - 'Spawn;-3;1;-15'
+
+
+# --- what it offers --------------------------------------------------
+# Order in this file is the order in the menu. `slot:` pins a reward
+# to a menu slot (see the layout in menu-crate.yml); rewards without
+# a slot fill the free slots in order.
+#
+# Each reward:
+#   display:          what the menu shows - material, name, lore,
+#                     amount, enchantments, glow, head-texture, ...
+#   items:            what the player actually receives. A reward with
+#                     NO items/money/commands hands out exactly its
+#                     display item.
+#   money:            paid through Vault on top of the items.
+#   commands:         console commands; %player% is replaced.
+#   messages:         extra chat lines sent to the picker.
+#   broadcast:        server-wide announcement; empty = none.
+#   permission:       only holders may pick this reward. Empty = all.
+#   max-per-player:   how often ONE player may ever pick this.
+#                     -1 = unlimited.
+#   enabled:          false hides the reward without deleting it.
+rewards:
+
+  # The only reward left. A pick menu with one option still works - it just
+  # asks for a confirmation instead of a choice. Add entries back here and
+  # they reappear in the menu in file order.
+  money:
+    slot: 10
+    display:
+      material: LIME_DYE
+      glow: true
+      name: '&#71F521$50,000'
+      lore:
+        - '&fInstantly receive &#71F521$50,000 &fin-game money'
+    money: 50000
+    broadcast: '&#27F123%player% &fwon &#71F521$50,000 &ffrom the %crate%&f!'
+
+  # #00E0FF is the colour points already wear on the scoreboard and in
+  # /pointshop, so the same currency reads the same everywhere.
+  points:
+    slot: 11
+    display:
+      material: LIGHT_BLUE_DYE
+      glow: true
+      name: '&#00E0FF150 Points'
+      lore:
+        - '&fInstantly receive &#00E0FF150 Points'
+    points: 150
+
+  # These four define no payload of their own, so the crate hands over exactly
+  # the item shown in the menu - amount included. That shortcut is why there is
+  # no `items:` block repeating each one.
+  redstone:
+    slot: 12
+    display:
+      material: REDSTONE
+      amount: 64
+
+  hopper:
+    slot: 13
+    display:
+      material: HOPPER
+      amount: 16
+
+  repeater:
+    slot: 14
+    display:
+      material: REPEATER
+      amount: 16
+
+  piston:
+    slot: 15
+    display:
+      material: PISTON
+      amount: 16
+
+  # Slot 19 sits directly under the $50,000 in the row above.
+  #
+  # No lore is written here on purpose. "Upgrade / Wild Armor Trim / Emerald
+  # Material", the enchantment list and the "When on Head" block are all
+  # Minecraft's own tooltip - it draws them from the item itself. Repeating
+  # them as lore would print each line twice, and hide-attributes must stay
+  # false or the client suppresses exactly those sections.
+  helmet:
+    slot: 22
+    display:
+      material: DIAMOND_HELMET
+      hide-attributes: false
+      name: '&#71F521&lKEYALL &#71F521Helmet'
+      trim:
+        pattern: WILD
+        material: EMERALD
+      enchantments: ['PROTECTION:4', 'RESPIRATION:3', 'AQUA_AFFINITY:1', 'UNBREAKING:3']
+
+  # Slot 20, right of the helmet. Same trim and the same name shape, so the
+  # set reads as one kit.
+  chestplate:
+    slot: 23
+    display:
+      material: DIAMOND_CHESTPLATE
+      hide-attributes: false
+      name: '&#71F521&lKEYALL &#71F521Chestplate'
+      trim:
+        pattern: WILD
+        material: EMERALD
+      enchantments: ['PROTECTION:4', 'UNBREAKING:3']
+
+  leggings:
+    slot: 24
+    display:
+      material: DIAMOND_LEGGINGS
+      hide-attributes: false
+      name: '&#71F521&lKEYALL &#71F521Leggings'
+      trim:
+        pattern: WILD
+        material: EMERALD
+      enchantments: ['PROTECTION:4', 'UNBREAKING:3', 'SWIFT_SNEAK:2']
+
+  boots:
+    slot: 25
+    display:
+      material: DIAMOND_BOOTS
+      hide-attributes: false
+      name: '&#71F521&lKEYALL &#71F521Boots'
+      trim:
+        pattern: WILD
+        material: EMERALD
+      enchantments: ['PROTECTION:4', 'UNBREAKING:3', 'DEPTH_STRIDER:3', 'FEATHER_FALLING:4']
+
+  # Slot 16, right of the pistons. Diamond to match the armour set; no trim,
+  # because a sword cannot carry one.
+  sword:
+    slot: 16
+    display:
+      material: DIAMOND_SWORD
+      hide-attributes: false
+      name: '&#71F521&lKEYALL &#71F521Sword'
+      enchantments: ['SHARPNESS:5', 'UNBREAKING:3', 'LOOTING:3']
+
+  # Slot 19, directly under the $50,000.
+  spear:
+    slot: 19
+    display:
+      material: DIAMOND_SPEAR
+      hide-attributes: false
+      name: '&#71F521&lKEYALL &#71F521Spear'
+      enchantments: ['SHARPNESS:5', 'UNBREAKING:3']
+
+  axe:
+    slot: 20
+    display:
+      material: DIAMOND_AXE
+      hide-attributes: false
+      name: '&#71F521&lKEYALL &#71F521Axe'
+      enchantments: ['EFFICIENCY:5', 'UNBREAKING:3']
+
+  pickaxe:
+    slot: 21
+    display:
+      material: DIAMOND_PICKAXE
+      hide-attributes: false
+      name: '&#71F521&lKEYALL &#71F521Pickaxe'
+      enchantments: ['EFFICIENCY:5', 'FORTUNE:3', 'UNBREAKING:3']
+

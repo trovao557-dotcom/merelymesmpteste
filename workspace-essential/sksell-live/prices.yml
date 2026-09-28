@@ -1,0 +1,408 @@
+# =====================================================================
+#  SKSell - the price table
+# =====================================================================
+#  This is the file you will edit most. It answers two questions at once:
+#  what is an item worth, and which category does it belong to.
+#
+#  A category is a progression track: selling crops raises the crops
+#  multiplier and nothing else (see multipliers in settings.yml). It is
+#  also one button in /sellmulti and one page in /worth.
+#
+#  ADDING AN ITEM
+#    put  MATERIAL_NAME: price  under the items: of a category.
+#    Material names are the Minecraft ones in capitals, e.g. GOLD_INGOT.
+#    An unknown name is reported in the console on startup and skipped,
+#    so a typo costs you one item and never the whole file.
+#
+#  REMOVING AN ITEM
+#    delete the line. If auto-pricing below is on it may come back with a
+#    generic price - list it under auto-pricing.never-sell instead.
+#
+#  ADDING A CATEGORY
+#    copy a whole block, give it a new key, and pick a free menu-slot.
+#    Everything else follows automatically: the /sellmulti button, its
+#    detail page and its own multiplier track.
+#
+#  A price of 0 or less means "cannot be sold".
+# =====================================================================
+
+
+categories:
+
+  # -------------------------------------------------------------------
+  #  display-name   shown on the /sellmulti button and in chat messages
+  #  color          the category colour, used by the menus, &#RRGGBB
+  #  noun           reads as "Sell <noun> to increase your multiplier"
+  #  icon           the item shown on the /sellmulti button
+  #  menu-slot      where that button sits in the /sellmulti menu (0-26
+  #                 for the default three-row layout)
+  # -------------------------------------------------------------------
+
+  crops:
+    display-name: 'CROPS'
+    color: '&#71F521'
+    noun: 'crops'
+    icon: CARROT
+    menu-slot: 9
+    items:
+      WHEAT: 26.4
+      CARROT: 22
+      POTATO: 22
+      BEETROOT: 22
+      BAKED_POTATO: 30.8
+      SUGAR_CANE: 39.6
+      CACTUS: 33
+      MELON_SLICE: 13.2
+      MELON: 66
+      PUMPKIN: 48.4
+      COCOA_BEANS: 26.4
+      SWEET_BERRIES: 22
+      GLOW_BERRIES: 26.4
+      NETHER_WART: 55
+      CHORUS_FRUIT: 44
+      BAMBOO: 17.6
+      HAY_BLOCK: 198
+      APPLE: 26.4
+      BREAD: 35.2
+      DRIED_KELP: 26.4
+      KELP: 13.2
+      WHEAT_SEEDS: 13.2
+      BEETROOT_SEEDS: 13.2
+      PUMPKIN_SEEDS: 17.6
+      MELON_SEEDS: 17.6
+      TORCHFLOWER_SEEDS: 66
+      PITCHER_POD: 88
+
+  ores:
+    display-name: 'ORES'
+    color: '&#00FFD6'
+    noun: 'ores'
+    icon: GOLD_INGOT
+    menu-slot: 10
+    items:
+      COAL: 6
+      RAW_IRON: 45
+      IRON_INGOT: 35
+      RAW_COPPER: 8
+      COPPER_INGOT: 10
+      RAW_GOLD: 35
+      GOLD_INGOT: 40
+      DIAMOND: 30
+      EMERALD: 45
+      LAPIS_LAZULI: 8
+      REDSTONE: 5
+      QUARTZ: 6
+      AMETHYST_SHARD: 10
+      NETHERITE_SCRAP: 150
+      NETHERITE_INGOT: 700
+      ANCIENT_DEBRIS: 130
+      COAL_BLOCK: 54
+      IRON_BLOCK: 450
+      GOLD_BLOCK: 360
+      DIAMOND_BLOCK: 270
+      EMERALD_BLOCK: 405
+      REDSTONE_BLOCK: 45
+      LAPIS_BLOCK: 72
+      NETHERITE_BLOCK: 6300
+      GOLD_NUGGET: 4
+      IRON_NUGGET: 5
+
+  mobs:
+    display-name: 'MOBS'
+    color: '&#FF2121'
+    noun: 'mob drops'
+    icon: SPIDER_EYE
+    menu-slot: 11
+    items:
+      ROTTEN_FLESH: 7
+      BONE: 3
+      ARROW: 8
+      STRING: 6
+      SPIDER_EYE: 8
+      GUNPOWDER: 16
+      ENDER_PEARL: 45
+      BLAZE_ROD: 28
+      BLAZE_POWDER: 18
+      GHAST_TEAR: 50
+      SLIME_BALL: 14
+      MAGMA_CREAM: 15
+      PHANTOM_MEMBRANE: 20
+      LEATHER: 10
+      FEATHER: 5
+      EGG: 4
+      INK_SAC: 6
+      GLOW_INK_SAC: 12
+      RABBIT_HIDE: 5
+      RABBIT_FOOT: 25
+      SHULKER_SHELL: 120
+      WITHER_SKELETON_SKULL: 300
+      TOTEM_OF_UNDYING: 200
+      DRAGON_BREATH: 80
+      HONEYCOMB: 10
+      HONEY_BOTTLE: 12
+      PORKCHOP: 5
+      COOKED_PORKCHOP: 7
+      BEEF: 6
+      COOKED_BEEF: 8
+      CHICKEN: 5
+      COOKED_CHICKEN: 7
+      MUTTON: 5
+      RABBIT: 5
+
+  natural:
+    display-name: 'NATURAL'
+    color: '&#9FFF00'
+    noun: 'natural items'
+    icon: FERN
+    menu-slot: 12
+    items:
+      OAK_LOG: 16
+      SPRUCE_LOG: 16
+      BIRCH_LOG: 16
+      JUNGLE_LOG: 16
+      ACACIA_LOG: 16
+      DARK_OAK_LOG: 16
+      MANGROVE_LOG: 16
+      CHERRY_LOG: 16
+      CRIMSON_STEM: 16
+      WARPED_STEM: 16
+      SAND: 4
+      DIRT: 2
+      GRAVEL: 4
+      FLINT: 8
+      CLAY_BALL: 6
+      SNOWBALL: 2
+      ICE: 6
+      OBSIDIAN: 15
+      KELP_PLANT: 8
+      SEA_PICKLE: 15
+      LILY_PAD: 6
+      VINE: 6
+      MOSS_BLOCK: 12
+      GLOW_LICHEN: 6
+      RED_MUSHROOM: 6
+      BROWN_MUSHROOM: 6
+
+  armor:
+    display-name: 'ARMOR &#00B5FF& &lTOOLS'
+    color: '&#00B5FF'
+    noun: 'equipment'
+    icon: DIAMOND_CHESTPLATE
+    menu-slot: 13
+    items:
+      DIAMOND_SWORD: 100
+      DIAMOND_PICKAXE: 150
+      DIAMOND_AXE: 150
+      DIAMOND_SHOVEL: 80
+      DIAMOND_HOE: 100
+      DIAMOND_HELMET: 200
+      DIAMOND_CHESTPLATE: 350
+      DIAMOND_LEGGINGS: 300
+      DIAMOND_BOOTS: 180
+      IRON_SWORD: 60
+      IRON_PICKAXE: 100
+      IRON_AXE: 100
+      IRON_SHOVEL: 50
+      IRON_HELMET: 120
+      IRON_CHESTPLATE: 200
+      IRON_LEGGINGS: 180
+      IRON_BOOTS: 100
+      GOLDEN_APPLE: 80
+      ENCHANTED_GOLDEN_APPLE: 1500
+      BOW: 20
+      CROSSBOW: 25
+      TRIDENT: 350
+      SHIELD: 40
+      ELYTRA: 1200
+      MACE: 100
+      NETHERITE_SWORD: 800
+      NETHERITE_PICKAXE: 1000
+
+  fish:
+    display-name: 'FISH'
+    color: '&#55C8FF'
+    noun: 'fish'
+    icon: PUFFERFISH
+    menu-slot: 14
+    items:
+      COD: 4
+      SALMON: 5
+      TROPICAL_FISH: 10
+      PUFFERFISH: 8
+      COOKED_COD: 6
+      COOKED_SALMON: 7
+      NAUTILUS_SHELL: 50
+      HEART_OF_THE_SEA: 1000
+      PRISMARINE_SHARD: 8
+      PRISMARINE_CRYSTALS: 10
+      TURTLE_SCUTE: 40
+
+  books:
+    display-name: 'ENCHANTED BOOKS'
+    color: '&#FF00F8'
+    noun: 'books'
+    icon: BOOK
+    menu-slot: 15
+    items:
+      BOOK: 5
+      ENCHANTED_BOOK: 50
+      WRITABLE_BOOK: 10
+      PAPER: 2
+      EXPERIENCE_BOTTLE: 15
+
+  potions:
+    display-name: 'POTIONS'
+    color: '&#FF79F5'
+    noun: 'potions'
+    icon: BREWING_STAND
+    menu-slot: 16
+    items:
+      POTION: 12
+      SPLASH_POTION: 15
+      LINGERING_POTION: 20
+      GLASS_BOTTLE: 2
+      GLOWSTONE_DUST: 6
+      FERMENTED_SPIDER_EYE: 8
+      BREWING_STAND: 25
+
+  blocks:
+    display-name: 'BLOCKS'
+    color: '&#AEADAD'
+    noun: 'blocks'
+    icon: STONE
+    menu-slot: 17
+    items:
+      COBBLESTONE: 1
+      STONE: 2
+      DEEPSLATE: 2
+      COBBLED_DEEPSLATE: 1
+      ANDESITE: 2
+      DIORITE: 2
+      GRANITE: 2
+      NETHERRACK: 1
+      END_STONE: 3
+      SANDSTONE: 3
+      GLASS: 3
+      BRICKS: 6
+      STONE_BRICKS: 3
+      QUARTZ_BLOCK: 25
+      GLOWSTONE: 20
+      SEA_LANTERN: 25
+      PRISMARINE: 10
+      PURPUR_BLOCK: 10
+      OAK_PLANKS: 4
+      SPRUCE_PLANKS: 4
+      BIRCH_PLANKS: 4
+      JUNGLE_PLANKS: 4
+      ACACIA_PLANKS: 4
+      DARK_OAK_PLANKS: 4
+      WHITE_WOOL: 4
+      TNT: 30
+      SPONGE: 100
+      WET_SPONGE: 100
+      SHROOMLIGHT: 12
+      BLACKSTONE: 2
+      BASALT: 2
+      CALCITE: 2
+      TUFF: 2
+      AMETHYST_BLOCK: 40
+
+
+# =====================================================================
+#  Automatic pricing
+# =====================================================================
+#  Minecraft has well over a thousand items and the list above covers a
+#  couple of hundred. Everything left over is priced here by keyword, so
+#  a player who brings you a stack of pink candles is not told "this
+#  cannot be sold" for no reason.
+#
+#  Turn this off and only the items listed above are sellable - which is
+#  the right choice if you want to control the economy item by item.
+# =====================================================================
+auto-pricing:
+
+  enabled: true
+
+  # Price for an item that matches no rule below.
+  default-price: 1
+
+  # Category an item lands in when its rule names none.
+  # Must be one of the category keys above.
+  default-category: natural
+
+  # Items whose name contains any of these are never given a price.
+  # This is the "not obtainable in survival" list: command blocks, spawn
+  # eggs, barriers and friends. Selling those would let anyone with
+  # creative access print money.
+  # Matching is on the material name in lower case with underscores as
+  # spaces, so 'spawn egg' matches ZOMBIE_SPAWN_EGG.
+  never-sell:
+    - 'spawn egg'
+    - 'command block'
+    - 'structure'
+    - 'jigsaw'
+    - 'barrier'
+    - 'bedrock'
+    - 'debug'
+    - 'knowledge book'
+    - 'end portal frame'
+    - 'reinforced deepslate'
+    - 'budding amethyst'
+    - 'infested'
+    - 'farmland'
+    - 'dirt path'
+    - 'petrified'
+    - 'player head'
+    - 'spawner'
+    - 'trial key'
+    - 'vault'
+    - 'light'
+
+  # The rules, checked top to bottom - the FIRST match wins, so put the
+  # expensive keywords first. 'netherite' before 'iron' matters, because
+  # NETHERITE_UPGRADE_SMITHING_TEMPLATE contains neither, while
+  # NETHERITE_AXE contains 'netherite' only.
+  #
+  #   contains:   any of these words in the material name
+  #   price:      what one item is worth
+  #   category:   which multiplier track it feeds
+  rules:
+    - contains: ['netherite']
+      price: 500
+      category: ores
+    - contains: ['diamond']
+      price: 30
+      category: ores
+    - contains: ['emerald']
+      price: 45
+      category: ores
+    - contains: ['smithing template']
+      price: 150
+      category: armor
+    - contains: ['music disc']
+      price: 40
+      category: blocks
+    - contains: ['shulker']
+      price: 100
+      category: mobs
+    - contains: ['head', 'skull']
+      price: 150
+      category: mobs
+    - contains: ['gold']
+      price: 35
+      category: ores
+    - contains: ['iron']
+      price: 45
+      category: ores
+    - contains: ['copper']
+      price: 8
+      category: ores
+    - contains: ['wool', 'banner', 'bed']
+      price: 4
+      category: blocks
+    - contains: ['coral', 'candle']
+      price: 4
+      category: natural
+    - contains: ['concrete', 'terracotta', 'glass', 'sapling', 'seeds', 'boat', 'sign', 'door', 'fence', 'stairs', 'slab', 'carpet', 'dye']
+      price: 3
+      category: blocks

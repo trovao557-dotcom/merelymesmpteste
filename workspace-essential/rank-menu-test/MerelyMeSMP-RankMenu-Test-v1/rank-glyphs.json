@@ -1,0 +1,93 @@
+[
+  {
+    "rank": "player",
+    "label": "PLAYER",
+    "color": "#E8E8E8",
+    "character": "",
+    "codepoint": "U+E001"
+  },
+  {
+    "rank": "member",
+    "label": "MEMBER",
+    "color": "#D4D4D4",
+    "character": "",
+    "codepoint": "U+E002"
+  },
+  {
+    "rank": "booster",
+    "label": "BOOSTER",
+    "color": "#F47FFF",
+    "character": "",
+    "codepoint": "U+E003"
+  },
+  {
+    "rank": "knight",
+    "label": "KNIGHT",
+    "color": "#4CFF3A",
+    "character": "",
+    "codepoint": "U+E004"
+  },
+  {
+    "rank": "warrior",
+    "label": "WARRIOR",
+    "color": "#FF3B3B",
+    "character": "",
+    "codepoint": "U+E005"
+  },
+  {
+    "rank": "macer",
+    "label": "MACER",
+    "color": "#2ECBFF",
+    "character": "",
+    "codepoint": "U+E006"
+  },
+  {
+    "rank": "prime",
+    "label": "PRIME",
+    "color": "#FFD400",
+    "character": "",
+    "codepoint": "U+E007"
+  },
+  {
+    "rank": "clipper",
+    "label": "CLIPPER",
+    "color": "#00F0FF",
+    "character": "",
+    "codepoint": "U+E008"
+  },
+  {
+    "rank": "media",
+    "label": "MEDIA",
+    "color": "#E14AFF",
+    "character": "",
+    "codepoint": "U+E009"
+  },
+  {
+    "rank": "helper",
+    "label": "HELPER",
+    "color": "#FF9A1F",
+    "character": "",
+    "codepoint": "U+E00A"
+  },
+  {
+    "rank": "mod",
+    "label": "MOD",
+    "color": "#3D9BFF",
+    "character": "",
+    "codepoint": "U+E00B"
+  },
+  {
+    "rank": "admin",
+    "label": "ADMIN",
+    "color": "#A855FF",
+    "character": "",
+    "codepoint": "U+E00C"
+  },
+  {
+    "rank": "owner",
+    "label": "OWNER",
+    "color": "#FF2A2A",
+    "character": "",
+    "codepoint": "U+E00D"
+  }
+]

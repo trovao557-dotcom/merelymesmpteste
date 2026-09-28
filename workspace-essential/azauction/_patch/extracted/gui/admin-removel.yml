@@ -1,0 +1,62 @@
+title: "&0Removing %item%"
+# a gui can have 1-6 rows
+rows: 1
+# valid values: CHEST, WORKBENCH, HOPPER, DISPENSER, BREWING
+type: CHEST
+
+# ----- ITEMS -----
+
+remove-1:
+  slot: [0, 1]
+  material: "RED_STAINED_GLASS_PANE"
+  name: "&#FF3333&lRemove Silently"
+  lore:
+    - " "
+    - " &#FF0000❌ &#FFAAAARemoves the item"
+    - " &#FF0000❌ &#FFAAAADoes not notify the player"
+    - " "
+    - "&#FF3333&lClick &#DDDDDD» &#FFAAAARemove Item"
+  actions:
+    - "[SOUND] ui.button.click|1|1"
+
+remove-2:
+  slot: [2, 3]
+  material: "ORANGE_STAINED_GLASS_PANE"
+  name: "&#FF3333&lRemove and Notify"
+  lore:
+    - " "
+    - " &#FF0000❌ &#FFAAAARemoves the item"
+    - " &#00FF00✔ &#AAFFAANotifies the player"
+    - " "
+    - "&#FF3333&lClick &#DDDDDD» &#FFAAAARemove Item"
+  actions:
+    - "[SOUND] ui.button.click|1|1"
+
+item:
+  slot: 4
+
+remove-3:
+  slot: [5, 6]
+  material: "LIME_STAINED_GLASS_PANE"
+  name: "&#33FF33&lCancel Silently"
+  lore:
+    - " "
+    - " &#00FF00✔ &#AAFFAAGives back the item"
+    - " &#FF0000❌ &#FFAAAADoes not notify the player"
+    - " "
+    - "&#33FF33&lClick &#DDDDDD» &#AAFFAARemove Item"
+  actions:
+    - "[SOUND] ui.button.click|1|1"
+
+remove-4:
+  slot: [7, 8]
+  material: "GREEN_STAINED_GLASS_PANE"
+  name: "&#33FF33&lCancel and Notify"
+  lore:
+    - " "
+    - " &#00FF00✔ &#AAFFAAGives back the item"
+    - " &#00FF00✔ &#AAFFAANotifies the player"
+    - " "
+    - "&#33FF33&lClick &#DDDDDD» &#AAFFAARemove Item"
+  actions:
+    - "[SOUND] ui.button.click|1|1"

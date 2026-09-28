@@ -1,0 +1,44 @@
+{
+  "note": "Do not store API keys here",
+  "commandHint": "/tiplink",
+  "botInvite": "client_id=1023897726301249628",
+  "products": [
+    {
+      "id": "0",
+      "title": "Copy PRIME KIT Product 19,99 € 50"
+    },
+    {
+      "id": "1",
+      "title": "Copy MACER RANK Product 14,99 € 49"
+    },
+    {
+      "id": "2",
+      "title": "Copy WARRIOR rank Product 8,99 € 75"
+    },
+    {
+      "id": "3",
+      "title": "Copy KNIGHT RANK Product 4,99 € 100"
+    },
+    {
+      "id": "4",
+      "title": "Copy +35000 Points (+5k Points) Product 14,96 € 1000"
+    },
+    {
+      "id": "5",
+      "title": "Copy +20000 Points - Copy Product 9,97 € 1000"
+    },
+    {
+      "id": "6",
+      "title": "Copy +10000 Points Product 4,99 € 1000"
+    },
+    {
+      "id": "7",
+      "title": "Copy +2000 Points Product 1,50 € 1000"
+    },
+    {
+      "id": "8",
+      "title": "Copy KeyAll To Everyone Product 1,00 € 999"
+    }
+  ],
+  "modalText": "CONNECT YOUR DISCORD SERVER\n\n1) Invite Tip4serv bot \n\n2) On your Discord server, drag Tip4Serv at the top of the roles list.  More info\n\n3) Add the bot in the channels you want the bot to write to.  More info\n\n4) Run this command in any server channel:\n\n Copy\n\nClose"
+}

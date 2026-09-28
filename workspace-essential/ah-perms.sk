@@ -1,0 +1,19 @@
+# SKAuction — help + setup
+
+options:
+	prefix: &6&lAH &8» &7
+
+command /ahhelp:
+	aliases: /ahajuda
+	trigger:
+		send "{@prefix}&f/ah &7- ver leilões" to player
+		send "{@prefix}&fClica &bFILTER/ENCHANT &7no /ah &7- escolhe Sharpness, Mending..." to player
+		send "{@prefix}&f/ah enchant sharpness &7- filtrar por encantamento" to player
+		send "{@prefix}&f/ahenchants &7- menu de encantamentos" to player
+		send "{@prefix}&f/ah clear &7- remover filtro" to player
+
+command /ahsetup:
+	permission: op
+	trigger:
+		execute console command "lp group default permission set skauction.use true"
+		send "{@prefix}&aSKAuction OK." to player

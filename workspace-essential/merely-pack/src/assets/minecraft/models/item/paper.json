@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "item/paper"
+  },
+  "overrides": [
+    { "predicate": { "custom_model_data": 1001 }, "model": "merelyme:item/rank_member" },
+    { "predicate": { "custom_model_data": 1002 }, "model": "merelyme:item/rank_knight" },
+    { "predicate": { "custom_model_data": 1003 }, "model": "merelyme:item/rank_warrior" },
+    { "predicate": { "custom_model_data": 1004 }, "model": "merelyme:item/rank_macer" },
+    { "predicate": { "custom_model_data": 1005 }, "model": "merelyme:item/rank_prime" },
+    { "predicate": { "custom_model_data": 1101 }, "model": "merelyme:item/skill_sky_anchor" }
+  ]
+}

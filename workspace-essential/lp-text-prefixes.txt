@@ -1,0 +1,13 @@
+lp group default meta setprefix 5 "&#757575&lPLA&#BDBDBD&lYER &f"
+lp group member meta setprefix 10 "&#5C5C5C&lMEM&#9E9E9E&lBER &f"
+lp group knight meta setprefix 20 "&#2EAD1F&lKNI&#5FE84F&lGHT &f"
+lp group warrior meta setprefix 30 "&#D32F2F&lWAR&#FF6659&lRIOR &f"
+lp group macer meta setprefix 40 "&#0277BD&lMAC&#4FC3F7&lER &f"
+lp group prime meta setprefix 50 "&#F57F17&lPRI&#FFCA28&lME &f"
+lp group clipper meta setprefix 55 "&#00838F&lCLI&#26C6DA&lPPER &f"
+lp group media meta setprefix 60 "&#7B1FA2&lMED&#CE93D8&lIA &f"
+lp group helper meta setprefix 80 "&#EF6C00&lHEL&#FFB74D&lPER &f"
+lp group mod meta setprefix 90 "&#1565C0&lMO&#64B5F6&lD &f"
+lp group admin meta setprefix 95 "&#4527A0&lADM&#9575CD&lIN &f"
+lp group owner meta setprefix 100 "&#B71C1C&lOWN&#EF5350&lER &f"
+tab reload

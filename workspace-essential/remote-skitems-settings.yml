@@ -1,0 +1,120 @@
+# =====================================================================
+#  SKItems - the Special Crate tools
+# =====================================================================
+#  Five tools, recognised by their name:
+#    drill / shovel  3x3 mining, in the plane you are looking at
+#    axe             fells a whole trunk
+#    sponge          soaks up water and lava around you
+#    rocket          an elytra rocket that is not used up
+#    bucket          a water bucket that never empties
+#
+#  The Sell Axe is NOT here - it lives in SKSell, because it needs the
+#  price table to know what a chest is worth.
+#
+#  WHY THE NAME AND NOT A HIDDEN TAG
+#  Persistent data would be cleaner, but it would have to be written onto
+#  every copy that already exists - including the ones sitting in a chest
+#  nobody has opened for months. A name check keeps a tool somebody got
+#  last season working today.
+#
+#  THE USE COUNTER IS THE LORE
+#  It is where the player reads it anyway, and it travels with the item
+#  through chests, deaths and restarts. A counter kept beside the item
+#  can drift apart from it; this one cannot, because it is the item.
+# =====================================================================
+
+# Language of everything this plugin says: EN or DE.
+#
+# EN is the default and reads this file. DE lays the translation in
+# lang/de/ over it - the file you are reading stays English and stays the
+# reference. A line the translation does not have falls back to English,
+# so nothing breaks if you add a setting we have not translated yet.
+#
+# The translated files are yours to edit as well, same as this one.
+language: EN
+
+
+# ---------------------------------------------------------------------
+#  The use counter
+# ---------------------------------------------------------------------
+uses:
+
+  # How the counter line is recognised in the lore. %left% is the number.
+  line: '%left% uses'
+
+  # How it is written back. Same wording, with the colour.
+  format: '&7%left% uses'
+
+
+# ---------------------------------------------------------------------
+#  Where the tools do nothing
+# ---------------------------------------------------------------------
+#  The spawn island. A drill that works there would take the plaza apart
+#  three blocks at a time.
+blocked-worlds:
+  - 'Spawn'
+
+
+# ---------------------------------------------------------------------
+#  The tools
+# ---------------------------------------------------------------------
+tools:
+
+  drill:
+    enabled: true
+    name-contains: ['SPECIAL DRILL', 'SPECIAL SHOVEL']
+    # Never broken by the 3x3, whatever the tool could normally take.
+    protected-blocks: ['BEDROCK', 'BARRIER', 'END_PORTAL_FRAME', 'REINFORCED_DEEPSLATE']
+
+  axe:
+    enabled: true
+    name-contains: ['SPECIAL AXE']
+    protected-blocks: ['BEDROCK', 'BARRIER']
+
+    # How many logs one swing may take.
+    #
+    # Not a nicety: a jungle tree next to a dark oak forest is one
+    # connected mass of logs, and without a limit a single swing walks
+    # through the whole chunk.
+    max-logs: 100
+
+  sponge:
+    enabled: true
+    name-contains: ['SPECIAL SPONGE']
+    radius: 4
+    cooldown-millis: 1000
+    absorbs: ['WATER', 'LAVA', 'KELP', 'KELP_PLANT', 'SEAGRASS', 'TALL_SEAGRASS']
+
+  rocket:
+    enabled: false
+    name-contains: ['SPECIAL ROCKET']
+
+  bucket:
+    enabled: true
+    name-contains: ['SPECIAL BUCKET']
+
+
+# ---------------------------------------------------------------------
+#  Sounds
+# ---------------------------------------------------------------------
+sounds:
+  broke:
+    sound: 'entity.item.break'
+    volume: 1.0
+    pitch: 1.0
+  tree:
+    sound: 'block.wood.break'
+    volume: 1.0
+    pitch: 0.8
+  sponge:
+    sound: 'item.bucket.fill'
+    volume: 1.0
+    pitch: 0.8
+
+
+# ---------------------------------------------------------------------
+#  Messages
+# ---------------------------------------------------------------------
+#  The tools say nothing - they are felt, not read. The entry is here so
+#  a server that wants a line has somewhere to put one.
+messages: {}

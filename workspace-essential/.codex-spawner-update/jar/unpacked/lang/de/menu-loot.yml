@@ -1,0 +1,80 @@
+# =====================================================================
+#  SKSpawners - deutsche Texte des Lagermenues
+# =====================================================================
+#  Nur die sichtbaren Zeilen stehen hier. Aufbau, Materialien und Slots
+#  bleiben in der menu-loot.yml - wer das Menue umbaut, macht das
+#  einmal dort und nicht in jeder Sprache neu.
+# =====================================================================
+
+menu:
+  title: '%entity%-Spawner-Lager'
+
+items:
+
+  go_back:
+    name: '&#FF2121&lZURUECK'
+    lore:
+      - '&7Navigation'
+      - '&f'
+      - '&#FF2121Information:'
+      - '&fHier klicken, um ins'
+      - '&fHauptmenue zu kommen.'
+      - '&e'
+      - '&#FFD900&l▶ &#FFD900&l&nKLICK&#FFD900 fuer Zurueck'
+
+  previous:
+    name: '&#FF2121&lVORHERIGE SEITE'
+    lore:
+      - '&7Navigation'
+      - '&f'
+      - '&#FF2121Information:'
+      - '&fSeite &#FF2121%page%&f von &#FF2121%max_page%'
+      - '&e'
+      - '&#FFD900&l▶ &#FFD900&l&nKLICK&#FFD900 zum Wechseln'
+
+  next:
+    name: '&#71F521&lNAECHSTE SEITE'
+    lore:
+      - '&7Navigation'
+      - '&f'
+      - '&#71F521Information:'
+      - '&fSeite &#71F521%page%&f von &#71F521%max_page%'
+      - '&e'
+      - '&#FFD900&l▶ &#FFD900&l&nKLICK&#FFD900 zum Wechseln'
+
+  drop_all:
+    name: '&#00FFD6&lALLES ABLEGEN'
+    lore:
+      - '&7Beschreibung'
+      - '&f'
+      - '&#00FFD6Information:'
+      - '&fAlles vor deinen Fuessen'
+      - '&fauf den Boden legen.'
+      - '&e'
+      - '&#00FFD6🏹 &fAlle Gegenstaende: &#00FFD6%storage_amount%'
+      - '&a'
+      - '&#FFD900&l▶ &#FFD900&l&nKLICK&#FFD900 zum Ablegen'
+
+  sell_all:
+    name: '&#71F521&lALLES VERKAUFEN'
+    lore:
+      - '&7Beschreibung'
+      - '&f'
+      - '&#71F521Information:'
+      - '&fAlles verkaufen, was gerade'
+      - '&fim Spawner liegt.'
+      - '&e'
+      - '&#6BFF00$ &fVerkaufswert: &#6BFF00$%storage_price%'
+      - '&a'
+      - '&#FFD900&l▶ &#FFD900&l&nKLICK&#FFD900 zum Verkaufen'
+
+  take_all:
+    name: '&#FFD900&lALLES NEHMEN'
+    lore:
+      - '&7Beschreibung'
+      - '&f'
+      - '&#FFD900Information:'
+      - '&fSo viel nehmen, wie in dein'
+      - '&fInventar passt.'
+      - '&e'
+      - '&#FFD900&l▶ &#FFD900&l&nKLICK&#FFD900 zum Nehmen'

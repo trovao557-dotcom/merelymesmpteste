@@ -1,0 +1,35 @@
+title: "&0Buying %item%"
+# a gui can have 1-6 rows
+rows: 1
+# valid values: CHEST, WORKBENCH, HOPPER, DISPENSER, BREWING
+type: CHEST
+
+# ----- ITEMS -----
+
+confirm:
+  slot: [0, 1, 2, 3]
+  material: "LIME_STAINED_GLASS_PANE"
+  name: "&#33FF33&lᴄᴏɴғɪʀᴍ"
+  lore:
+    - " "
+    - " &fAre you sure that you want to purchase the item?"
+    - " &fThis action is irreversible!"
+    - " "
+    - "&#33FF33&lClick &#DDDDDD» &#AAFFAAPurchase Item"
+  actions:
+    - "[SOUND] ui.button.click|1|1"
+
+item:
+  slot: 4
+
+cancel:
+  slot: [5, 6, 7, 8]
+  material: "RED_STAINED_GLASS_PANE"
+  name: "&#FF3333&lᴄᴀɴᴄᴇʟ"
+  lore:
+    - " "
+    - " &fClick here to go back to the auction menu!"
+    - " "
+    - "&#FF3333&lClick &#DDDDDD» &#FFAAAACancel Purchase"
+  actions:
+    - "[SOUND] ui.button.click|1|1"

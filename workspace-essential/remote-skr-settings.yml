@@ -1,0 +1,748 @@
+# =====================================================================
+#  Random Teleport - behaviour
+# =====================================================================
+#  The menu layout lives in menu-rtp.yml. Reload both with /skrtp reload.
+#
+#  HOW THE SEARCH WORKS, AND WHY IT MATTERS FOR YOUR TPS
+#  Finding a safe spot far from spawn means looking at terrain that does
+#  not exist yet, and creating that terrain is the single most expensive
+#  thing a Minecraft server does. This plugin therefore never searches
+#  while a player is waiting. Each world keeps a small stock of
+#  destinations ("the pool") that is topped up a chunk or two at a time
+#  in the background; /rtp takes one off the top and teleports instantly.
+#
+#  If you only ever change two things in this file, make them
+#  `worlds.<name>.radius` and `pool.size`.
+# =====================================================================
+
+
+# Shown in front of every message below. Blank it to have none.
+prefix: '&#9FFF00&lTELEPORT &#9B9B9B» '
+
+# Permission needed for /rtp and the menu at all.
+# Set it to something nobody has to close the feature down temporarily
+# without removing the jar.
+use-permission: skrtp.use
+
+
+# ---------------------------------------------------------------------
+#  Countdown before the teleport
+# ---------------------------------------------------------------------
+#  The delay is what stops /rtp being an escape button in a fight. Set
+#  `seconds: 0` to teleport instantly.
+warmup:
+  
+  # How long the player has to stand still.
+  seconds: 5
+  
+  # How often the countdown is checked, in ticks (20 ticks = 1 second).
+  # This is also how quickly a player who runs away notices the cancel.
+  # Lower = snappier, higher = very slightly cheaper. There is no reason
+  # to go below 2 or above 10.
+  check-interval-ticks: 4
+  
+  # Cancel when the player moves away from where they started.
+  cancel-on-move: true
+  
+  # How far they may drift before it counts as moving, in blocks.
+  # 0.7 tolerates turning on the spot and standing on a boat or a
+  # slime block; below about 0.3 players get cancelled by their own
+  # idle animation.
+  move-distance: 0.7
+  
+  # Cancel when the player takes any damage. This is the setting that
+  # stops /rtp from being a combat escape - leave it on for a PvP server.
+  cancel-on-damage: true
+  
+  # Players with this permission skip the countdown entirely.
+  bypass-permission: skrtp.bypass-warmup
+
+
+# ---------------------------------------------------------------------
+#  Cooldown between teleports
+# ---------------------------------------------------------------------
+#  The old script had none at all, which let a single player empty the
+#  destination pool - and generate a new chunk for every attempt - as
+#  fast as they could type. This is the setting that protects your disk.
+cooldown:
+  
+  # Seconds a player must wait after a successful teleport.
+  # Only successful teleports start it: a cancelled countdown or a failed
+  # search costs the player nothing.
+  # 0 disables the cooldown.
+  seconds: 60
+  
+  # Players with this permission are never on cooldown.
+  bypass-permission: skrtp.bypass-cooldown
+  
+  # false: one shared cooldown for all worlds (a player who just went to
+  #        the Nether also waits before going to the End).
+  # true:  a separate cooldown per world. More generous, and it roughly
+  #        multiplies your chunk generation by the number of worlds.
+  per-world: false
+
+
+# ---------------------------------------------------------------------
+#  Arrival
+# ---------------------------------------------------------------------
+teleport:
+  
+  # How many destinations to try before giving up.
+  # A pooled spot is checked once more right before use, because the
+  # terrain may have changed since it was found. Each rejected spot costs
+  # one more attempt from the pool.
+  max-retries: 10
+  
+  # Clear accumulated fall damage on arrival. Players who type /rtp while
+  # falling would otherwise land and immediately die.
+  reset-fall-distance: true
+  
+  # Seconds of damage immunity after arriving, and what it protects
+  # against. Keep the list narrow: this is meant to cover the landing
+  # itself, not to hand out a few seconds of invincibility in the wild.
+  # Set seconds to 0 to switch it off.
+  # Valid names are Bukkit damage causes, e.g.
+  #   FALL, SUFFOCATION, FIRE, FIRE_TICK, LAVA, HOT_FLOOR, DROWNING
+  protection-seconds: 10
+  protection-causes:
+  - FALL
+  - SUFFOCATION
+  - FIRE
+  - FIRE_TICK
+  - LAVA
+  - HOT_FLOOR
+
+
+# ---------------------------------------------------------------------
+#  The menu
+# ---------------------------------------------------------------------
+menu:
+  
+  # false: /rtp without an argument teleports straight to the world named
+  #        below instead of opening the menu.
+  enabled: true
+  
+  # Used when the menu is off and the player gave no world.
+  # Empty = the first entry under `worlds` further down.
+  fallback-world: overworld
+
+
+# ---------------------------------------------------------------------
+#  The duel queue  -  /rtpqueue
+# ---------------------------------------------------------------------
+#  Players line up per world; as soon as enough of them are waiting they
+#  are all teleported to the SAME random spot to fight.
+#
+#  The spot comes out of the same pre-filled pool /rtp uses, so a match
+#  costs no terrain search at all - the countdown below is spent waiting
+#  for a clock, not for a chunk generator. Nothing here changes how much
+#  world your server generates; that is `pool` and `worlds.*.radius`.
+queue:
+  
+  # false switches the whole feature off: the commands answer with
+  # `queue-disabled` and the button on the /rtp menu stops working.
+  enabled: true
+  
+  # Header in front of every queue message below. It replaces the
+  # plugin-wide `prefix` at the top of this file, because the queue is a
+  # different feature and players should be able to tell its messages
+  # apart at a glance. Blank it for no header at all.
+  prefix: '&#FFD900&lRTPQUEUE &#9B9B9B» '
+  
+  # Permission needed to join a queue. Per-world permissions from
+  # `worlds.<name>.permission` apply on top of this one.
+  permission: skrtp.queue
+  
+  # How many players a match needs. 2 is a duel; raise it for a small
+  # free-for-all - every one of them lands on the same block.
+  # Below 2 is meaningless (that is what /rtp is for) and is clamped.
+  required-players: 2
+  
+  # Seconds between "opponent found" and the teleport. This is the window
+  # in which players can put their armour on. 0 teleports immediately.
+  countdown-seconds: 3
+  
+  # How many pooled spots to try before giving up on a match.
+  # Each pooled spot is re-checked against the live world first, because
+  # somebody may have poured lava there since it was found.
+  destination-retries: 3
+  
+  # Clear accumulated fall damage on arrival, so a player who queued
+  # while falling does not lose the duel to the landing.
+  reset-fall-distance: true
+  
+  # Deliberately NOT here: the arrival damage immunity /rtp grants. Two
+  # players who land in the same block and cannot be hurt for five
+  # seconds is not a duel, it is a staring contest.
+
+    # Seconds a player must wait after a finished match before queueing
+  # again. 0 disables it. The queue is largely self-limiting - it takes
+  # an opponent to get anywhere - so 0 is a fine default.
+  join-cooldown-seconds: 0
+  join-cooldown-bypass-permission: skrtp.queue.bypass-cooldown
+  
+  # true lets a player use /leavequeue during the countdown, which is a
+  # free escape from a duel they no longer like the look of.
+  # false (default) locks them in once an opponent has been found.
+  allow-leave-during-countdown: false
+  
+  # A match falls apart when someone logs out during the countdown.
+  # true puts the remaining players back in the queue so they keep their
+  # place; false drops them out entirely.
+  requeue-on-abort: true
+  
+  # The same when no safe spot could be found at all - rare, and usually
+  # means the pool is still filling right after a restart.
+  requeue-on-failed-destination: false
+  
+  # Shown as %keep_inventory% in the menus. This is a LABEL ONLY: the
+  # plugin does not touch your keepInventory gamerule or anybody's
+  # inventory. Set it to whatever your server actually does, e.g.
+  # '&#71F521On' if you run keepInventory true.
+  keep-inventory-hint: '&#FF2121Off'
+  
+  # How often countdowns are advanced, in ticks (20 ticks = 1 second).
+  # There is no reason to go below 2 or above 10.
+  tick-interval-ticks: 5
+  
+  # How often the "waiting for a player" action bar is refreshed, in
+  # ticks. The bar fades after about three seconds, so anything above 60
+  # makes it blink.
+  actionbar-interval-ticks: 20
+  
+  menu:
+    # false: /rtpqueue without an argument joins the queue of
+    # `menu.fallback-world` above instead of opening the menu.
+    enabled: true
+  
+  # The title flashed on screen when a player joins a queue.
+  # Blank both messages.queue-title and messages.queue-subtitle to
+  # switch it off; these are only the timings, in ticks.
+  title:
+    fade-in-ticks: 5
+    stay-ticks: 40
+    fade-out-ticks: 10
+  
+  # The server-wide "somebody is looking for a fight" announcement.
+  # Players switch it off for themselves with /rtpqueuetoggle, and that
+  # choice is remembered across restarts.
+  broadcast:
+    
+    enabled: true
+    
+    # true: announce only when a queue goes from empty to one waiting
+    #       player, which is the moment an opponent is actually needed.
+    # false: announce every single join. Louder, and easy to abuse.
+    only-when-first: true
+    
+    # false also sends the announcement to the player who joined. They
+    # already got their own "you joined" line, so true is quieter.
+    exclude-joiner: true
+    
+    # Only players with this permission see the announcement.
+    # Empty = everyone (minus those who used /rtpqueuetoggle).
+    receiver-permission: ''
+    
+    # Minimum seconds between two announcements caused by the SAME
+    # player. This is what stops join/leave spam from becoming chat spam.
+    cooldown-seconds: 30
+    
+    # What the clickable line at the end of the announcement runs.
+    # %key% is the world that player is waiting in, so a click puts the
+    # reader straight into the right queue. Use '/rtpqueue' on its own if
+    # you would rather send them to the menu.
+    click-command: /rtpqueue %key%
+
+
+# ---------------------------------------------------------------------
+#  The destination pool
+# ---------------------------------------------------------------------
+#  This section trades memory and background work against how long a
+#  player waits when the pool happens to be empty.
+#
+#  Rule of thumb: `size` should cover the busiest minute you expect. With
+#  a 60 second cooldown and 30 players, 20 is plenty.
+pool:
+  
+  # How many ready destinations to keep per world.
+  # Each one is three numbers in memory, so a large pool is cheap; what
+  # costs is filling it, and that only happens once.
+  size: 20
+  
+  # How often the filler runs, in ticks. 10 = twice per second.
+  refill-interval-ticks: 10
+  
+  # How many new chunk requests may be started per run while nobody is
+  # waiting. This is the throttle that keeps world generation in the
+  # background. 1 with the interval above means roughly two chunks per
+  # second in the worst case - unnoticeable, and it fills a pool of 20 in
+  # well under a minute.
+  candidates-per-cycle: 1
+  
+  # The same, but while a player is standing there waiting for a spot.
+  # Raising this makes an empty pool recover faster at the cost of a
+  # bigger generation burst.
+  candidates-per-cycle-when-waiting: 4
+  
+  # Hard cap on chunk requests in flight per world, regardless of the two
+  # settings above. This is the real safety net against a generation
+  # queue building up faster than the server can work through it.
+  max-pending: 4
+  
+  # How many finished chunks may be inspected per run. Inspecting means
+  # reading blocks that are already in memory - fast, but this is the
+  # only part that costs main-thread time, so it stays capped.
+  evaluate-per-cycle: 2
+  
+  # How many spots to try inside one loaded chunk before throwing it away.
+  # The chunk is the expensive part; testing another column of it is
+  # nearly free. Raising this means fewer chunks generated for the same
+  # number of destinations - i.e. a smaller world folder.
+  columns-per-chunk: 4
+  
+  # Give up on a chunk request that has not completed after this long.
+  # Only ever triggers when the server is badly overloaded or the world
+  # was unloaded underneath us.
+  pending-timeout-seconds: 20
+  
+  # How long a player waits for a destination when the pool is empty
+  # before being told to try again. They keep their cooldown either way.
+  #
+  # A timeout on a freshly created world usually means the search is
+  # not slow but generating: every attempt has to build new chunks
+  # first. Pre-generating each dimension once (Chunky or any other
+  # pre-generator) turns later searches into a read from disk and
+  # makes this timeout stop firing.
+  request-timeout-seconds: 15
+  
+  # Throw away pooled destinations older than this, in seconds.
+  # 0 = never, which is the right answer for almost everyone: every spot
+  # is re-checked against the live world immediately before use anyway.
+  # Set it if your players terraform heavily and you would rather not
+  # even attempt a spot found an hour ago.
+  max-age-seconds: 0
+
+
+# ---------------------------------------------------------------------
+#  Small text bits that are not full messages
+# ---------------------------------------------------------------------
+formats:
+  
+  # Shown by %cooldown% in the menu when the player may teleport now.
+  cooldown-ready: '&#71F521Ready'
+  
+  # Shown by %status% on a duel queue button, depending on whether the
+  # player looking at it is already waiting in that queue.
+  queue-status-open: '&#71F521Open'
+  queue-status-waiting: '&#FFD900Waiting...'
+  
+  # Shown by %cost% for a world that charges nothing. The fee itself is
+  # each world's `cost:` further down. Written as a word rather than
+  # 0.00, because the menu now carries the cost line by default and
+  # "Cost: 0.00" on every world of a free server is noise.
+  cost-free: '&#71F521Free'
+
+
+# ---------------------------------------------------------------------
+#  Sounds
+# ---------------------------------------------------------------------
+#  Written as "sound volume pitch"; volume and pitch may be left out.
+#  An empty value switches that cue off.
+#  Any sound name the client knows works, including resource pack sounds.
+sounds:
+  
+  # Which volume slider players can mute these with.
+  # MASTER, PLAYERS, AMBIENT, BLOCKS, HOSTILE, MUSIC, NEUTRAL, RECORDS, VOICE
+  category: MASTER
+  
+  menu-open: block.chest.open 0.8 1.3
+  click: ui.button.click 0.7 1.2
+  countdown: block.note_block.pling 1.0 1.4
+  teleport: entity.player.levelup 1.0 1.6
+  denied: entity.villager.no 1.0 1.0
+  
+  # Duel queue. `queue-broadcast` is played to everyone who receives the
+  # announcement, so keep it quiet or leave it empty.
+  queue-join: ui.button.click 0.7 1.2
+  queue-leave: entity.villager.no 1.0 1.0
+  queue-matched: entity.experience_orb.pickup 1.0 1.4
+  queue-countdown: block.note_block.pling 1.0 1.4
+  queue-teleport: entity.player.levelup 1.0 1.6
+  queue-aborted: entity.villager.no 1.0 0.8
+  queue-mute-on: ui.button.click 0.7 0.9
+  queue-mute-off: ui.button.click 0.7 1.4
+  queue-broadcast: ''
+
+
+# ---------------------------------------------------------------------
+#  The worlds players can teleport into
+# ---------------------------------------------------------------------
+#  Add as many as you like. The name of each entry (overworld, nether,
+#  end below) is what a player types after /rtp, and it must match the
+#  `action` of an item in menu-rtp.yml for the world to show up in the
+#  menu. The real world name may of course differ.
+#
+#  A WORD ON RADIUS
+#  radius.min/max form a square ring measured from the world border's
+#  centre (0,0 unless you moved it), exactly like the old script did.
+#  A large max is not dangerous any more - the search is asynchronous -
+#  but every teleport out there still writes new chunks to disk forever.
+#  If your world folder is growing faster than you like, either lower
+#  max or set generate-new-chunks to false.
+worlds:
+  
+  overworld:
+    # The Bukkit world name, as seen in your server folder.
+    world: world
+    
+    # Shown in messages and available as %name% / %name_caps% in the menu.
+    display-name: Overworld
+    display-name-caps: OVERWORLD
+    
+    # Available as %color% in the menu and in messages.
+    color: '&#71F521'
+    
+    # Extra permission for this world alone. Empty = everyone may use it.
+    # Useful for selling access to a resource world.
+    permission: ''
+    
+    # Money charged per teleport, through Vault. 0 = free.
+    # Taken only when the teleport actually happens, and given back if
+    # another plugin cancels it.
+    cost: 0.0
+    
+    # false: only land in terrain that already exists. The pool refills
+    #        more slowly on a fresh world but your world folder stops
+    #        growing. Recommended once your map is established.
+    generate-new-chunks: true
+    
+    # Never send anyone past the world border, whatever the radius says.
+    respect-world-border: true
+    
+    radius:
+      min: 1000
+      max: 7000
+    
+    search:
+      # SURFACE: stand on top of the terrain. For anything with open sky.
+      # ROOFED:  scan upwards from the floor. The only mode that works in
+      #          the Nether, where the highest block is the bedrock roof.
+      mode: SURFACE
+      
+      # Height window the landing spot must fall into.
+      # For SURFACE this mostly rules out mountaintops and deep pits.
+      min-y: 45
+      max-y: 250
+      
+      # Radius of the hazard scan around the landing spot, in blocks.
+      # 0 turns it off; the maximum is 7, because the scan must stay
+      # inside the one chunk that was loaded for it - reaching into the
+      # next chunk would force the server to load that one on the spot,
+      # which is exactly the stall this plugin exists to avoid.
+      clearance-radius: 2
+      
+      # Blocks that must not be anywhere within that radius.
+      clearance-blocks:
+      - LAVA
+      - FIRE
+      - MAGMA_BLOCK
+    
+    # Blocks the player must not stand on, in, or with their head in.
+    # This is what keeps people out of oceans and off lava lakes.
+    unsafe-blocks:
+    - WATER
+    - LAVA
+    - FIRE
+    - CACTUS
+    - MAGMA_BLOCK
+    - POWDER_SNOW
+    - SWEET_BERRY_BUSH
+    - WITHER_ROSE
+    - CAMPFIRE
+    - SOUL_CAMPFIRE
+  
+  nether:
+    world: world_nether
+    display-name: Nether
+    display-name-caps: NETHER
+    color: '&#FF2121'
+    permission: ''
+    cost: 0.0
+    generate-new-chunks: true
+    respect-world-border: true
+    
+    radius:
+      min: 1000
+      max: 7000
+    
+    search:
+      # Must be ROOFED here - see the note above.
+      mode: ROOFED
+      
+      # 32..110 keeps players out of the lava ocean below and out of the
+      # crawl space above the bedrock roof.
+      min-y: 32
+      max-y: 110
+      
+      # Worth keeping at 2 or 3 in the Nether: the old script dropped
+      # players onto single blocks in the middle of lava lakes.
+      clearance-radius: 3
+      clearance-blocks:
+      - LAVA
+      - FIRE
+      - MAGMA_BLOCK
+    
+    unsafe-blocks:
+    - LAVA
+    - FIRE
+    - SOUL_FIRE
+    - MAGMA_BLOCK
+    - CAMPFIRE
+    - SOUL_CAMPFIRE
+  
+  end:
+    world: world_the_end
+    display-name: End
+    display-name-caps: THE END
+    color: '&#FFD900'
+    permission: ''
+    cost: 0.0
+    generate-new-chunks: true
+    respect-world-border: true
+    
+    radius:
+      min: 1000
+      max: 7000
+    
+    search:
+      mode: SURFACE
+      
+      # The End islands sit around y=50-70 with a lot of void between
+      # them; the lower bound is what stops anyone landing on a one-block
+      # spike over nothing.
+      min-y: 40
+      max-y: 120
+      
+      clearance-radius: 1
+      clearance-blocks:
+      - LAVA
+    
+    unsafe-blocks:
+    - WATER
+    - LAVA
+    - FIRE
+
+
+# ---------------------------------------------------------------------
+#  Messages
+# ---------------------------------------------------------------------
+#  Every line is prefixed with `prefix` above. An empty string switches
+#  that message off completely.
+#  The comment over each line lists the placeholders it may use.
+messages:
+  
+  # (no placeholders)
+  players-only: '&#FF2121This command can only be used in game.'
+  
+  # %permission%
+  no-permission: '&#FF2121You are not allowed to use the random teleport.'
+  
+  # %world% %color% %permission%
+  no-world-permission: '&#FF2121You do not have access to the %color%%world%&#FF2121.'
+  
+  # %world% - the world listed in the config, not its display name
+  world-not-loaded: '&#FF2121The world &f%world% &#FF2121is not available right now.'
+  
+  # %world% (what the player typed) %worlds% (comma separated list)
+  unknown-world: '&#FF2121Unknown world &f%world%&#FF2121. Try: &f%worlds%'
+  
+  # (no placeholders)
+  already-teleporting: '&#FF2121You already have a teleport running.'
+  
+  # %seconds% (whole seconds) %time% (formatted, e.g. 1m 05s)
+  cooldown: '&fYou can teleport again in &#9FFF00%time%&f.'
+  
+  # %seconds% %world% %color%
+  countdown: '&fTeleport in &#9FFF00%seconds%'
+  
+  # Shown above the hotbar during the countdown. Empty = no action bar.
+  # %seconds% %world% %color%
+  countdown-actionbar: '&fTeleporting to %color%%world% &fin &#9FFF00%seconds%s'
+  
+  # (no placeholders)
+  cancelled-move: '&#FF2121Teleport cancelled - you moved.'
+  
+  # (no placeholders)
+  cancelled-damage: '&#FF2121Teleport cancelled - you took damage.'
+  
+  # Only ever seen when the pool ran dry, e.g. right after a restart.
+  # %world% %color%
+  searching: '&7Looking for a safe spot in %color%%world%&7...'
+  
+  # %world% %color%
+  no-destination: '&#FF2121Could not find a safe spot in %color%%world%&#FF2121. Please
+    try again.'
+  
+  # %world%
+  teleport-failed: '&#FF2121The teleport was blocked. Nothing was charged.'
+  
+  # %world% %color% %x% %y% %z% %cost%
+  # Streaming a server? Delete the `&7(%x%, %y%, %z%)` part and the landing
+  # spot stays out of chat. A placeholder that is not in the text is
+  # simply not filled in.
+  teleported: '&fYou have been teleported to %color%%world%&f.'
+  
+  # (no placeholders) - only when a world has a cost and Vault is missing
+  no-economy: '&#FF2121No economy plugin is installed, so paid teleports are disabled.'
+  
+  # %cost%
+  not-enough-money: '&#FF2121You need &#6BFF00$%cost% &#FF2121for this teleport.'
+  
+  # %worlds% (how many were loaded)
+  reloaded: '&#71F521Reloaded &f%worlds% &#71F521destination world(s).'
+  
+  
+  # -------------------------------------------------------------------
+  #  Duel queue
+  # -------------------------------------------------------------------
+  #  These use `queue.prefix` instead of the `prefix` at the top of this
+  #  file. An empty string still switches a line off.
+  #
+  #  Placeholders available in nearly all of them:
+  #    %world%      the world's display name
+  #    %world_caps% the same in capitals
+  #    %color%      the world's colour
+  #    %key%        what a player types after /rtpqueue
+  #    %queued%     players waiting in that queue right now
+  #    %required%   players needed for a match
+  #    %missing%    how many are still missing
+  #    %keep_inventory%  the label from queue.keep-inventory-hint
+  #  Extra placeholders are listed above the lines that have them.
+
+    # (no placeholders)
+  queue-disabled: '&#FF2121The duel queue is switched off.'
+  
+  # %permission%
+  queue-no-permission: '&#FF2121You are not allowed to use the duel queue.'
+  
+  # %world% %color% %permission%
+  queue-no-world-permission: '&#FF2121You do not have access to the %color%%world%&#FF2121
+    queue.'
+  
+  # %world% - the world listed in the config, not its display name
+  queue-world-not-loaded: '&#FF2121The world &f%world% &#FF2121is not available right
+    now.'
+  
+  # Sent to everyone still queued for a world that was removed from the
+  # config during /skrtp reload.
+  # %world%
+  queue-world-gone: '&#FF2121The &f%world% &#FF2121queue no longer exists - you were
+    removed from it.'
+  
+  # %world% (what the player typed) %worlds% (comma separated list)
+  queue-unknown-world: '&#FF2121Unknown world &f%world%&#FF2121. Try: &f%worlds%'
+  
+  # Shown when a player tries to join or leave while their match is
+  # already counting down.
+  # (no placeholders)
+  queue-locked: '&#FF2121Your match has already started - good luck!'
+  
+  # Shown when the player has an /rtp countdown running.
+  # (no placeholders)
+  queue-busy: '&#FF2121Finish your teleport before joining the queue.'
+  
+  # %seconds% (whole seconds) %time% (formatted, e.g. 1m 05s)
+  queue-cooldown: '&fYou can queue again in &#FFD900%time%&f.'
+  
+  # Sent when a player joins a different queue than the one they were in.
+  # %from% (the world key they left) plus the usual placeholders
+  queue-switched: '&7You left the &f%from% &7queue.'
+  
+  # (usual placeholders)
+  queue-joined: '&7You joined the &#FFD900&lRTPQUEUE&7, waiting for an opponent. &8(%queued%/%required%)'
+  
+  # The title flashed on screen when joining. Blank both to switch it off.
+  # Timings live under queue.title in this file.
+  # (usual placeholders)
+  queue-title: '&#FFD900Joined the RTPQueue!'
+  queue-subtitle: '&7%color%%world% &8(%queued%/%required%)'
+  
+  # Shown above the hotbar while waiting. Empty = no action bar.
+  # (usual placeholders)
+  queue-actionbar: '&fWaiting for a player in &#FFD900/rtpqueue &f(%queued%/%required%)'
+  
+  # %opponents% (the other players, comma separated) %seconds% %players%
+  queue-matched: '&#71F521Opponent found, you are being teleported!'
+  
+  # %seconds% %opponents% %players% plus the usual placeholders
+  queue-countdown: '&fTeleportation in &#FFD900%seconds%s'
+  
+  # Same, above the hotbar. Empty = no action bar.
+  # %seconds% %opponents% %players%
+  queue-countdown-actionbar: '&fFighting %color%%opponents% &fin &#FFD900%seconds%s'
+  
+  # Only ever seen when the pool ran dry, e.g. right after a restart.
+  # %world% %color%
+  queue-searching: '&7Looking for a safe spot in %color%%world%&7...'
+  
+  # %world% %color%
+  queue-no-destination: '&#FF2121Could not find a safe spot in %color%%world%&#FF2121.
+    The match was cancelled.'
+  
+  # Sent to the rest of a match when somebody logs out or leaves.
+  # %player% (who left)
+  queue-aborted: '&#FF2121%player% &#FF2121left - the match was cancelled.'
+  
+  # Sent when the plugin reloads or the server stops mid-match.
+  # (no placeholders)
+  queue-aborted-reload: '&#FF2121The match was cancelled by a reload.'
+  
+  # (usual placeholders)
+  queue-left: '&#FF2121You left the &#FF2121&lRTPQUEUE&#FF2121.'
+  
+  # Only reachable with queue.allow-leave-during-countdown set to true.
+  # (no placeholders)
+  queue-left-match: '&#FF2121You left the match.'
+  
+  # (no placeholders)
+  queue-not-queued: '&#FF2121You are not in a queue!'
+  
+  # %x% %y% %z% %opponents% %players% plus the usual placeholders
+  queue-teleported: '&#71F521You have been teleported!'
+  
+  # %world% %color% - another plugin blocked the teleport
+  queue-teleport-failed: '&#FF2121The teleport was blocked.'
+  
+  # (no placeholders)
+  queue-mute-on: '&#FF2121You will no longer see &#FF2121&lRTPQUEUE&#FF2121 messages.'
+  queue-mute-off: '&#71F521You will now see &#71F521&lRTPQUEUE&#71F521 messages.'
+  
+  # The server-wide announcement. Every line is sent as written, WITHOUT
+  # the queue prefix, so the block can be as loud or as plain as you
+  # like. An empty list switches the text off; see queue.broadcast for
+  # who receives it and how often.
+  # %player% (who is waiting) plus the usual placeholders
+  queue-broadcast:
+  - ''
+  - '&#FFD900☄ &#FFD900&lRTP QUEUE&#FFD900 ☄'
+  - ''
+  - '&#FFD900%player% &fis waiting for an opponent to fight!'
+  
+  # The clickable line appended underneath. Empty = no clickable line.
+  # What the click runs is queue.broadcast.click-command.
+  # %player% plus the usual placeholders
+  queue-broadcast-click: '&#FFD900/rtpqueue'
+  
+  # Tooltip shown when hovering that line. Empty = no tooltip.
+  queue-broadcast-click-hover: '&#71F521Click to join!'
+# Language of everything this plugin says: EN or DE.
+#
+# EN is the default and reads this file. DE lays the translation in
+# lang/de/ over it - the file you are reading stays English and stays the
+# reference. A line the translation does not have falls back to English,
+# so nothing breaks if you add a setting we have not translated yet.
+#
+# The translated files are yours to edit as well, same as this one.
+language: EN
+
+

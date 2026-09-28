@@ -1,0 +1,58 @@
+# This is the config file for ChestRestack.
+# This config was generated for version 1.0
+
+# You can delete this file to regenerate the default config on server reload.
+
+
+# GENERAL
+
+# Whether the chest will be sorted after moving items
+# Disabling this globally will disable it for all players independent of their individual preferences.
+# I only recommend disabling this if you use a different plugin for sorting of inventories.
+sorting-enabled-global: true
+
+# Whether a sound should be played when items are restacked
+restack-sound: true
+
+# Set the locale for the plugin.
+# Contact me if you would like to have your language supported. You might need to help with translations.
+# Available locales:
+# en: English, de: German
+locale: en
+
+# Whether new updates should be announced to admins and in the console.
+# Updating to the newest version is always recommended unless the new version is not compatible with your server.
+check-for-updates: true
+
+
+
+# DEFAULT PLAYER PREFERENCES
+
+# Each player can overwrite their own preferences using commands
+# These are the default values the preferences will have when they first join or when they reset their preferences
+
+# Whether the chest will be sorted after moving items
+# Can be over by sorting-enabled-global
+sorting-enabled-default: true
+
+# The click-mode that triggers the restacking action
+# shift-left | shift-right
+click-mode-default: shift-left
+
+# Whether items from the hotbar should be restacked or ignored by default
+move-from-hotbar-default: true
+
+# Whether tools and weapons should be restacked or ignored by default
+move-tools-default: false
+
+# Whether armor should be restacked or ignored by default
+move-armor-default: true
+
+# Whether arrows and rockets should be restacked or ignored by default
+move-arrows-default: true
+
+# Whether food should be restacked or ignored by default
+move-food-default: true
+
+# Whether potions should be restacked or ignored by default
+move-potions-default: true

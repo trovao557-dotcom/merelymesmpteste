@@ -1,0 +1,6 @@
+name: MerelyStackFix
+version: '1.0.0'
+main: merely.stackfix.MerelyStackFix
+api-version: '26.1'
+description: Merges and cleans ordinary resource item stacks.
+author: MerelyMeSMP

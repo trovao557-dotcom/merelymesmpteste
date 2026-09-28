@@ -1,0 +1,3 @@
+.codex-current-update\keyall\settings.yml
+.codex-current-update\prepare-latest.ps1
+get-rcon.ps1

@@ -1,0 +1,88 @@
+options:
+    rank-menu-name: &8             &f&lRANK MENU TEST
+
+function rankItem(label: text, cmd: number, color: text) :: item:
+    set {_item} to paper named "%{_color}%&l%{_label}%"
+    set custom model data of {_item} to {_cmd}
+    set lore of {_item} to "&8MerelyMeSMP Rank", "", "&7Texture-pack preview item", "&eCustom Model: &f%{_cmd}%"
+    return {_item}
+
+function uiIcon(label: text, cmd: number, color: text) :: item:
+    set {_item} to paper named "%{_color}%&l%{_label}%"
+    set custom model data of {_item} to {_cmd}
+    set lore of {_item} to "&8Basic UI Icons", "", "&7Texture-pack preview icon", "&eCustom Model: &f%{_cmd}%"
+    return {_item}
+
+function cosmeticItem(label: text, cmd: number, color: text) :: item:
+    set {_item} to paper named "%{_color}%&l%{_label}%"
+    set custom model data of {_item} to {_cmd}
+    set lore of {_item} to "&8Local cosmetic preview", "", "&7Static menu test", "&eCustom Model: &f%{_cmd}%"
+    return {_item}
+
+command /ranksmenutest:
+    executable by: players
+    trigger:
+        set {_gui} to chest inventory with 6 rows named "{@rank-menu-name}"
+        set slot 10 of {_gui} to rankItem("PLAYER", 1201, "&f")
+        set slot 11 of {_gui} to rankItem("MEMBER", 1202, "&7")
+        set slot 12 of {_gui} to rankItem("BOOSTER", 1203, "&d")
+        set slot 13 of {_gui} to rankItem("KNIGHT", 1204, "&a")
+        set slot 14 of {_gui} to rankItem("WARRIOR", 1205, "&c")
+        set slot 15 of {_gui} to rankItem("MACER", 1206, "&b")
+        set slot 16 of {_gui} to rankItem("PRIME", 1207, "&e")
+        set slot 19 of {_gui} to rankItem("CLIPPER", 1208, "&3")
+        set slot 20 of {_gui} to rankItem("MEDIA", 1209, "&5")
+        set slot 21 of {_gui} to rankItem("HELPER", 1210, "&6")
+        set slot 22 of {_gui} to rankItem("MOD", 1211, "&9")
+        set slot 23 of {_gui} to rankItem("ADMIN", 1212, "&5")
+        set slot 24 of {_gui} to rankItem("OWNER", 1213, "&c")
+
+        set slot 27 of {_gui} to uiIcon("ARROW DOWN", 1251, "&b")
+        set slot 28 of {_gui} to uiIcon("ARROW LEFT", 1252, "&b")
+        set slot 29 of {_gui} to uiIcon("ARROW RIGHT", 1253, "&b")
+        set slot 30 of {_gui} to uiIcon("ARROW UP", 1254, "&b")
+        set slot 31 of {_gui} to uiIcon("CHECK", 1255, "&7")
+        set slot 32 of {_gui} to uiIcon("CHECK COLOR", 1256, "&a")
+        set slot 33 of {_gui} to uiIcon("CLOSE", 1257, "&7")
+        set slot 34 of {_gui} to uiIcon("CLOSE COLOR", 1258, "&c")
+        set slot 35 of {_gui} to uiIcon("COINS", 1259, "&e")
+        set slot 36 of {_gui} to uiIcon("EXCLAMATION", 1260, "&7")
+        set slot 37 of {_gui} to uiIcon("EXCLAMATION COLOR", 1261, "&e")
+        set slot 38 of {_gui} to uiIcon("LOCK CLOSED", 1262, "&7")
+        set slot 39 of {_gui} to uiIcon("LOCK OPEN", 1263, "&a")
+        set slot 40 of {_gui} to uiIcon("MINUS", 1264, "&7")
+        set slot 41 of {_gui} to uiIcon("MINUS COLOR", 1265, "&c")
+        set slot 42 of {_gui} to uiIcon("PLUS", 1266, "&7")
+        set slot 43 of {_gui} to uiIcon("PLUS COLOR", 1267, "&a")
+        set slot 44 of {_gui} to uiIcon("QUESTION", 1268, "&7")
+        set slot 45 of {_gui} to uiIcon("QUESTION COLOR", 1269, "&d")
+        set slot 46 of {_gui} to uiIcon("REFRESH", 1270, "&b")
+        set slot 47 of {_gui} to uiIcon("SEARCH", 1271, "&f")
+        set slot 48 of {_gui} to uiIcon("SETTINGS", 1272, "&7")
+
+        set {_close} to uiIcon("CLOSE MENU", 1258, "&c")
+        set slot 53 of {_gui} to {_close}
+        open {_gui} to player
+
+command /cosmeticstest:
+    executable by: players
+    trigger:
+        set {_gui} to chest inventory with 6 rows named "&8COSMETICS TEST"
+        set slot 19 of {_gui} to cosmeticItem("ANGEL WINGS", 9000, "&f")
+        set slot 20 of {_gui} to cosmeticItem("BLUEFIRE WINGS", 9002, "&b")
+        set slot 21 of {_gui} to cosmeticItem("PHOENIX WINGS", 9011, "&6")
+        set slot 23 of {_gui} to cosmeticItem("DIVING HELMET", 10000, "&b")
+        set slot 24 of {_gui} to cosmeticItem("MILITARY HELMET", 10003, "&2")
+        set slot 25 of {_gui} to cosmeticItem("POT HAT", 10005, "&6")
+        set slot 30 of {_gui} to cosmeticItem("COMMON CRATE", 11000, "&a")
+        set slot 32 of {_gui} to cosmeticItem("LEGENDARY CRATE", 11001, "&6")
+        set slot 31 of {_gui} to cosmeticItem("EARTH MODEL", 12000, "&b")
+        open {_gui} to player
+
+on inventory click:
+    if name of event-inventory contains "RANK MENU TEST":
+        cancel event
+        if index of event-slot is 53:
+            close player's inventory
+    if name of event-inventory contains "COSMETICS TEST":
+        cancel event

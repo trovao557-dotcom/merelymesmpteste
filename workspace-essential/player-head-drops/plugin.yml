@@ -1,0 +1,5 @@
+name: MerelyHeadDrops
+version: 1.0.0
+main: com.merelyme.headdrops.PlayerHeadDrops
+api-version: '1.21'
+description: Three percent player head drops with one active head per player.

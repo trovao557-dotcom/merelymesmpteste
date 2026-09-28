@@ -1,0 +1,35 @@
+# =====================================================================
+#  welcome-region.sk
+#  On first join: shows welcome title + actionbar + chat message
+#  On every join: plays welcome sound + title
+#  On join: tells player to pick their region role in Discord
+# =====================================================================
+
+on first join:
+	# Welcome title + subtitle
+	send title "&6&lWELCOME" with subtitle "&#00E0FF&lMerelyMeSMP — Season 1" to player for 3 seconds with fadein 0.5 seconds and fadeout 1 second
+	wait 1 second
+	# Chat welcome
+	send " " to player
+	send "&#6BFF00&l        MerelyMeSMP &8— &7Season 1" to player
+	send " " to player
+	send "  &#00E0FF&lWelcome, &f%player%&7!" to player
+	send "  &7You are now in the fight." to player
+	send " " to player
+	send "  &#FFD900➤ &7Pick your &fregion role&7 in Discord:" to player
+	send "  &8discord.gg/NEybDXCkhA &8→ &f#🌍┃choose-region" to player
+	send " " to player
+	send "  &#FF6B6B➤ &7Read the &frules&7 before you fight: &f/rules" to player
+	send "  &#6BFF00➤ &7Free reward at spawn: &f/spawn &8then open the Black Shulker" to player
+	send " " to player
+	# Sound
+	execute console command "execute as @a[name=%name of player%] at @s run playsound minecraft:entity.player.levelup master %name of player% ~ ~ ~ 1 0.8"
+
+on join:
+	if {welcomed.%uuid of player%} is not set:
+		set {welcomed.%uuid of player%} to true
+	else:
+		# Returning player: small title only
+		send title "&f%player%" with subtitle "&#00B5FF&oWelcome back" to player for 2 seconds with fadein 0.3 seconds and fadeout 0.5 second
+		# Actionbar with online count
+		send action bar "&#6BFF00&l✦ &fMerelyMeSMP &8| &7%number of players% online" to player

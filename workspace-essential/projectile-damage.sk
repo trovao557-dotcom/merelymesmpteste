@@ -1,0 +1,20 @@
+# Restore projectile damage outside the protected spawn safezone.
+# Reload with: /sk reload projectile-damage.sk
+
+on any damage with priority highest:
+    victim is a player
+
+    # Never restore projectile damage inside the WorldGuard safezone.
+    if world of victim is "world":
+        if x-coordinate of victim is between 103 and 223:
+            if y-coordinate of victim is between 61 and 199:
+                if z-coordinate of victim is between 97 and 217:
+                    # Enforce the final SafeZone result after other handlers.
+                    cancel event
+                    set damage to 0
+                    stop
+
+    # Outside the safezone, projectiles keep their normal damage.
+    if damage cause is projectile:
+        if event is cancelled:
+            uncancel event

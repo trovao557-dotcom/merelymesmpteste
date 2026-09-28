@@ -1,0 +1,12 @@
+# SKAuction — /ah mine → clica no item para remover
+
+options:
+	prefix: &6&lAH &8» &7
+
+command /ahhelp:
+	aliases: /ahajuda
+	trigger:
+		send "{@prefix}&f/ah &7- ver leilões" to player
+		send "{@prefix}&f/ah sell <preço> &7- vender item na mão" to player
+		send "{@prefix}&f/ah mine &7- &aOS TEUS ITENS &7(clica para remover)" to player
+		send "{@prefix}&f/ah search <nome> &7- procurar" to player

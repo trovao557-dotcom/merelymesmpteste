@@ -1,0 +1,74 @@
+on load:
+    set {spawn.loc} to location(181.49, 74, 157.5, world "world")
+    set yaw of {spawn.loc} to 90
+    set pitch of {spawn.loc} to 0
+
+# First-time players land on the same block /spawn uses (yaw + pitch included).
+on first join:
+    wait 20 ticks
+    if {spawn.loc} is not set:
+        set {spawn.loc} to location(181.49, 74, 157.5, world "world")
+        set yaw of {spawn.loc} to 90
+        set pitch of {spawn.loc} to 0
+    teleport player to {spawn.loc}
+
+command /setspawn:
+    permission: op
+    trigger:
+        set {spawn.loc} to location of player
+        set yaw of {spawn.loc} to yaw of player
+        set pitch of {spawn.loc} to pitch of player
+        send "&a[SPAWN] Spawn set successfully to your current location!" to player
+
+command /spawn:
+    trigger:
+        if {teleportando::%player%} is true:
+            send "&cYou already have a teleport in progress!" to player
+            stop
+
+        set {teleportando::%player%} to true
+        set {_loc} to location of player
+        set {_seconds} to 5
+        
+        loop 5 times:
+            if {teleportando::%player%} is not set:
+                stop
+            if distance between location of player and {_loc} > 0.5:
+                send "&cTeleport cancelled because you moved" to player
+                send action bar "&cTeleport cancelled" to player
+                clear {teleportando::%player%}
+                stop
+            
+            send "&fTeleport in &a%{_seconds}% &fseconds" to player
+            send action bar "&fTeleport in &a%{_seconds}% &fseconds" to player
+            subtract 1 from {_seconds}
+            wait 1 second
+            
+        if {teleportando::%player%} is not set:
+            stop
+        if distance between location of player and {_loc} > 0.5:
+            send "&cTeleport cancelled because you moved" to player
+            send action bar "&cTeleport cancelled" to player
+            clear {teleportando::%player%}
+            stop
+
+        if {spawn.loc} is not set:
+            send "&cThe spawn world is not loaded." to player
+            clear {teleportando::%player%}
+            stop
+
+        teleport player to {spawn.loc}
+        play sound "entity.enderman.teleport" with volume 1.0 and pitch 1.0 at player
+        send "&fYou have been successfully &ateleported" to player
+        send action bar "&aTeleported!" to player
+        clear {teleportando::%player%}
+
+on damage:
+    if {teleportando::%victim%} is true:
+        clear {teleportando::%victim%}
+        send "&cTeleport cancelled because you took damage" to victim
+        send action bar "&cTeleport cancelled" to victim
+
+on quit:
+    if {teleportando::%player%} is true:
+        clear {teleportando::%player%}

@@ -1,0 +1,41 @@
+name: MerelyTournament
+version: 1.0.32
+main: com.merelyme.tournament.MerelyTournament
+api-version: '1.21'
+author: MerelyMeSMP
+description: Weekly bracket tournament and Glory Shop for MerelyMeSMP
+softdepend: [LuckPerms, SKTags, SKSpawners, SKTeam, Multiverse-Core, PlaceholderAPI, FastAsyncWorldEdit, Vault, SKMoney]
+commands:
+  tournament:
+    description: Open the weekly tournament menu
+    aliases: [tour, tourney, glory, gloryshop]
+    usage: /tournament
+  giveglory:
+    description: Give Glory Points to an online player
+    aliases: [glorygive, giveglorypoints]
+    usage: /giveglory <player> <amount>
+    permission: merelytournament.admin
+  tournamentspectate:
+    description: Watch a live tournament, 1v1 or 2v2 match
+    aliases: [tspectate, spectourney, watch]
+    usage: /tournamentspectate <player>
+  tournamentunspectate:
+    description: Leave spectator mode
+    aliases: [tunspectate, unspectourney, unwatch]
+    usage: /tournamentunspectate
+  duel:
+    description: Open the 1v1 and 2v2 duel menu
+    aliases: [duels, fight]
+    usage: /duel
+  duel2v2:
+    description: Open the 2v2 duel menu
+    aliases: [2v2, duo]
+    usage: /2v2
+  wagerduel:
+    description: Challenge a player to a money wagered 1v1
+    aliases: [wager, betduel]
+    usage: /wager <player> <amount>
+permissions:
+  merelytournament.admin:
+    description: Manage the weekly tournament
+    default: op

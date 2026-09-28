@@ -1,0 +1,175 @@
+# =====================================================================
+#  Spawners - behaviour
+# =====================================================================
+#  Text lives in messages.yml, menu layouts in menu-main.yml and
+#  menu-loot.yml, and the mobs themselves in types/.
+#  Reload with /skcore reload
+# =====================================================================
+
+
+# ---------------------------------------------------------------------
+#  Production - when spawners are allowed to generate loot
+# ---------------------------------------------------------------------
+#  This is the section that decides how much CPU spawners cost you.
+production:
+  
+  # Only produce while the chunk is loaded.
+  # Leave this on. With it off, every spawner on the server ticks forever,
+  # including ones nobody has visited in months.
+  require-loaded-chunk: true
+  
+  # Only produce while a player is within this many blocks.
+  #    0   = always produce (as long as the chunk is loaded)
+  #    48  = roughly the vanilla spawner range, recommended for big servers
+  # Raising this above 0 is the single most effective performance setting
+  # if you expect thousands of spawners.
+  activation-radius: 32
+
+
+# ---------------------------------------------------------------------
+#  Stacking - how many spawners can occupy one block
+# ---------------------------------------------------------------------
+stacking:
+  
+  # Upper limit for a single stacked spawner.
+  # Individual mobs can lower this in their own type file.
+  max-stack: 2000
+  
+  # How many separate spawner blocks may sit in one chunk.
+  # This is an anti-lag measure, not a gameplay one: players will stack
+  # into one block anyway, and a chunk full of separate spawners is what
+  # causes chunk-load spikes.
+  limit-per-chunk: 2000
+
+
+# ---------------------------------------------------------------------
+#  Loot handling
+# ---------------------------------------------------------------------
+loot:
+  
+  # How much a left-click and a right-click take out of the loot screen.
+  # Shift-click always takes as much as the player's inventory can hold.
+  take-on-left-click: 1
+  take-on-right-click: 64
+  
+  # Lore added underneath each loot item in the loot screen.
+  # An inventory slot cannot show a number above 64, so without this the
+  # player cannot tell 64 rotten flesh from 6400.
+  # Placeholders: %amount% %price% %unit_price%
+  item-lore:
+  - '&7Stored'
+  - '&f'
+  - '&#FF8600⚑ &fAmount: &#FF8600%amount%'
+  - '&#6BFF00$ &fValue: &#6BFF00$%price%'
+  - '&a'
+  - '&#FFD900&l▶ &#FFD900&l&nLEFT&#FFD900 take 1  &#FFD900&l&nRIGHT&#FFD900 take 64'
+
+
+# ---------------------------------------------------------------------
+#  Selling
+# ---------------------------------------------------------------------
+selling:
+  
+  # Require the permission skspawners.sell to use any sell button.
+  # Off by default so selling just works out of the box.
+  require-permission: false
+
+
+# ---------------------------------------------------------------------
+#  The placeable spawner item
+# ---------------------------------------------------------------------
+#  One item is one spawner, so they stack in the inventory like any other
+#  block. Placing one gives you a spawner block holding 1; shift-right-
+#  clicking more onto it merges them, and breaking it returns exactly as
+#  many items as were merged.
+#
+#  The mob type is stored invisibly on the item, not in its name -
+#  renaming a spawner in an anvil cannot turn it into a different mob.
+#  Placeholders: %entity% %displayname% %displayname_caps% %color%
+spawner-item:
+  material: SPAWNER
+  name: '%color%&l%displayname_caps% &fSPAWNER'
+  lore:
+  - '&7Spawner'
+  - '&f'
+  - '%color%Information:'
+  - '&fPlace this block to start'
+  - '&fgenerating loot automatically.'
+  - '&e'
+  - '&#55C8FF⚓ &fShift-right-click to merge'
+  - '&#55C8FF   more into a placed one.'
+  - '&b'
+  - '&#FFD900&l▶ &#FFD900&l&nPLACE&#FFD900 to activate'
+  glow: true
+
+
+# ---------------------------------------------------------------------
+#  Data
+# ---------------------------------------------------------------------
+data:
+  
+  # How often placed spawners are written to data/spawners.yml.
+  # The write happens off the main thread and is skipped entirely when
+  # nothing changed, so a low value is cheap. Everything is also saved
+  # on shutdown.
+  save-interval-seconds: 300
+
+# Language of everything this plugin says: EN or DE.
+#
+# EN is the default and reads this file. DE lays the translation in
+# lang/de/ over it - the file you are reading stays English and stays the
+# reference. A line the translation does not have falls back to English,
+# so nothing breaks if you add a setting we have not translated yet.
+#
+# The translated files are yours to edit as well, same as this one.
+language: EN
+
+breaking:
+  
+  # What it takes to pick a spawner back up.
+  #
+  #   any        anything works, bare hands included. The spawner goes
+  #              straight into the inventory with its stack size and the
+  #              loot still inside.
+  #   silk-touch only a pickaxe enchanted with Silk Touch. Anything else
+  #              is refused - the spawner and everything in it stay put,
+  #              and the player is told why.
+  #
+  # `any` is the friendlier setting for a server where spawners are bought
+  # rather than found: needing a special tool to move your own purchase is
+  # friction with nothing behind it. `silk-touch` is for servers that want
+  # a spawner to be something you prepare for.
+  #
+  # Either way this only applies to spawners of this plugin. A dungeon
+  # spawner you dig out of a cave is a plain vanilla block and follows
+  # Minecraft's own rules, where Silk Touch never drops one.
+  require: any
+  
+  # Who may break one whatever they are holding. Empty ('') means nobody -
+  # not even operators. The default lets whoever administers spawners move
+  # them around while building.
+  bypass-permission: skspawners.admin
+  
+  # Break a spawner this plugin never placed - one dug out of a dungeon -
+  # and get one of ours back.
+  #
+  # Minecraft itself drops nothing for those, Silk Touch included, so a
+  # player mines the block and walks away with an empty hand. With this on
+  # they get a spawner of this plugin instead, matching the mob that was
+  # inside: a blaze spawner hands back the blaze type.
+  #
+  # OFF by default on purpose. A server that has run for a while has dungeon
+  # spawners in every cave, and turning them into something players can
+  # carry home changes what those caves are worth. That is your call, not a
+  # default to inherit from an update.
+  #
+  # The mob needs a file in types/. Break a spawner of a mob you have not
+  # set up and it behaves as before - the block goes, nothing drops, and the
+  # player is told why rather than left guessing.
+  vanilla-spawners: true
+
+sounds:
+  refused:
+    sound: entity.villager.no
+    volume: 1.0
+    pitch: 1.0

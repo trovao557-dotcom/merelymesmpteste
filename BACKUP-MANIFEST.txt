@@ -1,0 +1,29 @@
+MerelyMeSMP essential backup
+Created: 2026-09-28
+
+Contents:
+- Custom plugin projects and source files
+- Current modified plugin JARs and server configuration files
+- Skript files and deployment/support scripts without embedded credentials
+- Website repository history and source are present in the parent repository
+- Texture packs, rank/menu assets, images and font sources
+- Local IllegalStack source modifications
+- Tournament state configuration (large runtime log excluded)
+
+Texture pack directories included:
+- workspace-essential/merely-pack
+- workspace-essential/merely-pack-force
+- workspace-essential/merely-ranks-pack
+- workspace-essential/merely-tooltip-style
+- workspace-essential/RanksImages
+- workspace-essential/rank-menu-test
+
+Excluded because they are reproducible or unsafe to publish:
+- Downloaded JDK installations and archives
+- node_modules, build outputs and application caches
+- Temporary, verification, decompilation and test-server folders
+- Nested .git metadata
+- Files containing probable credentials (listed separately)
+
+Restore:
+Clone this branch, then copy workspace-essential back to Documents/MerelyMeSMP. Reinstall JDKs and project dependencies as needed.

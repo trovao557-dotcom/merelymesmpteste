@@ -1,0 +1,17 @@
+name: MerelyBattlePass
+version: 1.1.0
+main: com.merelyme.battlepass.MerelyBattlePass
+api-version: '1.21'
+author: MerelyMeSMP
+description: Season 1 Free and Premium Battle Pass with 60 levels.
+softdepend: [SKCore, SKMoney, SKCrates, SKTags, LuckPerms, PlaceholderAPI, MerelyDaily, MerelyTournament]
+commands:
+  battlepass:
+    description: Open and manage the Season 1 Battle Pass
+    aliases: [bp, pass, seasonpass]
+    usage: /battlepass
+permissions:
+  merelybattlepass.use:
+    default: true
+  merelybattlepass.admin:
+    default: op

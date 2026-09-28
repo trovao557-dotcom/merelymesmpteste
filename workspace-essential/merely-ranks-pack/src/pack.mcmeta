@@ -1,0 +1,9 @@
+{
+  "pack": {
+    "description": "MerelyMe SMP ranks, menu overlays and icons",
+    "pack_format": 48,
+    "supported_formats": { "min_inclusive": 15, "max_inclusive": 99 },
+    "min_format": 15,
+    "max_format": 99
+  }
+}

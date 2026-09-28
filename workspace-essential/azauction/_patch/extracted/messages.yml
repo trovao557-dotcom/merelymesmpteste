@@ -1,0 +1,34 @@
+prefix: "&#FF8600&lAzAuctions &8» &f"
+no-permission: "%prefix%&#FF5555You don't have permission."
+player-only: "%prefix%&#FF5555Only players can do that."
+reload: "%prefix%&#AAFFAAConfiguration reloaded."
+usage:
+  base: "%prefix%Use &e/ah help&f."
+  sell: "%prefix%Usage: &e/ah sell <price>&f"
+  search: "%prefix%Usage: &e/ah search <filter>&f"
+  list: "%prefix%Usage: &e/ah list <price> [count]&f"
+  ulist: "%prefix%Usage: &e/ah ulist <price> [count]&f"
+errors:
+  invalid-price: "%prefix%&#FF5555Invalid price."
+  too-low: "%prefix%&#FF5555Price is below minimum: &e%min%&f."
+  too-high: "%prefix%&#FF5555Price is above maximum: &e%max%&f."
+  empty-hand: "%prefix%&#FF5555Hold an item in your main hand."
+  restricted: "%prefix%&#FF5555That item cannot be sold."
+  vault-required: "%prefix%&#FF5555Vault economy is required but not found."
+  cannot-buy-own: "%prefix%&#FF5555You can't buy your own auction."
+  not-enough-money: "%prefix%&#FF5555You don't have enough money."
+  not-found: "%prefix%&#FF5555Auction not found."
+success:
+  cancelled-one: "&#FF8600Cancelled and returned the item to your inventory."
+  returned-one: "&#FF8600Returned the item to your inventory."
+
+  listed: "%prefix%&#AAFFAAListed for &#FF8600%price%&f."
+  bought: "%prefix%&#AAFFAAPurchased for &#FF8600%price%&f."
+  cancelled: "%prefix%&#AAFFAACancelled &e%count%&f auctions."
+  returned: "%prefix%&#AAFFAAReturned &e%count%&f items."
+info:
+  admin-removed: "&#FF8600An admin removed your auction: &f%item%"
+  admin-cancelled: "&#FF8600An admin cancelled your auction and returned it: &f%item%"
+  admin-done: "&#FF8600Done."
+
+  sold-cleared: "%prefix%Sold history cleared."

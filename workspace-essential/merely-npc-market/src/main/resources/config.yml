@@ -1,0 +1,8 @@
+market:
+  rent-price-points: 5000
+  rent-days: 3
+  max-stock-per-listing: 10000
+
+npc:
+  idle-skin: fleurily
+  idle-display: '&#00E5FF&lPLAYER SHOP &8• &#71F521AVAILABLE'

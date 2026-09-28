@@ -1,0 +1,128 @@
+# =====================================================================
+#  Spawners - the loot screen
+# =====================================================================
+#
+#  Same layout rules as menu-main.yml, with one addition:
+#  every '-' slot holds LOOT. The plugin fills them automatically and
+#  paginates when there is more loot than slots.
+#
+#  So the layout below gives 45 loot slots and one row of controls:
+#
+#      - '---------'   45 loot slots
+#      - '---------'
+#      - '---------'
+#      - '---------'
+#      - '---------'
+#      - 'g--pdn--w'   controls
+#
+#  Give players fewer loot slots by replacing '-' with another symbol,
+#  or a bigger loot area by removing a control row.
+#
+#  Loot slots respond to:
+#    left click    take the amount set in settings.yml (default 1)
+#    right click   take 64
+#    shift click   take as much as the inventory holds
+#
+#  PLACEHOLDERS: same as menu-main.yml, plus %page% and %max_page%.
+# =====================================================================
+
+menu:
+  title: '%entity% Spawner Loot'
+  filler-symbol: '-'
+  layout:
+    - '---------'
+    - '---------'
+    - '---------'
+    - '---------'
+    - '---------'
+    - 'g--pdn--w'
+
+items:
+
+  go_back:
+    material: BARRIER
+    symbol: g
+    action: go_back
+    name: '&#FF2121&lBACK'
+    lore:
+      - '&7Navigation'
+      - '&f'
+      - '&#FF2121Information:'
+      - '&fClick here to go to'
+      - '&fthe main menu.'
+      - '&e'
+      - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to go Back'
+
+  previous:
+    material: RED_STAINED_GLASS_PANE
+    symbol: p
+    action: previous
+    name: '&#FF2121&lPREVIOUS PAGE'
+    lore:
+      - '&7Navigation'
+      - '&f'
+      - '&#FF2121Information:'
+      - '&fPage &#FF2121%page%&f of &#FF2121%max_page%'
+      - '&e'
+      - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to Switch'
+
+  next:
+    material: LIME_STAINED_GLASS_PANE
+    symbol: n
+    action: next
+    name: '&#71F521&lNEXT PAGE'
+    lore:
+      - '&7Navigation'
+      - '&f'
+      - '&#71F521Information:'
+      - '&fPage &#71F521%page%&f of &#71F521%max_page%'
+      - '&e'
+      - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to Switch'
+
+  drop_all:
+    material: DISPENSER
+    symbol: d
+    action: drop_all
+    name: '&#00FFD6&lDROP LOOT'
+    lore:
+      - '&7Description'
+      - '&f'
+      - '&#00FFD6Information:'
+      - '&fDrop everything on the'
+      - '&fground at your feet.'
+      - '&e'
+      - '&#00FFD6🏹 &fAll Items: &#00FFD6%storage_amount%'
+      - '&a'
+      - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to Drop'
+
+  sell_all:
+    material: EMERALD
+    symbol: w
+    action: sell_all
+    name: '&#71F521&lSELL ALL'
+    lore:
+      - '&7Description'
+      - '&f'
+      - '&#71F521Information:'
+      - '&fSell everything that is'
+      - '&fcurrently in the spawner.'
+      - '&e'
+      - '&#6BFF00$ &fSell Price: &#6BFF00$%storage_price%'
+      - '&a'
+      - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to Sell'
+
+  # Not placed in the layout above by default - give it a symbol and put
+  # that symbol in the layout if you want a "take everything" button.
+  take_all:
+    material: CHEST_MINECART
+    symbol: t
+    action: take_all
+    name: '&#FFD900&lTAKE ALL'
+    lore:
+      - '&7Description'
+      - '&f'
+      - '&#FFD900Information:'
+      - '&fTake as much as fits'
+      - '&finto your inventory.'
+      - '&e'
+      - '&#FFD900&l▶ &#FFD900&l&nCLICK&#FFD900 to Take'

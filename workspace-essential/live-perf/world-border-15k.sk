@@ -1,0 +1,14 @@
+options:
+  # 15,000 blocks from the centre in every direction = 15,000 total size.
+  border: 15000
+
+on load:
+  wait 3 seconds
+  execute console command "execute in minecraft:overworld run worldborder center 181.5 157.5"
+  execute console command "execute in minecraft:overworld run worldborder set {@border}"
+  execute console command "execute in minecraft:the_nether run worldborder center 0 0"
+  execute console command "execute in minecraft:the_nether run worldborder set {@border}"
+  execute console command "execute in minecraft:the_end run worldborder center 0 0"
+  execute console command "execute in minecraft:the_end run worldborder set {@border}"
+  broadcast "&b[Border]&7 Set to &e{@border}&7x&e{@border}&7 on all worlds."
+

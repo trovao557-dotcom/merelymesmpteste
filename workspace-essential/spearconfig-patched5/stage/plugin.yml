@@ -1,0 +1,19 @@
+name: SpearConfig
+version: '1.0.0'
+main: dev.nullkeeper.spearconfig.SpearConfigPlugin
+description: Configure vanilla spear limits, combat, enchantments, visuals, and tracking.
+api-version: '26.1'
+authors: [NullKeeper-dev]
+website: https://modrinth.com/project/spear-config
+
+commands:
+  spearconfig:
+    description: Manage Spear Config.
+    usage: /spearconfig <gui|reload|refresh|set|toggle|enchantlevel|whitelist>
+    aliases: [spearcfg, scconfig]
+    permission: spearconfig.admin
+
+permissions:
+  spearconfig.admin:
+    description: Allows full administration of Spear Config.
+    default: op

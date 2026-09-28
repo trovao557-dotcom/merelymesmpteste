@@ -1,0 +1,12 @@
+# Cave spider spawner: the lowest-tier spawner.
+# It produces string only and is intended to come from cave spawner blocks.
+display-name: 'Cave Spider'
+colour: '&#2E8B57'
+drops:
+  string:
+    material: STRING
+    amount:
+      min: 1
+      max: 2
+    chance: 100
+    sell-price: 1

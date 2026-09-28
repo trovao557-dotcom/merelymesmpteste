@@ -1,0 +1,43 @@
+# =====================================================================
+#  SKCrates - the reward-selection menu
+# =====================================================================
+#
+#  HOW THE LAYOUT WORKS
+#  Each line under `layout` is one row of the chest, exactly 9
+#  characters wide. Each character is the `symbol` of an item defined
+#  below. '-' (the filler symbol) means "free slot" - that is where the
+#  crate's rewards appear, filled in the order of the crate file.
+#  A reward with its own `slot:` number sits exactly there instead.
+#
+#  THIS MENU HAS NOTHING BUT REWARDS
+#  Every decoration was removed on purpose: the border, the key counter,
+#  the page arrows and the close button. What is left is the choice
+#  itself. Two consequences worth knowing:
+#
+#    * There is no close button. Escape still closes the menu, as it
+#      does in every Minecraft screen.
+#    * There are no page arrows, so a crate can only show as many
+#      rewards as this layout has slots - 36 here. Put an `items:`
+#      block back below and give it the symbol `p` / `n` with
+#      `action: previous` / `action: next` if you ever need more.
+#
+#  PLACEHOLDERS for the title and every item below:
+#    %crate%       the crate's display name       %crate_caps%  UPPERCASE
+#    %color%       the crate's colour code        %crate_id%    file name
+#    %key_name%    name of the key                %key_cost%    keys per open
+#    %keys%        how many keys the viewer has
+#    %page%        current page                   %max_page%    page count
+#    %cooldown%    remaining cooldown of the viewer
+# =====================================================================
+
+menu:
+  # A crate file can override this title with its own `menu-title:`.
+  title: '&f'
+  filler-symbol: '-'
+  layout:
+    - '---------'
+    - '---------'
+    - '---------'
+    - '---------'
+
+items: {}
